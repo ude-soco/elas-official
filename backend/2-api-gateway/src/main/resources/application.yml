@@ -1,0 +1,22 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: API-GATEWAY
+
+  cloud:
+    gateway:
+      routes:
+        - id: ELAS-E3SELECTOR
+          uri: lb://ELAS-E3SELECTOR
+          predicates:
+            - Path=/api/e3selector/**
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
