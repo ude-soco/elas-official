@@ -14,9 +14,8 @@ public class SecurityConfig {
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity httpSecurity) {
 
         httpSecurity
-                .cors().and()
                 .authorizeExchange()
-                .pathMatchers("/api/e3selector/**").permitAll()
+                .pathMatchers("/api/e3selector/**").permitAll() // TODO: later change this to api/e3selector/courses/**
                 .anyExchange()
                 .authenticated()
                 .and()

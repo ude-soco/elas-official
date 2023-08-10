@@ -24,7 +24,7 @@ load_dotenv()
 
 
 mimetypes.add_type("application/javascript", ".js", True)
-runserver.default_port = os.environ.get("DJANGO_PORT", "8001")
+runserver.default_port = os.environ.get("DJANGO_PORT", "8001")  # default port is 8001
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 PROJECT_ROOT = os.path.normpath(os.path.dirname(__file__))
@@ -49,8 +49,8 @@ try:
         eureka_server=EUREKA_HOST,  # type: ignore
         app_name="ELAS-E3SELECTOR",
         instance_port=8001,
-        instance_ip=socket.gethostbyname(EUREKA_HOST_NAME), # type: ignore
-        instance_host=EUREKA_HOST_NAME, # type: ignore
+        instance_ip=socket.gethostbyname(EUREKA_HOST_NAME),  # type: ignore
+        instance_host=EUREKA_HOST_NAME,  # type: ignore
     )
     print("==========================================")
     print("* Eureka client initialized successfully *")
@@ -102,11 +102,8 @@ MIDDLEWARE = [
 
 INTERNAL_IPS = ["127.0.0.1"]
 
-CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST = [
-    "http://localhost:8000",
-    "http://localhost:5173",
-]
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_WHITELIST = []
 
 ROOT_URLCONF = "server.urls"
 
