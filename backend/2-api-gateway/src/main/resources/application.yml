@@ -11,6 +11,10 @@ spring:
           uri: lb://ELAS-E3SELECTOR
           predicates:
             - Path=/api/e3selector/**
+        - id: ELAS-AUTH
+          uri: lb://ELAS-AUTH
+          predicates:
+            - Path=/api/auth/**
 eureka:
   instance:
     prefer-ip-address: true
@@ -19,12 +23,3 @@ eureka:
     register-with-eureka: true
     service-url:
       defaultZone: http://localhost:8761/eureka/
-
-# Okta configuration for api gateway
-okta:
-  oauth2:
-    issuer: https://dev-90486397.okta.com/oauth2/default
-    audience: api://default
-    client-id: 0oaaqu4nxdodJ06vO5d7
-    client-secret: UJfUFnRw2nXVSoHZMabeOieDd1_jDCU4pnaxQdu-74UV_8801PubGAJaM4CSzuz5
-    scopes: openid, profile, email, offline_access
