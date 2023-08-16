@@ -15,6 +15,10 @@ spring:
           uri: lb://ELAS-AUTH
           predicates:
             - Path=/api/auth/**
+        - id: ELAS-PROJECT-FINDER
+          uri: lb://ELAS-PROJECT-FINDER
+          predicates:
+            - Path=/api/project-finder/**
 eureka:
   instance:
     prefer-ip-address: true
