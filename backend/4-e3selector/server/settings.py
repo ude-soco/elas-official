@@ -48,7 +48,7 @@ try:
     eureka_client.init(
         eureka_server=EUREKA_HOST,  # type: ignore
         app_name="ELAS-E3SELECTOR",
-        instance_port=8001,
+        instance_port=int(os.environ.get("DJANGO_PORT", "8001")),
         instance_ip=socket.gethostbyname(EUREKA_HOST_NAME),  # type: ignore
         instance_host=EUREKA_HOST_NAME,  # type: ignore
     )
