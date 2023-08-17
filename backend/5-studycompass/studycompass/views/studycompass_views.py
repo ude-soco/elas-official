@@ -1,3 +1,4 @@
+from celery.result import AsyncResult
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from rest_framework import status
@@ -7,6 +8,17 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 
 from ..models import *
 
+@api_view(["GET"])
+@permission_classes([AllowAny])
+def check_task_status(request, task_id):
+    task = AsyncResult(task_id)
+    if task.ready():
+        result = task.result
+        return JsonResponse(
+            {"status": "completed", "message": result}, status=status.HTTP_200_OK
+        )
+    else:
+        return JsonResponse({"status": "pending"}, status=status.HTTP_202_ACCEPTED)
 
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
