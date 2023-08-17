@@ -74,7 +74,6 @@ INSTALLED_APPS = [
     "rest_framework.authtoken",
     "rest_framework_simplejwt.token_blacklist",
     "django_celery_results",
-    "corsheaders",
     "project_finder",
 ]
 
@@ -98,13 +97,9 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "corsheaders.middleware.CorsMiddleware",
 ]
 
 INTERNAL_IPS = ["127.0.0.1"]
-
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ORIGIN_WHITELIST = []
 
 ROOT_URLCONF = "server.urls"
 
