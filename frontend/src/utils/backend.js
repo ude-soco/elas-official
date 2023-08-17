@@ -103,10 +103,23 @@ export const scrapeE3Data = async (url) => {
   }
 };
 
-// TODO: This function needs to be updated. The API endpoint has to be fixed.
-export const getScrapeTaskStatus = async (task_id) => {
+
+export const getLSFScrapeTaskStatus = async (task_id) => {
   try {
-    const response = await Backend.get(`/status/task/${task_id}/`);
+    const response = await Backend.get(`/studycompass/status/task/${task_id}/`);
+    const {
+      data: { status, message },
+    } = response;
+    return { status, message };
+  } catch (err) {
+    throw err;
+  }
+};
+
+
+export const getE3ScrapeTaskStatus = async (task_id) => {
+  try {
+    const response = await Backend.get(`/e3selector/status/task/${task_id}/`);
     const {
       data: { status, message },
     } = response;

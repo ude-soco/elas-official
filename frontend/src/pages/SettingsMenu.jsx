@@ -16,7 +16,8 @@ import {
   getSemesterStudyProgramList,
   scrapeE3Data,
   scrapeLSFData,
-  getScrapeTaskStatus,
+  getLSFScrapeTaskStatus,
+  getE3ScrapeTaskStatus,
 } from "../utils/backend";
 import { useAsyncPolling } from "../pages/hooks/hooks";
 import { useSnackbar } from "notistack";
@@ -28,12 +29,12 @@ export const ScrapeDataSection = () => {
   const [lsfUrl, setLsfUrl] = useState("");
   const [e3Url, setE3Url] = useState("");
   const { execute: executeLSF, status: statusLSF } = useAsyncPolling(
-    getScrapeTaskStatus,
+    getLSFScrapeTaskStatus,
     2000,
     false
   );
   const { execute: executeE3, status: statusE3 } = useAsyncPolling(
-    getScrapeTaskStatus,
+    getE3ScrapeTaskStatus,
     2000,
     false
   );
