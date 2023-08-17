@@ -1,0 +1,352 @@
+import { useState } from "react";
+import {
+  Routes,
+  Route,
+  Navigate,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
+import {
+  AppBar,
+  Avatar,
+  CssBaseline,
+  Box,
+  Button,
+  Collapse,
+  Divider,
+  IconButton,
+  Grid,
+  List,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  ListSubheader,
+  Toolbar,
+  Menu,
+  MenuItem,
+  Paper,
+} from "@mui/material";
+import {
+  Settings as SettingsIcon,
+  Logout as LogoutIcon,
+  Person as PersonIcon,
+  CalendarMonth as CalendarMonthIcon,
+  SimCardDownload as SimCardDownloadIcon,
+  Key as KeyIcon,
+  MenuBook as MenuBookIcon,
+  KeyboardArrowDown as KeyboardArrowDownIcon,
+} from "@mui/icons-material";
+import { signOut } from "./utils/backend";
+import elasLogo from "./assets/images/elas-logo.png";
+import Home from "./pages/Home";
+import {
+  ScrapeDataSection,
+  ProfileSettingsSection,
+  StudySettingsSection,
+  PasswordSettingsSection,
+} from "./pages/SettingsMenu";
+import Privacy from "./pages/Privacy";
+import UserSchedule from "./pages/UserSchedule";
+import Signin from "./pages/Signin";
+import Signup from "./pages/Signup";
+import E3Selector from "./pages/Projects/E3Selector/E3Selector";
+import StudyCompass from "./pages/Projects/StudyCompass/StudyCompass";
+import ProjectFinder from "./pages/Projects/ProjectFinder/ProjectFinder";
+import CourseMatch from "./pages/Projects/CourseMatch/CourseMatch";
+import Intogen from "./pages/Projects/Intogen/Intogen";
+import NoteBot from "./pages/Projects/NoteBot/NoteBot";
+import { SnackbarProvider } from "notistack";
+
+export default function AppRoutes() {
+  const login = !!sessionStorage.getItem("elas-token");
+  const location = useLocation();
+  const showNavBar =
+    location.pathname === "/" ||
+    location.pathname.startsWith("/projects/") ||
+    location.pathname.startsWith("/settings") ||
+    location.pathname.startsWith("/schedule") ||
+    location.pathname.startsWith("/privacy");
+
+  const publicRoutes = (
+    <Route path="projects">
+      <Route path="e3-selector">
+        <Route index element={<E3Selector />} />
+      </Route>
+      <Route path="study-compass">
+        <Route index element={<StudyCompass />} />
+      </Route>
+      <Route path="project-finder">
+        <Route index element={<ProjectFinder />} />
+      </Route>
+      <Route path="course-match">
+        <Route index element={<CourseMatch />} />
+      </Route>
+      <Route path="learn-spectrum">
+        <Route index element={<Intogen />} />
+      </Route>
+      <Route path="notebot">
+        <Route index element={<NoteBot />} />
+      </Route>
+    </Route>
+  );
+
+  return (
+    <SnackbarProvider maxSnack={3}>
+      <CssBaseline />
+      {showNavBar && <NavBar />}
+
+      <Routes>
+        <Route path="/">
+          <Route index element={<Home />} />
+          {publicRoutes}
+          <Route index path="settings" element={<Settings />} />
+          <Route index path="schedule" element={<UserSchedule />} />
+          <Route index path="privacy" element={<Privacy />} />
+        </Route>
+
+        {!login && (
+          <>
+            {publicRoutes}
+            <Route path="sign-in" element={<Signin />} />
+            <Route path="sign-up" element={<Signup />} />
+            <Route index path="privacy" element={<Privacy />} />
+          </>
+        )}
+
+        <Route path="*" element={<Navigate to={"/"} replace />} />
+      </Routes>
+    </SnackbarProvider>
+  );
+}
+
+const NavBar = () => {
+  const navigate = useNavigate();
+  const accessToken = !!sessionStorage.getItem("elas-token");
+  const isAdmin =
+    JSON.parse(sessionStorage.getItem("elas-user"))?.is_staff || false;
+  const [menu, setMenu] = useState(null);
+
+  const handleSignOut = async () => {
+    await signOut();
+  };
+
+  const handleViewProfileSettings = () => {
+    sessionStorage.setItem("elas-settings", "profile");
+    navigate("/settings");
+    setMenu(null);
+  };
+
+  const handleViewSchedule = () => {
+    navigate("/schedule");
+    setMenu(null);
+  };
+
+  const handleHomeView = () => {
+    sessionStorage.removeItem("elas-settings");
+    navigate("/");
+  };
+
+  return (
+    <AppBar position="static" sx={{ backgroundColor: "white" }}>
+      <Toolbar>
+        <Box
+          component="img"
+          src={elasLogo}
+          sx={{ height: 32, cursor: "pointer" }}
+          onClick={handleHomeView}
+        />
+        <Box sx={{ flexGrow: 1 }} />
+        {accessToken ? (
+          <>
+            <Box
+              sx={{ cursor: "pointer" }}
+              onClick={(event) => setMenu(event.currentTarget)}
+            >
+              <Grid container alignItems="center">
+                <Grid item>
+                  <Avatar sx={{ bgcolor: "primary.main" }} />
+                </Grid>
+                <Grid item>
+                  <KeyboardArrowDownIcon
+                    sx={{ fontSize: "2.5rem", mt: 1, color: "primary.main" }}
+                  />
+                </Grid>
+              </Grid>
+            </Box>
+
+            <Menu
+              anchorEl={menu}
+              open={Boolean(menu)}
+              onClose={() => setMenu(null)}
+              anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+              transformOrigin={{ vertical: "top", horizontal: "right" }}
+            >
+              <Box sx={{ width: "100%", minWidth: 170 }}>
+                {/* <MenuItem>
+                  <ListItemIcon sx={{ mr: 1 }}>
+                    <PersonIcon />
+                  </ListItemIcon>
+                  <ListItemText>Profile</ListItemText>
+                </MenuItem> */}
+                {!isAdmin && (
+                  <>
+                    <MenuItem onClick={handleViewSchedule}>
+                      <ListItemIcon sx={{ mr: 1 }}>
+                        <CalendarMonthIcon />
+                      </ListItemIcon>
+                      <ListItemText>Schedule</ListItemText>
+                    </MenuItem>
+                    <Divider />
+                  </>
+                )}
+                <MenuItem onClick={handleViewProfileSettings}>
+                  <ListItemIcon sx={{ mr: 1 }}>
+                    <SettingsIcon />
+                  </ListItemIcon>
+                  <ListItemText>Settings</ListItemText>
+                </MenuItem>
+
+                <MenuItem onClick={handleSignOut}>
+                  <ListItemIcon sx={{ mr: 1 }}>
+                    <LogoutIcon />
+                  </ListItemIcon>
+                  <ListItemText>Sign out</ListItemText>
+                </MenuItem>
+              </Box>
+            </Menu>
+          </>
+        ) : (
+          <Button variant="contained" onClick={() => navigate("/sign-in")}>
+            Login
+          </Button>
+        )}
+      </Toolbar>
+    </AppBar>
+  );
+};
+
+function Settings() {
+  const [openSettingsMenu, setOpenSettingsMenu] = useState(true);
+  const [selected, setSelected] = useState(
+    sessionStorage.getItem("elas-settings") || "profile"
+  );
+  const isAdmin =
+    JSON.parse(sessionStorage.getItem("elas-user")).is_staff || false;
+
+  const handleOpenSettingsMenu = () => {
+    setOpenSettingsMenu(!openSettingsMenu);
+  };
+
+  const handleListItemClick = (index) => {
+    setSelected(index);
+    sessionStorage.setItem("elas-settings", index);
+  };
+
+  return (
+    <Grid container justifyContent="center" sx={{ p: 4 }}>
+      <Grid item sx={{ maxWidth: "1000px", width: "100%" }}>
+        <Grid container spacing={2}>
+          <Grid
+            item
+            sx={{
+              width: { xs: "100%", sm: "30%", lg: "20%" },
+            }}
+          >
+            <Grid container spacing={2}>
+              <Grid item xs>
+                <Paper>
+                  <List
+                    subheader={
+                      <ListSubheader component="div">
+                        <Grid container justifyContent="space-between">
+                          Settings menu
+                          <Grid item>
+                            <IconButton
+                              size="small"
+                              onClick={handleOpenSettingsMenu}
+                            >
+                              <KeyboardArrowDownIcon
+                                sx={{
+                                  transform: !openSettingsMenu
+                                    ? "rotate(180deg)"
+                                    : "",
+                                  transition: "transform 0.3s",
+                                }}
+                              />
+                            </IconButton>
+                          </Grid>
+                        </Grid>
+                      </ListSubheader>
+                    }
+                  >
+                    <Collapse in={openSettingsMenu}>
+                      <ListItemButton
+                        selected={selected === "profile"}
+                        onClick={() => handleListItemClick("profile")}
+                      >
+                        <ListItemIcon>
+                          <PersonIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Profile" />
+                      </ListItemButton>
+
+                      {isAdmin && (
+                        <ListItemButton
+                          selected={selected === "scrape"}
+                          onClick={() => handleListItemClick("scrape")}
+                        >
+                          <ListItemIcon>
+                            <SimCardDownloadIcon />
+                          </ListItemIcon>
+                          <ListItemText primary="Scrape data" />
+                        </ListItemButton>
+                      )}
+
+                      {!isAdmin && (
+                        <>
+                          <ListItemButton
+                            selected={selected === "study"}
+                            onClick={() => handleListItemClick("study")}
+                          >
+                            <ListItemIcon>
+                              <MenuBookIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Study" />
+                          </ListItemButton>
+
+                          <ListItemButton
+                            selected={selected === "password"}
+                            onClick={() => handleListItemClick("password")}
+                          >
+                            <ListItemIcon>
+                              <KeyIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Password" />
+                          </ListItemButton>
+                        </>
+                      )}
+                    </Collapse>
+                  </List>
+                </Paper>
+              </Grid>
+            </Grid>
+          </Grid>
+
+          <Grid
+            item
+            sx={{
+              width: { xs: "100%", sm: "70%", lg: "80%" },
+            }}
+          >
+            <Paper sx={{ p: 3 }}>
+              {selected === "profile" && <ProfileSettingsSection />}
+              {selected === "scrape" && <ScrapeDataSection />}
+              {selected === "study" && <StudySettingsSection />}
+              {selected === "password" && <PasswordSettingsSection />}
+            </Paper>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Grid>
+  );
+}
