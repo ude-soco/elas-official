@@ -11,7 +11,6 @@ from ..models import *
 
 
 @api_view(["GET"])
-@permission_classes([AllowAny])
 def get_e3_courses_and_ratings(request):
     docs = E3Course.objects.prefetch_related("e3rating_set")
 
@@ -49,7 +48,6 @@ def get_e3_courses_and_ratings(request):
 
 
 @api_view(["GET"])
-@permission_classes([AllowAny])
 def get_e3_courses(request):
     docs = E3Course.objects.prefetch_related("e3rating_set")
 
@@ -100,7 +98,6 @@ SHARED_CSV_DATA_FILE = os.path.abspath(
 
 
 @api_view(["GET", "POST"])
-@permission_classes([AllowAny])
 def share(request, slug):
     if request.method == "GET":
         with open(SHARED_CSV_DATA_FILE, "r") as file:

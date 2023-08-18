@@ -10,7 +10,6 @@ import json
 from ..celery_tasks.tasks import scrape_e3_task
 
 @api_view(["GET"])
-@permission_classes([AllowAny])
 def check_task_status(request, task_id):
     task = AsyncResult(task_id)
     if task.ready():
