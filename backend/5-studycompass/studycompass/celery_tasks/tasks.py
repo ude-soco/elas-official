@@ -6,13 +6,14 @@ from .postprocess_lsf import ProcessLsfData
 from .postprocess_vdb import ProcessVdbData
 from .postprocess_merge import ProcessMergeData
 from .uploader_lsf_vdb import LSFVDBUploader
-
+from .uploader_graph import KGBuilder
 
 lsf_scraper_directory = os.path.abspath(
     os.path.join(os.path.dirname(__file__), "..", "lsf_scraper")
 )
 lsf_data_directory = os.path.abspath(
-    os.path.join(os.path.dirname(__file__), "..", "data", "lecture_results.json")
+    os.path.join(os.path.dirname(__file__), "..",
+                 "data", "lecture_results.json")
 )
 
 
@@ -30,7 +31,10 @@ def scrape_lsf_task(url):
     # merge_lsf_vdb = ProcessMergeData()
     # merge_lsf_vdb.run()
 
-    upload_lsf_vdb = LSFVDBUploader()
-    upload_lsf_vdb.upload_data()
+    # upload_lsf_vdb = LSFVDBUploader()
+    # upload_lsf_vdb.upload_data()
 
-    return "LSF data scraping completed"
+    build = KGBuilder()
+    build.run()
+
+    return "LSF data scraping and KG building completed"

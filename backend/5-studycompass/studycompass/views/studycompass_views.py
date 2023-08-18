@@ -1,27 +1,60 @@
-from celery.result import AsyncResult
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, AllowAny
-
+from courserecommender.models.study_program import Study_program
+import os
+import json
 
 from ..models import *
 
-@api_view(["GET"])
-@permission_classes([AllowAny])
-def check_task_status(request, task_id):
-    task = AsyncResult(task_id)
-    if task.ready():
-        result = task.result
-        return JsonResponse(
-            {"status": "completed", "message": result}, status=status.HTTP_200_OK
-        )
-    else:
-        return JsonResponse({"status": "pending"}, status=status.HTTP_202_ACCEPTED)
+semester_directory = os.path.abspath(
+    os.path.join(
+        os.path.dirname(__file__),
+        "..",
+        "..",
+        "courserecommender",
+        "data",
+        "semester.json",
+    )
+)
+study_program_directory = os.path.abspath(
+    os.path.join(
+        os.path.dirname(__file__),
+        "..",
+        "..",
+        "courserecommender",
+        "data",
+        "study_program_infos.json",
+    )
+)
+
 
 @api_view(["GET"])
-@permission_classes([IsAuthenticated])
+def get_semester_and_study_program_data(request):
+    with open(semester_directory) as f_1:
+        semester_data = json.load(f_1)
+    # with open(study_program_directory) as f_2:
+    #     study_program_data = json.load(f_2)
+    study_program_data = []
+    studyprograms = Study_program.nodes.all()
+    print(studyprograms)
+    for studyprogram in studyprograms:
+        study_program_data.append(
+            {"id": studyprogram.r_id, "name": studyprogram.name, "url": studyprogram.url})
+
+    return JsonResponse(
+        {
+            "message": {
+                "semester_data": semester_data,
+                "study_programs": study_program_data,
+            }
+        },
+        status=status.HTTP_200_OK,
+    )
+
+@api_view(["GET"])
 def get_studyprograms(request):
     all_studyprograms = StudyProgram.objects.all()
     result = []
@@ -61,7 +94,6 @@ def get_studyprograms(request):
 
 
 @api_view(["GET"])
-@permission_classes([IsAuthenticated])
 def get_lecture_with_id(request):
     lecture_id = request.GET.get("id")
     lecture = Lecture.objects.filter(id=lecture_id).first()
@@ -118,7 +150,6 @@ def get_lecture_with_id(request):
 
 
 @api_view(["GET"])
-@permission_classes([AllowAny])
 def get_lectures_with_id(request, id):
     studyprogram = get_object_or_404(StudyProgram, id=id)
     lectures = studyprogram.lectures.all()  # type: ignore

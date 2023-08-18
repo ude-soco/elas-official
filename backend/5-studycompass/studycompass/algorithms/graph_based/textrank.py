@@ -96,12 +96,15 @@ class TextRank(LoadFile):
         self.build_word_graph(window=window, pos=pos)
 
         # compute the word scores using the unweighted PageRank formulae
-        w = nx.pagerank_scipy(self.graph, alpha=0.85, tol=0.0001, weight=None)  # type: ignore
+        # w = nx.pagerank_scipy(self.graph, alpha=0.85, tol=0.0001, weight=None)  # type: ignore
+        w = nx.pagerank(self.graph, alpha=0.85, tol=0.0001,
+                        weight=None)  # type: ignore
 
         # generate the phrases from the T-percent top ranked words
         if top_percent is not None:
             # warn user as this is not the pke way of doing it
-            logging.warning("Candidates are generated using {}-top".format(top_percent))
+            logging.warning(
+                "Candidates are generated using {}-top".format(top_percent))
 
             # computing the number of top keywords
             nb_nodes = self.graph.number_of_nodes()

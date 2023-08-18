@@ -1,0 +1,1687 @@
+[
+    [
+        "Übung zu \"Multimedia Systeme\"",
+        "belongs_to",
+        "Wahlpflichtbereich \"Anwendungsorientierte Technologien und Methoden\""
+    ],
+    [
+        "Übung zu \"Multimedia Systeme\"",
+        "belongs_to",
+        "Wahlpflichtkatalog \"Vertiefung der Informatik\""
+    ],
+    [
+        "Übung zu \"Multimedia Systeme\"",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Biomechanik",
+        "belongs_to",
+        "Ingenieurwissenschaftliche Vertiefung für CPS"
+    ],
+    [
+        "Biomechanik",
+        "belongs_to",
+        "Ingenieurwissenschaftliche Vertiefung für CPS"
+    ],
+    [
+        "Multimedia Systeme",
+        "belongs_to",
+        "Wahlpflichtbereich \"Anwendungsorientierte Technologien und Methoden\""
+    ],
+    [
+        "Multimedia Systeme",
+        "belongs_to",
+        "Wahlpflichtkatalog \"Vertiefung der Informatik\""
+    ],
+    [
+        "Multimedia Systeme",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Medienbasiertes Lehren und Lernen",
+        "belongs_to",
+        "Wahlpflichtbereich \"Anwendungsbereiche von Psychologie und Kommunikation\""
+    ],
+    [
+        "(Grundlagen der) Organisationspsychologie",
+        "belongs_to",
+        "Wahlpflichtbereich \"Anwendungsbereiche von Psychologie und Kommunikation\""
+    ],
+    [
+        "Grundlagen des Marketings",
+        "belongs_to",
+        "5. Fachsemester"
+    ],
+    [
+        "Planung und Organisation für interdisziplinäre Studiengänge",
+        "belongs_to",
+        "3. Fachsemester"
+    ],
+    [
+        "Übung zu \"Datenbanken\"",
+        "belongs_to",
+        "Wahlpflichtbereich \"Anwendungsorientierte Technologien und Methoden\""
+    ],
+    [
+        "Übung zu \"Datenbanken\"",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Übung zu \"Datenbanken\"",
+        "belongs_to",
+        "4. Fachsemester"
+    ],
+    [
+        "Übung zu \"Datenbanken\"",
+        "belongs_to",
+        "5. Fachsemester"
+    ],
+    [
+        "Modellierung",
+        "belongs_to",
+        "3. Fachsemester"
+    ],
+    [
+        "Modellierung",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Modellierung",
+        "belongs_to",
+        "1. Fachsemester"
+    ],
+    [
+        "Modellierung",
+        "belongs_to",
+        "2. Fachsemester"
+    ],
+    [
+        "Additive Fertigungsverfahren 1 - Grundlagen",
+        "belongs_to",
+        "Grundlagen der Ingenieurwissenschaften für CPS"
+    ],
+    [
+        "Übung zu \"Höhere Mathematik in Anwendungen des Ingenieurwesens\"",
+        "belongs_to",
+        "Höhere Mathematik in Anwendungen des Ingenieurwesens"
+    ],
+    [
+        "Übung zu \"Höhere Mathematik in Anwendungen des Ingenieurwesens\"",
+        "belongs_to",
+        "Naturwissenschaftlich technisches Wahlpflichtfach"
+    ],
+    [
+        "Elektrische und magnetische Felder (ehem. Grundlagen der Elektrotechnik E1)",
+        "belongs_to",
+        "Grundlagen der Ingenieurwissenschaften für CPS"
+    ],
+    [
+        "Übung zu \"Mensch-Computer-Interaktion\"",
+        "belongs_to",
+        "3. Fachsemester"
+    ],
+    [
+        "Übung zu \"Mensch-Computer-Interaktion\"",
+        "belongs_to",
+        "Wahlpflichtkatalog \"Vertiefung der Informatik\""
+    ],
+    [
+        "Übung zu \"Mensch-Computer-Interaktion\"",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Elektrische Messtechnik (ehem. Einführung in die Messtechnik)",
+        "belongs_to",
+        "Grundlagen der Ingenieurwissenschaften für CPS"
+    ],
+    [
+        "Übungen zu \"Modellierung\"",
+        "belongs_to",
+        "3. Fachsemester"
+    ],
+    [
+        "Übungen zu \"Modellierung\"",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Übungen zu \"Modellierung\"",
+        "belongs_to",
+        "1. Fachsemester"
+    ],
+    [
+        "Übungen zu \"Modellierung\"",
+        "belongs_to",
+        "2. Fachsemester"
+    ],
+    [
+        "Modellbildung und Simulation",
+        "belongs_to",
+        "Wahlpflichtkatalog \"Vertiefung der Informatik\""
+    ],
+    [
+        "Modellbildung und Simulation",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Embedded Systems",
+        "belongs_to",
+        "Wahlpflichtkatalog \"Vertiefung der Informatik\""
+    ],
+    [
+        "Embedded Systems",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Übung zu \"Embedded Systems\"",
+        "belongs_to",
+        "Wahlpflichtkatalog \"Vertiefung der Informatik\""
+    ],
+    [
+        "Übung zu \"Embedded Systems\"",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Mensch-Computer-Interaktion",
+        "belongs_to",
+        "Wahlpflichtkatalog \"Vertiefung der Informatik\""
+    ],
+    [
+        "Mensch-Computer-Interaktion",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Mensch-Computer-Interaktion",
+        "belongs_to",
+        "3. Fachsemester"
+    ],
+    [
+        "Numerical Mathematics",
+        "belongs_to",
+        "Wahlpflichtkatalog \"Vertiefung der Mathematik\""
+    ],
+    [
+        "Übungen zur Mathematik für Informatiker 2",
+        "belongs_to",
+        "Wahlpflichtkatalog \"Vertiefung der Mathematik\""
+    ],
+    [
+        "Mathematik für Informatiker 2",
+        "belongs_to",
+        "Wahlpflichtkatalog \"Vertiefung der Mathematik\""
+    ],
+    [
+        "Praxisprojekt \"Verteilte Systeme\"",
+        "belongs_to",
+        "Softwarezentrierte Praxisprojekte"
+    ],
+    [
+        "Praxisprojekt \"Verteilte Systeme\"",
+        "belongs_to",
+        "Master Computer Engineering (PO 19) (Interactive Systems and Visualization)"
+    ],
+    [
+        "Praxisprojekt \"Verteilte Systeme\"",
+        "belongs_to",
+        "Master Computer Engineering (PO 19) (Intelligent Networked Systems)"
+    ],
+    [
+        "Praxisprojekt \"Verteilte Systeme\"",
+        "belongs_to",
+        "Forschungsprojekte"
+    ],
+    [
+        "Praxisprojekt \"Verteilte Systeme\"",
+        "belongs_to",
+        "Masterseminare und -projekte"
+    ],
+    [
+        "Praxisprojekt \"Verteilte Systeme\"",
+        "belongs_to",
+        "Praxisprojekte"
+    ],
+    [
+        "Praxisprojekt \"Me and My Chat-GPT (episode 2): studying together with a language model\"",
+        "belongs_to",
+        "Softwarezentrierte Praxisprojekte"
+    ],
+    [
+        "Praxisprojekt \"Me and My Chat-GPT (episode 2): studying together with a language model\"",
+        "belongs_to",
+        "Forschungsprojekte"
+    ],
+    [
+        "Praxisprojekt \"Me and My Chat-GPT (episode 2): studying together with a language model\"",
+        "belongs_to",
+        "Masterseminare und -projekte"
+    ],
+    [
+        "Praxisprojekt \"Me and My Chat-GPT (episode 2): studying together with a language model\"",
+        "belongs_to",
+        "Praxisprojekte"
+    ],
+    [
+        "Bachelor-/Masterprojekt \"Intelligente Systeme (Cognitive Robot Systems an Robot Vision)\"",
+        "belongs_to",
+        "Softwarezentrierte Praxisprojekte"
+    ],
+    [
+        "Bachelor-/Masterprojekt \"Intelligente Systeme (Cognitive Robot Systems an Robot Vision)\"",
+        "belongs_to",
+        "Master Computer Engineering (PO 19) (Interactive Systems and Visualization)"
+    ],
+    [
+        "Bachelor-/Masterprojekt \"Intelligente Systeme (Cognitive Robot Systems an Robot Vision)\"",
+        "belongs_to",
+        "Master Computer Engineering (PO 19) (Intelligent Networked Systems)"
+    ],
+    [
+        "Bachelor-/Masterprojekt \"Intelligente Systeme (Cognitive Robot Systems an Robot Vision)\"",
+        "belongs_to",
+        "Forschungsprojekte"
+    ],
+    [
+        "Bachelor-/Masterprojekt \"Intelligente Systeme (Cognitive Robot Systems an Robot Vision)\"",
+        "belongs_to",
+        "Masterseminare und -projekte"
+    ],
+    [
+        "Praxisprojekt „It’s Your Choice: Präsentation von Entscheidungsoptionen in digitalen Spielen“",
+        "belongs_to",
+        "Softwarezentrierte Praxisprojekte"
+    ],
+    [
+        "Praxisprojekt „It’s Your Choice: Präsentation von Entscheidungsoptionen in digitalen Spielen“",
+        "belongs_to",
+        "Master Computer Engineering (PO 19) (Interactive Systems and Visualization)"
+    ],
+    [
+        "Praxisprojekt „It’s Your Choice: Präsentation von Entscheidungsoptionen in digitalen Spielen“",
+        "belongs_to",
+        "Master Computer Engineering (PO 19) (Intelligent Networked Systems)"
+    ],
+    [
+        "Praxisprojekt „It’s Your Choice: Präsentation von Entscheidungsoptionen in digitalen Spielen“",
+        "belongs_to",
+        "Forschungsprojekte"
+    ],
+    [
+        "Praxisprojekt „It’s Your Choice: Präsentation von Entscheidungsoptionen in digitalen Spielen“",
+        "belongs_to",
+        "Masterseminare und -projekte"
+    ],
+    [
+        "Praxisprojekt „It’s Your Choice: Präsentation von Entscheidungsoptionen in digitalen Spielen“",
+        "belongs_to",
+        "Praxisprojekte"
+    ],
+    [
+        "Praxisprojekt \"Let’s just make a Game 2.0! Exploring Best Practices in Game Development\"",
+        "belongs_to",
+        "Softwarezentrierte Praxisprojekte"
+    ],
+    [
+        "Praxisprojekt \"Let’s just make a Game 2.0! Exploring Best Practices in Game Development\"",
+        "belongs_to",
+        "Masterseminare und -projekte"
+    ],
+    [
+        "Praxisprojekt \"Interaktives Retrieval: Reproduzierbarkeit und Simulation\"",
+        "belongs_to",
+        "Softwarezentrierte Praxisprojekte"
+    ],
+    [
+        "Praxisprojekt \"Interaktives Retrieval: Reproduzierbarkeit und Simulation\"",
+        "belongs_to",
+        "Forschungsprojekte"
+    ],
+    [
+        "Praxisprojekt \"Interaktives Retrieval: Reproduzierbarkeit und Simulation\"",
+        "belongs_to",
+        "Masterseminare und -projekte"
+    ],
+    [
+        "Praxisprojekt \"Interaktives Retrieval: Reproduzierbarkeit und Simulation\"",
+        "belongs_to",
+        "Praxisprojekte"
+    ],
+    [
+        "Praxisprojekt \"Implementierung von theoretischen Algorithmen und  Datenstrukturen mit Rust\"",
+        "belongs_to",
+        "Softwarezentrierte Praxisprojekte"
+    ],
+    [
+        "Praxisprojekt \"Achieving Mastery by Deliberate Reinforcement\" (co-supervised with Dr. Bibeg Limbu)",
+        "belongs_to",
+        "Softwarezentrierte Praxisprojekte"
+    ],
+    [
+        "Praxisprojekt \"Achieving Mastery by Deliberate Reinforcement\" (co-supervised with Dr. Bibeg Limbu)",
+        "belongs_to",
+        "Forschungsprojekte"
+    ],
+    [
+        "Praxisprojekt \"Achieving Mastery by Deliberate Reinforcement\" (co-supervised with Dr. Bibeg Limbu)",
+        "belongs_to",
+        "Masterseminare und -projekte"
+    ],
+    [
+        "Praxisprojekt \"Achieving Mastery by Deliberate Reinforcement\" (co-supervised with Dr. Bibeg Limbu)",
+        "belongs_to",
+        "Praxisprojekte"
+    ],
+    [
+        "Praxisprojekt \"Augmented Reality (AR) \"",
+        "belongs_to",
+        "Softwarezentrierte Praxisprojekte"
+    ],
+    [
+        "Praxisprojekt \"Augmented Reality (AR) \"",
+        "belongs_to",
+        "Forschungsprojekte"
+    ],
+    [
+        "Praxisprojekt \"Augmented Reality (AR) \"",
+        "belongs_to",
+        "Masterseminare und -projekte"
+    ],
+    [
+        "Praxisprojekt \"Augmented Reality (AR) \"",
+        "belongs_to",
+        "Praxisprojekte"
+    ],
+    [
+        "Praxisprojekt \"CodeArcade - Designing Python Challenges for Hackathons\"",
+        "belongs_to",
+        "Softwarezentrierte Praxisprojekte"
+    ],
+    [
+        "Praxisprojekt \"CodeArcade - Designing Python Challenges for Hackathons\"",
+        "belongs_to",
+        "Forschungsprojekte"
+    ],
+    [
+        "Praxisprojekt \"CodeArcade - Designing Python Challenges for Hackathons\"",
+        "belongs_to",
+        "Masterseminare und -projekte"
+    ],
+    [
+        "Praxisprojekt \"CodeArcade - Designing Python Challenges for Hackathons\"",
+        "belongs_to",
+        "Praxisprojekte"
+    ],
+    [
+        "Praxisprojekt \"Interactive Data Exploration and Analytics (IDEA)\"",
+        "belongs_to",
+        "Softwarezentrierte Praxisprojekte"
+    ],
+    [
+        "Praxisprojekt \"Interactive Data Exploration and Analytics (IDEA)\"",
+        "belongs_to",
+        "Praxisprojekte"
+    ],
+    [
+        "Technische Mechanik 1",
+        "belongs_to",
+        "Ergänzungsbereich E2"
+    ],
+    [
+        "Technische Mechanik 1",
+        "belongs_to",
+        "Ergänzungsbereich E2"
+    ],
+    [
+        "Technische Mechanik 1",
+        "belongs_to",
+        "Ergänzungsbereich E2"
+    ],
+    [
+        "Physik  für Informatiker 1",
+        "belongs_to",
+        "Ergänzungsbereich E2"
+    ],
+    [
+        "Elektrotechnik",
+        "belongs_to",
+        "Ergänzungsbereich E2"
+    ],
+    [
+        "Elektrotechnik",
+        "belongs_to",
+        "Ergänzungsbereich E2"
+    ],
+    [
+        "Einführung in die Mechatronik und Signalanalyse",
+        "belongs_to",
+        "Ergänzungsbereich E2"
+    ],
+    [
+        "Allgemeine Psychologie: Perzeption, Kognition und Handeln",
+        "belongs_to",
+        "Ergänzungsbereich E2"
+    ],
+    [
+        "Allgemeine Psychologie: Perzeption, Kognition und Handeln",
+        "belongs_to",
+        "1. Fachsemester"
+    ],
+    [
+        "Makroökonomik für interdisziplinäre Studiengänge",
+        "belongs_to",
+        "Wahlpflichtbereich \"BWL\""
+    ],
+    [
+        "Grundzüge des Handelsmanagements",
+        "belongs_to",
+        "Wahlpflichtbereich \"BWL\""
+    ],
+    [
+        "Buchhaltung",
+        "belongs_to",
+        "Wahlpflichtbereich \"BWL\""
+    ],
+    [
+        "Corporate Governance",
+        "belongs_to",
+        "Wahlpflichtbereich \"BWL\""
+    ],
+    [
+        "Betriebswirtschaft für Ingenieure",
+        "belongs_to",
+        "Ergänzungsbereich E2"
+    ],
+    [
+        "Betriebswirtschaft für Ingenieure",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Mikroökonomik für interdisziplinäre Studiengänge",
+        "belongs_to",
+        "Wahlpflichtbereich \"BWL\""
+    ],
+    [
+        "Ganzheitliche Unternehmensführung",
+        "belongs_to",
+        "Wahlpflichtbereich \"BWL\""
+    ],
+    [
+        "Beschaffung und Produktion",
+        "belongs_to",
+        "Wahlpflichtbereich \"BWL\""
+    ],
+    [
+        "Test- und Fragebogenkonstruktion 1",
+        "belongs_to",
+        "Pflichtbereich Vertiefung \"Psychologie\""
+    ],
+    [
+        "Fortgeschrittene Programmiertechniken",
+        "belongs_to",
+        "Wahlpflichtbereich \"Grundlagen der Informatik\""
+    ],
+    [
+        "Fortgeschrittene Programmiertechniken",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Fortgeschrittene Programmiertechniken",
+        "belongs_to",
+        "2. Fachsemester"
+    ],
+    [
+        "Übung zu \"Fortgeschrittene Programmiertechniken\"",
+        "belongs_to",
+        "Wahlpflichtbereich \"Grundlagen der Informatik\""
+    ],
+    [
+        "Übung zu \"Fortgeschrittene Programmiertechniken\"",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Übung zu \"Fortgeschrittene Programmiertechniken\"",
+        "belongs_to",
+        "2. Fachsemester"
+    ],
+    [
+        "CPS-Labor Praktikum",
+        "belongs_to",
+        "CPS-Labor Praktikum"
+    ],
+    [
+        "CPS-Labor Praktikum",
+        "belongs_to",
+        "CPS-Labor Praktikum"
+    ],
+    [
+        "Höhere Mathematik in Anwendungen des Ingenieurwesens",
+        "belongs_to",
+        "Höhere Mathematik in Anwendungen des Ingenieurwesens"
+    ],
+    [
+        "Höhere Mathematik in Anwendungen des Ingenieurwesens",
+        "belongs_to",
+        "Naturwissenschaftlich technisches Wahlpflichtfach"
+    ],
+    [
+        "Übung zu \"Software Craftsmanship\"",
+        "belongs_to",
+        "Vertiefung der Informatik für CPS"
+    ],
+    [
+        "Übung zu \"Software Craftsmanship\"",
+        "belongs_to",
+        "Vertiefung der Informatik für CPS"
+    ],
+    [
+        "Übung zu \"Software Craftsmanship\"",
+        "belongs_to",
+        "Vertiefung der Informatik"
+    ],
+    [
+        "Information Mining",
+        "belongs_to",
+        "Wahlpflichtbereich \"Vertiefung der Informatik\""
+    ],
+    [
+        "Information Mining",
+        "belongs_to",
+        "Vertiefung der Informatik für CPS"
+    ],
+    [
+        "Information Mining",
+        "belongs_to",
+        "Master Computer Engineering (PO 19) (Interactive Systems and Visualization)"
+    ],
+    [
+        "Information Mining",
+        "belongs_to",
+        "Master Computer Engineering (PO 19) (Intelligent Networked Systems)"
+    ],
+    [
+        "Information Mining",
+        "belongs_to",
+        "Vertiefung der Informatik für CPS"
+    ],
+    [
+        "Information Mining",
+        "belongs_to",
+        "Informatik für den Anwendungsbereich - Information Engineering"
+    ],
+    [
+        "Seminar \"User-centered conversational recommender systems\"",
+        "belongs_to",
+        "Wahlpflichtbereich \"Vertiefung der Informatik\""
+    ],
+    [
+        "Seminar \"User-centered conversational recommender systems\"",
+        "belongs_to",
+        "Masterseminare und -projekte"
+    ],
+    [
+        "Übung zu \"Cloud, Web & Mobile\"",
+        "belongs_to",
+        "Wahlpflichtbereich \"Vertiefung der Informatik\""
+    ],
+    [
+        "Übung zu \"Cloud, Web & Mobile\"",
+        "belongs_to",
+        "Vertiefung der Informatik für CPS"
+    ],
+    [
+        "Übung zu \"Cloud, Web & Mobile\"",
+        "belongs_to",
+        "Master Computer Engineering (PO 19) (Interactive Systems and Visualization)"
+    ],
+    [
+        "Übung zu \"Cloud, Web & Mobile\"",
+        "belongs_to",
+        "Master Computer Engineering (PO 19) (Intelligent Networked Systems)"
+    ],
+    [
+        "Übung zu \"Cloud, Web & Mobile\"",
+        "belongs_to",
+        "Vertiefung der Informatik für CPS"
+    ],
+    [
+        "Übung zu \"Cloud, Web & Mobile\"",
+        "belongs_to",
+        "Informatik für den Anwendungsbereich - Verteilte, Verlässliche Systeme"
+    ],
+    [
+        "Cloud, Web & Mobile",
+        "belongs_to",
+        "Wahlpflichtbereich \"Vertiefung der Informatik\""
+    ],
+    [
+        "Cloud, Web & Mobile",
+        "belongs_to",
+        "Vertiefung der Informatik für CPS"
+    ],
+    [
+        "Cloud, Web & Mobile",
+        "belongs_to",
+        "Master Computer Engineering (PO 19) (Interactive Systems and Visualization)"
+    ],
+    [
+        "Cloud, Web & Mobile",
+        "belongs_to",
+        "Master Computer Engineering (PO 19) (Intelligent Networked Systems)"
+    ],
+    [
+        "Cloud, Web & Mobile",
+        "belongs_to",
+        "Vertiefung der Informatik für CPS"
+    ],
+    [
+        "Cloud, Web & Mobile",
+        "belongs_to",
+        "Informatik für den Anwendungsbereich - Verteilte, Verlässliche Systeme"
+    ],
+    [
+        "Übung zu \"Information Mining\"",
+        "belongs_to",
+        "Wahlpflichtbereich \"Vertiefung der Informatik\""
+    ],
+    [
+        "Übung zu \"Information Mining\"",
+        "belongs_to",
+        "Vertiefung der Informatik für CPS"
+    ],
+    [
+        "Übung zu \"Information Mining\"",
+        "belongs_to",
+        "Master Computer Engineering (PO 19) (Interactive Systems and Visualization)"
+    ],
+    [
+        "Übung zu \"Information Mining\"",
+        "belongs_to",
+        "Master Computer Engineering (PO 19) (Intelligent Networked Systems)"
+    ],
+    [
+        "Übung zu \"Information Mining\"",
+        "belongs_to",
+        "Vertiefung der Informatik für CPS"
+    ],
+    [
+        "Übung zu \"Information Mining\"",
+        "belongs_to",
+        "Informatik für den Anwendungsbereich - Information Engineering"
+    ],
+    [
+        "Learning Analytics",
+        "belongs_to",
+        "Wahlpflichtbereich \"Vertiefung der Informatik\""
+    ],
+    [
+        "Learning Analytics",
+        "belongs_to",
+        "Pflichtbereich Vertiefung \"Social Media und Professionelle Kommunikation\""
+    ],
+    [
+        "Learning Analytics",
+        "belongs_to",
+        "Master Computer Engineering (PO 19) (Interactive Systems and Visualization)"
+    ],
+    [
+        "Learning Analytics",
+        "belongs_to",
+        "Master Computer Engineering (PO 19) (Intelligent Networked Systems)"
+    ],
+    [
+        "Learning Analytics",
+        "belongs_to",
+        "Informatik für den Anwendungsbereich - Interaktive und Kooperative Systeme"
+    ],
+    [
+        "Learning Analytics",
+        "belongs_to",
+        "Informatik für den Anwendungsbereich - Information Engineering"
+    ],
+    [
+        "Übung zu \"Learning Analytics\"",
+        "belongs_to",
+        "Wahlpflichtbereich \"Vertiefung der Informatik\""
+    ],
+    [
+        "Übung zu \"Learning Analytics\"",
+        "belongs_to",
+        "Pflichtbereich Vertiefung \"Social Media und Professionelle Kommunikation\""
+    ],
+    [
+        "Übung zu \"Learning Analytics\"",
+        "belongs_to",
+        "Master Computer Engineering (PO 19) (Interactive Systems and Visualization)"
+    ],
+    [
+        "Übung zu \"Learning Analytics\"",
+        "belongs_to",
+        "Master Computer Engineering (PO 19) (Intelligent Networked Systems)"
+    ],
+    [
+        "Übung zu \"Learning Analytics\"",
+        "belongs_to",
+        "Informatik für den Anwendungsbereich - Interaktive und Kooperative Systeme"
+    ],
+    [
+        "Übung zu \"Learning Analytics\"",
+        "belongs_to",
+        "Informatik für den Anwendungsbereich - Information Engineering"
+    ],
+    [
+        "Übung zu \"Cognitive Robot Systems\"",
+        "belongs_to",
+        "Wahlpflichtbereich \"Vertiefung der Informatik\""
+    ],
+    [
+        "Übung zu \"Cognitive Robot Systems\"",
+        "belongs_to",
+        "Vertiefung der Informatik für CPS"
+    ],
+    [
+        "Übung zu \"Cognitive Robot Systems\"",
+        "belongs_to",
+        "Master Computer Engineering (PO 19) (Interactive Systems and Visualization)"
+    ],
+    [
+        "Übung zu \"Cognitive Robot Systems\"",
+        "belongs_to",
+        "Master Computer Engineering (PO 19) (Intelligent Networked Systems)"
+    ],
+    [
+        "Übung zu \"Cognitive Robot Systems\"",
+        "belongs_to",
+        "Vertiefung der Informatik für CPS"
+    ],
+    [
+        "Übung zu \"Cognitive Robot Systems\"",
+        "belongs_to",
+        "Informatik für den Anwendungsbereich - Intelligente technische Systeme"
+    ],
+    [
+        "Computer/Robot Vision",
+        "belongs_to",
+        "Wahlpflichtbereich \"Vertiefung der Informatik\""
+    ],
+    [
+        "Computer/Robot Vision",
+        "belongs_to",
+        "Vertiefung der Informatik für CPS"
+    ],
+    [
+        "Computer/Robot Vision",
+        "belongs_to",
+        "Master Computer Engineering (PO 19) (Interactive Systems and Visualization)"
+    ],
+    [
+        "Computer/Robot Vision",
+        "belongs_to",
+        "Master Computer Engineering (PO 19) (Intelligent Networked Systems)"
+    ],
+    [
+        "Computer/Robot Vision",
+        "belongs_to",
+        "Vertiefung der Informatik für CPS"
+    ],
+    [
+        "Computer/Robot Vision",
+        "belongs_to",
+        "Informatik für den Anwendungsbereich - Intelligente technische Systeme"
+    ],
+    [
+        "Übung zu \"Computer/Robot-Vision\"",
+        "belongs_to",
+        "Wahlpflichtbereich \"Vertiefung der Informatik\""
+    ],
+    [
+        "Übung zu \"Computer/Robot-Vision\"",
+        "belongs_to",
+        "Vertiefung der Informatik für CPS"
+    ],
+    [
+        "Übung zu \"Computer/Robot-Vision\"",
+        "belongs_to",
+        "Master Computer Engineering (PO 19) (Interactive Systems and Visualization)"
+    ],
+    [
+        "Übung zu \"Computer/Robot-Vision\"",
+        "belongs_to",
+        "Master Computer Engineering (PO 19) (Intelligent Networked Systems)"
+    ],
+    [
+        "Übung zu \"Computer/Robot-Vision\"",
+        "belongs_to",
+        "Vertiefung der Informatik für CPS"
+    ],
+    [
+        "Übung zu \"Computer/Robot-Vision\"",
+        "belongs_to",
+        "Informatik für den Anwendungsbereich - Intelligente technische Systeme"
+    ],
+    [
+        "Cognitive Robot Systems",
+        "belongs_to",
+        "Wahlpflichtbereich \"Vertiefung der Informatik\""
+    ],
+    [
+        "Cognitive Robot Systems",
+        "belongs_to",
+        "Vertiefung der Informatik für CPS"
+    ],
+    [
+        "Cognitive Robot Systems",
+        "belongs_to",
+        "Master Computer Engineering (PO 19) (Interactive Systems and Visualization)"
+    ],
+    [
+        "Cognitive Robot Systems",
+        "belongs_to",
+        "Master Computer Engineering (PO 19) (Intelligent Networked Systems)"
+    ],
+    [
+        "Cognitive Robot Systems",
+        "belongs_to",
+        "Vertiefung der Informatik für CPS"
+    ],
+    [
+        "Cognitive Robot Systems",
+        "belongs_to",
+        "Informatik für den Anwendungsbereich - Intelligente technische Systeme"
+    ],
+    [
+        "Übung zu \"Advanced Image Synthesis\"",
+        "belongs_to",
+        "Wahlpflichtbereich \"Vertiefung der Informatik\""
+    ],
+    [
+        "Übung zu \"Advanced Image Synthesis\"",
+        "belongs_to",
+        "Master Computer Engineering (PO 19) (Interactive Systems and Visualization)"
+    ],
+    [
+        "Übung zu \"Advanced Image Synthesis\"",
+        "belongs_to",
+        "Informatik für den Anwendungsbereich - Intelligente technische Systeme"
+    ],
+    [
+        "Seminar \"From Data to Evidence: Education as a Data Science Application Field\"",
+        "belongs_to",
+        "Pflichtbereich Vertiefung \"Social Media und Professionelle Kommunikation\""
+    ],
+    [
+        "Seminar \"From Data to Evidence: Education as a Data Science Application Field\"",
+        "belongs_to",
+        "Masterseminare und -projekte"
+    ],
+    [
+        "Seminar \"From Data to Evidence: Education as a Data Science Application Field\"",
+        "belongs_to",
+        "6. Fachsemester"
+    ],
+    [
+        "Sozialpsychologische Vertiefung",
+        "belongs_to",
+        "Wahlpflichtbereich \"Psychologie\""
+    ],
+    [
+        "Empirische Aspekte der Mensch-Computer-Interaktion",
+        "belongs_to",
+        "Wahlpflichtbereich \"Psychologie\""
+    ],
+    [
+        "Konsumentenpsychologische Vertiefung 1",
+        "belongs_to",
+        "Wahlpflichtbereich \"Psychologie\""
+    ],
+    [
+        "Seminar \"Business Communications\"",
+        "belongs_to",
+        "Pflichtbereich Vertiefung \"Social Media und Professionelle Kommunikation\""
+    ],
+    [
+        "Organisationspsychologie Vertiefung",
+        "belongs_to",
+        "Wahlpflichtbereich \"Psychologie\""
+    ],
+    [
+        "Angewandte Kognitionspsychologie 1",
+        "belongs_to",
+        "Wahlpflichtbereich \"Psychologie\""
+    ],
+    [
+        "Medienbasierte Wissenskonstruktion: Neurokognitive Prozesse der Wissenskonstruktion",
+        "belongs_to",
+        "Wahlpflichtbereich \"Psychologie\""
+    ],
+    [
+        "Advanced Image Synthesis",
+        "belongs_to",
+        "Wahlpflichtbereich \"Vertiefung der Informatik\""
+    ],
+    [
+        "Advanced Image Synthesis",
+        "belongs_to",
+        "Master Computer Engineering (PO 19) (Interactive Systems and Visualization)"
+    ],
+    [
+        "Advanced Image Synthesis",
+        "belongs_to",
+        "Informatik für den Anwendungsbereich - Intelligente technische Systeme"
+    ],
+    [
+        "Software Craftsmanship",
+        "belongs_to",
+        "Vertiefung der Informatik für CPS"
+    ],
+    [
+        "Software Craftsmanship",
+        "belongs_to",
+        "Vertiefung der Informatik für CPS"
+    ],
+    [
+        "Software Craftsmanship",
+        "belongs_to",
+        "Vertiefung der Informatik"
+    ],
+    [
+        "Fortgeschrittene Themen der Mensch-Computer-Interaktion",
+        "belongs_to",
+        "Vertiefung der Informatik für CPS"
+    ],
+    [
+        "Fortgeschrittene Themen der Mensch-Computer-Interaktion",
+        "belongs_to",
+        "Vertiefung der Informatik für CPS"
+    ],
+    [
+        "Übung/Praktikum zu \"Distributed Systems\"",
+        "belongs_to",
+        "Vertiefung der Informatik für CPS"
+    ],
+    [
+        "Übung/Praktikum zu \"Distributed Systems\"",
+        "belongs_to",
+        "Master Computer Engineering (PO 19) (Interactive Systems and Visualization)"
+    ],
+    [
+        "Übung/Praktikum zu \"Distributed Systems\"",
+        "belongs_to",
+        "Master Computer Engineering (PO 19) (Intelligent Networked Systems)"
+    ],
+    [
+        "Übung/Praktikum zu \"Distributed Systems\"",
+        "belongs_to",
+        "Vertiefung der Informatik für CPS"
+    ],
+    [
+        "Übung/Praktikum zu \"Distributed Systems\"",
+        "belongs_to",
+        "Vertiefung der Informatik"
+    ],
+    [
+        "Distributed Systems",
+        "belongs_to",
+        "Vertiefung der Informatik für CPS"
+    ],
+    [
+        "Distributed Systems",
+        "belongs_to",
+        "Master Computer Engineering (PO 19) (Interactive Systems and Visualization)"
+    ],
+    [
+        "Distributed Systems",
+        "belongs_to",
+        "Master Computer Engineering (PO 19) (Intelligent Networked Systems)"
+    ],
+    [
+        "Distributed Systems",
+        "belongs_to",
+        "Vertiefung der Informatik für CPS"
+    ],
+    [
+        "Distributed Systems",
+        "belongs_to",
+        "Vertiefung der Informatik"
+    ],
+    [
+        "Quanteninformationstheorie (ehemals Kommunikationsnetze)",
+        "belongs_to",
+        "Ingenieurwissenschaftliche Vertiefung für CPS"
+    ],
+    [
+        "Quanteninformationstheorie (ehemals Kommunikationsnetze)",
+        "belongs_to",
+        "Ingenieurwissenschaftliche Vertiefung für CPS"
+    ],
+    [
+        "Informationstechnik in der elektrischen Energietechnik",
+        "belongs_to",
+        "Ingenieurwissenschaftliche Vertiefung für CPS"
+    ],
+    [
+        "Informationstechnik in der elektrischen Energietechnik",
+        "belongs_to",
+        "Ingenieurwissenschaftliche Vertiefung für CPS"
+    ],
+    [
+        "Biomechanik",
+        "belongs_to",
+        "Ingenieurwissenschaftliche Vertiefung für CPS"
+    ],
+    [
+        "Biomechanik",
+        "belongs_to",
+        "Ingenieurwissenschaftliche Vertiefung für CPS"
+    ],
+    [
+        "Digitale Schaltungstechnik",
+        "belongs_to",
+        "Ingenieurwissenschaftliche Vertiefung für CPS"
+    ],
+    [
+        "Digitale Schaltungstechnik",
+        "belongs_to",
+        "Ingenieurwissenschaftliche Vertiefung für CPS"
+    ],
+    [
+        "Technische Grundlagen zukünftiger Fahrzeugsysteme",
+        "belongs_to",
+        "Ingenieurwissenschaftliche Vertiefung für CPS"
+    ],
+    [
+        "Technische Grundlagen zukünftiger Fahrzeugsysteme",
+        "belongs_to",
+        "Ingenieurwissenschaftliche Vertiefung für CPS"
+    ],
+    [
+        "Rechnernetze und Kommunikationssysteme",
+        "belongs_to",
+        "Grundlagen vernetzter Systeme"
+    ],
+    [
+        "Rechnernetze und Kommunikationssysteme",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Rechnernetze und Kommunikationssysteme",
+        "belongs_to",
+        "4. Fachsemester"
+    ],
+    [
+        "Rechnernetze und Kommunikationssysteme",
+        "belongs_to",
+        "3. Fachsemester"
+    ],
+    [
+        "Logik",
+        "belongs_to",
+        "Theoretische Grundlagen der Informatik"
+    ],
+    [
+        "Logik",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Logik",
+        "belongs_to",
+        "1. Fachsemester"
+    ],
+    [
+        "Logik",
+        "belongs_to",
+        "2. Fachsemester"
+    ],
+    [
+        "Übung zu \"Rechnernetze und Kommunikationssysteme\"",
+        "belongs_to",
+        "Grundlagen vernetzter Systeme"
+    ],
+    [
+        "Übung zu \"Rechnernetze und Kommunikationssysteme\"",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Übung zu \"Rechnernetze und Kommunikationssysteme\"",
+        "belongs_to",
+        "4. Fachsemester"
+    ],
+    [
+        "Übung zu \"Rechnernetze und Kommunikationssysteme\"",
+        "belongs_to",
+        "3. Fachsemester"
+    ],
+    [
+        "Übung zu \"Logik\"",
+        "belongs_to",
+        "Theoretische Grundlagen der Informatik"
+    ],
+    [
+        "Übung zu \"Logik\"",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Übung zu \"Logik\"",
+        "belongs_to",
+        "1. Fachsemester"
+    ],
+    [
+        "Übung zu \"Logik\"",
+        "belongs_to",
+        "2. Fachsemester"
+    ],
+    [
+        "Betriebssysteme",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Betriebssysteme",
+        "belongs_to",
+        "5. Fachsemester"
+    ],
+    [
+        "Datenbanken",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Datenbanken",
+        "belongs_to",
+        "Wahlpflichtbereich \"Anwendungsorientierte Technologien und Methoden\""
+    ],
+    [
+        "Datenbanken",
+        "belongs_to",
+        "4. Fachsemester"
+    ],
+    [
+        "Datenbanken",
+        "belongs_to",
+        "5. Fachsemester"
+    ],
+    [
+        "Softwaretechnik (Ergänzungsvorlesung)",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Softwaretechnik (Ergänzungsvorlesung)",
+        "belongs_to",
+        "4. Fachsemester"
+    ],
+    [
+        "Softwaretechnik (Ergänzungsvorlesung)",
+        "belongs_to",
+        "3. Fachsemester"
+    ],
+    [
+        "Übung zu \"Betriebssysteme\"",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Übung zu \"Betriebssysteme\"",
+        "belongs_to",
+        "5. Fachsemester"
+    ],
+    [
+        "Praktikum zu \"Datenbanken\"",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Praktikum zu \"Datenbanken\"",
+        "belongs_to",
+        "Wahlpflichtbereich \"Anwendungsorientierte Technologien und Methoden\""
+    ],
+    [
+        "Praktikum zu \"Datenbanken\"",
+        "belongs_to",
+        "4. Fachsemester"
+    ],
+    [
+        "Praktikum zu \"Datenbanken\"",
+        "belongs_to",
+        "5. Fachsemester"
+    ],
+    [
+        "Praxisprojekt \"Data Science in Bioinformatics\"",
+        "belongs_to",
+        "Master Computer Engineering (PO 19) (Interactive Systems and Visualization)"
+    ],
+    [
+        "Praxisprojekt \"Data Science in Bioinformatics\"",
+        "belongs_to",
+        "Master Computer Engineering (PO 19) (Intelligent Networked Systems)"
+    ],
+    [
+        "Praxisprojekt \"Data Science in Bioinformatics\"",
+        "belongs_to",
+        "Forschungsprojekte"
+    ],
+    [
+        "Praxisprojekt \"Data Science in Bioinformatics\"",
+        "belongs_to",
+        "Masterseminare und -projekte"
+    ],
+    [
+        "Forschungsprojekt Wirtschaftspsychologie",
+        "belongs_to",
+        "Forschungsprojekte"
+    ],
+    [
+        "Forschungsprojekt Medienbasierte Wissenskonstruktion",
+        "belongs_to",
+        "Forschungsprojekte"
+    ],
+    [
+        "Forschungsprojekt Allgemeine Psychologie: Kognition",
+        "belongs_to",
+        "Forschungsprojekte"
+    ],
+    [
+        "Forschungsprojekt I: Sozialpschologie",
+        "belongs_to",
+        "Forschungsprojekte"
+    ],
+    [
+        "Forschungsprojekt \"Entertainment Computing\"",
+        "belongs_to",
+        "Forschungsprojekte"
+    ],
+    [
+        "Forschungsprojekt \"Entertainment Computing\"",
+        "belongs_to",
+        "Masterseminare und -projekte"
+    ],
+    [
+        "Fundamentals of Computer Engineering 1 Lab",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Mechanics I1",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Network Analysis",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Mathematics I1",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Mathematics I1 (Tutorium)",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Mechanics I1",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Measurement Technology",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Mathematics I1 (Übung)",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Fundamentals of Computer Engineering 1",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Wissenschaftliches Arbeiten",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Wahrscheinlichkeitsrechnung und Statistik für Studierende der Informatik",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Wahrscheinlichkeitsrechnung und Statistik für Studierende der Informatik",
+        "belongs_to",
+        "2. Fachsemester"
+    ],
+    [
+        "Wahrscheinlichkeitsrechnung und Statistik für Studierende der Informatik",
+        "belongs_to",
+        "3. Fachsemester"
+    ],
+    [
+        "Übungen zu 'Wahrscheinlichkeitsrechnung und Statistik für Informatiker'",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Übungen zu 'Wahrscheinlichkeitsrechnung und Statistik für Informatiker'",
+        "belongs_to",
+        "2. Fachsemester"
+    ],
+    [
+        "Übungen zu 'Wahrscheinlichkeitsrechnung und Statistik für Informatiker'",
+        "belongs_to",
+        "3. Fachsemester"
+    ],
+    [
+        "Objektorientierte Programmierung",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Tutorium zu 'Wahrscheinlichkeitsrechnung und Statistik für Informatiker'",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Tutorium zu 'Wahrscheinlichkeitsrechnung und Statistik für Informatiker'",
+        "belongs_to",
+        "2. Fachsemester"
+    ],
+    [
+        "Tutorium zu 'Wahrscheinlichkeitsrechnung und Statistik für Informatiker'",
+        "belongs_to",
+        "3. Fachsemester"
+    ],
+    [
+        "Objektorientierte Programmierung Praktikum",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Discrete Mathematics",
+        "belongs_to",
+        "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    ],
+    [
+        "Grundlagen der Wirtschaftspsychologie",
+        "belongs_to",
+        "3. Fachsemester"
+    ],
+    [
+        "Grundlagen der Medienpsychologie",
+        "belongs_to",
+        "3. Fachsemester"
+    ],
+    [
+        "Grundlagen der Medienpsychologie",
+        "belongs_to",
+        "Naturwissenschaftlich technisches Wahlpflichtfach"
+    ],
+    [
+        "Experimentelle Methoden",
+        "belongs_to",
+        "3. Fachsemester"
+    ],
+    [
+        "Statistik I: Einführung in die Methodenlehre",
+        "belongs_to",
+        "1. Fachsemester"
+    ],
+    [
+        "Übung zu \"Experimentelle Methoden\"",
+        "belongs_to",
+        "3. Fachsemester"
+    ],
+    [
+        "Experimentalpraktikum",
+        "belongs_to",
+        "3. Fachsemester"
+    ],
+    [
+        "Grundlagen der Sozialpsychologie",
+        "belongs_to",
+        "1. Fachsemester"
+    ],
+    [
+        "Grundlagen der Sozialpsychologie",
+        "belongs_to",
+        "Naturwissenschaftlich technisches Wahlpflichtfach"
+    ],
+    [
+        "Informatik N (Informatische Grundlagen neuer Medien und Kommunikationstechniken)",
+        "belongs_to",
+        "1. Fachsemester"
+    ],
+    [
+        "Einführung in die Logik",
+        "belongs_to",
+        "1. Fachsemester"
+    ],
+    [
+        "Übung zu \"Informatik N (Informatische Grundlagen neuer Medien und Kommunikationstechniken)\"",
+        "belongs_to",
+        "1. Fachsemester"
+    ],
+    [
+        "Tutorium zu \"Einführung in die Logik\"",
+        "belongs_to",
+        "1. Fachsemester"
+    ],
+    [
+        "Übung zu \"Statistik I: Einführung in die Methodenlehre\"",
+        "belongs_to",
+        "1. Fachsemester"
+    ],
+    [
+        "Fotografie - Dokumentarische Konzepte",
+        "belongs_to",
+        "Ergänzungsbereich 2, Allgemeinbildende Grundlagen: Medienpraktische Anwendungen"
+    ],
+    [
+        "Fotografie - Theorie und Praxis",
+        "belongs_to",
+        "Ergänzungsbereich 2, Allgemeinbildende Grundlagen: Medienpraktische Anwendungen"
+    ],
+    [
+        "Kulturgeschichte der Fotografie",
+        "belongs_to",
+        "Ergänzungsbereich 2, Allgemeinbildende Grundlagen: Medienpraktische Anwendungen"
+    ],
+    [
+        "Übungen zu \"Einführung in die Logik\"",
+        "belongs_to",
+        "1. Fachsemester"
+    ],
+    [
+        "Praxisprojekt \"Psychologische Prozesse der Bildung in sozialen Medien\"",
+        "belongs_to",
+        "Praxisprojekte"
+    ],
+    [
+        "Praxisprojekt  Allgemeine Psychologie",
+        "belongs_to",
+        "Praxisprojekte"
+    ],
+    [
+        "Praxisprojekt: Ein Group Awareness-Tool zur Unterstützung von Studierenden",
+        "belongs_to",
+        "Praxisprojekte"
+    ],
+    [
+        "Seminar \"Theoretische Informatik\"",
+        "belongs_to",
+        "Masterseminare und -projekte"
+    ],
+    [
+        "Seminar \"Theoretische Informatik\"",
+        "belongs_to",
+        "6. Fachsemester"
+    ],
+    [
+        "Seminar „Human-Computer Interaction and User Experience Design“",
+        "belongs_to",
+        "Masterseminare und -projekte"
+    ],
+    [
+        "Seminar \"Künstliche Intelligenz in der Medizin\"",
+        "belongs_to",
+        "Masterseminare und -projekte"
+    ],
+    [
+        "Seminar \"Künstliche Intelligenz in der Medizin\"",
+        "belongs_to",
+        "6. Fachsemester"
+    ],
+    [
+        "Seminar \"Mining Internet Search Data\"",
+        "belongs_to",
+        "Masterseminare und -projekte"
+    ],
+    [
+        "Seminar \"Mining Internet Search Data\"",
+        "belongs_to",
+        "6. Fachsemester"
+    ],
+    [
+        "Informationssysteme der Logistik",
+        "belongs_to",
+        "Naturwissenschaftlich technisches Wahlpflichtfach"
+    ],
+    [
+        "Rechnergestützte Netzanalysen",
+        "belongs_to",
+        "Naturwissenschaftlich technisches Wahlpflichtfach"
+    ],
+    [
+        "Optische Signalverarbeitung",
+        "belongs_to",
+        "Naturwissenschaftlich technisches Wahlpflichtfach"
+    ],
+    [
+        "Optoelektronik",
+        "belongs_to",
+        "Naturwissenschaftlich technisches Wahlpflichtfach"
+    ],
+    [
+        "Rechnergestützte Netzanalysen",
+        "belongs_to",
+        "Naturwissenschaftlich technisches Wahlpflichtfach"
+    ],
+    [
+        "Grundlegende Programmiertechniken",
+        "belongs_to",
+        "1. Fachsemester"
+    ],
+    [
+        "Grundlagen der Technischen Informatik",
+        "belongs_to",
+        "1. Fachsemester"
+    ],
+    [
+        "Grundlagen der Technischen Informatik",
+        "belongs_to",
+        "2. Fachsemester"
+    ],
+    [
+        "Grundlagen der Technischen Informatik Tutorium",
+        "belongs_to",
+        "1. Fachsemester"
+    ],
+    [
+        "Grundlagen der Technischen Informatik Tutorium",
+        "belongs_to",
+        "2. Fachsemester"
+    ],
+    [
+        "Diskrete Mathematik 1",
+        "belongs_to",
+        "1. Fachsemester"
+    ],
+    [
+        "Diskrete Mathematik 1",
+        "belongs_to",
+        "2. Fachsemester"
+    ],
+    [
+        "Übung zu \"Grundlegende Programmiertechniken\"",
+        "belongs_to",
+        "1. Fachsemester"
+    ],
+    [
+        "Grundlagen der Technischen Informatik Praktikum",
+        "belongs_to",
+        "1. Fachsemester"
+    ],
+    [
+        "Grundlagen der Technischen Informatik Praktikum",
+        "belongs_to",
+        "2. Fachsemester"
+    ],
+    [
+        "Tutorium zur Diskreten Mathematik 1",
+        "belongs_to",
+        "1. Fachsemester"
+    ],
+    [
+        "Tutorium zur Diskreten Mathematik 1",
+        "belongs_to",
+        "2. Fachsemester"
+    ],
+    [
+        "Übung zu \"Berechenbarkeit und Komplexität\"",
+        "belongs_to",
+        "3. Fachsemester"
+    ],
+    [
+        "Übung zu \"Berechenbarkeit und Komplexität\"",
+        "belongs_to",
+        "4. Fachsemester"
+    ],
+    [
+        "Berechenbarkeit und Komplexität",
+        "belongs_to",
+        "4. Fachsemester"
+    ],
+    [
+        "Berechenbarkeit und Komplexität",
+        "belongs_to",
+        "3. Fachsemester"
+    ],
+    [
+        "Seminar \"“How to Deliver an Engaging Speech” - Eine Einführung in elementare Vorbereitungs- und Vortragstechniken\"",
+        "belongs_to",
+        "6. Fachsemester"
+    ],
+    [
+        "Seminar \"Fortgeschrittene Funktionale Programmierung\"",
+        "belongs_to",
+        "6. Fachsemester"
+    ],
+    [
+        "Übung zu \"Formale Aspekte der Software-Sicherheit und Kryptographie\"",
+        "belongs_to",
+        "Informatik für den Anwendungsbereich - Verteilte, Verlässliche Systeme"
+    ],
+    [
+        "Formale Aspekte der Software-Sicherheit und Kryptographie",
+        "belongs_to",
+        "Informatik für den Anwendungsbereich - Verteilte, Verlässliche Systeme"
+    ]
+]

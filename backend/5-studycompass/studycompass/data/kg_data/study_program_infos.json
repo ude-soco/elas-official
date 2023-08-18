@@ -1,0 +1,232 @@
+[
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C355815%7C353415&P.vx=kurz",
+        "id": "353415",
+        "name": "Ergänzungsbereich 2, Allgemeinbildende Grundlagen: Medienpraktische Anwendungen"
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C355815%7C355635&P.vx=kurz",
+        "id": "355635",
+        "name": "Wahlpflichtbereich \"Anwendungsorientierte Technologien und Methoden\""
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C355815%7C365122&P.vx=kurz",
+        "id": "365122",
+        "name": "Praxisprojekte"
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C355815%7C354245&P.vx=kurz",
+        "id": "354245",
+        "name": "1. Fachsemester"
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C355815%7C353719&P.vx=kurz",
+        "id": "353719",
+        "name": "3. Fachsemester"
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C355815%7C353657&P.vx=kurz",
+        "id": "353657",
+        "name": "5. Fachsemester"
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C355815%7C355632&P.vx=kurz",
+        "id": "355632",
+        "name": "Wahlpflichtbereich \"Anwendungsbereiche von Psychologie und Kommunikation\""
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C353082%7C355541&P.vx=kurz",
+        "id": "355541",
+        "name": "Ingenieurwissenschaftliche Vertiefung für CPS"
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C353082%7C355050&P.vx=kurz",
+        "id": "355050",
+        "name": "Vertiefung der Informatik für CPS"
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C353082%7C355047&P.vx=kurz",
+        "id": "355047",
+        "name": "Grundlagen vernetzter Systeme"
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C353082%7C355045&P.vx=kurz",
+        "id": "355045",
+        "name": "Theoretische Grundlagen der Informatik"
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C353082%7C356726&P.vx=kurz",
+        "id": "356726",
+        "name": "CPS-Labor Praktikum"
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C356919%7C353325&P.vx=kurz",
+        "id": "353325",
+        "name": "Master Computer Engineering (PO 19) (Interactive Systems and Visualization)"
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C356919%7C353359&P.vx=kurz",
+        "id": "353359",
+        "name": "Master Computer Engineering (PO 19) (Intelligent Networked Systems)"
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C353080%7C355053&P.vx=kurz",
+        "id": "355053",
+        "name": "Ingenieurwissenschaftliche Vertiefung für CPS"
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C356409%7C355461&P.vx=kurz",
+        "id": "355461",
+        "name": "Forschungsprojekte"
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C356919%7C356394&P.vx=kurz",
+        "id": "356394",
+        "name": "Bachelor Computer Engineering (Software Engineering) (PO 19)"
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C353080%7C355055&P.vx=kurz",
+        "id": "355055",
+        "name": "Vertiefung der Informatik für CPS"
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C353080%7C355085&P.vx=kurz",
+        "id": "355085",
+        "name": "Höhere Mathematik in Anwendungen des Ingenieurwesens"
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C353080%7C355054&P.vx=kurz",
+        "id": "355054",
+        "name": "Grundlagen der Ingenieurwissenschaften für CPS"
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C353080%7C352954&P.vx=kurz",
+        "id": "352954",
+        "name": "CPS-Labor Praktikum"
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C356409%7C353597&P.vx=kurz",
+        "id": "353597",
+        "name": "Wahlpflichtbereich \"Psychologie\""
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C356409%7C357040&P.vx=kurz",
+        "id": "357040",
+        "name": "Pflichtbereich Vertiefung \"Social Media und Professionelle Kommunikation\""
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C356409%7C357035&P.vx=kurz",
+        "id": "357035",
+        "name": "Wahlpflichtbereich \"Grundlagen der Informatik\""
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C356409%7C357014&P.vx=kurz",
+        "id": "357014",
+        "name": "Pflichtbereich Vertiefung \"Psychologie\""
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C356409%7C355456&P.vx=kurz",
+        "id": "355456",
+        "name": "Wahlpflichtbereich \"Vertiefung der Informatik\""
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C355041%7C362629&P.vx=kurz",
+        "id": "362629",
+        "name": "Ergänzungsbereich E3"
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C356409%7C355460&P.vx=kurz",
+        "id": "355460",
+        "name": "Wahlpflichtbereich \"BWL\""
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C355041%7C354300&P.vx=kurz",
+        "id": "354300",
+        "name": "Ergänzungsbereich E2"
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C355041%7C369057&P.vx=kurz",
+        "id": "369057",
+        "name": "Ergänzungsbereich E1"
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C355041%7C367147&P.vx=kurz",
+        "id": "367147",
+        "name": "Softwarezentrierte Praxisprojekte"
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C355041%7C355637&P.vx=kurz",
+        "id": "355637",
+        "name": "Wahlpflichtkatalog \"Vertiefung der Mathematik\""
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C355041%7C355676&P.vx=kurz",
+        "id": "355676",
+        "name": "Wahlpflichtkatalog \"Vertiefung der Informatik\""
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C355041%7C355940&P.vx=kurz",
+        "id": "355940",
+        "name": "6. Fachsemester"
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C355041%7C355640&P.vx=kurz",
+        "id": "355640",
+        "name": "5. Fachsemester"
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C355041%7C353776&P.vx=kurz",
+        "id": "353776",
+        "name": "3. Fachsemester"
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C355041%7C355682&P.vx=kurz",
+        "id": "355682",
+        "name": "4. Fachsemester"
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C355041%7C355373&P.vx=kurz",
+        "id": "355373",
+        "name": "2. Fachsemester"
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C355041%7C354292&P.vx=kurz",
+        "id": "354292",
+        "name": "1. Fachsemester"
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C353808%7C356238&P.vx=kurz",
+        "id": "356238",
+        "name": "Naturwissenschaftlich technisches Wahlpflichtfach"
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C353808%7C356306&P.vx=kurz",
+        "id": "356306",
+        "name": "Masterseminare und -projekte"
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C353808%7C356308&P.vx=kurz",
+        "id": "356308",
+        "name": "Informatik für den Anwendungsbereich - Information Engineering"
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C353808%7C356263&P.vx=kurz",
+        "id": "356263",
+        "name": "Informatik für den Anwendungsbereich - Interaktive und Kooperative Systeme"
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C353808%7C356282&P.vx=kurz",
+        "id": "356282",
+        "name": "Informatik für den Anwendungsbereich - Intelligente technische Systeme"
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C353808%7C356262&P.vx=kurz",
+        "id": "356262",
+        "name": "Informatik für den Anwendungsbereich - Verteilte, Verlässliche Systeme"
+    },
+    {
+        "url": "https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120232=356121%7C355019%7C355710%7C353808%7C356251&P.vx=kurz",
+        "id": "356251",
+        "name": "Vertiefung der Informatik"
+    }
+]

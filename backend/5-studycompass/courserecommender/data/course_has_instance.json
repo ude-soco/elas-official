@@ -1,0 +1,787 @@
+[
+    [
+        "Übung zu \"Multimedia Systeme\"",
+        "has_instance",
+        "390010"
+    ],
+    [
+        "Biomechanik",
+        "has_instance",
+        "390578"
+    ],
+    [
+        "Multimedia Systeme",
+        "has_instance",
+        "391302"
+    ],
+    [
+        "Medienbasiertes Lehren und Lernen",
+        "has_instance",
+        "390699"
+    ],
+    [
+        "(Grundlagen der) Organisationspsychologie",
+        "has_instance",
+        "390616"
+    ],
+    [
+        "Grundlagen des Marketings",
+        "has_instance",
+        "389665"
+    ],
+    [
+        "Planung und Organisation für interdisziplinäre Studiengänge",
+        "has_instance",
+        "390495"
+    ],
+    [
+        "Übung zu \"Datenbanken\"",
+        "has_instance",
+        "391365"
+    ],
+    [
+        "Modellierung",
+        "has_instance",
+        "391249"
+    ],
+    [
+        "Additive Fertigungsverfahren 1 - Grundlagen",
+        "has_instance",
+        "390605"
+    ],
+    [
+        "Übung zu \"Höhere Mathematik in Anwendungen des Ingenieurwesens\"",
+        "has_instance",
+        "391097"
+    ],
+    [
+        "Elektrische und magnetische Felder (ehem. Grundlagen der Elektrotechnik E1)",
+        "has_instance",
+        "389717"
+    ],
+    [
+        "Übung zu \"Mensch-Computer-Interaktion\"",
+        "has_instance",
+        "391202"
+    ],
+    [
+        "Elektrische Messtechnik (ehem. Einführung in die Messtechnik)",
+        "has_instance",
+        "390329"
+    ],
+    [
+        "Übungen zu \"Modellierung\"",
+        "has_instance",
+        "389339"
+    ],
+    [
+        "Modellbildung und Simulation",
+        "has_instance",
+        "391014"
+    ],
+    [
+        "Embedded Systems",
+        "has_instance",
+        "391085"
+    ],
+    [
+        "Übung zu \"Embedded Systems\"",
+        "has_instance",
+        "391074"
+    ],
+    [
+        "Mensch-Computer-Interaktion",
+        "has_instance",
+        "389646"
+    ],
+    [
+        "Numerical Mathematics",
+        "has_instance",
+        "390439"
+    ],
+    [
+        "Übungen zur Mathematik für Informatiker 2",
+        "has_instance",
+        "390256"
+    ],
+    [
+        "Mathematik für Informatiker 2",
+        "has_instance",
+        "390466"
+    ],
+    [
+        "Praxisprojekt \"Verteilte Systeme\"",
+        "has_instance",
+        "394773"
+    ],
+    [
+        "Praxisprojekt \"Me and My Chat-GPT (episode 2): studying together with a language model\"",
+        "has_instance",
+        "395596"
+    ],
+    [
+        "Bachelor-/Masterprojekt \"Intelligente Systeme (Cognitive Robot Systems an Robot Vision)\"",
+        "has_instance",
+        "389403"
+    ],
+    [
+        "Praxisprojekt „It’s Your Choice: Präsentation von Entscheidungsoptionen in digitalen Spielen“",
+        "has_instance",
+        "396410"
+    ],
+    [
+        "Praxisprojekt \"Let’s just make a Game 2.0! Exploring Best Practices in Game Development\"",
+        "has_instance",
+        "396090"
+    ],
+    [
+        "Praxisprojekt \"Interaktives Retrieval: Reproduzierbarkeit und Simulation\"",
+        "has_instance",
+        "395115"
+    ],
+    [
+        "Praxisprojekt \"Implementierung von theoretischen Algorithmen und  Datenstrukturen mit Rust\"",
+        "has_instance",
+        "397005"
+    ],
+    [
+        "Praxisprojekt \"Achieving Mastery by Deliberate Reinforcement\" (co-supervised with Dr. Bibeg Limbu)",
+        "has_instance",
+        "394771"
+    ],
+    [
+        "Praxisprojekt \"Augmented Reality (AR) \"",
+        "has_instance",
+        "396769"
+    ],
+    [
+        "Praxisprojekt \"CodeArcade - Designing Python Challenges for Hackathons\"",
+        "has_instance",
+        "396737"
+    ],
+    [
+        "Praxisprojekt \"Interactive Data Exploration and Analytics (IDEA)\"",
+        "has_instance",
+        "395122"
+    ],
+    [
+        "Technische Mechanik 1",
+        "has_instance",
+        "390620"
+    ],
+    [
+        "Technische Mechanik 1",
+        "has_instance",
+        "390458"
+    ],
+    [
+        "Technische Mechanik 1",
+        "has_instance",
+        "390457"
+    ],
+    [
+        "Physik  für Informatiker 1",
+        "has_instance",
+        "391204"
+    ],
+    [
+        "Elektrotechnik",
+        "has_instance",
+        "389482"
+    ],
+    [
+        "Elektrotechnik",
+        "has_instance",
+        "389631"
+    ],
+    [
+        "Einführung in die Mechatronik und Signalanalyse",
+        "has_instance",
+        "391031"
+    ],
+    [
+        "Allgemeine Psychologie: Perzeption, Kognition und Handeln",
+        "has_instance",
+        "389612"
+    ],
+    [
+        "Makroökonomik für interdisziplinäre Studiengänge",
+        "has_instance",
+        "389919"
+    ],
+    [
+        "Grundzüge des Handelsmanagements",
+        "has_instance",
+        "390219"
+    ],
+    [
+        "Buchhaltung",
+        "has_instance",
+        "390032"
+    ],
+    [
+        "Corporate Governance",
+        "has_instance",
+        "390700"
+    ],
+    [
+        "Betriebswirtschaft für Ingenieure",
+        "has_instance",
+        "390257"
+    ],
+    [
+        "Mikroökonomik für interdisziplinäre Studiengänge",
+        "has_instance",
+        "389921"
+    ],
+    [
+        "Ganzheitliche Unternehmensführung",
+        "has_instance",
+        "390708"
+    ],
+    [
+        "Beschaffung und Produktion",
+        "has_instance",
+        "391078"
+    ],
+    [
+        "Test- und Fragebogenkonstruktion 1",
+        "has_instance",
+        "390037"
+    ],
+    [
+        "Fortgeschrittene Programmiertechniken",
+        "has_instance",
+        "393336"
+    ],
+    [
+        "Übung zu \"Fortgeschrittene Programmiertechniken\"",
+        "has_instance",
+        "392917"
+    ],
+    [
+        "CPS-Labor Praktikum",
+        "has_instance",
+        "392891"
+    ],
+    [
+        "Höhere Mathematik in Anwendungen des Ingenieurwesens",
+        "has_instance",
+        "391300"
+    ],
+    [
+        "Übung zu \"Software Craftsmanship\"",
+        "has_instance",
+        "391140"
+    ],
+    [
+        "Information Mining",
+        "has_instance",
+        "390948"
+    ],
+    [
+        "Seminar \"User-centered conversational recommender systems\"",
+        "has_instance",
+        "396599"
+    ],
+    [
+        "Übung zu \"Cloud, Web & Mobile\"",
+        "has_instance",
+        "390906"
+    ],
+    [
+        "Cloud, Web & Mobile",
+        "has_instance",
+        "391364"
+    ],
+    [
+        "Übung zu \"Information Mining\"",
+        "has_instance",
+        "390180"
+    ],
+    [
+        "Learning Analytics",
+        "has_instance",
+        "389368"
+    ],
+    [
+        "Übung zu \"Learning Analytics\"",
+        "has_instance",
+        "389913"
+    ],
+    [
+        "Übung zu \"Cognitive Robot Systems\"",
+        "has_instance",
+        "389677"
+    ],
+    [
+        "Computer/Robot Vision",
+        "has_instance",
+        "391366"
+    ],
+    [
+        "Übung zu \"Computer/Robot-Vision\"",
+        "has_instance",
+        "389604"
+    ],
+    [
+        "Cognitive Robot Systems",
+        "has_instance",
+        "389644"
+    ],
+    [
+        "Übung zu \"Advanced Image Synthesis\"",
+        "has_instance",
+        "391306"
+    ],
+    [
+        "Seminar \"From Data to Evidence: Education as a Data Science Application Field\"",
+        "has_instance",
+        "395597"
+    ],
+    [
+        "Sozialpsychologische Vertiefung",
+        "has_instance",
+        "389749"
+    ],
+    [
+        "Empirische Aspekte der Mensch-Computer-Interaktion",
+        "has_instance",
+        "391298"
+    ],
+    [
+        "Konsumentenpsychologische Vertiefung 1",
+        "has_instance",
+        "389902"
+    ],
+    [
+        "Seminar \"Business Communications\"",
+        "has_instance",
+        "401282"
+    ],
+    [
+        "Organisationspsychologie Vertiefung",
+        "has_instance",
+        "389542"
+    ],
+    [
+        "Angewandte Kognitionspsychologie 1",
+        "has_instance",
+        "389971"
+    ],
+    [
+        "Medienbasierte Wissenskonstruktion: Neurokognitive Prozesse der Wissenskonstruktion",
+        "has_instance",
+        "392881"
+    ],
+    [
+        "Advanced Image Synthesis",
+        "has_instance",
+        "391305"
+    ],
+    [
+        "Software Craftsmanship",
+        "has_instance",
+        "391130"
+    ],
+    [
+        "Fortgeschrittene Themen der Mensch-Computer-Interaktion",
+        "has_instance",
+        "389419"
+    ],
+    [
+        "Übung/Praktikum zu \"Distributed Systems\"",
+        "has_instance",
+        "390400"
+    ],
+    [
+        "Distributed Systems",
+        "has_instance",
+        "391299"
+    ],
+    [
+        "Quanteninformationstheorie (ehemals Kommunikationsnetze)",
+        "has_instance",
+        "391063"
+    ],
+    [
+        "Informationstechnik in der elektrischen Energietechnik",
+        "has_instance",
+        "390482"
+    ],
+    [
+        "Biomechanik",
+        "has_instance",
+        "390411"
+    ],
+    [
+        "Digitale Schaltungstechnik",
+        "has_instance",
+        "390405"
+    ],
+    [
+        "Technische Grundlagen zukünftiger Fahrzeugsysteme",
+        "has_instance",
+        "391046"
+    ],
+    [
+        "Rechnernetze und Kommunikationssysteme",
+        "has_instance",
+        "391218"
+    ],
+    [
+        "Logik",
+        "has_instance",
+        "391166"
+    ],
+    [
+        "Übung zu \"Rechnernetze und Kommunikationssysteme\"",
+        "has_instance",
+        "390987"
+    ],
+    [
+        "Übung zu \"Logik\"",
+        "has_instance",
+        "391171"
+    ],
+    [
+        "Betriebssysteme",
+        "has_instance",
+        "389712"
+    ],
+    [
+        "Datenbanken",
+        "has_instance",
+        "390775"
+    ],
+    [
+        "Softwaretechnik (Ergänzungsvorlesung)",
+        "has_instance",
+        "389506"
+    ],
+    [
+        "Übung zu \"Betriebssysteme\"",
+        "has_instance",
+        "391075"
+    ],
+    [
+        "Praktikum zu \"Datenbanken\"",
+        "has_instance",
+        "390326"
+    ],
+    [
+        "Praxisprojekt \"Data Science in Bioinformatics\"",
+        "has_instance",
+        "397065"
+    ],
+    [
+        "Forschungsprojekt Wirtschaftspsychologie",
+        "has_instance",
+        "392835"
+    ],
+    [
+        "Forschungsprojekt Medienbasierte Wissenskonstruktion",
+        "has_instance",
+        "392421"
+    ],
+    [
+        "Forschungsprojekt Allgemeine Psychologie: Kognition",
+        "has_instance",
+        "401337"
+    ],
+    [
+        "Forschungsprojekt I: Sozialpschologie",
+        "has_instance",
+        "391511"
+    ],
+    [
+        "Forschungsprojekt \"Entertainment Computing\"",
+        "has_instance",
+        "394983"
+    ],
+    [
+        "Fundamentals of Computer Engineering 1 Lab",
+        "has_instance",
+        "391062"
+    ],
+    [
+        "Mechanics I1",
+        "has_instance",
+        "390143"
+    ],
+    [
+        "Network Analysis",
+        "has_instance",
+        "390091"
+    ],
+    [
+        "Mathematics I1",
+        "has_instance",
+        "391010"
+    ],
+    [
+        "Mathematics I1 (Tutorium)",
+        "has_instance",
+        "390119"
+    ],
+    [
+        "Mechanics I1",
+        "has_instance",
+        "390441"
+    ],
+    [
+        "Measurement Technology",
+        "has_instance",
+        "390867"
+    ],
+    [
+        "Mathematics I1 (Übung)",
+        "has_instance",
+        "390985"
+    ],
+    [
+        "Fundamentals of Computer Engineering 1",
+        "has_instance",
+        "391115"
+    ],
+    [
+        "Wissenschaftliches Arbeiten",
+        "has_instance",
+        "389406"
+    ],
+    [
+        "Wahrscheinlichkeitsrechnung und Statistik für Studierende der Informatik",
+        "has_instance",
+        "390443"
+    ],
+    [
+        "Übungen zu 'Wahrscheinlichkeitsrechnung und Statistik für Informatiker'",
+        "has_instance",
+        "390465"
+    ],
+    [
+        "Objektorientierte Programmierung",
+        "has_instance",
+        "389427"
+    ],
+    [
+        "Tutorium zu 'Wahrscheinlichkeitsrechnung und Statistik für Informatiker'",
+        "has_instance",
+        "390035"
+    ],
+    [
+        "Objektorientierte Programmierung Praktikum",
+        "has_instance",
+        "389429"
+    ],
+    [
+        "Discrete Mathematics",
+        "has_instance",
+        "389521"
+    ],
+    [
+        "Grundlagen der Wirtschaftspsychologie",
+        "has_instance",
+        "391275"
+    ],
+    [
+        "Grundlagen der Medienpsychologie",
+        "has_instance",
+        "390940"
+    ],
+    [
+        "Experimentelle Methoden",
+        "has_instance",
+        "393814"
+    ],
+    [
+        "Statistik I: Einführung in die Methodenlehre",
+        "has_instance",
+        "389915"
+    ],
+    [
+        "Übung zu \"Experimentelle Methoden\"",
+        "has_instance",
+        "391259"
+    ],
+    [
+        "Experimentalpraktikum",
+        "has_instance",
+        "390429"
+    ],
+    [
+        "Grundlagen der Sozialpsychologie",
+        "has_instance",
+        "391263"
+    ],
+    [
+        "Informatik N (Informatische Grundlagen neuer Medien und Kommunikationstechniken)",
+        "has_instance",
+        "391310"
+    ],
+    [
+        "Einführung in die Logik",
+        "has_instance",
+        "391270"
+    ],
+    [
+        "Übung zu \"Informatik N (Informatische Grundlagen neuer Medien und Kommunikationstechniken)\"",
+        "has_instance",
+        "390325"
+    ],
+    [
+        "Tutorium zu \"Einführung in die Logik\"",
+        "has_instance",
+        "389925"
+    ],
+    [
+        "Übung zu \"Statistik I: Einführung in die Methodenlehre\"",
+        "has_instance",
+        "389890"
+    ],
+    [
+        "Fotografie - Dokumentarische Konzepte",
+        "has_instance",
+        "395050"
+    ],
+    [
+        "Fotografie - Theorie und Praxis",
+        "has_instance",
+        "389298"
+    ],
+    [
+        "Kulturgeschichte der Fotografie",
+        "has_instance",
+        "390130"
+    ],
+    [
+        "Übungen zu \"Einführung in die Logik\"",
+        "has_instance",
+        "390365"
+    ],
+    [
+        "Praxisprojekt \"Psychologische Prozesse der Bildung in sozialen Medien\"",
+        "has_instance",
+        "394772"
+    ],
+    [
+        "Praxisprojekt  Allgemeine Psychologie",
+        "has_instance",
+        "392755"
+    ],
+    [
+        "Praxisprojekt: Ein Group Awareness-Tool zur Unterstützung von Studierenden",
+        "has_instance",
+        "394769"
+    ],
+    [
+        "Seminar \"Theoretische Informatik\"",
+        "has_instance",
+        "395465"
+    ],
+    [
+        "Seminar „Human-Computer Interaction and User Experience Design“",
+        "has_instance",
+        "396318"
+    ],
+    [
+        "Seminar \"Künstliche Intelligenz in der Medizin\"",
+        "has_instance",
+        "396022"
+    ],
+    [
+        "Seminar \"Mining Internet Search Data\"",
+        "has_instance",
+        "395961"
+    ],
+    [
+        "Informationssysteme der Logistik",
+        "has_instance",
+        "390461"
+    ],
+    [
+        "Rechnergestützte Netzanalysen",
+        "has_instance",
+        "390280"
+    ],
+    [
+        "Optische Signalverarbeitung",
+        "has_instance",
+        "389630"
+    ],
+    [
+        "Optoelektronik",
+        "has_instance",
+        "389431"
+    ],
+    [
+        "Rechnergestützte Netzanalysen",
+        "has_instance",
+        "390437"
+    ],
+    [
+        "Grundlegende Programmiertechniken",
+        "has_instance",
+        "389879"
+    ],
+    [
+        "Grundlagen der Technischen Informatik",
+        "has_instance",
+        "391128"
+    ],
+    [
+        "Grundlagen der Technischen Informatik Tutorium",
+        "has_instance",
+        "390125"
+    ],
+    [
+        "Diskrete Mathematik 1",
+        "has_instance",
+        "390423"
+    ],
+    [
+        "Übung zu \"Grundlegende Programmiertechniken\"",
+        "has_instance",
+        "390504"
+    ],
+    [
+        "Grundlagen der Technischen Informatik Praktikum",
+        "has_instance",
+        "389764"
+    ],
+    [
+        "Tutorium zur Diskreten Mathematik 1",
+        "has_instance",
+        "390417"
+    ],
+    [
+        "Übung zu \"Berechenbarkeit und Komplexität\"",
+        "has_instance",
+        "391167"
+    ],
+    [
+        "Berechenbarkeit und Komplexität",
+        "has_instance",
+        "391170"
+    ],
+    [
+        "Seminar \"“How to Deliver an Engaging Speech” - Eine Einführung in elementare Vorbereitungs- und Vortragstechniken\"",
+        "has_instance",
+        "392532"
+    ],
+    [
+        "Seminar \"Fortgeschrittene Funktionale Programmierung\"",
+        "has_instance",
+        "389294"
+    ],
+    [
+        "Übung zu \"Formale Aspekte der Software-Sicherheit und Kryptographie\"",
+        "has_instance",
+        "391177"
+    ],
+    [
+        "Formale Aspekte der Software-Sicherheit und Kryptographie",
+        "has_instance",
+        "391173"
+    ]
+]

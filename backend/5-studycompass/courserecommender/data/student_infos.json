@@ -1,0 +1,16 @@
+[
+  {
+    "name": "anna",
+    "study program": "Master Computer Engineering (PO 19) (Intelligent Networked Systems)",
+    "semester": "4",
+    "course": [
+      {
+        "id": "",
+        "name": "",
+        "passed": "true",
+        "ratings": []
+      }
+    ],
+    "blacklist": []
+  }
+]

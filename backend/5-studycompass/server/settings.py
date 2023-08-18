@@ -42,6 +42,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Neo4j configuration
+NEOMODEL_NEO4J_BOLT_URL = os.environ.get("NEO4J_HOST")
+
 EUREKA_HOST_NAME = os.environ.get("EUREKA_HOST_NAME")
 EUREKA_PORT = os.environ.get("EUREKA_PORT")
 EUREKA_HOST = f"http://{EUREKA_HOST_NAME}:{EUREKA_PORT}/eureka"
@@ -75,6 +78,8 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt.token_blacklist",
     "django_celery_results",
     "studycompass",
+    "django_neomodel",
+    "courserecommender",
 ]
 
 REST_FRAMEWORK = {

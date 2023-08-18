@@ -20,7 +20,7 @@ POSTPROCESSED_VDB_DATA_FILE = os.path.abspath(
         os.path.dirname(__file__),
         "..",
         "data",
-        "post_processed_descriptions.json",
+        "post_processed_description.json",
     )
 )
 MERGED_LECTURES_VDB_DATA_FILE = os.path.abspath(
