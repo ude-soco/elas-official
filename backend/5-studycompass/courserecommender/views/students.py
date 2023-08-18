@@ -18,7 +18,6 @@ SEMESTER_DATA = os.path.abspath(
 
 
 @api_view(["POST"])
-@permission_classes([AllowAny])
 def create_student(request):
     try:
         data = JSONParser().parse(request)
@@ -50,7 +49,6 @@ def create_student(request):
 
 
 @api_view(["PUT"])
-@permission_classes([AllowAny])
 def edit_student(request):
     try:
         data = JSONParser().parse(request)
@@ -78,7 +76,6 @@ def edit_student(request):
 
 
 @api_view(["GET"])
-@permission_classes([AllowAny])
 def get_student(request):
     try:
         data = JSONParser().parse(request)
@@ -172,7 +169,6 @@ def show_blacklist_courses(request):
 
 
 @api_view(["POST"])
-@permission_classes([IsAuthenticated])
 def show_student_current_courses(request):
     data = json.loads(request.body)
     uid = data["uid"]
@@ -197,7 +193,6 @@ def show_student_current_courses(request):
 
 
 @api_view(["POST"])
-@permission_classes([IsAuthenticated])
 def show_whole_student_schedule(request):
     data = json.loads(request.body)
     uid = data["uid"]
@@ -230,7 +225,6 @@ def show_whole_student_schedule(request):
 
 
 @api_view(["POST"])
-@permission_classes([IsAuthenticated])
 def get_student_semester(request):
     data = json.loads(request.body)
     uid = data["uid"]
@@ -252,7 +246,6 @@ def get_student_semester(request):
 
 
 @api_view(["POST"])
-@permission_classes([IsAuthenticated])
 def change_student_setting(request):
     data = json.loads(request.body)
     uid = data["uid"]

@@ -9,17 +9,24 @@ import json
 import os
 import datetime
 from neomodel import db
-from courserecommender.utils import calculate_student_embedding, add_has_next, delete_has_next, generate_recommendations, generate_top_popular, get_course_ratings
+from courserecommender.utils import (
+    calculate_student_embedding,
+    add_has_next,
+    delete_has_next,
+    generate_recommendations,
+    generate_top_popular,
+    get_course_ratings,
+)
 
-elas_backend_directory = os.path.abspath(os.path.join(
-    os.path.dirname(__file__), "..", ".."))
+elas_backend_directory = os.path.abspath(
+    os.path.join(os.path.dirname(__file__), "..", "..")
+)
 SEMESTER_DATA = os.path.abspath(
-    os.path.join(elas_backend_directory, "courserecommender",
-                 "data", "semester.json"))
+    os.path.join(elas_backend_directory, "courserecommender", "data", "semester.json")
+)
 
 
 @api_view(["GET"])
-@permission_classes([AllowAny])
 def get_all_courses(request):
     response = []
     with open(SEMESTER_DATA, "r", encoding="utf8") as f:
@@ -48,14 +55,13 @@ def get_all_courses(request):
                 "description": instance.description,
                 "timetable": instance.timetable,
                 "semester": instance.semester,
-                "belonged_studyprograms": studyprograms
+                "belonged_studyprograms": studyprograms,
             }
         )
     return JsonResponse({"message": response}, safe=False, status=status.HTTP_200_OK)
 
 
 @api_view(["POST"])
-@permission_classes([AllowAny])
 def get_courses_by_studyprogram(request):
     data = json.loads(request.body)
     studyprogram = data["studyprogram"]
@@ -65,7 +71,8 @@ def get_courses_by_studyprogram(request):
     #     semester_data = json.loads(f.read())
     # current_semester = semester_data[-1]["name"]
     courses, cols = db.cypher_query(
-        f"""MATCH (c)-[r:belongs_to]->(s), (c)-[r1:has_instance]->(i) where s.name="{studyprogram}" and i.semester="{semester}" return i""")
+        f"""MATCH (c)-[r:belongs_to]->(s), (c)-[r1:has_instance]->(i) where s.name="{studyprogram}" and i.semester="{semester}" return i"""
+    )
     if not courses:
         return JsonResponse(
             {"error": "Courses not found"}, status=status.HTTP_404_NOT_FOUND
@@ -89,15 +96,13 @@ def get_courses_by_studyprogram(request):
                 "professors": professors,
                 "description": node["description"],
                 "timetable": json.loads(node["timetable"]),
-                "semester": node["semester"]
+                "semester": node["semester"],
             }
         )
     return JsonResponse({"message": response}, safe=False, status=status.HTTP_200_OK)
 
 
 @api_view(["POST"])
-@permission_classes([IsAuthenticated])
-# @permission_classes([AllowAny])
 def get_courses_by_userInfo(request):
     data = json.loads(request.body)
     studyprogram = data["studyprogram"]
@@ -127,7 +132,8 @@ def get_courses_by_userInfo(request):
 
     # get all courses in current semester of a studyprogram
     courses, cols = db.cypher_query(
-        f"""MATCH (c)-[r:belongs_to]->(s), (c)-[r1:has_instance]->(i) where s.name="{studyprogram}" and i.semester="{current_semester}" return i""")
+        f"""MATCH (c)-[r:belongs_to]->(s), (c)-[r1:has_instance]->(i) where s.name="{studyprogram}" and i.semester="{current_semester}" return i"""
+    )
     if not courses:
         return JsonResponse(
             {"error": "Courses not found"}, status=status.HTTP_404_NOT_FOUND
@@ -173,9 +179,16 @@ def get_courses_by_userInfo(request):
                 "timetable": json.loads(node["timetable"]),
                 "semester": node["semester"],
                 "passed": passed_status,
-                "popularity": {"status": popular_status, "passed_students": passed_number, "passed_percentage": passed_percentage},
-                "recommendation": {"status": recommended_status, "weight": recommended_weight},
-                "ratings": ratings
+                "popularity": {
+                    "status": popular_status,
+                    "passed_students": passed_number,
+                    "passed_percentage": passed_percentage,
+                },
+                "recommendation": {
+                    "status": recommended_status,
+                    "weight": recommended_weight,
+                },
+                "ratings": ratings,
             }
         )
 
@@ -183,8 +196,6 @@ def get_courses_by_userInfo(request):
 
 
 @api_view(["GET"])
-# @permission_classes([IsAuthenticated])
-@permission_classes([AllowAny])
 def get_courseInfo_by_id(request, id):
     response = []
     keywords = []
@@ -221,7 +232,6 @@ def get_courseInfo_by_id(request, id):
 
 
 @api_view(["POST"])
-@permission_classes([IsAuthenticated])
 def enroll_course(request):
     data = json.loads(request.body)
     uid = data["uid"]
@@ -246,7 +256,13 @@ def enroll_course(request):
                     course.save()
             semester = instance.semester
             student.enroll.connect(
-                instance, {"enroll_semester": semester, "selected_time": selectedTimeID, "passed": passed})
+                instance,
+                {
+                    "enroll_semester": semester,
+                    "selected_time": selectedTimeID,
+                    "passed": passed,
+                },
+            )
             add_has_next(student, instance)
             calculate_student_embedding(student)
 
@@ -257,21 +273,20 @@ def enroll_course(request):
         if not selectedTimeID:
             student.enroll.disconnect(instance)
             response = {"massage": "unenroll course successfully."}
-            return JsonResponse(response,  safe=False, status=status.HTTP_200_OK)
+            return JsonResponse(response, safe=False, status=status.HTTP_200_OK)
         enroll_rel = student.enroll.relationship(instance)
         if selectedTimeID != enroll_rel.selected_time:
             enroll_rel.selected_time = selectedTimeID
             enroll_rel.save()
             response = {"massage": "enroll course successfully."}
-            return JsonResponse(response,  safe=False, status=status.HTTP_200_OK)
+            return JsonResponse(response, safe=False, status=status.HTTP_200_OK)
         response = {"error": "you have already enrolled this course "}
         return JsonResponse(response, safe=False, status=status.HTTP_409_CONFLICT)
     response = {"massage": "enroll course successfully."}
-    return JsonResponse(response,  safe=False, status=status.HTTP_200_OK)
+    return JsonResponse(response, safe=False, status=status.HTTP_200_OK)
 
 
 @api_view(["POST"])
-@permission_classes([IsAuthenticated])
 def unenroll_course(request):
     data = json.loads(request.body)
     uid = data["uid"]
@@ -288,11 +303,10 @@ def unenroll_course(request):
         return JsonResponse(response, safe=False, status=status.HTTP_409_CONFLICT)
 
     response = {"massage": "unenroll course successfully."}
-    return JsonResponse(response,  safe=False, status=status.HTTP_200_OK)
+    return JsonResponse(response, safe=False, status=status.HTTP_200_OK)
 
 
 @api_view(["POST"])
-@permission_classes([IsAuthenticated])
 def change_course_pass_state(request):
     data = json.loads(request.body)
     uid = data["uid"]
@@ -339,11 +353,10 @@ def change_course_pass_state(request):
 
 @csrf_exempt
 def pass_course(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         try:
             data = json.loads(request.body)
             for item in data:
-
                 user_name = item["user_name"]
                 course_id = item["course_id"]
                 passed = item["passed"]
@@ -366,28 +379,26 @@ def pass_course(request):
                     calculate_student_embedding(student)
                     add_has_next(student, instance)
 
-            response = {
-                "massage": "update passed status successfully."}
+            response = {"massage": "update passed status successfully."}
             return JsonResponse(response, status=200, safe=False)
 
         except Exception as e:
             response = {
                 "message": "an error occurred while updating passed status",
-                "error": e
+                "error": e,
             }
             return JsonResponse(response, status=500, safe=False)
 
-    response_data = {'error': 'Invalid request method.'}
+    response_data = {"error": "Invalid request method."}
     return JsonResponse(response_data, status=405)
 
 
 @csrf_exempt
 def undo_pass(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         try:
             data = json.loads(request.body)
             for item in data:
-
                 user_name = item["user_name"]
                 course_id = item["course_id"]
                 passed = item["passed"]
@@ -406,23 +417,21 @@ def undo_pass(request):
                 calculate_student_embedding(student)
                 delete_has_next(student, instance)
 
-            response = {
-                "massage": "update passed status successfully."}
+            response = {"massage": "update passed status successfully."}
             return JsonResponse(response, status=200, safe=False)
 
         except Exception as e:
             response = {
                 "message": "an error occurred while updating passed status",
-                "error": e
+                "error": e,
             }
             return JsonResponse(response, status=500, safe=False)
 
-    response_data = {'error': 'Invalid request method.'}
+    response_data = {"error": "Invalid request method."}
     return JsonResponse(response_data, status=405)
 
 
 @api_view(["POST"])
-@permission_classes([IsAuthenticated])
 def rate_course(request):
     data = json.loads(request.body)
     uid = data["uid"]
@@ -447,7 +456,7 @@ def rate_course(request):
 
 @csrf_exempt
 def add_to_blaclist(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         try:
             data = json.loads(request.body)
 
@@ -469,17 +478,17 @@ def add_to_blaclist(request):
         except:
             response = {
                 "message": "an error occurred while adding to blacklist",
-                "error": Exception
+                "error": Exception,
             }
             return JsonResponse(response, status=500, safe=False)
 
-    response_data = {'error': 'Invalid request method.'}
+    response_data = {"error": "Invalid request method."}
     return JsonResponse(response_data, status=405)
 
 
 @csrf_exempt
 def remove_from_blaclist(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         try:
             data = json.loads(request.body)
 
@@ -497,9 +506,9 @@ def remove_from_blaclist(request):
         except:
             response = {
                 "message": "an error occurred while adding to blacklist",
-                "error": Exception
+                "error": Exception,
             }
             return JsonResponse(response, status=500, safe=False)
 
-    response_data = {'error': 'Invalid request method.'}
+    response_data = {"error": "Invalid request method."}
     return JsonResponse(response_data, status=405)

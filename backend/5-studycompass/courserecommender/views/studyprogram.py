@@ -26,7 +26,6 @@ study_program_directory = os.path.abspath(
 
 
 @api_view(["GET"])
-@permission_classes([AllowAny])
 def get_all_studyprogram(request):
     response = []
     studyprgrams = Study_program.nodes.all()
@@ -41,7 +40,6 @@ def get_all_studyprogram(request):
 
 
 @api_view(["GET"])
-@permission_classes([AllowAny])
 def get_semester_and_study_program_data(request):
     with open(semester_directory) as f_1:
         semester_data = json.load(f_1)

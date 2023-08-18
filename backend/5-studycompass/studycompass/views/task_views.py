@@ -8,7 +8,7 @@ from ..celery_tasks.tasks import scrape_lsf_task
 
 
 @api_view(["POST"])
-@permission_classes([AllowAny])
+
 def scrape_lsf(request):
     data = JSONParser().parse(request)
     url = data.get("url")
