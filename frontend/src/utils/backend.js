@@ -63,7 +63,7 @@ export const updateUser = async (updatedData) => {
 
 export const getSemesterStudyProgramList = async () => {
   try {
-    const response = await Backend.get("/auth/semester-study-program-list/");
+    const response = await Backend.get("/course-recommender/semester-study-program-list/");
     const {
       data: {
         message: { semester_data, study_programs },

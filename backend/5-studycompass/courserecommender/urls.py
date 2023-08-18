@@ -36,6 +36,11 @@ urlpatterns = [
         "change-student-setting/", change_student_setting, name="change-student-setting"
     ),
     # Study program
+    path(
+        "semester-study-program-list/",
+        get_semester_and_study_program_data,
+        name="semester-list",
+    ),
     path("studyprograms/", get_all_studyprogram, name="studyprograms"),
     # Recommendations
     path("recommendations/", generate_recommendations, name="recommendations"),
