@@ -16,6 +16,15 @@ const projectsInfo = [
       "The project idea is to provide a platform for students at the University of Duisburg-Essen to select the university's courses within a few easy steps. Furthermore, the platform lets students easily make a schedule by observing various details such as overlapping course schedules, ratings of the courses, and links to LSF.",
   },
   {
+    name: "Study Compass Copy",
+    image: studyCompassImg,
+    shortName: "study-compass-copy",
+    teamMembers:
+      "Fan Ouyang",
+    description:
+      "The project idea is to provide a platform for students at the University of Duisburg-Essen to select the university's courses within a few easy steps. Furthermore, the platform lets students easily make a schedule by observing various details such as overlapping course schedules, ratings of the courses, and links to LSF.",
+  },
+  {
     name: "E3 Selector",
     image: e3SelectorImg,
     shortName: "e3-selector",
@@ -100,6 +109,6 @@ const projectsInfo = [
   //   description:
   //     "The idea of the project is to develop an social web application aimed to face the hardship in making new connections between students and finding group members for specific courses",
   // },
-];
+]
 
-export default projectsInfo;
+export default projectsInfo

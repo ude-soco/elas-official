@@ -3,7 +3,7 @@ import { Backend, setAuthToken } from "../../../../utils/apiConfig";
 export const getStudyPrograms = async () => {
   try {
     setAuthToken(sessionStorage.getItem("elas-token"));
-    const response = await Backend.get("/studycompass/get-studyprograms/");
+    const response = await Backend.get("/app/studycompass/get-studyprograms/");
     const {
       data: { message },
     } = response;

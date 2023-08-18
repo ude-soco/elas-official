@@ -1,40 +1,89 @@
-import React, { useEffect, useState } from 'react'
-import { CircularProgress, Grid, Pagination, Typography } from '@mui/material'
+import React, { useState, useEffect, useMemo } from 'react'
 import CourseCard from './CourseCard'
+import { Grid, Pagination, Typography, CircularProgress } from '@mui/material'
 
 const cardsPerPage = 8
 
-export default function CourseList({
+const CourseListNew = ({
+  courses,
+  workload,
+  setWorkload,
   currentPage,
   setCurrentPage,
-  e3Courses,
+  searchCourse,
   filters,
   order,
-  rows,
-  searchCourse,
-  handleAddCourseToList,
-}) {
-  // const [currentPage, setCurrentPage] = useState(1);
+  selectedCourses,
+  setSelectedCourses,
+  currentSchedule,
+  setCurrentSchedule,
+  selectedProgram,
+  tabValue,
+  hideFilter,
+  duration,
+  swsValue,
+}) => {
   const [totalPages, setTotalPages] = useState(1)
   const [displayedCourses, setDisplayedCourses] = useState([])
-
   const handlePageChange = (event, value) => {
     setCurrentPage(value)
   }
+  const sortByRecommended = (courses) => {
+    let recommendedCourses = courses.filter(
+      (course) => course.recommendation.status === true
+    )
+    let sortedrecommendations = recommendedCourses.sort(
+      (a, b) => b.recommendation.weight - a.recommendation.weight
+    )
+    let popularCourse = courses
+      .filter(
+        (course) =>
+          !recommendedCourses.includes(course) &&
+          course.popularity.status === true
+      )
+      .sort(
+        (a, b) => b.popularity.passed_students - a.popularity.passed_students
+      )
+    let remainingCourse = courses
+      .filter(
+        (course) =>
+          !recommendedCourses.includes(course) &&
+          !popularCourse.includes(course)
+      )
+      .sort((a, b) => a.name.localeCompare(b.name))
+    let newCourses = [
+      ...sortedrecommendations,
+      ...popularCourse,
+      ...remainingCourse,
+    ]
+    return newCourses
+  }
 
   useEffect(() => {
-    if (searchCourse !== '') {
-      const foundList = e3Courses.filter((course) =>
-        course.course_name.toLowerCase().includes(searchCourse.toLowerCase())
+    if (order == 'asc') {
+      courses.sort((a, b) => a.name.localeCompare(b.name))
+    }
+    if (order == 'desc') {
+      courses.sort((a, b) => b.name.localeCompare(a.name))
+    }
+    if (order == 'default') {
+      courses = sortByRecommended(courses)
+    }
+
+    if (selectedProgram) {
+      courses = courses.filter((course) =>
+        course.belonged_studyprograms.includes(selectedProgram.name)
       )
-      // if (currentPage !== 1) {
-      //   setCurrentPage(1);
-      // }
+    }
+    if (searchCourse !== '') {
+      const foundList = courses.filter((course) =>
+        course.name.toLowerCase().includes(searchCourse.toLowerCase())
+      )
       let filteredCourses = filterCourses(foundList, filters)
       setDisplayedCourses(filteredCourses.slice(currentPage - 1, cardsPerPage))
       setTotalPages(Math.ceil(filteredCourses.length / cardsPerPage))
     } else {
-      let filteredCourses = filterCourses(e3Courses, filters)
+      let filteredCourses = filterCourses(courses, filters)
       setDisplayedCourses(
         filteredCourses.slice(
           (currentPage - 1) * cardsPerPage,
@@ -43,8 +92,14 @@ export default function CourseList({
       )
       setTotalPages(Math.ceil(filteredCourses.length / cardsPerPage))
     }
-  }, [e3Courses[0].course_name, filters, order, searchCourse, currentPage])
-
+  }, [
+    searchCourse,
+    currentPage,
+    courses[0].name,
+    filters,
+    order,
+    selectedProgram,
+  ])
   function filterCourses(courses, filters) {
     return courses.filter((course) => {
       // Filter by weekdays
@@ -52,7 +107,7 @@ export default function CourseList({
       if (filters.weekdays.length !== 0) {
         weekdayFilter = filters.weekdays.some((weekday) => {
           return course.timetable.some((timetableEntry) => {
-            return timetableEntry.day === weekday.day
+            return timetableEntry.day === `${weekday.day}.`
           })
         })
       }
@@ -80,8 +135,8 @@ export default function CourseList({
           for (const timetableEntry of course.timetable) {
             if (
               timeInRange(
-                timetableEntry.start_time,
-                timetableEntry.end_time,
+                timetableEntry.time.from,
+                timetableEntry.time.to,
                 filterStartTime,
                 filterEndTime
               )
@@ -94,79 +149,85 @@ export default function CourseList({
 
         startingTimeRange = courseFallsInTimeRange(course, filters)
       }
-
       // Filter by SWS
       let swsFilter = true
       if (course.sws !== '') {
         swsFilter = Boolean(filters.sws >= parseInt(course.sws))
       }
-
-      // Filter by Credits
-      let creditFilter = true
-      if (course.credits !== '') {
-        creditFilter = Boolean(
-          filters.credits >= parseInt(parseInt(course.credits))
-        )
-      }
-
       // Filter by event types
       let eventTypeFilter = true
       if (filters.events.length !== 0) {
-        eventTypeFilter = filters.events.some(
-          (event) => course.type === event.type
+        eventTypeFilter = filters.events.some((event) =>
+          course.subject_type?.includes(event.event)
         )
       }
-
-      // Filter by catalogs
-      let catalogFilter = true
-      if (filters.catalogs.length !== 0) {
-        catalogFilter = filters.catalogs.some(
-          (catalog) => course.catalog === catalog.catalog
-        )
-      }
-
       // Filter by languages
       let languageFilter = true
       if (filters.languages.length !== 0) {
-        languageFilter = filters.languages.some(
-          (lang) => course.language === lang.language
-        )
+        languageFilter = filters.languages.some((lang) => {
+          switch (course.language) {
+            case 'Englisch':
+              if (lang.language === 'English') {
+                return true
+              }
+              break
+            case 'Deutsch':
+              if (lang.language === 'German') {
+                return true
+              }
+              break
+            case 'mehrsprachig':
+              if (lang.language === 'Multilingual') {
+                return true
+              }
+              break
+            default:
+              if (lang.language === 'Other') {
+                return true
+              }
+          }
+        })
       }
-
-      // Filter by locations
-      let locationFilter = true
-      if (filters.locations.length !== 0) {
-        locationFilter = filters.locations.some(
-          (loc) => course.location === loc.location
-        )
+      // Filter by passed state
+      let hidePassedFilter = true
+      if ('passed' in course) {
+        if (filters.hidePassed) {
+          hidePassedFilter = !course.passed ? true : false
+        }
       }
 
       // Return true if all filter conditions are met
       return (
         weekdayFilter &&
         eventTypeFilter &&
-        catalogFilter &&
         languageFilter &&
-        locationFilter &&
         swsFilter &&
-        creditFilter &&
-        startingTimeRange
+        startingTimeRange &&
+        hidePassedFilter
       )
     })
   }
-
   return (
     <>
-      {e3Courses.length !== 1 ? (
+      {courses.length !== 1 ? (
         displayedCourses.length !== 0 ? (
           <>
             <Grid container spacing={3} sx={{ pt: 4 }}>
-              {displayedCourses?.map((course) => (
+              {displayedCourses.map((course) => (
                 <Grid item xs={12} sm={6} lg={3} key={course.id}>
                   <CourseCard
-                    rows={rows}
                     course={course}
-                    handleAddCourseToList={handleAddCourseToList}
+                    workload={workload}
+                    setWorkload={setWorkload}
+                    selectedCourses={selectedCourses}
+                    filters={filters}
+                    order={order}
+                    selectedProgram={selectedProgram}
+                    tabValue={tabValue}
+                    currentPage={currentPage}
+                    hideFilter={hideFilter}
+                    duration={duration}
+                    swsValue={swsValue}
                   />
                 </Grid>
               ))}
@@ -202,3 +263,5 @@ export default function CourseList({
     </>
   )
 }
+
+export default CourseListNew

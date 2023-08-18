@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react";
 import {
   Alert,
   Button,
@@ -7,11 +7,11 @@ import {
   Snackbar,
   Tooltip,
   Typography,
-} from '@mui/material'
-import CheckCircleIcon from '@mui/icons-material/CheckCircle'
-import WarningIcon from '@mui/icons-material/Warning'
-import TodayIcon from '@mui/icons-material/Today'
-import { v4 as uuidv4 } from 'uuid'
+} from "@mui/material";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import WarningIcon from "@mui/icons-material/Warning";
+import TodayIcon from "@mui/icons-material/Today";
+import { v4 as uuidv4 } from "uuid";
 
 const SemesterOverview = ({
   handleOpenSchedule,
@@ -19,38 +19,38 @@ const SemesterOverview = ({
   selectedCourses,
   setCurrentSchedule,
 }) => {
-  const [conflicts, setConflicts] = useState([])
-  const [conflictFeedback, setConflictFeedback] = useState(false)
-  const [resolveFeedback, setResolveFeedback] = useState(false)
+  const [conflicts, setConflicts] = useState([]);
+  const [conflictFeedback, setConflictFeedback] = useState(false);
+  const [resolveFeedback, setResolveFeedback] = useState(false);
 
   useEffect(() => {
     if (selectedCourses.length !== 0) {
-      let schedule = isOverlapping(selectedCourses)
+      let schedule = isOverlapping(selectedCourses);
       if (schedule.conflicts.length !== 0) {
-        setConflictFeedback((prevState) => !prevState)
+        setConflictFeedback((prevState) => !prevState);
       } else if (schedule.conflicts.length === 0 && conflictFeedback) {
-        setConflictFeedback((prevState) => !prevState)
-        setResolveFeedback((prevState) => !prevState)
+        setConflictFeedback((prevState) => !prevState);
+        setResolveFeedback((prevState) => !prevState);
       }
-      setConflicts(schedule.conflicts)
-      setCurrentSchedule(schedule.newSchedule)
+      setConflicts(schedule.conflicts);
+      setCurrentSchedule(schedule.newSchedule);
     } else {
-      setCurrentSchedule([])
+      setCurrentSchedule([]);
     }
-  }, [selectedCourses])
+  }, [selectedCourses]);
 
   const overlapping = (a, b) => {
-    let aFrom = new Date(a.startDate)
-    let aTo = new Date(a.endDate)
-    let bFrom = new Date(b.startDate)
-    let bTo = new Date(b.endDate)
+    let aFrom = new Date(a.startDate);
+    let aTo = new Date(a.endDate);
+    let bFrom = new Date(b.startDate);
+    let bTo = new Date(b.endDate);
     if ((aFrom >= bFrom && aFrom < bTo) || (aTo > bFrom && aTo < bTo)) {
-      return true
+      return true;
     }
-  }
-  console.log(selectedCourses)
+  };
+
   const isOverlapping = (selectedCourses) => {
-    let tempSchedule = []
+    let tempSchedule = [];
     selectedCourses.forEach((course) => {
       course.selectedTime.value.dates.forEach((date) => {
         tempSchedule.push({
@@ -60,12 +60,12 @@ const SemesterOverview = ({
           startDate: date.startDate,
           endDate: date.endDate,
           title: course.name,
-          color: 'green',
-        })
-      })
-    })
+          color: "green",
+        });
+      });
+    });
 
-    let conflicts = []
+    let conflicts = [];
     tempSchedule.forEach((current) => {
       tempSchedule.forEach((validateDate) => {
         if (current.timeId !== validateDate.timeId) {
@@ -73,23 +73,23 @@ const SemesterOverview = ({
             if (!conflicts.some((item) => item.id === validateDate.id)) {
               let tempValidateDate = {
                 ...validateDate,
-                color: 'red',
-              }
-              conflicts.push(tempValidateDate)
+                color: "red",
+              };
+              conflicts.push(tempValidateDate);
             }
           }
         }
-      })
-    })
+      });
+    });
 
     const filteredCurrentSchedule = tempSchedule.filter(
       (elem) => !conflicts.find(({ id }) => elem.id === id)
-    )
+    );
 
-    let newSchedule = [...filteredCurrentSchedule, ...conflicts]
+    let newSchedule = [...filteredCurrentSchedule, ...conflicts];
 
-    return { conflicts, newSchedule }
-  }
+    return { conflicts, newSchedule };
+  };
 
   return (
     <>
@@ -112,7 +112,8 @@ const SemesterOverview = ({
                 <Grid item style={{ width: 24 }}>
                   <Typography
                     color="textSecondary"
-                    style={{ fontWeight: 'bold' }}>
+                    style={{ fontWeight: "bold" }}
+                  >
                     Hours weekly load
                   </Typography>
                 </Grid>
@@ -125,15 +126,16 @@ const SemesterOverview = ({
                   <Grid item style={{ paddingTop: 4, marginRight: 8 }}>
                     <CheckCircleIcon
                       fontSize="large"
-                      style={{ color: 'green' }}
+                      style={{ color: "green" }}
                     />
                   </Grid>
                   <Grid item>
                     <Button
-                      style={{ backgroundColor: '#FB9B0E', color: 'white' }}
+                      style={{ backgroundColor: "#FB9B0E", color: "white" }}
                       startIcon={<TodayIcon />}
                       variant="contained"
-                      onClick={handleOpenSchedule}>
+                      onClick={handleOpenSchedule}
+                    >
                       Calender
                     </Button>
                   </Grid>
@@ -141,7 +143,8 @@ const SemesterOverview = ({
                     <Typography
                       color="textSecondary"
                       align="center"
-                      style={{ fontWeight: 'bold' }}>
+                      style={{ fontWeight: "bold" }}
+                    >
                       No schedule overlaps
                     </Typography>
                   </Grid>
@@ -149,22 +152,24 @@ const SemesterOverview = ({
               ) : (
                 <Grid container justifyContent="center" alignItems="center">
                   <Grid item style={{ paddingTop: 4, marginRight: 8 }}>
-                    <WarningIcon fontSize="large" style={{ color: 'red' }} />
+                    <WarningIcon fontSize="large" style={{ color: "red" }} />
                   </Grid>
                   <Grid item>
                     <Tooltip
                       arrow
                       title={
                         <Typography>
-                          {' '}
-                          Click here to fix schedule overlapping!{' '}
+                          {" "}
+                          Click here to fix schedule overlapping!{" "}
                         </Typography>
-                      }>
+                      }
+                    >
                       <Button
-                        style={{ backgroundColor: 'red', color: 'white' }}
+                        style={{ backgroundColor: "red", color: "white" }}
                         startIcon={<TodayIcon />}
                         variant="contained"
-                        onClick={handleOpenSchedule}>
+                        onClick={handleOpenSchedule}
+                      >
                         Calender
                       </Button>
                     </Tooltip>
@@ -173,7 +178,8 @@ const SemesterOverview = ({
                     <Typography
                       color="textSecondary"
                       align="center"
-                      style={{ fontWeight: 'bold' }}>
+                      style={{ fontWeight: "bold" }}
+                    >
                       Schedule overlapped!
                     </Typography>
                   </Grid>
@@ -217,8 +223,9 @@ const SemesterOverview = ({
 
       <Snackbar
         open={conflictFeedback}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}>
-        <Alert severity="error" style={{ backgroundColor: '#FFDCD4' }}>
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      >
+        <Alert severity="error" style={{ backgroundColor: "#FFDCD4" }}>
           Schedule conflicts detected! Check schedule!
         </Alert>
       </Snackbar>
@@ -227,11 +234,12 @@ const SemesterOverview = ({
         open={resolveFeedback}
         onClose={() => setResolveFeedback((prevState) => !prevState)}
         autoHideDuration={3000}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}>
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      >
         <Alert>Conflicts resolved!</Alert>
       </Snackbar>
     </>
-  )
-}
+  );
+};
 
-export default SemesterOverview
+export default SemesterOverview;

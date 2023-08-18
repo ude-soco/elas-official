@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState } from 'react'
 import {
   Routes,
   Route,
   Navigate,
   useNavigate,
   useLocation,
-} from "react-router-dom";
+} from 'react-router-dom'
 import {
   AppBar,
   Avatar,
@@ -25,7 +25,7 @@ import {
   Menu,
   MenuItem,
   Paper,
-} from "@mui/material";
+} from '@mui/material'
 import {
   Settings as SettingsIcon,
   Logout as LogoutIcon,
@@ -35,10 +35,10 @@ import {
   Key as KeyIcon,
   MenuBook as MenuBookIcon,
   KeyboardArrowDown as KeyboardArrowDownIcon,
-} from "@mui/icons-material";
-import { signOut } from "./utils/backend";
-import elasLogo from "./assets/images/elas-logo.png";
-import Home from "./pages/Home";
+} from '@mui/icons-material'
+import { signOut } from './utils/backend'
+import elasLogo from './assets/images/elas-logo.png'
+import Home from './pages/Home'
 import {
   ScrapeDataSection,
   ProfileSettingsSection,
@@ -56,10 +56,12 @@ import CourseMatch from "./pages/Projects/CourseMatch/CourseMatch";
 import Intogen from "./pages/Projects/Intogen/Intogen";
 import NoteBot from "./pages/Projects/NoteBot/NoteBot";
 import { SnackbarProvider } from "notistack";
+import CourseDetail from './pages/Projects/StudyCompassCopy/components/CoueseDetail'
+import StudyCompassNew from './pages/Projects/StudyCompassCopy/StudyCompassNew'
 
 export default function AppRoutes() {
-  const login = !!sessionStorage.getItem("elas-token");
-  const location = useLocation();
+  const login = !!sessionStorage.getItem('elas-token')
+  const location = useLocation()
   const showNavBar =
     location.pathname === "/" ||
     location.pathname.startsWith("/projects/") ||
@@ -75,6 +77,10 @@ export default function AppRoutes() {
       <Route path="study-compass">
         <Route index element={<StudyCompass />} />
       </Route>
+      <Route path="study-compass-copy">
+        <Route index element={<StudyCompassNew />} />
+        <Route path="detail" element={<CourseDetail />} />
+      </Route>
       <Route path="project-finder">
         <Route index element={<ProjectFinder />} />
       </Route>
@@ -88,7 +94,7 @@ export default function AppRoutes() {
         <Route index element={<NoteBot />} />
       </Route>
     </Route>
-  );
+  )
 
   return (
     <SnackbarProvider maxSnack={3}>
@@ -113,62 +119,61 @@ export default function AppRoutes() {
           </>
         )}
 
-        <Route path="*" element={<Navigate to={"/"} replace />} />
+        <Route path="*" element={<Navigate to={'/'} replace />} />
       </Routes>
     </SnackbarProvider>
-  );
+  )
 }
 
 const NavBar = () => {
-  const navigate = useNavigate();
-  const accessToken = !!sessionStorage.getItem("elas-token");
+  const navigate = useNavigate()
+  const accessToken = !!sessionStorage.getItem('elas-token')
   const isAdmin =
-    JSON.parse(sessionStorage.getItem("elas-user"))?.is_staff || false;
-  const [menu, setMenu] = useState(null);
+    JSON.parse(sessionStorage.getItem('elas-user'))?.is_staff || false
+  const [menu, setMenu] = useState(null)
 
   const handleSignOut = async () => {
-    await signOut();
-  };
+    await signOut()
+  }
 
   const handleViewProfileSettings = () => {
-    sessionStorage.setItem("elas-settings", "profile");
-    navigate("/settings");
-    setMenu(null);
-  };
+    sessionStorage.setItem('elas-settings', 'profile')
+    navigate('/settings')
+    setMenu(null)
+  }
 
   const handleViewSchedule = () => {
-    navigate("/schedule");
-    setMenu(null);
-  };
+    navigate('/schedule')
+    setMenu(null)
+  }
 
   const handleHomeView = () => {
-    sessionStorage.removeItem("elas-settings");
-    navigate("/");
-  };
+    sessionStorage.removeItem('elas-settings')
+    navigate('/')
+  }
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: "white" }}>
+    <AppBar position="static" sx={{ backgroundColor: 'white' }}>
       <Toolbar>
         <Box
           component="img"
           src={elasLogo}
-          sx={{ height: 32, cursor: "pointer" }}
+          sx={{ height: 32, cursor: 'pointer' }}
           onClick={handleHomeView}
         />
         <Box sx={{ flexGrow: 1 }} />
         {accessToken ? (
           <>
             <Box
-              sx={{ cursor: "pointer" }}
-              onClick={(event) => setMenu(event.currentTarget)}
-            >
+              sx={{ cursor: 'pointer' }}
+              onClick={(event) => setMenu(event.currentTarget)}>
               <Grid container alignItems="center">
                 <Grid item>
-                  <Avatar sx={{ bgcolor: "primary.main" }} />
+                  <Avatar sx={{ bgcolor: 'primary.main' }} />
                 </Grid>
                 <Grid item>
                   <KeyboardArrowDownIcon
-                    sx={{ fontSize: "2.5rem", mt: 1, color: "primary.main" }}
+                    sx={{ fontSize: '2.5rem', mt: 1, color: 'primary.main' }}
                   />
                 </Grid>
               </Grid>
@@ -178,10 +183,9 @@ const NavBar = () => {
               anchorEl={menu}
               open={Boolean(menu)}
               onClose={() => setMenu(null)}
-              anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-              transformOrigin={{ vertical: "top", horizontal: "right" }}
-            >
-              <Box sx={{ width: "100%", minWidth: 170 }}>
+              anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+              transformOrigin={{ vertical: 'top', horizontal: 'right' }}>
+              <Box sx={{ width: '100%', minWidth: 170 }}>
                 {/* <MenuItem>
                   <ListItemIcon sx={{ mr: 1 }}>
                     <PersonIcon />
@@ -216,42 +220,41 @@ const NavBar = () => {
             </Menu>
           </>
         ) : (
-          <Button variant="contained" onClick={() => navigate("/sign-in")}>
+          <Button variant="contained" onClick={() => navigate('/sign-in')}>
             Login
           </Button>
         )}
       </Toolbar>
     </AppBar>
-  );
-};
+  )
+}
 
 function Settings() {
-  const [openSettingsMenu, setOpenSettingsMenu] = useState(true);
+  const [openSettingsMenu, setOpenSettingsMenu] = useState(true)
   const [selected, setSelected] = useState(
-    sessionStorage.getItem("elas-settings") || "profile"
-  );
+    sessionStorage.getItem('elas-settings') || 'profile'
+  )
   const isAdmin =
-    JSON.parse(sessionStorage.getItem("elas-user")).is_staff || false;
+    JSON.parse(sessionStorage.getItem('elas-user')).is_staff || false
 
   const handleOpenSettingsMenu = () => {
-    setOpenSettingsMenu(!openSettingsMenu);
-  };
+    setOpenSettingsMenu(!openSettingsMenu)
+  }
 
   const handleListItemClick = (index) => {
-    setSelected(index);
-    sessionStorage.setItem("elas-settings", index);
-  };
+    setSelected(index)
+    sessionStorage.setItem('elas-settings', index)
+  }
 
   return (
     <Grid container justifyContent="center" sx={{ p: 4 }}>
-      <Grid item sx={{ maxWidth: "1000px", width: "100%" }}>
+      <Grid item sx={{ maxWidth: '1000px', width: '100%' }}>
         <Grid container spacing={2}>
           <Grid
             item
             sx={{
-              width: { xs: "100%", sm: "30%", lg: "20%" },
-            }}
-          >
+              width: { xs: '100%', sm: '30%', lg: '20%' },
+            }}>
             <Grid container spacing={2}>
               <Grid item xs>
                 <Paper>
@@ -263,27 +266,24 @@ function Settings() {
                           <Grid item>
                             <IconButton
                               size="small"
-                              onClick={handleOpenSettingsMenu}
-                            >
+                              onClick={handleOpenSettingsMenu}>
                               <KeyboardArrowDownIcon
                                 sx={{
                                   transform: !openSettingsMenu
-                                    ? "rotate(180deg)"
-                                    : "",
-                                  transition: "transform 0.3s",
+                                    ? 'rotate(180deg)'
+                                    : '',
+                                  transition: 'transform 0.3s',
                                 }}
                               />
                             </IconButton>
                           </Grid>
                         </Grid>
                       </ListSubheader>
-                    }
-                  >
+                    }>
                     <Collapse in={openSettingsMenu}>
                       <ListItemButton
-                        selected={selected === "profile"}
-                        onClick={() => handleListItemClick("profile")}
-                      >
+                        selected={selected === 'profile'}
+                        onClick={() => handleListItemClick('profile')}>
                         <ListItemIcon>
                           <PersonIcon />
                         </ListItemIcon>
@@ -292,9 +292,8 @@ function Settings() {
 
                       {isAdmin && (
                         <ListItemButton
-                          selected={selected === "scrape"}
-                          onClick={() => handleListItemClick("scrape")}
-                        >
+                          selected={selected === 'scrape'}
+                          onClick={() => handleListItemClick('scrape')}>
                           <ListItemIcon>
                             <SimCardDownloadIcon />
                           </ListItemIcon>
@@ -305,9 +304,8 @@ function Settings() {
                       {!isAdmin && (
                         <>
                           <ListItemButton
-                            selected={selected === "study"}
-                            onClick={() => handleListItemClick("study")}
-                          >
+                            selected={selected === 'study'}
+                            onClick={() => handleListItemClick('study')}>
                             <ListItemIcon>
                               <MenuBookIcon />
                             </ListItemIcon>
@@ -315,9 +313,8 @@ function Settings() {
                           </ListItemButton>
 
                           <ListItemButton
-                            selected={selected === "password"}
-                            onClick={() => handleListItemClick("password")}
-                          >
+                            selected={selected === 'password'}
+                            onClick={() => handleListItemClick('password')}>
                             <ListItemIcon>
                               <KeyIcon />
                             </ListItemIcon>
@@ -335,18 +332,17 @@ function Settings() {
           <Grid
             item
             sx={{
-              width: { xs: "100%", sm: "70%", lg: "80%" },
-            }}
-          >
+              width: { xs: '100%', sm: '70%', lg: '80%' },
+            }}>
             <Paper sx={{ p: 3 }}>
-              {selected === "profile" && <ProfileSettingsSection />}
-              {selected === "scrape" && <ScrapeDataSection />}
-              {selected === "study" && <StudySettingsSection />}
-              {selected === "password" && <PasswordSettingsSection />}
+              {selected === 'profile' && <ProfileSettingsSection />}
+              {selected === 'scrape' && <ScrapeDataSection />}
+              {selected === 'study' && <StudySettingsSection />}
+              {selected === 'password' && <PasswordSettingsSection />}
             </Paper>
           </Grid>
         </Grid>
       </Grid>
     </Grid>
-  );
+  )
 }

@@ -18,19 +18,24 @@ import CloseIcon from '@mui/icons-material/Close'
 import CreateIcon from '@mui/icons-material/Create'
 import FilterListIcon from '@mui/icons-material/FilterList'
 import { Collapse } from '@mui/material'
-import studyCompassLogo from '../../../../assets/images/studyCompass-logo.png'
+// import studyCompassLogo from '../../../../assets/images/study-compass.svg'
 import { getLectureUsingStudyProgramId } from '../utils/api'
 
-const CourseList = ({
-  courseList,
-  selectStudyProgram,
-  setStudyProgramsView,
-}) => {
+const CourseList = ({ courseList, studyProgram }) => {
   const [state, setState] = useState({
     courses: [],
     swsCount: 0,
     selectedCourses: [],
   })
+  // const [state, setState]=useState(
+  // localStorage.get("elas-schedule")?
+  // JSON.parse(localStorage.get("elas-schedule")):
+  // {
+  //     courses: [],
+  //     swsCount: 0,
+  //     selectedCourses: [],
+  //   })
+
   const [open, setOpen] = useState({
     schedule: false,
     filters: false,
@@ -45,7 +50,6 @@ const CourseList = ({
   const [currentSchedule, setCurrentSchedule] = useState([])
   const [resolveConflict, setResolveConflict] = useState('')
 
-  console.log(currentSchedule)
   useEffect(() => {
     if (state.courses.length === 0) {
       window.scrollTo({
@@ -57,7 +61,7 @@ const CourseList = ({
         courses: courseList,
       })
     }
-  }, [])
+  }, [courseList])
 
   const handleResolvedConflict = (courseId) => {
     setResolveConflict(courseId)
@@ -69,7 +73,9 @@ const CourseList = ({
       (item) => item.id === courseId
     )
     tempSelectedCourses[courseIndex].selectedTime = updates
-    setState({ ...state, selectedCourses: tempSelectedCourses })
+    let temp = { ...state, selectedCourses: tempSelectedCourses }
+    setState(temp)
+    // localStorage.setItem("elas-schedule",JSON.stringify(temp))
   }
 
   const handleSortCourses = (sortedCourses) => {
@@ -127,15 +133,15 @@ const CourseList = ({
     setOpen({ ...open, filters: open.filters ? false : event.currentTarget })
     setFilterSelections(filterData)
     let tempCourses = await prefilterCourses(
-      selectStudyProgram.id,
+      studyProgram,
       state.selectedCourses,
       filterData
     )
     setState({ ...state, courses: tempCourses })
   }
 
-  const prefilterCourses = async (studyProgramId, selectedCourses, filter) => {
-    const courses = await getLectureUsingStudyProgramId(studyProgramId)
+  const prefilterCourses = async (studyProgram, selectedCourses, filter) => {
+    const courses = await getLectureUsingStudyProgramId(studyProgram)
 
     let tempCourseLang = []
 
@@ -207,7 +213,7 @@ const CourseList = ({
         <Grid item xs style={{ paddingBottom: 30 }}>
           <Grid container justifyContent="space-between" alignItems="center">
             <Grid item>
-              <img src={studyCompassLogo} height="50" alt="StudyCompass Logo" />
+              {/* <img src={studyCompassLogo} height="50" alt="StudyCompass Logo" /> */}
             </Grid>
           </Grid>
         </Grid>
@@ -269,18 +275,8 @@ const CourseList = ({
                       justifyContent="flex-end">
                       <Grid item>
                         <Typography style={{ color: '#6D6D6D' }} align="right">
-                          Study program: <b>{selectStudyProgram.name}</b>
+                          Study program: <b>{studyProgram}</b>
                         </Typography>
-                      </Grid>
-                      <Grid item>
-                        <Tooltip
-                          title={<Typography>Change study program</Typography>}
-                          arrow>
-                          <IconButton
-                            onClick={() => setStudyProgramsView(false)}>
-                            <CreateIcon />
-                          </IconButton>
-                        </Tooltip>
                       </Grid>
                     </Grid>
                   </Grid>
@@ -306,18 +302,8 @@ const CourseList = ({
                       justifyContent="flex-end">
                       <Grid item>
                         <Typography style={{ color: '#6D6D6D' }} align="right">
-                          Study program: <b>{selectStudyProgram.name}</b>
+                          Study program: <b>{studyProgram}</b>
                         </Typography>
-                      </Grid>
-                      <Grid item>
-                        <Tooltip
-                          title={<Typography>Change study program</Typography>}
-                          arrow>
-                          <IconButton
-                            onClick={() => setStudyProgramsView(false)}>
-                            <CreateIcon />
-                          </IconButton>
-                        </Tooltip>
                       </Grid>
                     </Grid>
                   </Grid>
