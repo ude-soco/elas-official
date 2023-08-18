@@ -18,7 +18,7 @@ spring:
         - id: ELAS-STUDYCOMPASS
           uri: lb://ELAS-STUDYCOMPASS
           predicates:
-            - Path=/api/studycompass/**
+            - Path=/api/studycompass/**, /api/course-recommender/**
         - id: ELAS-PROJECT-FINDER
           uri: lb://ELAS-PROJECT-FINDER
           predicates:

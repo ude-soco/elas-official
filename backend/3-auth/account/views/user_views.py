@@ -1,7 +1,9 @@
+import json
 from django.contrib.auth.hashers import check_password
 from django.db.utils import IntegrityError
 from django.http import JsonResponse
 from django.utils import timezone
+import requests
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.parsers import JSONParser
@@ -11,6 +13,8 @@ from rest_framework_simplejwt.token_blacklist.models import (
     OutstandingToken,
     BlacklistedToken,
 )
+
+from server.eureka_service import get_service_url
 
 # from courserecommender.models.student import Student
 
@@ -60,8 +64,14 @@ def user_login_view(request):
 
         if user and check_password(password, user.password):
             # TODO: Need to add the request to courserecommender app
-            # if not user.is_staff or not user.is_superuser:  # type: ignore
-                # student = Student.nodes.get(uid=user.id)
+            if not user.is_staff or not user.is_superuser:  # type: ignore
+                service_url = get_service_url("ELAS-STUDYCOMPASS")
+                student_data = requests.get(
+                    f"{service_url}/api/course-recommender/get-student/",
+                    json={"uid": str(user.id)},
+                )
+                print(student_data.text)
+                student = json.loads(student_data.text)
             user.last_login = timezone.now()
             user.save()
             refresh = RefreshToken.for_user(user)  # type: ignore
@@ -74,8 +84,8 @@ def user_login_view(request):
                             "last_name": user.last_name,
                             "username": user.username,
                             "email": user.email,
-                            # "study_program": student.study_program,  # type: ignore
-                            # "start_semester": student.start_semester,  # type: ignore
+                            "study_program": student["study_program"],  # type: ignore
+                            "start_semester": student["start_semester"],  # type: ignore
                         },
                         "refresh": str(refresh),
                         "access": str(refresh.access_token),
