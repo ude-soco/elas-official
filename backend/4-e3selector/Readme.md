@@ -61,3 +61,20 @@ Download the following software and install them on your machine:
   ```
 
 - (TODO) Get the full set of API requests in the Postman collection located under `backend\4-e3selector\docs\postman\e3selector-api.json`
+
+#### Scrape E3 Courses
+
+- Login with the following credentials.
+
+  ```bash
+  Username: admin
+  Password: 1q2w3e4R!
+  ```
+
+- After successful login, click the circle button at the top right corner, open the menu, and click `Settings`, and then `Scrape data` from the left sidebar.
+
+- Insert the E3 link in the `E3 URL` field and click the `Scrape E3` button.
+  ```bash
+  https://campus.uni-due.de/lsf/rds?state=wtree&search=1&trex=step&root120231=339240%7C340216%7C337161&P.vx=kurz
+  ```
+  This will scrape the SS2023 E3 Module courses and save them in the database.
