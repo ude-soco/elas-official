@@ -80,6 +80,7 @@
                 "sha256:92d6037539857d8206b8f6ae472e8b77db8058fec5937a1ef3f54304089edbb9"
             ],
             "markers": "python_version >= '3.6'",
+            "index": "pypi",
             "version": "==2023.7.22"
         },
         "cffi": {
@@ -1004,6 +1005,7 @@
                 "sha256:e7d8db41c0181c80d76c982aacc442c0783a2c54d6400fe028954201a2e032fe"
             ],
             "index": "pypi",
+            "markers": "python_version >= '3.8'",
             "version": "==6.3.3"
         },
         "tqdm": {
