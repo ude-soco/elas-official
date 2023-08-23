@@ -3,13 +3,12 @@ FROM python:3.10-slim AS python
 
 # Install dependencies
 ENV BUILD_DEPS "build-essential pkg-config libpq-dev"
-ENV RUNTIME_DEPS "curl wget"
 RUN --mount=type=cache,sharing=private,target=/var/cache/apt \
     --mount=type=cache,sharing=private,target=/var/lib/apt <<EOF
   rm -f /etc/apt/apt.conf.d/docker-clean
   echo 'Binary::apt::APT::Keep-Downloaded-Packages "true";' > /etc/apt/apt.conf.d/keep-cache
   DEBIAN_FRONTEND=noninteractive apt-get update -q &&
-  apt-get install -qq --no-install-recommends -o=Dpkg::Use-Pty=0 $BUILD_DEPS $RUNTIME_DEPS
+  apt-get install -qq --no-install-recommends -o=Dpkg::Use-Pty=0 $BUILD_DEPS
 EOF
 
 # Set up application user and directories
@@ -30,7 +29,7 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 COPY --chown=app:app Pipfile* .
 RUN  --mount=type=cache,sharing=private,target=/home/app/.cache/pip,uid=1000 \
      --mount=type=cache,sharing=private,target=/home/app/.cache/pipenv,uid=1000 <<EOF
-  pip install --no-color pipenv &&
+  pip install --no-color pipenv gunicorn &&
   pipenv install --deploy
 EOF
 
@@ -44,5 +43,5 @@ COPY --chown=app:app . ./
 
 # Run web application
 ENV GUNICORN_LOG_LEVEL info
-EXPOSE 8001
+EXPOSE 8004
 CMD ["bin/web"]
