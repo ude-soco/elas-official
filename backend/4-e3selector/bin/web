@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+echo "${0}: Migrating database ..."
+python manage.py migrate --noinput
+
+echo "${0}: Running application ..."
+python manage.py runserver
