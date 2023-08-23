@@ -22,6 +22,7 @@ wheel = "*"
 flower = "*"
 eventlet = "*"
 sparqlwrapper = "*"
+py-eureka-client = "*"
 
 [dev-packages]
 black = "*"
