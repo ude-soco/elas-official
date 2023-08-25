@@ -1,33 +1,6 @@
 server:
   port: ${PORT:8000}
 
-spring:
-  application:
-    name: API-GATEWAY
-
-  cloud:
-    gateway:
-      routes:
-        - id: ELAS-AUTH
-          uri: lb://ELAS-AUTH
-          predicates:
-            - Path=/api/auth/**
-        - id: ELAS-E3SELECTOR
-          uri: lb://ELAS-E3SELECTOR
-          predicates:
-            - Path=/api/e3selector/**
-        - id: ELAS-STUDYCOMPASS
-          uri: lb://ELAS-STUDYCOMPASS
-          predicates:
-            - Path=/api/studycompass/**, /api/course-recommender/**
-        - id: ELAS-PROJECT-FINDER
-          uri: lb://ELAS-PROJECT-FINDER
-          predicates:
-            - Path=/api/project-finder/**
-        - id: ELAS-NOTEBOT
-          uri: lb://ELAS-NOTEBOT
-          predicates:
-            - Path=/api/notebot/**
 eureka:
   instance:
     prefer-ip-address: true
@@ -36,3 +9,30 @@ eureka:
     register-with-eureka: true
     service-url:
       defaultZone: ${SERVICE_REGISTRY_URL:http://localhost:8761/eureka/}
+
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      routes:
+      - id: ELAS-AUTH
+        uri: lb://ELAS-AUTH
+        predicates:
+        - Path=/api/auth/**
+      - id: ELAS-E3SELECTOR
+        uri: lb://ELAS-E3SELECTOR
+        predicates:
+        - Path=/api/e3selector/**
+      - id: ELAS-STUDYCOMPASS
+        uri: lb://ELAS-STUDYCOMPASS
+        predicates:
+        - Path=/api/studycompass/**, /api/course-recommender/**
+      - id: ELAS-PROJECT-FINDER
+        uri: lb://ELAS-PROJECT-FINDER
+        predicates:
+        - Path=/api/project-finder/**
+      - id: ELAS-NOTEBOT
+        uri: lb://ELAS-NOTEBOT
+        predicates:
+        - Path=/api/notebot/**
