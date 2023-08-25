@@ -5,8 +5,6 @@ services:
     environment:
       PORT: 8761
       HOSTNAME: backend-1-service-registry
-    ports:
-    - 8761:8761
 
   backend-2-api-gateway:
     build: backend/2-api-gateway
@@ -27,8 +25,6 @@ services:
       DJANGO_SUPERUSER_USERNAME: admin
       DJANGO_SUPERUSER_EMAIL: admin@mail.com
       DJANGO_SUPERUSER_PASSWORD: 1q2w3e4R!
-    ports:
-    - 8001:8001
 
   backend-4-e3selector:
     build: backend/4-e3selector
@@ -40,5 +36,3 @@ services:
       DJANGO_SUPERUSER_USERNAME: admin
       DJANGO_SUPERUSER_EMAIL: admin@mail.com
       DJANGO_SUPERUSER_PASSWORD: 1q2w3e4R!
-    ports:
-    - 8004:8004
