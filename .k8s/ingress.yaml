@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: web
+  annotations:
+    kubernetes.io/tls-acme: "true"
+    traefik.ingress.kubernetes.io/redirect-entry-point: https
+    description: elas-official
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  rules:
+  - host: elas-official.soco.inko.cloud
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: 2-api-gateway
+            port:
+              number: 8761
+  tls:
+  - hosts:
+    - elas-official.soco.inko.cloud
+    secretName: web-tls-crt
