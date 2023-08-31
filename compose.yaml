@@ -1,0 +1,35 @@
+services:
+  backend-1-service-registry:
+    build: backend/1-service-registry
+    image: ${IMAGE_NAME_PREFIX:-socialcomputing/}elas-official-backend-1-service-registry:${IMAGE_TAG:-latest}
+    environment:
+      PORT: 8761
+      HOSTNAME: backend-1-service-registry
+
+  backend-2-api-gateway:
+    build: backend/2-api-gateway
+    image: ${IMAGE_NAME_PREFIX:-socialcomputing/}elas-official-backend-2-api-gateway:${IMAGE_TAG:-latest}
+    environment:
+      PORT: 8000
+      SERVICE_REGISTRY_URL: http://backend-1-service-registry:8761/eureka/
+    ports:
+    - 8000:8000
+
+  backend-3-auth:
+    build: backend/3-auth
+    image: ${IMAGE_NAME_PREFIX:-socialcomputing/}elas-official-backend-3-auth:${IMAGE_TAG:-latest}
+    environment:
+      PORT: 8001
+      EUREKA_HOST_NAME: backend-1-service-registry
+      EUREKA_PORT: 8761
+      DJANGO_SUPERUSER_USERNAME: admin
+      DJANGO_SUPERUSER_EMAIL: admin@mail.com
+      DJANGO_SUPERUSER_PASSWORD: 1q2w3e4R!
+
+  backend-4-e3selector:
+    build: backend/4-e3selector
+    image: ${IMAGE_NAME_PREFIX:-socialcomputing/}elas-official-backend-4-e3selector:${IMAGE_TAG:-latest}
+    environment:
+      PORT: 8004
+      EUREKA_HOST_NAME: backend-1-service-registry
+      EUREKA_PORT: 8761

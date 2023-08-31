@@ -1,11 +1,83 @@
-# To get started with Dependabot version updates, you'll need to specify which
-# package ecosystems to update and where the package manifests are located.
-# Please see the documentation for all configuration options:
-# https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
-
 version: 2
 updates:
-  - package-ecosystem: "npm" # See documentation for possible values
-    directory: "/frontend" # Location of package manifests
-    schedule:
-      interval: "weekly"
+- package-ecosystem: "github-actions"
+  directory: "/"
+  schedule:
+    interval: "weekly"
+
+- package-ecosystem: "docker"
+  directory: "/backend/1-service-registry"
+  schedule:
+    interval: "weekly"
+  labels:
+  - "dependencies"
+  - "docker"
+  - "backend/1-service-registry"
+
+- package-ecosystem: "maven"
+  directory: "/backend/1-service-registry"
+  schedule:
+    interval: "daily"
+  labels:
+  - "dependencies"
+  - "java"
+  - "backend/1-service-registry"
+
+- package-ecosystem: "docker"
+  directory: "/backend/2-api-gateway"
+  schedule:
+    interval: "weekly"
+  labels:
+  - "dependencies"
+  - "docker"
+  - "backend/2-api-gateway"
+
+- package-ecosystem: "maven"
+  directory: "/backend/2-api-gateway"
+  schedule:
+    interval: "daily"
+  labels:
+  - "dependencies"
+  - "java"
+  - "backend/2-api-gateway"
+
+- package-ecosystem: "docker"
+  directory: "/backend/3-auth"
+  schedule:
+    interval: "weekly"
+  labels:
+  - "dependencies"
+  - "docker"
+  - "backend/3-auth"
+
+- package-ecosystem: "pip"
+  directory: "/backend/3-auth"
+  schedule:
+    interval: "daily"
+  labels:
+  - "dependencies"
+  - "python"
+  - "backend/3-auth"
+
+- package-ecosystem: "docker"
+  directory: "/backend/4-api-gateway"
+  schedule:
+    interval: "weekly"
+  labels:
+  - "dependencies"
+  - "docker"
+  - "backend/4-api-gateway"
+
+- package-ecosystem: "pip"
+  directory: "/backend/4-api-gateway"
+  schedule:
+    interval: "daily"
+  labels:
+  - "dependencies"
+  - "python"
+  - "backend/4-api-gatewayh"
+
+- package-ecosystem: npm
+  directory: /frontend
+  schedule:
+    interval: weekly
