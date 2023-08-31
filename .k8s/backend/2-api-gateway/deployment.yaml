@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 2-api-gateway
+  labels:
+    app.kubernetes.io/component: 2-api-gateway
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: 2-api-gateway
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/component: 2-api-gateway
+    spec:
+      securityContext:
+        runAsNonRoot: true
+      containers:
+      - name: web
+        image: socialcomputing/elas-official-backend-2-api-gateway
+        ports:
+        - containerPort: 8761

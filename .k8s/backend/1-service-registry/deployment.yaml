@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 1-service-registry
+  labels:
+    app.kubernetes.io/component: 1-service-registry
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: 1-service-registry
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/component: 1-service-registry
+    spec:
+      securityContext:
+        runAsNonRoot: true
+      containers:
+      - name: web
+        image: socialcomputing/elas-official-backend-1-service-registry
+        ports:
+        - containerPort: 8761
