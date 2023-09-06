@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: 2-api-gateway
+  name: "2-api-gateway"
   labels:
-    app.kubernetes.io/component: 2-api-gateway
+    app.kubernetes.io/component: "2-api-gateway"
 spec:
   ports:
   - protocol: TCP
     port: 8000
     targetPort: 8000
   selector:
-    app.kubernetes.io/component: 2-api-gateway
+    app.kubernetes.io/component: "2-api-gateway"
