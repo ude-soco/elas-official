@@ -23,3 +23,8 @@ spec:
         image: socialcomputing/elas-official-backend-1-service-registry
         ports:
         - containerPort: 8761
+        env:
+        - name: PORT
+          value: 8761
+        - name: HOSTNAME
+          value: $(1_SERVICE_REGISTRY_SERVICE)

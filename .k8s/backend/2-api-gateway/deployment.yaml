@@ -22,4 +22,9 @@ spec:
       - name: web
         image: socialcomputing/elas-official-backend-2-api-gateway
         ports:
-        - containerPort: 8761
+        - containerPort: 8000
+        env:
+        - name: PORT
+          value: 8000
+        - name: SERVICE_REGISTRY_URL
+          value: http://$(1_SERVICE_REGISTRY_SERVICE):8761/eureka/
