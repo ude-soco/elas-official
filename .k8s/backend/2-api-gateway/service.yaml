@@ -7,7 +7,7 @@ metadata:
 spec:
   ports:
   - protocol: TCP
-    port: 8761
-    targetPort: 8761
+    port: 8000
+    targetPort: 8000
   selector:
     app.kubernetes.io/component: 2-api-gateway
