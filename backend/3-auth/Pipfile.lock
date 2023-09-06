@@ -245,7 +245,7 @@
                 "sha256:a0713dc7a1de3f06bc0df5a9567ad19ead2d3d5689b434768a6145bff77c0667",
                 "sha256:f184f0d851d96b6d29297354ed981b7dd71df7ff500d82fa6d11f0856bee8035"
             ],
-            "markers": "python_full_version >= '3.6.2' and python_full_version < '4.0.0'",
+            "markers": "python_version < '4.0' and python_full_version >= '3.6.2'",
             "version": "==0.3.0"
         },
         "click-plugins": {
@@ -352,7 +352,7 @@
                 "sha256:57c6fbaaeaaf39c891292012060beb141791735dbb4004798328fc2c467402d8",
                 "sha256:8dcfae8c7460a2f84b4072e26f1c9f4101ca20c071649cb7c34e8b6a93d58984"
             ],
-            "markers": "python_version >= '3.8' and python_full_version < '4.0.0'",
+            "markers": "python_version >= '3.8' and python_version < '4.0'",
             "version": "==2.4.2"
         },
         "eventlet": {
@@ -825,7 +825,7 @@
                 "sha256:0438920912a642c866a513de6fe8a0001bd86ef975057d6962c79ce4771687cd",
                 "sha256:9995eb8569428059b8c1affd26b25eac510d64f5043d9ce8c84e0d0036e995ae"
             ],
-            "markers": "python_full_version >= '3.8.1' and python_full_version < '4.0.0'",
+            "markers": "python_version < '4.0' and python_full_version >= '3.8.1'",
             "version": "==7.0.0"
         },
         "redis": {
@@ -1035,11 +1035,11 @@
         },
         "twisted": {
             "hashes": [
-                "sha256:32acbd40a94f5f46e7b42c109bfae2b302250945561783a8b7a059048f2d4d31",
-                "sha256:86c55f712cc5ab6f6d64e02503352464f0400f66d4f079096d744080afcccbd0"
+                "sha256:3c73360add17336a622c0d811c2a2ce29866b6e59b1125fd6509b17252098a24",
+                "sha256:b8bdba145de120ffb36c20e6e071cce984e89fba798611ed0704216fb7f884cd"
             ],
             "index": "pypi",
-            "version": "==22.10.0"
+            "version": "==23.8.0"
         },
         "typing-extensions": {
             "hashes": [
@@ -1096,7 +1096,7 @@
             "index": "pypi",
             "version": "==0.41.2"
         },
-        "zope.interface": {
+        "zope-interface": {
             "hashes": [
                 "sha256:042f2381118b093714081fd82c98e3b189b68db38ee7d35b63c327c470ef8373",
                 "sha256:0ec9653825f837fbddc4e4b603d90269b501486c11800d7c761eee7ce46d1bbb",
