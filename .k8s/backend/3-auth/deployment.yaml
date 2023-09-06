@@ -22,7 +22,7 @@ spec:
       - name: web
         image: socialcomputing/elas-official-backend-3-auth
         ports:
-        - containerPort: "8001"
+        - containerPort: 8001
         env:
         - name: PORT
           value: "8001"
