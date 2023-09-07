@@ -8,7 +8,8 @@ The goal of the project "Exploratory Learning Analytics toolkit for Students" is
 
 #### Live Instances
 
-- TODO
+* Production: [elas-official.soco.inko.cloud](https://elas-official.soco.inko.cloud/) (latest [release](https://github.com/ude-soco/elas-official/releases))
+* Preview: [edge.elas-official.soco.inko.cloud](https://edge.elas-official.soco.inko.cloud/) ([branch `main`](https://github.com/ude-soco/elas-official/tree/main))
 
 #### Build and Run
 
