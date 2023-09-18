@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.6
-FROM python:3.10-slim AS python
+FROM python:3.11-slim AS python
 
 # Install dependencies
 ENV BUILD_DEPS "build-essential pkg-config libpq-dev"
