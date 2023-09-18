@@ -12,7 +12,32 @@ changelog:
       labels:
       - bug
 
-    - title: 🔗 Dependencies
+    - title: 🔗 Frontend Dependencies
+      labels:
+      - dependencies
+      - frontend
+
+    - title: 🔗 backend/1-service-registry Dependencies
+      labels:
+      - dependencies
+      - backend/1-service-registry
+
+    - title: 🔗 backend/2-api-gateway Dependencies
+      labels:
+      - dependencies
+      - backend/2-api-gateway
+
+    - title: 🔗 backend/3-auth Dependencies
+      labels:
+      - dependencies
+      - backend/3-auth
+
+    - title: 🔗 backend/4-api-gateway Dependencies
+      labels:
+      - dependencies
+      - backend/4-api-gateway
+
+    - title: 🔗 Other Dependencies
       labels:
       - dependencies
 
