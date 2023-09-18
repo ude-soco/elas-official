@@ -71,7 +71,7 @@ jobs:
 
     - name: Get tagging metadata
       id:   meta
-      uses: docker/metadata-action@v4
+      uses: docker/metadata-action@v5
       with:
         images: ${{ steps.image_name.outputs.image_name }}
         flavor:
