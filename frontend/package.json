@@ -15,7 +15,7 @@
     "@devexpress/dx-react-scheduler-material-ui": "^4.0.5",
     "@emotion/react": "^11.10.8",
     "@emotion/styled": "^11.10.8",
-    "@fontsource/roboto": "^4.5.8",
+    "@fontsource/roboto": "^5.0.8",
     "@mui/icons-material": "^5.14.8",
     "@mui/lab": "^5.0.0-alpha.145",
     "@mui/material": "^5.14.9",
