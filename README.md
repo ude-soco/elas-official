@@ -13,4 +13,4 @@ The goal of the project "Exploratory Learning Analytics toolkit for Students" is
 
 #### Build and Run
 
-- TODO
+* `docker compose up`
