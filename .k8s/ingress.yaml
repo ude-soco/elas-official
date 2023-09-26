@@ -13,12 +13,19 @@ spec:
     http:
       paths:
       - pathType: Prefix
-        path: /
+        path: /api
         backend:
           service:
             name: 2-api-gateway
             port:
               number: 8000
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: frontend
+            port:
+              number: 8080
   tls:
   - hosts:
     - elas-official.soco.inko.cloud

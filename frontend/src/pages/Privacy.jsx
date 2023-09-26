@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid, Link, Typography } from "@mui/material";
-import ELASLogo from "../assets/images/ELAS-logo.png";
+import ELASLogo from "../assets/images/elas-logo.png";
 
 export default function Privacy() {
   return (

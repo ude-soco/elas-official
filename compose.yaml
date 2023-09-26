@@ -33,3 +33,11 @@ services:
       PORT: 8004
       EUREKA_HOST_NAME: backend-1-service-registry
       EUREKA_PORT: 8761
+
+  frontend:
+    build: frontend
+    image: ${IMAGE_NAME_PREFIX:-socialcomputing/}elas-official-frontend:${IMAGE_TAG:-latest}
+    environment:
+      BASE_URL: http://127.0.0.1:8000
+    ports:
+    - 8080:8080
