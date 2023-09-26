@@ -5,6 +5,8 @@ services:
     environment:
       PORT: 8761
       HOSTNAME: backend-1-service-registry
+    ports:
+    - 8761:8761
 
   backend-2-api-gateway:
     build: backend/2-api-gateway
@@ -14,6 +16,7 @@ services:
       SERVICE_REGISTRY_URL: http://backend-1-service-registry:8761/eureka/
     ports:
     - 8000:8000
+    restart: always
 
   backend-3-auth:
     build: backend/3-auth
@@ -25,6 +28,7 @@ services:
       DJANGO_SUPERUSER_USERNAME: admin
       DJANGO_SUPERUSER_EMAIL: admin@mail.com
       DJANGO_SUPERUSER_PASSWORD: 1q2w3e4R!
+    restart: always
 
   backend-4-e3selector:
     build: backend/4-e3selector
@@ -33,6 +37,7 @@ services:
       PORT: 8004
       EUREKA_HOST_NAME: backend-1-service-registry
       EUREKA_PORT: 8761
+    restart: always
 
   frontend:
     build: frontend
