@@ -2,8 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 commonLabels:
-  app.kubernetes.io/component: "3-auth"
-  app.kubernetes.io/part-of: backend
+  app.kubernetes.io/component: backend-3-auth
 
 resources:
 - deployment.yaml

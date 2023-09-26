@@ -3,6 +3,9 @@ kind: Kustomization
 
 namePrefix: backend-
 
+commonLabels:
+  app.kubernetes.io/part-of: backend
+
 vars:
 - name: 1_SERVICE_REGISTRY_SERVICE
   objref:
