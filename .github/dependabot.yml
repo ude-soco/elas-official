@@ -85,3 +85,7 @@ updates:
   - dependencies
   - javascript
   - frontend
+  groups:
+    mui:
+      patterns:
+      - "@mui/*"
