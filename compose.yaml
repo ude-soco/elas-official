@@ -43,6 +43,6 @@ services:
     build: frontend
     image: ${IMAGE_NAME_PREFIX:-socialcomputing/}elas-official-frontend:${IMAGE_TAG:-latest}
     environment:
-      BASE_URL: http://127.0.0.1:8000
+      BASE_URL: ""
     ports:
     - 8080:8080
