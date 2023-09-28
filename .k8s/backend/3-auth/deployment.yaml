@@ -22,10 +22,10 @@ spec:
       - name: web
         image: socialcomputing/elas-official-backend-3-auth
         ports:
-        - containerPort: 8001
+        - containerPort: 8002
         env:
         - name: PORT
-          value: "8001"
+          value: "8002"
         - name: EUREKA_HOST_NAME
           value: $(1_SERVICE_REGISTRY_SERVICE)
         - name: EUREKA_PORT

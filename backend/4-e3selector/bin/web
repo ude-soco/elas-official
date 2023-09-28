@@ -5,6 +5,6 @@ echo "${0}: Migrating database ..."
 python manage.py migrate --noinput
 
 echo "${0}: Running application ..."
-gunicorn server.wsgi:application \
+  gunicorn server.wsgi:application \
   -b 0.0.0.0:${PORT} --preload --workers=1 -k sync --timeout 1800 --graceful-timeout 1800 \
   --log-level $GUNICORN_LOG_LEVEL --access-logfile -

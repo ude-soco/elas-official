@@ -22,7 +22,7 @@ services:
     build: backend/3-auth
     image: ${IMAGE_NAME_PREFIX:-socialcomputing/}elas-official-backend-3-auth:${IMAGE_TAG:-latest}
     environment:
-      PORT: 8001
+      PORT: 8002
       EUREKA_HOST_NAME: backend-1-service-registry
       EUREKA_PORT: 8761
       DJANGO_SUPERUSER_USERNAME: admin
