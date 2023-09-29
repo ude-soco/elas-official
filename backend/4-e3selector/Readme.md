@@ -60,6 +60,24 @@ Download the following software and install them on your machine:
   python manage.py runserver
   ```
 
+- Run the `celery` worker command in a separate terminal if you are using Linux or Windows with at least more than 4 cores
+
+  ```bash
+  celery -A server worker --concurrency=4 -l info -P eventlet
+  ```
+
+  Use the following command to run the celery worker if you are using Windows with less than 4 cores:
+
+  ```bash
+  celery -A server worker --pool=solo -l info
+  ```
+
+- (Optional) Run `flower` to monitor the celery worker
+
+  ```bash
+  celery -A server flower
+  ```
+
 - (TODO) Get the full set of API requests in the Postman collection located under `backend\4-e3selector\docs\postman\e3selector-api.json`
 
 #### Scrape E3 Courses
