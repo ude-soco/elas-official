@@ -45,6 +45,7 @@ import {
   getAvailableCourse,
   enrollCourse,
   changeUserSetting,
+  getStudyprogramCoursePath,
 } from './utils/api'
 import { parseDate } from './utils/functions'
 import CourseListNew from './components/CourseListNew'
@@ -137,6 +138,7 @@ export default function StudyCompassNew() {
   const [newSemester, setNewSemester] = useState(
     userSetting ? userSetting['newSemester'] : false
   )
+  let userStudyprogram = elasUser.study_program
   const [studentSemester, setStudentSemester] = useState([])
   const [chosenSemester, setChosensemester] = useState('')
   const [activeStep, setActiveStep] = React.useState(0)
@@ -148,9 +150,9 @@ export default function StudyCompassNew() {
   const [noCourseNotifyOpen, setNoCourseNotyfiOpen] = useState(false)
   const navigate = useNavigate()
   const { enqueueSnackbar } = useSnackbar()
-  const showSnackbar = (message) => {
+  const showSnackbar = (message, variant) => {
     enqueueSnackbar(message, {
-      variant: message.includes('successfully') ? 'success' : 'error',
+      variant: variant,
       autoHideDuration: 500,
     })
   }
@@ -306,22 +308,33 @@ export default function StudyCompassNew() {
       setTargetList(response[0].targetList)
       setValueList(response[0].valueList)
     }
+    async function loadStudyProgramCoursePath() {
+      let response = await getStudyprogramCoursePath()
+      setLableList(response[0].lableList)
+      setSourceList(response[0].sourceList)
+      setTargetList(response[0].targetList)
+      setValueList(response[0].valueList)
+    }
     async function loadStudentSemester() {
       let response = await getStudentSemester()
       let semesters = response.slice(1).reverse()
       setStudentSemester(semesters)
       setChosensemester(semesters[0])
     }
-    if (courses.length === 1) {
+    if (courses.length === 1 && !newUser) {
       loadCourses()
     }
     if (lableList.length === 0) {
-      loadWholeCoursePath()
+      if (token) {
+        loadStudyProgramCoursePath()
+      } else {
+        loadWholeCoursePath()
+      }
     }
     if (token && newUser) {
       loadStudentSemester()
     }
-  }, [workload])
+  }, [workload, newUser])
 
   useEffect(() => {
     async function loadAvailableCourses() {
@@ -373,10 +386,10 @@ export default function StudyCompassNew() {
   const handleUnenroll = async (row) => {
     try {
       await unenrollCourse(row.id)
-      showSnackbar('Remove course successfully!')
+      showSnackbar('Course removed from schedule', 'success')
     } catch (err) {
       console.log(err)
-      showSnackbar(err)
+      showSnackbar(err, 'error')
     }
     let temWorkload = workload - parseInt(row.sws)
     setWorkload(temWorkload)
@@ -515,12 +528,22 @@ export default function StudyCompassNew() {
     let tempAddedCourse = addedCourseList.filter((course) => course.id === id)
     tempAddedCourse[0].passed = event.target.value
   }
-  const handleSubmitAddedCourses = () => {
+  const handleSubmitAddedCourses = async () => {
     console.log(addedCourseList)
+    let newUserSetting = { ...userSetting, newUser: false }
+    sessionStorage.setItem(
+      'elas-user',
+      JSON.stringify({
+        ...elasUser,
+        elas_setting: newUserSetting,
+      }),
+      await changeUserSetting(newUserSetting)
+    )
     addedCourseList.forEach(async (item) => {
       await enrollCourse(item.id, item.selectedTimeID, item.passed)
     })
-    closeAddCoursesDialog()
+    sessionStorage.removeItem('elas-sc-added-course-list')
+    setNewUser(false)
   }
   const handleSave = () => {
     handleSubmitAddedCourses()
@@ -755,6 +778,9 @@ export default function StudyCompassNew() {
                       <Typography variant="h1" align="center" color="primary">
                         {workload}
                       </Typography>
+                      <Typography variant="h6" align="center" color="primary">
+                        {workload > 1 ? 'hours' : 'hour'}
+                      </Typography>
                     </Grid>
                   </Grid>
                 </Box>
@@ -860,11 +886,11 @@ export default function StudyCompassNew() {
               )}
               {showedType === 'path' && (
                 <Grid item xs={12}>
-                  <Typography
-                    variant="h5"
-                    display="flex"
-                    justifyContent="center">
-                    course path show how students taken courses
+                  <Typography variant="h6" display="flex">
+                    Explore how students journey through different courses in
+                    this diagram. The diagram illustrates the progression from
+                    one course to another, showcasing the various pathways
+                    students take on their educational journey.
                   </Typography>
 
                   <CoursePath
@@ -873,7 +899,7 @@ export default function StudyCompassNew() {
                     targetList={targetList}
                     valueList={valueList}
                     width={1200}
-                    height={800}
+                    height={1200}
                   />
                 </Grid>
               )}
