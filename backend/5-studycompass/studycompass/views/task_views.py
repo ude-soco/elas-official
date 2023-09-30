@@ -1,3 +1,4 @@
+from celery.result import AsyncResult
 from django.http import JsonResponse
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework import status
@@ -8,7 +9,6 @@ from ..celery_tasks.tasks import scrape_lsf_task
 
 
 @api_view(["POST"])
-
 def scrape_lsf(request):
     data = JSONParser().parse(request)
     url = data.get("url")
@@ -22,3 +22,16 @@ def scrape_lsf(request):
         return JsonResponse(
             {"message": "URL not provided"}, status=status.HTTP_400_BAD_REQUEST
         )
+
+
+@api_view(["GET"])
+@permission_classes([AllowAny])
+def check_task_status(request, task_id):
+    task = AsyncResult(task_id)
+    if task.ready():
+        result = task.result
+        return JsonResponse(
+            {"status": "completed", "message": result}, status=status.HTTP_200_OK
+        )
+    else:
+        return JsonResponse({"status": "pending"}, status=status.HTTP_202_ACCEPTED)

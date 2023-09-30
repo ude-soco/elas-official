@@ -6,7 +6,6 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from courserecommender.models import *
 import json
-import os
 import datetime
 from neomodel import db
 from courserecommender.utils import (
@@ -17,6 +16,7 @@ from courserecommender.utils import (
     generate_top_popular,
     get_course_ratings,
 )
+import os
 
 elas_backend_directory = os.path.abspath(
     os.path.join(os.path.dirname(__file__), "..", "..")
@@ -27,6 +27,7 @@ SEMESTER_DATA = os.path.abspath(
 
 
 @api_view(["GET"])
+@permission_classes([AllowAny])
 def get_all_courses(request):
     response = []
     with open(SEMESTER_DATA, "r", encoding="utf8") as f:
@@ -62,6 +63,7 @@ def get_all_courses(request):
 
 
 @api_view(["POST"])
+@permission_classes([AllowAny])
 def get_courses_by_studyprogram(request):
     data = json.loads(request.body)
     studyprogram = data["studyprogram"]
@@ -103,6 +105,8 @@ def get_courses_by_studyprogram(request):
 
 
 @api_view(["POST"])
+@permission_classes([AllowAny])
+# @permission_classes([AllowAny])
 def get_courses_by_userInfo(request):
     data = json.loads(request.body)
     studyprogram = data["studyprogram"]
@@ -196,6 +200,8 @@ def get_courses_by_userInfo(request):
 
 
 @api_view(["GET"])
+# @permission_classes([IsAuthenticated])
+@permission_classes([AllowAny])
 def get_courseInfo_by_id(request, id):
     response = []
     keywords = []
@@ -232,6 +238,7 @@ def get_courseInfo_by_id(request, id):
 
 
 @api_view(["POST"])
+@permission_classes([AllowAny])
 def enroll_course(request):
     data = json.loads(request.body)
     uid = data["uid"]
@@ -287,6 +294,7 @@ def enroll_course(request):
 
 
 @api_view(["POST"])
+@permission_classes([AllowAny])
 def unenroll_course(request):
     data = json.loads(request.body)
     uid = data["uid"]
@@ -307,6 +315,7 @@ def unenroll_course(request):
 
 
 @api_view(["POST"])
+@permission_classes([AllowAny])
 def change_course_pass_state(request):
     data = json.loads(request.body)
     uid = data["uid"]
@@ -432,6 +441,7 @@ def undo_pass(request):
 
 
 @api_view(["POST"])
+@permission_classes([AllowAny])
 def rate_course(request):
     data = json.loads(request.body)
     uid = data["uid"]
