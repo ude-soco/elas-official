@@ -33,12 +33,15 @@ class UserRegistrationSerializer(serializers.Serializer):
         try:
             payload = {
                 "uid": str(user.id),
+                "name": f"{validated_data['first_name']} {validated_data['last_name']}",
                 "username": validated_data["username"],
                 "study_program": validated_data["study_program"],
                 "start_semester": validated_data["start_semester"],
             }
             service_url = get_service_url("ELAS-STUDYCOMPASS")
-            requests.post(f"{service_url}/api/course-recommender/new-student/", json=payload)
+            requests.post(
+                f"{service_url}/api/course-recommender/new-student/", json=payload
+            )
         except Exception as e:
             print(f"Error creating student node: {e}")
 
@@ -50,8 +53,8 @@ class UserRegistrationSerializer(serializers.Serializer):
         for field in user_fields:
             if field in validated_data:
                 setattr(user, field, validated_data[field])
-        user.save() # TODO: Check whether it is saving twice
-        
+        user.save()  # TODO: Check whether it is saving twice
+
         try:
             payload = {
                 "uid": str(user.id),
@@ -60,7 +63,9 @@ class UserRegistrationSerializer(serializers.Serializer):
                 "start_semester": validated_data["start_semester"],
             }
             service_url = get_service_url("ELAS-STUDYCOMPASS")
-            requests.put(f"{service_url}/api/course-recommender/update-student/", json=payload)
+            requests.put(
+                f"{service_url}/api/course-recommender/update-student/", json=payload
+            )
         except Exception as e:
             print(f"Error creating student node: {e}")
 
