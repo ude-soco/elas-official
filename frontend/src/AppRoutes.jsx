@@ -74,10 +74,10 @@ export default function AppRoutes() {
       <Route path="e3-selector">
         <Route index element={<E3Selector />} />
       </Route>
-      <Route path="study-compass">
+      {/* <Route path="study-compass">
         <Route index element={<StudyCompass />} />
-      </Route>
-      <Route path="study-compass-copy">
+      </Route> */}
+      <Route path="study-compass">
         <Route index element={<StudyCompassNew />} />
         <Route path="detail" element={<CourseDetail />} />
       </Route>
