@@ -23,6 +23,13 @@ flower = "*"
 eventlet = "*"
 sparqlwrapper = "*"
 py-eureka-client = "*"
+django-neomodel = "*"
+numpy = "*"
+networkx = "*"
+spacy = "*"
+nltk = "*"
+wikipedia-api = "*"
+sentence-transformers = "*"
 
 [dev-packages]
 black = "*"
