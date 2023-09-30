@@ -70,7 +70,6 @@ def user_login_view(request):
                     f"{service_url}/api/course-recommender/get-student/",
                     json={"uid": str(user.id)},
                 )
-                print(student_data.text)
                 student = json.loads(student_data.text)
             user.last_login = timezone.now()
             user.save()
