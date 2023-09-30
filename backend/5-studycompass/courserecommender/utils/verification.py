@@ -1,7 +1,6 @@
 import re
 import wikipediaapi
 from sentence_transformers import SentenceTransformer
-from studycompass.algorithms.utils.dbpedia_spotlight import DBpediaSpotlight
 from courserecommender.models import *
 
 

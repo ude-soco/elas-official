@@ -23,6 +23,7 @@ class relEnroll(StructuredRel):
 
 class Student(StructuredNode):
     uid = StringProperty(unique_index=True)  # use the uid to query student
+    name = StringProperty(required=True)
     username = StringProperty(required=True)  # change to username
     study_program = StringProperty(required=True)
     start_semester = StringProperty(required=True)

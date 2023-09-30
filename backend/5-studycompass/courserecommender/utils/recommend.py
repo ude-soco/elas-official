@@ -101,26 +101,32 @@ def generate_top_popular(student):
             matched_courses.append(
                 {"name": node["name"], "passed_number": node["passed_number"], "passed_percentage": percentage})
     popular_list = sorted(
-        matched_courses, key=lambda x: x["passed_percentage"], reverse=True)[:10]
+        matched_courses, key=lambda x: x["passed_number"], reverse=True)[:10]
     return popular_list
 
 
 def get_course_ratings(node):
-    total_rating_list = []
-    ratings, cols = db.cypher_query(
-        f"""MATCH p=()-[r:enrolled_in]->(i)  where i.name='{node["name"]}' and r.ratings is not null RETURN r.ratings"""
-    )
-    for item in ratings:
-        rating_list = item[0]
-        for rating in rating_list:
-            if not any(object["rating"] == rating for object in total_rating_list):
-                total_rating_list.append({"rating": rating, "count": 1})
-            else:
-                for object in total_rating_list:
-                    if object["rating"] == rating:
-                        count = object["count"]
-                        new_count = count+1
-                        object["count"] = new_count
-    final_list = sorted(
-        total_rating_list, key=lambda x: x["count"], reverse=True)[:3]
-    return final_list
+    try:
+        total_rating_list = []
+        ratings, cols = db.cypher_query(
+            f"""MATCH p=()-[r:enrolled_in]->(i)  where i.name='{node["name"]}' and r.ratings is not null RETURN r.ratings"""
+        )
+        for item in ratings:
+            rating_list = item[0]
+            for rating in rating_list:
+                if not any(object["rating"] == rating for object in total_rating_list):
+                    total_rating_list.append({"rating": rating, "count": 1})
+                else:
+                    for object in total_rating_list:
+                        if object["rating"] == rating:
+                            count = object["count"]
+                            new_count = count+1
+                            object["count"] = new_count
+        final_list = sorted(
+            total_rating_list, key=lambda x: x["count"], reverse=True)[:3]
+        return final_list
+    except Exception as e:
+        print(
+            f"""MATCH p=()-[r:enrolled_in]->(i)  where i.name='{node["name"]}' and r.ratings is not null RETURN r.ratings""")
+        print(e)
+        return []
