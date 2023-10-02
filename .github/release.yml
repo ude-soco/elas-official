@@ -1,0 +1,88 @@
+changelog:
+  exclude:
+    labels:
+    - ignore-for-release
+
+  categories:
+  - title: 🎉 Exciting New Features
+    labels:
+    - enhancement
+
+  - title: 🧰 Fixes
+    labels:
+    - bug
+
+  - title: 🔗 Frontend Dependencies
+    labels:
+    - dependencies
+    - frontend
+    exclude:
+      labels:
+      - backend/1-service-registry
+      - backend/2-api-gateway
+      - backend/3-auth
+      - backend/4-api-gateway
+
+  - title: 🔗 backend/1-service-registry Dependencies
+    labels:
+    - dependencies
+    - backend/1-service-registry
+    exclude:
+      labels:
+      - frontend
+      - backend/2-api-gateway
+      - backend/3-auth
+      - backend/4-api-gateway
+
+  - title: 🔗 backend/2-api-gateway Dependencies
+    labels:
+    - dependencies
+    - backend/2-api-gateway
+    exclude:
+      labels:
+      - frontend
+      - backend/1-service-registry
+      - backend/3-auth
+      - backend/4-api-gateway
+
+  - title: 🔗 backend/3-auth Dependencies
+    labels:
+    - dependencies
+    - backend/3-auth
+    exclude:
+      labels:
+      - frontend
+      - backend/1-service-registry
+      - backend/2-api-gateway
+      - backend/4-api-gateway
+
+  - title: 🔗 backend/4-api-gateway Dependencies
+    labels:
+    - dependencies
+    - backend/4-api-gateway
+    exclude:
+      labels:
+      - frontend
+      - backend/1-service-registry
+      - backend/2-api-gateway
+      - backend/3-auth
+
+  - title: 🔗 Other Dependencies
+    labels:
+    - dependencies
+    exclude:
+      labels:
+      - frontend
+      - backend/1-service-registry
+      - backend/2-api-gateway
+      - backend/3-auth
+      - backend/4-api-gateway
+
+  - title: 🎨 Other Changes
+    labels:
+    - '*'
+    exclude:
+      labels:
+      - enhancement
+      - bug
+      - dependencies
