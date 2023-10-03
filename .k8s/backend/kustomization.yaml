@@ -1,0 +1,35 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namePrefix: backend-
+
+commonLabels:
+  app.kubernetes.io/part-of: backend
+
+vars:
+- name: 1_SERVICE_REGISTRY_SERVICE
+  objref:
+    apiVersion: v1
+    kind: Service
+    name: 1-service-registry
+- name: 2_API_GATEWAY_SERVICE
+  objref:
+    apiVersion: v1
+    kind: Service
+    name: 2-api-gateway
+- name: 3_AUTH_SERVICE
+  objref:
+    apiVersion: v1
+    kind: Service
+    name: 3-auth
+- name: 4_E3SELECTOR_SERVICE
+  objref:
+    apiVersion: v1
+    kind: Service
+    name: 4-e3selector
+
+resources:
+- 1-service-registry
+- 2-api-gateway
+- 3-auth
+- 4-e3selector

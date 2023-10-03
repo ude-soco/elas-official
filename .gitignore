@@ -104,18 +104,16 @@ dist
 .tern-port
 
 # Custom
-.idea
-*/venv/*
-.flaskenv
 __pycache__/
 .
-doc2vec_dbow_dm_wiki_article_200_dim/
-entities_and_relationships/
-.vscode/
 .DS_Store
-frontend/build/
+.envrc
+.flaskenv
+.idea
+.vite/
+.vscode/
+*/venv/*
+db.sqlite3
 doc2vec_dbow_dm_wiki_article_200_dim/
 entities_and_relationships/
-db.sqlite3
-.vite/
-
+frontend/build/
