@@ -22,12 +22,18 @@ def get_whole_course_path(request):
         source_list.append(item[0])
         target_list.append(item[1])
         value_list.append(item[2])
-    lable_list = list(set(source_list+target_list))
+    lable_list = list(set(source_list + target_list))
     final_source = [lable_list.index(item) for item in source_list]
     final_target = [lable_list.index(item) for item in target_list]
 
-    response = [{"lableList": lable_list, "sourceList": final_source,
-                 "targetList": final_target, "valueList": value_list}]
+    response = [
+        {
+            "lableList": lable_list,
+            "sourceList": final_source,
+            "targetList": final_target,
+            "valueList": value_list,
+        }
+    ]
     return JsonResponse({"message": response}, safe=False, status=status.HTTP_200_OK)
 
 
@@ -48,12 +54,18 @@ def get_study_program_course_path(request):
         source_list.append(item[0])
         target_list.append(item[1])
         value_list.append(item[2])
-    lable_list = list(set(source_list+target_list))
+    lable_list = list(set(source_list + target_list))
     final_source = [lable_list.index(item) for item in source_list]
     final_target = [lable_list.index(item) for item in target_list]
 
-    response = [{"lableList": lable_list, "sourceList": final_source,
-                 "targetList": final_target, "valueList": value_list}]
+    response = [
+        {
+            "lableList": lable_list,
+            "sourceList": final_source,
+            "targetList": final_target,
+            "valueList": value_list,
+        }
+    ]
     return JsonResponse({"message": response}, safe=False, status=status.HTTP_200_OK)
 
 
@@ -84,10 +96,16 @@ def get_local_course_path(request):
         source_list.append(course.name)
         target_list.append(item[0])
         value_list.append(item[1])
-    lable_list = list(set(source_list+target_list))
+    lable_list = list(set(source_list + target_list))
     final_source = [lable_list.index(item) for item in source_list]
     final_target = [lable_list.index(item) for item in target_list]
 
-    response = [{"lableList": lable_list, "sourceList": final_source,
-                 "targetList": final_target, "valueList": value_list}]
+    response = [
+        {
+            "lableList": lable_list,
+            "sourceList": final_source,
+            "targetList": final_target,
+            "valueList": value_list,
+        }
+    ]
     return JsonResponse({"message": response}, safe=False, status=status.HTTP_200_OK)

@@ -5,9 +5,8 @@ from courserecommender.models import *
 
 
 def verify_keyword():
-    embedding_model = SentenceTransformer(
-        "paraphrase-multilingual-MiniLM-L12-v2")
-    wiki = wikipediaapi.Wikipedia('MyProjectName (merlin@example.com)', "en")
+    embedding_model = SentenceTransformer("paraphrase-multilingual-MiniLM-L12-v2")
+    wiki = wikipediaapi.Wikipedia("MyProjectName (merlin@example.com)", "en")
     # keyword_list = Keyword.nodes.all()
     keyword_list = Keyword.nodes.filter(verified=False)
     print("{} keyword nodes need to be verified".format(len(keyword_list)))
@@ -17,10 +16,8 @@ def verify_keyword():
             if wiki_article.exists():
                 print(keyword.name)
                 verified_name = wiki_article.title
-                summary = re.sub(r"may refer to:", "",
-                                 wiki_article.summary, count=1)
-                embedding = embedding_model.encode(
-                    wiki_article.summary).tolist()
+                summary = re.sub(r"may refer to:", "", wiki_article.summary, count=1)
+                embedding = embedding_model.encode(wiki_article.summary).tolist()
                 url = wiki_article.fullurl
                 if not Topic.nodes.get_or_none(name=verified_name):
                     topic = Topic(
