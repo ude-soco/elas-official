@@ -3,27 +3,33 @@ import os
 import codecs
 from tqdm import tqdm
 from courserecommender.models import *
-from courserecommender.utils import verify_keyword, has_keyword_To_has_topic, normalize_has_topic
+from courserecommender.utils import (
+    verify_keyword,
+    has_keyword_To_has_topic,
+    normalize_has_topic,
+)
 from neomodel import clear_neo4j_database, db
 
-elas_backend_directory = os.path.abspath(os.path.join(
-    os.path.dirname(__file__), "..", ".."))
+elas_backend_directory = os.path.abspath(
+    os.path.join(os.path.dirname(__file__), "..", "..")
+)
 
 LECTURE_DATA = os.path.abspath(
-    os.path.join(elas_backend_directory, "studycompass", "data",
-                 "merged_lecture_description.json")
+    os.path.join(
+        elas_backend_directory,
+        "studycompass",
+        "data",
+        "merged_lecture_description.json",
+    )
 )
 STUDY_PROGRAMS_DATA = os.path.abspath(
-    os.path.join(elas_backend_directory, "studycompass", "data",
-                 "study_programs.json"))
+    os.path.join(elas_backend_directory, "studycompass", "data", "study_programs.json")
+)
 SEMESTER_DATA = os.path.abspath(
-    os.path.join(elas_backend_directory, "courserecommender",
-                 "data", "semester.json")
+    os.path.join(elas_backend_directory, "courserecommender", "data", "semester.json")
 )
 OUTPUT_DATA = os.path.abspath(
-    os.path.join(
-        elas_backend_directory, "courserecommender", "data"
-    )
+    os.path.join(elas_backend_directory, "courserecommender", "data")
 )
 
 
@@ -156,8 +162,7 @@ class KGBuilder(object):
                         self.instance_has_key.append(
                             [lecture_id, "has_key", keyword["text"], keyword["value"]]
                         )
-                        keywords_list.append(
-                            [keyword["text"], keyword["value"]])
+                        keywords_list.append([keyword["text"], keyword["value"]])
 
                     keywords_dict["id"] = lecture_id
                     keywords_dict["name"] = lecture_name
@@ -181,9 +186,8 @@ class KGBuilder(object):
             try:
                 if not Study_program.nodes.get_or_none(name=item["name"]):
                     studyprogram = Study_program(
-                        name=item["name"],
-                        url=item["url"],
-                        r_id=item["id"])
+                        name=item["name"], url=item["url"], r_id=item["id"]
+                    )
                     studyprogram.save()
             except Exception as e:
                 print("add studyprogram error", e)
@@ -193,9 +197,7 @@ class KGBuilder(object):
         for item in self.keywords:
             try:
                 if not Keyword.nodes.get_or_none(name=item.replace("|", "")):
-                    keyword = Keyword(
-                        name=item.replace("|", ""),
-                        verified=False)
+                    keyword = Keyword(name=item.replace("|", ""), verified=False)
                     keyword.save()
             except Exception as e:
                 print("add keyword error", e)
@@ -234,7 +236,7 @@ class KGBuilder(object):
                         semester=item["semester"],
                         language=item["language"],
                         url=item["url"],
-                        timetable=item["timetable"]
+                        timetable=item["timetable"],
                     )
                     course_instance.save()
             except Exception as e:
@@ -250,7 +252,7 @@ class KGBuilder(object):
     def write_belongs_to(self):
         belongs_to_data = self.course_belongs_to_studyprogram
         print("write {0} relationship".format(belongs_to_data[0][1]))
-        for (head, relation, tail) in tqdm(belongs_to_data, ncols=80):
+        for head, relation, tail in tqdm(belongs_to_data, ncols=80):
             try:
                 course = Course.nodes.get(name=head)
                 studyprogram = Study_program.nodes.get(name=tail)
@@ -261,7 +263,7 @@ class KGBuilder(object):
     def write_has_instance(self):
         has_instance_data = self.course_has_instance
         print("write {0} relationship".format(has_instance_data[0][1]))
-        for (head, relation, tail) in tqdm(has_instance_data, ncols=80):
+        for head, relation, tail in tqdm(has_instance_data, ncols=80):
             try:
                 course = Course.nodes.get(name=head)
                 instance = Course_instance.nodes.get(cid=tail)
@@ -272,7 +274,7 @@ class KGBuilder(object):
     def write_has_keyword(self):
         has_keyword_data = self.instance_has_key
         print("write {0} relationship".format(has_keyword_data[0][1]))
-        for (head, relation, tail, weight) in tqdm(has_keyword_data, ncols=80):
+        for head, relation, tail, weight in tqdm(has_keyword_data, ncols=80):
             try:
                 instance = Course_instance.nodes.get(cid=head)
                 keyword = Keyword.nodes.get(name=tail.replace("|", ""))
@@ -283,7 +285,7 @@ class KGBuilder(object):
     def write_has_teacher(self):
         has_teacher_data = self.instance_has_professor
         print("write {0} relationship".format(has_teacher_data[0][1]))
-        for (head, relation, tail) in tqdm(has_teacher_data, ncols=80):
+        for head, relation, tail in tqdm(has_teacher_data, ncols=80):
             try:
                 instance = Course_instance.nodes.get(cid=head)
                 teacher = Teacher.nodes.get(name=tail)
@@ -312,22 +314,19 @@ class KGBuilder(object):
             json.dump(data, f, indent=4, ensure_ascii=False)
 
     def export_entities_relationships(self):
-
-        self.export_data(self.course_instance_infos,
-                         "/course_instance_infos.json")
+        self.export_data(self.course_instance_infos, "/course_instance_infos.json")
         self.export_data(self.courses, "/courses.json")
         self.export_data(self.keywords, "/keywords.json")
         self.export_data(self.study_program_infos, "/study_program_infos.json")
         self.export_data(self.professors, "/professors.json")
 
         self.export_data(self.instance_has_key, "/instance_has_key.json")
-        self.export_data(self.instance_has_professor,
-                         "/instance_has_professor.json")
+        self.export_data(self.instance_has_professor, "/instance_has_professor.json")
         self.export_data(self.course_has_instance, "/course_has_instance.json")
-        self.export_data(self.course_belongs_to_studyprogram,
-                         "/course_belongs_to_studyprogram.json")
-        self.export_data(self.semester_data,
-                         "/semester.json")
+        self.export_data(
+            self.course_belongs_to_studyprogram, "/course_belongs_to_studyprogram.json"
+        )
+        self.export_data(self.semester_data, "/semester.json")
 
     def run(self):
         # db.set_connection("bolt://neo4j:123456@127.0.0.1:7687")
@@ -337,8 +336,7 @@ class KGBuilder(object):
         self.extrac_triples()  # extract lecture information
         # self.update_semester_data()
         print("{} lecture entities extracted, ".format(len(self.course_instance)))
-        print("{} study_program entities extracted, ".format(
-            len(self.study_programs)))
+        print("{} study_program entities extracted, ".format(len(self.study_programs)))
         print("{} keyword entities extracted, ".format(len(self.keywords)))
         print("{} professor entities extracted, ".format(len(self.professors)))
 
