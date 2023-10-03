@@ -23,7 +23,7 @@ def get_similar_students(student, candidate_similar_list):
                         {"name": user.username, "similarity": similarity})
         sorted_similarity_list = sorted(
             similarity_list, key=lambda x: x["similarity"], reverse=True)
-        top_5_similar = sorted_similarity_list[:4]
+        top_5_similar = sorted_similarity_list[:5]
         return top_5_similar
     except Exception as e:
         print(e)

@@ -22,7 +22,10 @@ def enrolled_student_weight(student, course):
 
 def passed_student_weight(course):
     try:
-        enrolled_count = len(Student.nodes.all())
+        # enrolled_count = len(Student.nodes.all())
+        enrolled_number, cols = db.cypher_query(
+            f"""MATCH p=(s)-[r:enrolled_in]->(n) where n.name="{course.name}" RETURN count(s)""")
+        enrolled_count = enrolled_number[0][0]
         passed_count = course.passed_number
         ps_weight = passed_count/enrolled_count
         return ps_weight
