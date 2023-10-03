@@ -33,7 +33,7 @@ def get_all_studyprogram(request):
     for studyprgram in studyprgrams:
         response.append(
             {
-                "id": studyprgram.id,
+                "id": studyprgram.r_id,
                 "name": studyprgram.name,
             }
         )
