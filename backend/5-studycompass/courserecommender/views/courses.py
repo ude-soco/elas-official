@@ -261,6 +261,7 @@ def enroll_course(request):
                 else:
                     course.passed_number = 1
                     course.save()
+                add_has_next(student, instance)
             semester = instance.semester
             student.enroll.connect(
                 instance,
@@ -270,7 +271,7 @@ def enroll_course(request):
                     "passed": passed,
                 },
             )
-            add_has_next(student, instance)
+            # add_has_next(student, instance)
             calculate_student_embedding(student)
 
         else:
