@@ -19,6 +19,8 @@ import atexit
 import socket
 from py_eureka_client import eureka_client
 from django.core.management.commands.runserver import Command as runserver
+import sys
+from neomodel import db, config
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -44,6 +46,17 @@ ALLOWED_HOSTS = []
 
 # Neo4j configuration
 NEOMODEL_NEO4J_BOLT_URL = os.environ.get("NEO4J_HOST")
+config.DATABASE_URL = NEOMODEL_NEO4J_BOLT_URL
+
+try:
+    db.set_connection(config.DATABASE_URL)
+    db.cypher_query("MATCH (n) RETURN n LIMIT 1")
+    print("==========================================")
+    print("* Neo4j database connected successfully *")
+    print("==========================================")
+except Exception as e:
+    print(f"Failed to connect to Neo4j database: {e}")
+    sys.exit(1)  # Stop the server if Neo4j is not available
 
 EUREKA_HOST_NAME = os.environ.get("EUREKA_HOST_NAME")
 EUREKA_PORT = os.environ.get("EUREKA_PORT")
