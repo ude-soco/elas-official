@@ -93,9 +93,12 @@ services:
       EUREKA_HOST_NAME: backend-1-service-registry
       EUREKA_PORT: 8761
       REDIS_HOST: backend-5-studycompass-redis
+      NEO4J_HOSTNAME: backend-5-studycompass-neo4j
+      NEO4J_PASSWORD: password
     depends_on:
     - backend-1-service-registry
     - backend-5-studycompass-redis
+    - backend-5-studycompass-neo4j
     restart: always
 
   backend-5-studycompass-worker:
@@ -108,12 +111,23 @@ services:
     command: bin/worker
     environment:
       REDIS_HOST: backend-5-studycompass-redis
+      NEO4J_HOSTNAME: backend-5-studycompass-neo4j
+      NEO4J_PASSWORD: password
     depends_on:
     - backend-5-studycompass-redis
+    - backend-5-studycompass-neo4j
     restart: always
 
   backend-5-studycompass-redis:
     image: redis:7.2.1
+    restart: always
+
+  backend-5-studycompass-neo4j:
+    image: neo4j:5.12.0
+    environment:
+      NEO4J_AUTH: neo4j/password
+    volumes:
+    - backend-5-studycompass-neo4j-data:/data
     restart: always
 
   frontend:
@@ -129,3 +143,6 @@ services:
     - backend-2-api-gateway
     ports:
     - 8080:8080
+
+volumes:
+  backend-5-studycompass-neo4j-data:

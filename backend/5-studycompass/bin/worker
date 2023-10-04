@@ -2,4 +2,6 @@
 set -euo pipefail
 
 echo "${0}: Starting Celery worker ..."
-celery --app server worker --loglevel INFO --concurrency 1
+CELERY_WORKER=1 \
+NEO4J_HOST="bolt://${NEO4J_USERNAME:-neo4j}:${NEO4J_PASSWORD:-neo4j}@${NEO4J_HOSTNAME:-127.0.0.1}:${NEO4J_PORT:-7687}" \
+  celery --app server worker --loglevel INFO --concurrency 1

@@ -65,7 +65,7 @@ else:
     except socket.herror as e:
         print(f"Failed to initialize Eureka client: {e}")
 
-atexit.register(eureka_client.stop)
+    atexit.register(eureka_client.stop)
 
 # Application definition
 
