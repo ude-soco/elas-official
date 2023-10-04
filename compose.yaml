@@ -2,6 +2,10 @@ services:
   backend-1-service-registry:
     build: backend/1-service-registry
     image: ${IMAGE_NAME_PREFIX:-socialcomputing/}elas-official-backend-1-service-registry:${IMAGE_TAG:-latest}
+    develop:
+      watch:
+      - action: rebuild
+        path: .
     environment:
       PORT: 8761
       HOSTNAME: backend-1-service-registry
@@ -11,6 +15,10 @@ services:
   backend-2-api-gateway:
     build: backend/2-api-gateway
     image: ${IMAGE_NAME_PREFIX:-socialcomputing/}elas-official-backend-2-api-gateway:${IMAGE_TAG:-latest}
+    develop:
+      watch:
+      - action: rebuild
+        path: .
     environment:
       PORT: 8000
       SERVICE_REGISTRY_URL: http://backend-1-service-registry:8761/eureka/
@@ -23,6 +31,10 @@ services:
   backend-3-auth:
     build: backend/3-auth
     image: ${IMAGE_NAME_PREFIX:-socialcomputing/}elas-official-backend-3-auth:${IMAGE_TAG:-latest}
+    develop:
+      watch:
+      - action: rebuild
+        path: .
     environment:
       PORT: 8002
       EUREKA_HOST_NAME: backend-1-service-registry
@@ -37,6 +49,10 @@ services:
   backend-4-e3selector:
     build: backend/4-e3selector
     image: ${IMAGE_NAME_PREFIX:-socialcomputing/}elas-official-backend-4-e3selector:${IMAGE_TAG:-latest}
+    develop:
+      watch:
+      - action: rebuild
+        path: .
     environment:
       PORT: 8004
       EUREKA_HOST_NAME: backend-1-service-registry
@@ -48,6 +64,10 @@ services:
   frontend:
     build: frontend
     image: ${IMAGE_NAME_PREFIX:-socialcomputing/}elas-official-frontend:${IMAGE_TAG:-latest}
+    develop:
+      watch:
+      - action: rebuild
+        path: .
     environment:
       BASE_URL: ""
     depends_on:
