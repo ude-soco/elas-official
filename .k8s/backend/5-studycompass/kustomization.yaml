@@ -9,8 +9,14 @@ vars:
     apiVersion: v1
     kind: Service
     name: redis
+- name: NEO4J_SERVICE
+  objref:
+    apiVersion: v1
+    kind: Service
+    name: redis
 
 resources:
+- neo4j
 - redis
 - web
 - worker
