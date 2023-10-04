@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    spec:
+      securityContext:
+        runAsNonRoot: true
+      containers:
+      - name: worker
+        image: socialcomputing/elas-official-backend-5-studycompass
+        cmd:
+        - bin/worker
+        env:
+        - name: REDIS_HOST
+          value: $(REDIS_SERVICE)

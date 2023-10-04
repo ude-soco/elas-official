@@ -81,6 +81,41 @@ services:
     image: redis:7.2.1
     restart: always
 
+  backend-5-studycompass-web:
+    build: backend/5-studycompass
+    image: ${IMAGE_NAME_PREFIX:-socialcomputing/}elas-official-backend-5-studycompass:${IMAGE_TAG:-latest}
+    develop:
+      watch:
+      - action: rebuild
+        path: backend/5-studycompass
+    environment:
+      PORT: 8005
+      EUREKA_HOST_NAME: backend-1-service-registry
+      EUREKA_PORT: 8761
+      REDIS_HOST: backend-5-studycompass-redis
+    depends_on:
+    - backend-1-service-registry
+    - backend-5-studycompass-redis
+    restart: always
+
+  backend-5-studycompass-worker:
+    build: backend/5-studycompass
+    image: ${IMAGE_NAME_PREFIX:-socialcomputing/}elas-official-backend-5-studycompass:${IMAGE_TAG:-latest}
+    develop:
+      watch:
+      - action: rebuild
+        path: backend/5-studycompass
+    command: bin/worker
+    environment:
+      REDIS_HOST: backend-5-studycompass-redis
+    depends_on:
+    - backend-5-studycompass-redis
+    restart: always
+
+  backend-5-studycompass-redis:
+    image: redis:7.2.1
+    restart: always
+
   frontend:
     build: frontend
     image: ${IMAGE_NAME_PREFIX:-socialcomputing/}elas-official-frontend:${IMAGE_TAG:-latest}
