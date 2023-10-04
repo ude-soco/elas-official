@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+echo "${0}: Starting Celery worker ..."
+celery --app server worker --loglevel INFO --concurrency 1
