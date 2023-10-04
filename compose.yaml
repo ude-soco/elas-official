@@ -46,7 +46,7 @@ services:
     - backend-1-service-registry
     restart: always
 
-  backend-4-e3selector:
+  backend-4-e3selector-web:
     build: backend/4-e3selector
     image: ${IMAGE_NAME_PREFIX:-socialcomputing/}elas-official-backend-4-e3selector:${IMAGE_TAG:-latest}
     develop:
@@ -57,8 +57,19 @@ services:
       PORT: 8004
       EUREKA_HOST_NAME: backend-1-service-registry
       EUREKA_PORT: 8761
-    depends_on:
-    - backend-1-service-registry
+      REDIS_HOST: backend-4-e3selector-redis
+    restart: always
+
+  backend-4-e3selector-worker:
+    build: backend/4-e3selector
+    image: ${IMAGE_NAME_PREFIX:-socialcomputing/}elas-official-backend-4-e3selector:${IMAGE_TAG:-latest}
+    command: bin/worker
+    environment:
+      REDIS_HOST: backend-4-e3selector-redis
+    restart: always
+
+  backend-4-e3selector-redis:
+    image: redis:7.2.1
     restart: always
 
   frontend:

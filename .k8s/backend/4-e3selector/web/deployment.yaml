@@ -1,20 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: "4-e3selector"
-  labels:
-    app.kubernetes.io/component: "4-e3selector"
+  name: web
 spec:
   replicas: 1
   strategy:
     type: Recreate
-  selector:
-    matchLabels:
-      app.kubernetes.io/component: "4-e3selector"
   template:
     metadata:
-      labels:
-        app.kubernetes.io/component: "4-e3selector"
     spec:
       securityContext:
         runAsNonRoot: true
@@ -30,3 +23,5 @@ spec:
           value: "$(1_SERVICE_REGISTRY_SERVICE)"
         - name: EUREKA_PORT
           value: "8761"
+        - name: REDIS_HOST
+          value: $(REDIS_SERVICE)
