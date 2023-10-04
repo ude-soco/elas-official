@@ -33,12 +33,11 @@ def get_courses_from_course_path(student):
                 rel = passed_course.next.relationship(course)
                 count = rel.count
                 if not name in passed_course_list:
-                    next_course_list.append(
-                        {"course_name": name, "count": count})
+                    next_course_list.append({"course_name": name, "count": count})
                 total_count += count
             for item in next_course_list:
                 count = item["count"]
-                item["possibility"] = count/total_count
+                item["possibility"] = count / total_count
             if len(next_course_list) != 0:
                 path_candidate_course_list.append(next_course_list)
         return path_candidate_course_list

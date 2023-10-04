@@ -106,6 +106,7 @@ def generate_recommendations(request):
 
 
 @api_view(["POST"])
+@permission_classes([AllowAny])
 def generate_top_popular(request):
     data = json.loads(request.body)
     studyprogram = data["studyprogram"]

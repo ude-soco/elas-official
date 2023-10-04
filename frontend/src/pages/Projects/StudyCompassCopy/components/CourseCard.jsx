@@ -74,9 +74,9 @@ const CourseCard = ({
   const anchorRef = useRef(null)
 
   const { enqueueSnackbar } = useSnackbar()
-  const showSnackbar = (message) => {
+  const showSnackbar = (message, variant) => {
     enqueueSnackbar(message, {
-      variant: message.includes('successfully') ? 'success' : 'error',
+      variant: variant,
       autoHideDuration: 6000,
     })
   }
@@ -121,9 +121,9 @@ const CourseCard = ({
     setWorkload(temWorkload)
     try {
       await enrollCourse(course.id, course.timetable[0].id)
-      showSnackbar('Add course successfully!')
+      showSnackbar('Course added to schedule', 'success')
     } catch (err) {
-      console.log(err)
+      console.log(err, 'error')
     }
   }
 
@@ -132,10 +132,10 @@ const CourseCard = ({
     console.log(selectedTimeID)
     try {
       await unenrollCourse(course.id)
-      showSnackbar('Remove course successfully!')
+      showSnackbar('Course removed from schedule', 'success')
     } catch (err) {
       console.log(err)
-      showSnackbar(err)
+      showSnackbar(err, 'error')
     }
     let temWorkload = workload - parseInt(course.sws)
     setWorkload(temWorkload)
@@ -227,13 +227,16 @@ const CourseCard = ({
               </Stack>
               <Stack direction="row" spacing={1} sx={{ mt: '5px' }}>
                 {course.ratings.map((item, index) => (
-                  <Chip
-                    key={index}
-                    label={item.rating}
-                    variant="outlined"
-                    color="success"
-                    size="small"
-                  />
+                  <Tooltip
+                    title={`${item.count} student(s) found it ${item.rating}`}>
+                    <Chip
+                      key={index}
+                      label={item.rating}
+                      variant="outlined"
+                      color="success"
+                      size="small"
+                    />
+                  </Tooltip>
                 ))}
               </Stack>
             </>

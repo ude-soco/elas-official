@@ -25,13 +25,13 @@ const CoursePath = ({
           width: 0.5,
         },
         label: lableList,
+        hovertemplate: '%{label}',
       },
       link: {
         // arrowlen: 20,
         source: sourceList,
         target: targetList,
         value: valueList,
-        // hovertemplate: 'good',
       },
     },
   ]

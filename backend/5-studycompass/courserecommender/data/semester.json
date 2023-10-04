@@ -1,35 +1,32 @@
 [
-  {
-    "name": "WiSe 2018/19"
-  },
-  {
-    "name": "SoSe 2019"
-  },
-  {
-    "name": "WiSe 2019/20"
-  },
-  {
-    "name": "SoSe 2020"
-  },
-  {
-    "name": "WiSe 2020/21"
-  },
-  {
-    "name": "SoSe 2021"
-  },
-  {
-    "name": "WiSe 2021/22"
-  },
-  {
-    "name": "SoSe 2022"
-  },
-  {
-    "name": "WiSe 2022/23"
-  },
-  {
-    "name": "SoSe 2023"
-  },
-  {
-    "name": "WiSe 2023/24"
-  }
+    {
+        "name": "WiSe 2018/19"
+    },
+    {
+        "name": "SoSe 2019"
+    },
+    {
+        "name": "WiSe 2019/20"
+    },
+    {
+        "name": "SoSe 2020"
+    },
+    {
+        "name": "WiSe 2020/21"
+    },
+    {
+        "name": "SoSe 2021"
+    },
+    {
+        "name": "WiSe 2021/22"
+    },
+    {
+        "name": "SoSe 2022"
+    },
+    {
+        "name": "WiSe 2022/23"
+    },
+    {
+        "name": "SoSe 2023"
+    }
 ]

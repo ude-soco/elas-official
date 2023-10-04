@@ -167,6 +167,21 @@ export const getWholeCoursePath = async () => {
     throw err
   }
 }
+export const getStudyprogramCoursePath = async () => {
+  try {
+    setAuthToken(sessionStorage.getItem('elas-token'))
+    let userInfo = JSON.parse(sessionStorage.getItem('elas-user'))
+    let studyprogram = userInfo.study_program
+    const response = await Backend.post(`/course-recommender/studyprogram-course-path/`, { studyprogram: studyprogram })
+    const {
+      data: { message },
+    } = response
+    return message
+  } catch (err) {
+    console.log(err.details)
+    throw err
+  }
+}
 
 export const getLocalCoursePath = async (id) => {
   try {

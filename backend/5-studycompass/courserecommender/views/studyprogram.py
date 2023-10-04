@@ -26,13 +26,14 @@ study_program_directory = os.path.abspath(
 
 
 @api_view(["GET"])
+@permission_classes([AllowAny])
 def get_all_studyprogram(request):
     response = []
     studyprgrams = Study_program.nodes.all()
     for studyprgram in studyprgrams:
         response.append(
             {
-                "id": studyprgram.id,
+                "id": studyprgram.r_id,
                 "name": studyprgram.name,
             }
         )
@@ -40,11 +41,22 @@ def get_all_studyprogram(request):
 
 
 @api_view(["GET"])
+@permission_classes([AllowAny])
 def get_semester_and_study_program_data(request):
     with open(semester_directory) as f_1:
         semester_data = json.load(f_1)
-    with open(study_program_directory) as f_2:
-        study_program_data = json.load(f_2)
+    # with open(study_program_directory) as f_2:
+    #     study_program_data = json.load(f_2)
+    study_program_data = []
+    studyprograms = Study_program.nodes.all()
+    for studyprogram in studyprograms:
+        study_program_data.append(
+            {
+                "id": studyprogram.r_id,
+                "name": studyprogram.name,
+                "url": studyprogram.url,
+            }
+        )
 
     return JsonResponse(
         {
