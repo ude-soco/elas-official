@@ -58,6 +58,9 @@ services:
       EUREKA_HOST_NAME: backend-1-service-registry
       EUREKA_PORT: 8761
       REDIS_HOST: backend-4-e3selector-redis
+    depends_on:
+    - backend-1-service-registry
+    - backend-4-e3selector-redis
     restart: always
 
   backend-4-e3selector-worker:
@@ -66,6 +69,8 @@ services:
     command: bin/worker
     environment:
       REDIS_HOST: backend-4-e3selector-redis
+    depends_on:
+    - backend-4-e3selector-redis
     restart: always
 
   backend-4-e3selector-redis:
