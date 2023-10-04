@@ -14,6 +14,8 @@ services:
     environment:
       PORT: 8000
       SERVICE_REGISTRY_URL: http://backend-1-service-registry:8761/eureka/
+    depends_on:
+    - backend-1-service-registry
     ports:
     - 8000:8000
     restart: always
@@ -28,6 +30,8 @@ services:
       DJANGO_SUPERUSER_USERNAME: admin
       DJANGO_SUPERUSER_EMAIL: admin@mail.com
       DJANGO_SUPERUSER_PASSWORD: 1q2w3e4R!
+    depends_on:
+    - backend-1-service-registry
     restart: always
 
   backend-4-e3selector:
@@ -37,6 +41,8 @@ services:
       PORT: 8004
       EUREKA_HOST_NAME: backend-1-service-registry
       EUREKA_PORT: 8761
+    depends_on:
+    - backend-1-service-registry
     restart: always
 
   frontend:
@@ -44,5 +50,7 @@ services:
     image: ${IMAGE_NAME_PREFIX:-socialcomputing/}elas-official-frontend:${IMAGE_TAG:-latest}
     environment:
       BASE_URL: ""
+    depends_on:
+    - backend-2-api-gateway
     ports:
     - 8080:8080
