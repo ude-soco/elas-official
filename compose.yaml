@@ -66,6 +66,10 @@ services:
   backend-4-e3selector-worker:
     build: backend/4-e3selector
     image: ${IMAGE_NAME_PREFIX:-socialcomputing/}elas-official-backend-4-e3selector:${IMAGE_TAG:-latest}
+    develop:
+      watch:
+      - action: rebuild
+        path: .
     command: bin/worker
     environment:
       REDIS_HOST: backend-4-e3selector-redis
