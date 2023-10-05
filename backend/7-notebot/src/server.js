@@ -9,7 +9,7 @@ import { Eureka } from "eureka-js-client";
 dotenv.config();
 const env = process.env.NODE_ENV || "production";
 const app = express();
-const debug = debugLib("coursemapper-webserver:src/server");
+const debug = debugLib("7-notebot:src/server");
 const db = require("./models");
 
 global.__basedir = __dirname;
@@ -31,10 +31,10 @@ db.mongoose
     useUnifiedTopology: true,
   })
   .then(() => {
-    console.log("Successfully connected to MongoDB.");
+    console.log("**** Successfully connected to MongoDB ****");
   })
   .catch((err) => {
-    console.error("Error connecting to MongoDB.", err);
+    console.error("!!!! Error connecting to MongoDB !!!!", err);
     process.exit();
   });
 
@@ -44,8 +44,20 @@ const server = http.createServer(app);
 // Routes
 let apiURL = "/api/notebot";
 
+/***************** START: IMPORT ROUTES *****************
+ * @documentation
+ * Import the routes from the routes folder. The routes
+ * folder contains all the routes for the application.
+ * Create a new variable such as 'userRoutes' and assign
+ * the imported routes. Then use the routes by passing
+ * the apiURL and the routes using the app.use() method.
+ */
+
 const userRoutes = require("./routes/user.routes");
 app.use(apiURL, userRoutes);
+// Add more routes here
+
+/***************** END: IMPORT ROUTES *****************/
 
 // Configuration for Eureka client
 const client = new Eureka({
@@ -54,10 +66,10 @@ const client = new Eureka({
     hostName: "localhost",
     ipAddr: "127.0.0.1",
     port: {
-      $: 8007,
+      $: port,
       "@enabled": "true",
     },
-    statusPageUrl: "http://localhost:8007",
+    statusPageUrl: `http://localhost:${port}`,
     vipAddress: "ELAS-NOTEBOT",
     dataCenterInfo: {
       "@class": "com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo",
@@ -74,7 +86,7 @@ const client = new Eureka({
 
 // Connect to Eureka server
 client.start((error) => {
-  console.log(error || "Node app started and registered with Eureka.");
+  console.log(error || "**** Notebot started and registered with Eureka ****");
 });
 
 // Listen on provided port, on all network interfaces
