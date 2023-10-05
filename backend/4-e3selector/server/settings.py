@@ -42,10 +42,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-EUREKA_HOST_NAME = os.environ.get("EUREKA_HOST_NAME")
-EUREKA_PORT = os.environ.get("EUREKA_PORT")
-EUREKA_HOST = f"http://{EUREKA_HOST_NAME}:{EUREKA_PORT}/eureka"
-
 if os.environ.get("CELERY_WORKER"):
     print("Running in Celery worker, skipping Eureka client initialization")
     print("=========================================")
@@ -54,6 +50,9 @@ if os.environ.get("CELERY_WORKER"):
     print("=========================================")
 else:
     try:
+        EUREKA_HOST_NAME = os.environ.get("EUREKA_HOST_NAME")
+        EUREKA_PORT = os.environ.get("EUREKA_PORT")
+        EUREKA_HOST = f"http://{EUREKA_HOST_NAME}:{EUREKA_PORT}/eureka"
         eureka_client.init(
             eureka_server=EUREKA_HOST,  # type: ignore
             app_name="ELAS-E3SELECTOR",
