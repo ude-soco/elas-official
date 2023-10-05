@@ -43,7 +43,6 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 if os.environ.get("CELERY_WORKER"):
-    print("Running in Celery worker, skipping Eureka client initialization")
     print("=========================================")
     print("*       Running in Celery worker        *")
     print("* Skipping Eureka client initialization *")
