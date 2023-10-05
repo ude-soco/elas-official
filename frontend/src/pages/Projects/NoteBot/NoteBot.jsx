@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Grid, Typography } from "@mui/material";
+import { createUser } from "./utils/api.js";
 
 import noteBotLogo from "../../../assets/images/noteBot-logo.png";
 
 export default function NoteBot() {
+  const [user, setUser] = useState("Server not connected");
+
+  useEffect(() => {
+    async function createUserMethod() {
+      let response = await createUser();
+      setUser(response);
+    }
+    createUserMethod();
+  }, []);
+
   return (
     <Grid container justifyContent="center" sx={{ py: 4, px: 2 }}>
       <Grid container sx={{ maxWidth: 1500, width: "100%" }} spacing={2}>
@@ -23,8 +34,11 @@ export default function NoteBot() {
 
           <Grid container justifyContent="center" spacing={2}>
             <Grid item xs>
-              <Typography variant="h5" align="center">
+              <Typography variant="h5" align="center" gutterBottom>
                 NoteBot is a learnsourcing application.
+              </Typography>
+              <Typography variant="h5" align="center">
+                Message from server: <i>{user}</i>
               </Typography>
             </Grid>
           </Grid>

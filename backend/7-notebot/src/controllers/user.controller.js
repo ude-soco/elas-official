@@ -8,7 +8,7 @@ const User = db.user;
  * The function saves a user to a database, checking if the user already
  * exists before saving.
  * @param req - The `req` parameter is the request object that contains
- * information about the HTTP request made by the client. It includes 
+ * information about the HTTP request made by the client. It includes
  * details such as the request method, headers, and body.
  * @param res - The `res` parameter is the response object that is used to
  * send the response back to the client. It contains methods and properties
@@ -34,14 +34,16 @@ export const saveUser = async (req, res) => {
     });
     let foundUser = await User.findOne({ username: user.username });
     if (foundUser) {
-      return res.status(401).send(`User already exists in your database`);
+      return res
+        .status(200)
+        .send({ message: `User already exists in your MongoDB database` });
     }
     await user.save();
-    res
-      .status(200)
-      .send(`User ${user.username} created and stored in your database`);
+    res.status(200).send({
+      message: `User ${user.username} created and stored in your MongoDB database`,
+    });
   } catch (err) {
-    res.status(500).send(`Error saving user to your database`);
+    res.status(500).send({ message: `Error saving user to your MongoDB database` });
     return;
   }
 };
