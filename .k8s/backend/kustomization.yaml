@@ -17,16 +17,6 @@ vars:
     apiVersion: v1
     kind: Service
     name: 2-api-gateway
-- name: 3_AUTH_SERVICE
-  objref:
-    apiVersion: v1
-    kind: Service
-    name: 3-auth
-- name: 4_E3SELECTOR_SERVICE
-  objref:
-    apiVersion: v1
-    kind: Service
-    name: 4-e3selector
 
 resources:
 - 1-service-registry

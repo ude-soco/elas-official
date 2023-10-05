@@ -1,9 +1,16 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-commonLabels:
-  app.kubernetes.io/component: backend-4-e3selector
+namePrefix: 4-e3selector-
+
+vars:
+- name: REDIS_SERVICE
+  objref:
+    apiVersion: v1
+    kind: Service
+    name: redis
 
 resources:
-- deployment.yaml
-- service.yaml
+- redis
+- web
+- worker

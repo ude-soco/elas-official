@@ -2,6 +2,10 @@ services:
   backend-1-service-registry:
     build: backend/1-service-registry
     image: ${IMAGE_NAME_PREFIX:-socialcomputing/}elas-official-backend-1-service-registry:${IMAGE_TAG:-latest}
+    develop:
+      watch:
+      - action: rebuild
+        path: .
     environment:
       PORT: 8761
       HOSTNAME: backend-1-service-registry
@@ -11,9 +15,15 @@ services:
   backend-2-api-gateway:
     build: backend/2-api-gateway
     image: ${IMAGE_NAME_PREFIX:-socialcomputing/}elas-official-backend-2-api-gateway:${IMAGE_TAG:-latest}
+    develop:
+      watch:
+      - action: rebuild
+        path: .
     environment:
       PORT: 8000
       SERVICE_REGISTRY_URL: http://backend-1-service-registry:8761/eureka/
+    depends_on:
+    - backend-1-service-registry
     ports:
     - 8000:8000
     restart: always
@@ -21,6 +31,10 @@ services:
   backend-3-auth:
     build: backend/3-auth
     image: ${IMAGE_NAME_PREFIX:-socialcomputing/}elas-official-backend-3-auth:${IMAGE_TAG:-latest}
+    develop:
+      watch:
+      - action: rebuild
+        path: .
     environment:
       PORT: 8002
       EUREKA_HOST_NAME: backend-1-service-registry
@@ -28,21 +42,55 @@ services:
       DJANGO_SUPERUSER_USERNAME: admin
       DJANGO_SUPERUSER_EMAIL: admin@mail.com
       DJANGO_SUPERUSER_PASSWORD: 1q2w3e4R!
+    depends_on:
+    - backend-1-service-registry
     restart: always
 
-  backend-4-e3selector:
+  backend-4-e3selector-web:
     build: backend/4-e3selector
     image: ${IMAGE_NAME_PREFIX:-socialcomputing/}elas-official-backend-4-e3selector:${IMAGE_TAG:-latest}
+    develop:
+      watch:
+      - action: rebuild
+        path: .
     environment:
       PORT: 8004
       EUREKA_HOST_NAME: backend-1-service-registry
       EUREKA_PORT: 8761
+      REDIS_HOST: backend-4-e3selector-redis
+    depends_on:
+    - backend-1-service-registry
+    - backend-4-e3selector-redis
+    restart: always
+
+  backend-4-e3selector-worker:
+    build: backend/4-e3selector
+    image: ${IMAGE_NAME_PREFIX:-socialcomputing/}elas-official-backend-4-e3selector:${IMAGE_TAG:-latest}
+    develop:
+      watch:
+      - action: rebuild
+        path: .
+    command: bin/worker
+    environment:
+      REDIS_HOST: backend-4-e3selector-redis
+    depends_on:
+    - backend-4-e3selector-redis
+    restart: always
+
+  backend-4-e3selector-redis:
+    image: redis:7.2.1
     restart: always
 
   frontend:
     build: frontend
     image: ${IMAGE_NAME_PREFIX:-socialcomputing/}elas-official-frontend:${IMAGE_TAG:-latest}
+    develop:
+      watch:
+      - action: rebuild
+        path: .
     environment:
       BASE_URL: ""
+    depends_on:
+    - backend-2-api-gateway
     ports:
     - 8080:8080
