@@ -58,22 +58,29 @@ except Exception as e:
     print(f"Failed to connect to Neo4j database: {e}")
     sys.exit(1)  # Stop the server if Neo4j is not available
 
-EUREKA_HOST_NAME = os.environ.get("EUREKA_HOST_NAME")
-EUREKA_PORT = os.environ.get("EUREKA_PORT")
-EUREKA_HOST = f"http://{EUREKA_HOST_NAME}:{EUREKA_PORT}/eureka"
-try:
-    eureka_client.init(
-        eureka_server=EUREKA_HOST,  # type: ignore
-        app_name="ELAS-STUDYCOMPASS",
-        instance_port=int(os.environ.get("DJANGO_PORT", "8001")),
-        instance_ip=socket.gethostbyname(EUREKA_HOST_NAME),  # type: ignore
-        instance_host=EUREKA_HOST_NAME,  # type: ignore
-    )
-    print("==========================================")
-    print("* Eureka client initialized successfully *")
-    print("==========================================")
-except socket.herror as e:
-    print(f"Failed to initialize Eureka client: {e}")
+
+if os.environ.get("CELERY_WORKER"):
+    print("=========================================")
+    print("*       Running in Celery worker        *")
+    print("* Skipping Eureka client initialization *")
+    print("=========================================")
+else:
+    try:
+        EUREKA_HOST_NAME = os.environ.get("EUREKA_HOST_NAME")
+        EUREKA_PORT = os.environ.get("EUREKA_PORT")
+        EUREKA_HOST = f"http://{EUREKA_HOST_NAME}:{EUREKA_PORT}/eureka"
+        eureka_client.init(
+            eureka_server=EUREKA_HOST,  # type: ignore
+            app_name="ELAS-STUDYCOMPASS",
+            instance_port=int(os.environ.get("DJANGO_PORT", "8001")),
+            instance_ip=socket.gethostbyname(EUREKA_HOST_NAME),  # type: ignore
+            instance_host=EUREKA_HOST_NAME,  # type: ignore
+        )
+        print("==========================================")
+        print("* Eureka client initialized successfully *")
+        print("==========================================")
+    except socket.herror as e:
+        print(f"Failed to initialize Eureka client: {e}")
 
 atexit.register(eureka_client.stop)
 
