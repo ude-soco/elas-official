@@ -4,4 +4,4 @@ set -euo pipefail
 echo "${0}: Starting Celery worker ..."
 CELERY_WORKER=1 \
   celery --app server \
-  worker --loglevel INFO --concurrency 1
+    worker --loglevel INFO --concurrency 1
