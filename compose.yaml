@@ -5,7 +5,7 @@ services:
     develop:
       watch:
       - action: rebuild
-        path: .
+        path: backend/1-service-registry
     environment:
       PORT: 8761
       HOSTNAME: backend-1-service-registry
@@ -18,7 +18,7 @@ services:
     develop:
       watch:
       - action: rebuild
-        path: .
+        path: backend/2-api-gateway
     environment:
       PORT: 8000
       SERVICE_REGISTRY_URL: http://backend-1-service-registry:8761/eureka/
@@ -34,7 +34,7 @@ services:
     develop:
       watch:
       - action: rebuild
-        path: .
+        path: backend/3-auth
     environment:
       PORT: 8002
       EUREKA_HOST_NAME: backend-1-service-registry
@@ -52,7 +52,7 @@ services:
     develop:
       watch:
       - action: rebuild
-        path: .
+        path: backend/4-e3selector
     environment:
       PORT: 8004
       EUREKA_HOST_NAME: backend-1-service-registry
@@ -69,7 +69,7 @@ services:
     develop:
       watch:
       - action: rebuild
-        path: .
+        path: backend/4-e3selector
     command: bin/worker
     environment:
       REDIS_HOST: backend-4-e3selector-redis
@@ -87,7 +87,7 @@ services:
     develop:
       watch:
       - action: rebuild
-        path: .
+        path: frontend
     environment:
       BASE_URL: ""
     depends_on:
