@@ -36,3 +36,5 @@ spring:
         uri: lb://ELAS-NOTEBOT
         predicates:
         - Path=/api/notebot/**
+
+logging.level.com.netflix.discovery: ERROR

@@ -12,3 +12,5 @@ eureka:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
   server:
     enableSelfPreservation: true
+
+logging.level.com.netflix.discovery: ERROR

@@ -176,7 +176,7 @@ USE_TZ = True
 # Celery settings
 REDIS_HOST = os.environ.get("REDIS_HOST", "127.0.0.1")
 CELERY_BROKER_URL = "redis://{}:6379/0".format(REDIS_HOST)
-CELERY_RESULT_BACKEND = "redis://{}:6379/0".format(REDIS_HOST)
+result_backend = "redis://{}:6379/0".format(REDIS_HOST)
 accept_content = ["application/json"]
 task_serializer = "json"
 result_serializer = "json"
