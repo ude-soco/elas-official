@@ -4,9 +4,11 @@ metadata:
   name: neo4j
 spec:
   ports:
-  - protocol: TCP
+  - name: HTTP
+    protocol: TCP
     port: 7474
     targetPort: 7474
-  - protocol: TCP
+  - name: Bolt
+    protocol: TCP
     port: 7687
     targetPort: 7687
