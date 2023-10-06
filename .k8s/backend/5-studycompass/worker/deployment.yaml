@@ -17,8 +17,8 @@ spec:
         - bin/worker
         env:
         - name: REDIS_HOST
-          value: $(REDIS_SERVICE)
+          value: $(BACKEND_5_STUDYCOMPASS_REDIS_SERVICE)
         - name: NEO4J_HOSTNAME
-          value: $(NEO4J_SERVICE)
+          value: $(BACKEND_5_STUDYCOMPASS_NEO4J_SERVICE)
         - name: NEO4J_PASSWORD
           value: password

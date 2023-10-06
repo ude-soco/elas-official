@@ -3,18 +3,6 @@ kind: Kustomization
 
 namePrefix: 5-studycompass-
 
-vars:
-- name: REDIS_SERVICE
-  objref:
-    apiVersion: v1
-    kind: Service
-    name: redis
-- name: NEO4J_SERVICE
-  objref:
-    apiVersion: v1
-    kind: Service
-    name: redis
-
 resources:
 - neo4j
 - redis
