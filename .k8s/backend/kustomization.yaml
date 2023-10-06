@@ -6,28 +6,6 @@ namePrefix: backend-
 commonLabels:
   app.kubernetes.io/part-of: backend
 
-vars:
-- name: BACKEND_1_SERVICE_REGISTRY_SERVICE
-  objref:
-    apiVersion: v1
-    kind: Service
-    name: 1-service-registry
-- name: BACKEND_4_E3SELECTOR_REDIS_SERVICE
-  objref:
-    apiVersion: v1
-    kind: Service
-    name: redis
-- name: BACKEND_5_STUDYCOMPASS_REDIS_SERVICE
-  objref:
-    apiVersion: v1
-    kind: Service
-    name: redis
-- name: BACKEND_5_STUDYCOMPASS_NEO4J_SERVICE
-  objref:
-    apiVersion: v1
-    kind: Service
-    name: redis
-
 resources:
 - 1-service-registry
 - 2-api-gateway
