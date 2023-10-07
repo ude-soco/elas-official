@@ -1,18 +1,34 @@
 import React, { useState, useEffect } from "react";
 import { Grid, Typography } from "@mui/material";
-import { createUser } from "./utils/api.js";
+import { getUserInfo } from "./utils/api.js";
 
 import noteBotLogo from "../../../assets/images/noteBot-logo.png";
 
 export default function NoteBot() {
-  const [user, setUser] = useState("Server not connected");
+  const [user, setUser] = useState({
+    message: "Server not connected",
+    user: {
+      uid: "",
+      name: "",
+      username: "",
+    },
+  });
 
   useEffect(() => {
-    async function createUserMethod() {
-      let response = await createUser();
-      setUser(response);
+    let elasUser = JSON.parse(sessionStorage.getItem("elas-user"));
+    async function getUserInfoFunction(userId) {
+      let { message, user } = await getUserInfo(userId);
+      setUser((prevState) => ({
+        ...prevState,
+        message: message,
+        user: {
+          uid: user.uid,
+          name: user.name,
+          username: user.username,
+        },
+      }));
     }
-    createUserMethod();
+    getUserInfoFunction(elasUser.id);
   }, []);
 
   return (
@@ -37,9 +53,16 @@ export default function NoteBot() {
               <Typography variant="h5" align="center" gutterBottom>
                 NoteBot is a learnsourcing application.
               </Typography>
-              <Typography variant="h5" align="center">
-                Message from server: <i>{user}</i>
-              </Typography>
+
+              {user.user.username ? (
+                <Typography variant="h5" align="center">
+                  Welcome <i>{user.user.name} </i>
+                </Typography>
+              ) : (
+                <Typography variant="h5" align="center">
+                  Message from server <i>{user.message} </i>
+                </Typography>
+              )}
             </Grid>
           </Grid>
         </Grid>

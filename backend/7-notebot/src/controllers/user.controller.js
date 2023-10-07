@@ -1,36 +1,47 @@
 const db = require("../models");
 const User = db.user;
 
-/***************** START: SAVE USER USING A CONTROLLER *****************
+/***************** START: GET USER INFO USING A CONTROLLER *****************
  * @documentation
  *
- * @function saveUser
- * The function saves a user to a database, checking if the user already
- * exists before saving.
- * @param req - The `req` parameter is the request object that contains
- * information about the HTTP request made by the client. It includes
- * details such as the request method, headers, and body.
- * @param res - The `res` parameter is the response object that is used to
- * send the response back to the client. It contains methods and properties
- * that allow you to control the response, such as setting the status code
- * and sending the response body.
- * @returns a response with a status code and a message. If the user
- * already exists in the database, it will return a 401 status code and a
- * message stating "User already exists in your database". If the user is
- * successfully created and stored in the database, it will return a 200
- * status code and a message stating "User {username} created and stored
- * in your database". If there is an error saving the user to the database,
- * it will return a 500 status code and a message stating "Error saving
- * user to your database".
- *
+ * @function getUserById
+ * The function `getUserById` is an asynchronous function that retrieves
+ * a user from a MongoDB database based on their user ID and sends a
+ * response with the user information if found, or a message indicating
+ * that the user was not found.
+ * @param req - The `req` parameter is an object that represents the
+ * HTTP request made to the server.  * It contains information such as
+ * the request method, headers, URL, and parameters.
+ * @param res - The `res` parameter is the response object that is used
+ * to send the response back to  * the client. It contains methods and
+ * properties that allow you to control the response, such as setting
+ * the status code, sending data, and setting headers.
+ * @returns a response object with a status code and a message. If a
+ * user is found, it also includes the found user object in the response.
  */
-export const saveUser = async (req, res) => {
+export const getUserById = async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    let foundUser = await User.findOne({ uid: userId });
+    if (foundUser) {
+      return res.status(200).send({ message: `User found!`, user: foundUser });
+    }
+    return res.status(200).send({ message: `User not found!` });
+  } catch (err) {
+    res
+      .status(500)
+      .send({ message: `Error saving user to your MongoDB database` });
+    return;
+  }
+};
+/***************** END: GET USER INFO USING A CONTROLLER ******************/
+
+export const createNewUser = async (req, res) => {
   try {
     let user = new User({
-      firstname: "Max",
-      lastname: "Müller",
-      username: "maxmüller",
-      password: "12345678",
+      uid: req.body.uid,
+      name: req.body.name,
+      username: req.body.username,
     });
     let foundUser = await User.findOne({ username: user.username });
     if (foundUser) {
@@ -43,8 +54,9 @@ export const saveUser = async (req, res) => {
       message: `User ${user.username} created and stored in your MongoDB database`,
     });
   } catch (err) {
-    res.status(500).send({ message: `Error saving user to your MongoDB database` });
+    res
+      .status(500)
+      .send({ message: `Error saving user to your MongoDB database` });
     return;
   }
 };
-/***************** END: SAVE USER USING A CONTROLLER ******************/

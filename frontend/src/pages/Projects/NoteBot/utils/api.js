@@ -1,15 +1,22 @@
-import { Backend, setAuthToken } from "../../../../utils/apiConfig";
+import { Backend } from "../../../../utils/apiConfig";
 
-export const createUser = async () => {
+export const getUserInfo = async (userId) => {
   try {
-    const response = await Backend.get(`/notebot/users`);
+    const response = await Backend.get(`/notebot/users/${userId}`);
     const {
-      data: { message },
+      data: { message, user },
     } = response;
 
-    return message;
+    return { message, user };
   } catch (err) {
     console.log(err);
-    return err.response.data.message;
+    return {
+      message: "Server not connected",
+      user: {
+        uid: "",
+        name: "",
+        username: "",
+      },
+    };
   }
 };

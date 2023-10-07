@@ -10,13 +10,12 @@ const Schema = mongoose.Schema;
 
 /***************** START: DEFINE A SCHEMA *****************
  * @documentation
- * Create a schema for MongoDB.
+ * A user schema for MongoDB.
  */
 const User = new Schema({
-  firstname: { type: String, required: true },
-  lastname: { type: String, required: true },
+  uid: { type: String, required: true },
+  name: { type: String, required: true },
   username: { type: String, required: true },
-  password: { type: String, required: true },
 });
 /***************** END: DEFINE A SCHEMA *****************/
 

@@ -31,12 +31,14 @@ userRouter.use(function (req, res, next) {
  * GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS.
  * In the example below, 'userRouter' is used to define the
  * routes. The 'userRouter.get()' method is used to define a
- * GET route. The first parameter '/users' is the path and
+ * GET route. The first parameter '/users/:userId' is the path and
  * the second parameter 'controller.saveUser' is the controller
- * function. The controller function is define in the
- * 'user.controller.js' file under controllers folder.
+ * function. ":userId" is a parameter send through the url
+ * The controller function is define in the 'user.controller.js' 
+ * file under controllers folder.
  */
-userRouter.get("/users", controller.saveUser);
+userRouter.get("/users/:userId", controller.getUserById);
+userRouter.post("/users", controller.createNewUser);
 
 /***************** END: CREATE ROUTES ****************************/
 
