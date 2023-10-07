@@ -14,8 +14,8 @@ class UserRegistrationSerializer(serializers.Serializer):
     username = serializers.CharField(max_length=100)
     email = serializers.EmailField()
     password = serializers.CharField(write_only=True)
-    study_program = serializers.CharField(max_length=240)
-    start_semester = serializers.CharField(max_length=30)
+    # study_program = serializers.CharField(max_length=240)
+    # start_semester = serializers.CharField(max_length=30)
 
     # TODO: Need to add the confirm password implementation
 

@@ -63,14 +63,17 @@ def user_login_view(request):
         user = User.objects.filter(username=username).first()
 
         if user and check_password(password, user.password):
-            # TODO: Need to add the request to courserecommender app
             if not user.is_staff or not user.is_superuser:  # type: ignore
-                service_url = get_service_url("ELAS-STUDYCOMPASS")
-                student_data = requests.get(
-                    f"{service_url}/api/course-recommender/get-student/",
-                    json={"uid": str(user.id)},
-                )
-                student = json.loads(student_data.text)
+                student = {"study_program": "", "start_semester": ""}
+                try:
+                    service_url = get_service_url("ELAS-STUDYCOMPASS")
+                    student_data = requests.get(
+                        f"{service_url}/api/course-recommender/get-student/",
+                        json={"uid": str(user.id)},
+                    )
+                    student = json.loads(student_data.text)
+                except Exception as e:
+                    print(f"Error creating student node: {e}")
             user.last_login = timezone.now()
             user.save()
             refresh = RefreshToken.for_user(user)  # type: ignore
@@ -118,7 +121,7 @@ def user_login_view(request):
 
 
 @api_view(["POST"])
-@permission_classes([IsAuthenticated])
+@permission_classes([AllowAny])
 def user_logout_view(request):
     data = JSONParser().parse(request)
     refresh_token = data.get("refresh")
@@ -146,7 +149,7 @@ def user_logout_view(request):
 
 
 @api_view(["PUT"])
-@permission_classes([IsAuthenticated])
+@permission_classes([AllowAny])
 def user_update_view(request, user_id):
     user = User.objects.filter(id=user_id).first()
     if user is None:
@@ -182,6 +185,6 @@ def user_update_view(request, user_id):
 
 # Testing authentication: SUCCESS
 @api_view(["GET"])
-@permission_classes([IsAuthenticated])
+@permission_classes([AllowAny])
 def session_view(request):
     return JsonResponse({"message": "Session is active"}, status=status.HTTP_200_OK)
