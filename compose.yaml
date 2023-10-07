@@ -5,7 +5,7 @@ services:
     develop:
       watch:
       - action: rebuild
-        path: .
+        path: backend/1-service-registry
     environment:
       PORT: 8761
       HOSTNAME: backend-1-service-registry
@@ -18,7 +18,7 @@ services:
     develop:
       watch:
       - action: rebuild
-        path: .
+        path: backend/2-api-gateway
     environment:
       PORT: 8000
       SERVICE_REGISTRY_URL: http://backend-1-service-registry:8761/eureka/
@@ -34,7 +34,7 @@ services:
     develop:
       watch:
       - action: rebuild
-        path: .
+        path: backend/3-auth
     environment:
       PORT: 8002
       EUREKA_HOST_NAME: backend-1-service-registry
@@ -52,7 +52,7 @@ services:
     develop:
       watch:
       - action: rebuild
-        path: .
+        path: backend/4-e3selector
     environment:
       PORT: 8004
       EUREKA_HOST_NAME: backend-1-service-registry
@@ -69,7 +69,7 @@ services:
     develop:
       watch:
       - action: rebuild
-        path: .
+        path: backend/4-e3selector
     command: bin/worker
     environment:
       REDIS_HOST: backend-4-e3selector-redis
@@ -81,16 +81,68 @@ services:
     image: redis:7.2.1
     restart: always
 
+  backend-5-studycompass-web:
+    build: backend/5-studycompass
+    image: ${IMAGE_NAME_PREFIX:-socialcomputing/}elas-official-backend-5-studycompass:${IMAGE_TAG:-latest}
+    develop:
+      watch:
+      - action: rebuild
+        path: backend/5-studycompass
+    environment:
+      PORT: 8005
+      EUREKA_HOST_NAME: backend-1-service-registry
+      EUREKA_PORT: 8761
+      REDIS_HOST: backend-5-studycompass-redis
+      NEO4J_HOSTNAME: backend-5-studycompass-neo4j
+      NEO4J_PASSWORD: password
+    depends_on:
+    - backend-1-service-registry
+    - backend-5-studycompass-redis
+    - backend-5-studycompass-neo4j
+    restart: always
+
+  backend-5-studycompass-worker:
+    build: backend/5-studycompass
+    image: ${IMAGE_NAME_PREFIX:-socialcomputing/}elas-official-backend-5-studycompass:${IMAGE_TAG:-latest}
+    develop:
+      watch:
+      - action: rebuild
+        path: backend/5-studycompass
+    command: bin/worker
+    environment:
+      REDIS_HOST: backend-5-studycompass-redis
+      NEO4J_HOSTNAME: backend-5-studycompass-neo4j
+      NEO4J_PASSWORD: password
+    depends_on:
+    - backend-5-studycompass-redis
+    - backend-5-studycompass-neo4j
+    restart: always
+
+  backend-5-studycompass-redis:
+    image: redis:7.2.1
+    restart: always
+
+  backend-5-studycompass-neo4j:
+    image: neo4j:5.12.0
+    environment:
+      NEO4J_AUTH: neo4j/password
+    volumes:
+    - backend-5-studycompass-neo4j-data:/data
+    restart: always
+
   frontend:
     build: frontend
     image: ${IMAGE_NAME_PREFIX:-socialcomputing/}elas-official-frontend:${IMAGE_TAG:-latest}
     develop:
       watch:
       - action: rebuild
-        path: .
+        path: frontend
     environment:
       BASE_URL: ""
     depends_on:
     - backend-2-api-gateway
     ports:
     - 8080:8080
+
+volumes:
+  backend-5-studycompass-neo4j-data:

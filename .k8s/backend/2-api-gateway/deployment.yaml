@@ -27,4 +27,4 @@ spec:
         - name: PORT
           value: "8000"
         - name: SERVICE_REGISTRY_URL
-          value: "http://$(1_SERVICE_REGISTRY_SERVICE):8761/eureka/"
+          value: "http://$(BACKEND_1_SERVICE_REGISTRY_SERVICE):8761/eureka/"

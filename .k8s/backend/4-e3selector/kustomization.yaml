@@ -3,14 +3,14 @@ kind: Kustomization
 
 namePrefix: 4-e3selector-
 
-vars:
-- name: REDIS_SERVICE
-  objref:
-    apiVersion: v1
-    kind: Service
-    name: redis
-
 resources:
 - redis
 - web
 - worker
+
+vars:
+- name: BACKEND_4_E3SELECTOR_REDIS_SERVICE
+  objref:
+    apiVersion: v1
+    kind: Service
+    name: redis

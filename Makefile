@@ -19,12 +19,16 @@ tilt:
 run: stop
 	@$(compose) up --force-recreate
 
+# Start all services and watch for changes
+watch: stop
+	@$(compose) watch
+
 start: run
 up: run
 
 # Stop all services
 stop:
-	@$(compose) down
+	@$(compose) down --remove-orphans
 
 down: stop
 

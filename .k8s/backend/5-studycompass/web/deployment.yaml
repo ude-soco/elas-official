@@ -13,7 +13,7 @@ spec:
         runAsNonRoot: true
       containers:
       - name: web
-        image: socialcomputing/elas-official-backend-4-e3selector
+        image: socialcomputing/elas-official-backend-5-studycompass
         ports:
         - containerPort: 8004
         env:
@@ -24,4 +24,8 @@ spec:
         - name: EUREKA_PORT
           value: "8761"
         - name: REDIS_HOST
-          value: $(BACKEND_4_E3SELECTOR_REDIS_SERVICE)
+          value: $(BACKEND_5_STUDYCOMPASS_REDIS_SERVICE)
+        - name: NEO4J_HOSTNAME
+          value: $(BACKEND_5_STUDYCOMPASS_NEO4J_SERVICE)
+        - name: NEO4J_PASSWORD
+          value: password
