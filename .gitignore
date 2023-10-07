@@ -117,3 +117,4 @@ db.sqlite3
 doc2vec_dbow_dm_wiki_article_200_dim/
 entities_and_relationships/
 frontend/build/
+dist-server/
