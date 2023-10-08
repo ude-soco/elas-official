@@ -1,7 +1,7 @@
 import studyCompassImg from "../images/studyCompass.png";
 import e3SelectorImg from "../images/e3selector.png";
 import projectFinderImg from "../images/projectFinder.png";
-import courseMatchImg from "../images/courseMatch.png";
+import courseRecommenderImg from "../images/courseRecommender.png";
 import intogenImg from "../images/intogen.png";
 import noteBotImg from "../images/noteBot.png";
 
@@ -43,7 +43,7 @@ const projectsInfo = [
   },
   {
     name: "Course Recommender",
-    image: courseMatchImg,
+    image: courseRecommenderImg,
     shortName: "course-recommender",
     teamMembers: "Jing Song",
     description:
