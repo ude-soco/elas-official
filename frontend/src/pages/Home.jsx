@@ -10,7 +10,6 @@ import {
   Grid,
   IconButton,
   InputAdornment,
-  Link,
   TextField,
   Tooltip,
   Typography,
@@ -18,8 +17,6 @@ import {
 import {
   Search as SearchIcon,
   ExpandMore as ExpandMoreIcon,
-  YouTube as YouTubeIcon,
-  GitHub as GitHubIcon,
 } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 
@@ -35,95 +32,35 @@ export default function Home() {
 
   return (
     <>
-      <Box sx={{ minHeight: "87vh" }}>
-        <Grid container sx={{ p: 4 }}>
-          <TextField
-            placeholder="Search project..."
-            value={search}
-            onChange={handleSearch}
-            variant="outlined"
-            sx={{ width: "100%", bgcolor: "white" }}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <SearchIcon />
-                </InputAdornment>
-              ),
-            }}
-          />
+      <Grid container sx={{ p: 4 }}>
+        <TextField
+          placeholder="Search project..."
+          value={search}
+          onChange={handleSearch}
+          variant="outlined"
+          sx={{ width: "100%", bgcolor: "white" }}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon />
+              </InputAdornment>
+            ),
+          }}
+        />
 
-          <Grid container spacing={1} sx={{ py: 3 }} justifyContent="center">
-            {projectsInfo
-              .sort((a, b) => a.name.localeCompare(b.name))
-              .map((project, index) => {
-                let nameToSearch = project.name.toLowerCase();
-                const found = nameToSearch.includes(search.toLowerCase());
-                if (!found) return null;
-                return (
-                  <Grid item key={index}>
-                    <ProjectCards project={project} />
-                  </Grid>
-                );
-              })}
-          </Grid>
-        </Grid>
-      </Box>
-      <Grid
-        container
-        sx={{
-          bgcolor: "white",
-          px: 2,
-          py: 3,
-          borderTop: 2,
-          borderColor: "grey.300",
-        }}
-        justifyContent="space-between"
-        component={Box}
-        alignItems="center"
-      >
-        <Grid item>
-          <Typography variant="body2" color="grey.700">
-            {" Copyright @ "}
-            <Link
-              color="inherit"
-              href="https://www.uni-due.de/soco"
-              target="_blank"
-            >
-              Social Computing Group
-            </Link>{" "}
-            {new Date().getFullYear()}
-            {"."}
-          </Typography>
-        </Grid>
-        <Grid item>
-          <Grid container alignItems="center">
-            <Typography
-              sx={{ color: "grey.700", mr: 3, cursor: "pointer" }}
-              variant="body2"
-              
-            >
-              <Link color="inherit" onClick={() => navigate("/privacy")}>Privacy</Link>
-            </Typography>
-            <Typography sx={{ color: "grey.700", mr: 1 }} variant="body2">
-              Follow us{" "}
-            </Typography>
-            <IconButton
-              sx={{ color: "grey.700" }}
-              onClick={() =>
-                window.open(
-                  "https://www.youtube.com/channel/UCQV36Dfq-mfmAG0SqrQ_QbA"
-                )
-              }
-            >
-              <YouTubeIcon />
-            </IconButton>
-            <IconButton
-              sx={{ color: "grey.700" }}
-              onClick={() => window.open("https://github.com/ude-soco")}
-            >
-              <GitHubIcon />
-            </IconButton>
-          </Grid>
+        <Grid container spacing={1} sx={{ py: 3 }} justifyContent="center">
+          {projectsInfo
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .map((project, index) => {
+              let nameToSearch = project.name.toLowerCase();
+              const found = nameToSearch.includes(search.toLowerCase());
+              if (!found) return null;
+              return (
+                <Grid item key={index}>
+                  <ProjectCards project={project} />
+                </Grid>
+              );
+            })}
         </Grid>
       </Grid>
     </>
