@@ -29,6 +29,7 @@ urlpatterns = [
     # Student related
     path("new-student/", students.add_new_student),
     path("get-student/", students.get_student),
+    path("update-student/", students.update_student),
     path("student-current-courses/", students.show_student_current_courses),
     path("student-semester/", students.get_student_semester),
     path("student-schedule/", students.show_whole_student_schedule),
