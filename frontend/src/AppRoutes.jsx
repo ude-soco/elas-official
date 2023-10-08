@@ -204,7 +204,7 @@ const NavBar = () => {
                   <>
                     <MenuItem onClick={handleViewSchedule}>
                       <ListItemIcon sx={{ mr: 1 }}>
-                        <CalendarMonthIcon />
+                        <CalendarMonthIcon color="primary" />
                       </ListItemIcon>
                       <ListItemText>Schedule</ListItemText>
                     </MenuItem>
@@ -213,14 +213,14 @@ const NavBar = () => {
                 )}
                 <MenuItem onClick={handleViewProfileSettings}>
                   <ListItemIcon sx={{ mr: 1 }}>
-                    <SettingsIcon />
+                    <SettingsIcon color="primary" />
                   </ListItemIcon>
-                  <ListItemText>Settings</ListItemText>
+                  <ListItemText>Profile settings</ListItemText>
                 </MenuItem>
 
                 <MenuItem onClick={handleSignOut}>
                   <ListItemIcon sx={{ mr: 1 }}>
-                    <LogoutIcon />
+                    <LogoutIcon color="primary" />
                   </ListItemIcon>
                   <ListItemText>Sign out</ListItemText>
                 </MenuItem>

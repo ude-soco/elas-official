@@ -141,6 +141,8 @@ const Signup = () => {
         study_program: formFields.studyProgram,
         start_semester: formFields.startSemester,
       };
+      if (formFields.studyProgram === "") delete request.study_program;
+      if (formFields.startSemester === "") delete request.start_semester;
       await signUp(request);
       showSnackbar("Registration successfully!");
       setTimeout(() => {
@@ -257,7 +259,6 @@ const Signup = () => {
                   <Autocomplete
                     options={semesterList}
                     getOptionLabel={(option) => option.name}
-                    disableClearable
                     renderInput={(params) => (
                       <TextField
                         {...params}
@@ -323,14 +324,14 @@ const Signup = () => {
                   </Grid>
                   <Grid container>
                     <Typography variant="body2" align="center">
-                    We respect your privacy. Please read {" "}
+                      We respect your privacy. Please read{" "}
                       <Link
                         onClick={() => navigate("/privacy")}
                         sx={{ cursor: "pointer" }}
                       >
                         here
-                      </Link>
-                      {" "}to learn more about our Privacy Policy.
+                      </Link>{" "}
+                      to learn more about our Privacy Policy.
                     </Typography>
                   </Grid>
                 </Box>
