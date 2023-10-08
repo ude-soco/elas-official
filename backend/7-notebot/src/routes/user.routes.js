@@ -39,6 +39,7 @@ userRouter.use(function (req, res, next) {
  */
 userRouter.get("/users/:userId", controller.getUserById);
 userRouter.post("/users", controller.createNewUser);
+userRouter.put("/users/:userId", controller.updateUser);
 
 /***************** END: CREATE ROUTES ****************************/
 

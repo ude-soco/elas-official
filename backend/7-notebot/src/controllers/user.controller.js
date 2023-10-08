@@ -43,20 +43,32 @@ export const createNewUser = async (req, res) => {
       name: req.body.name,
       username: req.body.username,
     });
-    let foundUser = await User.findOne({ username: user.username });
-    if (foundUser) {
-      return res
-        .status(200)
-        .send({ message: `User already exists in your MongoDB database` });
-    }
     await user.save();
     res.status(200).send({
-      message: `User ${user.username} created and stored in your MongoDB database`,
+      message: `User ${user.username} created successfully!`,
     });
   } catch (err) {
-    res
-      .status(500)
-      .send({ message: `Error saving user to your MongoDB database` });
+    res.status(500).send({ message: `Error saving user to DB` });
+    return;
+  }
+};
+
+export const updateUser = async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    let foundUser = await User.findOne({ uid: userId });
+    console.log(foundUser);
+    if (foundUser) {
+      foundUser.name = req.body.name;
+      foundUser.username = req.body.username;
+      await foundUser.save();
+      return res.status(200).send({
+        message: `User details updated!`,
+      });
+    }
+    return res.status(200).send({ message: `User not found!` });
+  } catch (err) {
+    res.status(500).send({ message: `Error saving user to DB.` });
     return;
   }
 };
