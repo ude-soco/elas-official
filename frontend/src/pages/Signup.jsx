@@ -157,7 +157,7 @@ const Signup = () => {
 
   return (
     <>
-      <Grid container sx={{ p: 2 }} justifyContent="space-between">
+      <Grid container sx={{ py: 2, px: 3 }} justifyContent="space-between">
         <Grid
           item
           component="img"
