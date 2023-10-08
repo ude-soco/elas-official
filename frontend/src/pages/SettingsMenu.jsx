@@ -254,14 +254,19 @@ export const ProfileSettingsSection = () => {
         email: formFields.email,
         username: formFields.username,
       };
-      if (updatedData.studyProgram === "") delete request.study_program;
-      if (updatedData.startSemester === "") delete request.start_semester;
+      if (updatedData.study_program === "") delete updatedData.study_program;
+      if (updatedData.start_semester === "") delete updatedData.start_semester;
+      console.log(updatedData)
       await updateUser(updatedData);
 
       sessionStorage.setItem("elas-user", JSON.stringify(updatedData));
       showSnackbar("Profile updated successfully!");
     } catch (err) {
-      setError(err);
+      // setError(err);
+      enqueueSnackbar("Something went wrong", {
+        variant: "error",
+        autoHideDuration: 6000,
+      });
     }
   };
 
@@ -435,7 +440,11 @@ export const StudySettingsSection = () => {
 
       showSnackbar("Study settings updated successfully!");
     } catch (err) {
-      setError(err);
+      // setError(err);
+      enqueueSnackbar("Something went wrong", {
+        variant: "error",
+        autoHideDuration: 6000,
+      });
     }
   };
 
