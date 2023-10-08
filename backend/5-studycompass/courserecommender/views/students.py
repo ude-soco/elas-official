@@ -42,41 +42,6 @@ def add_new_student(request):
     )
 
 
-@csrf_exempt
-def add_student(request):
-    if request.method == "POST":
-        try:
-            data = json.loads(request.body)
-
-            uid = data["uid"]
-            username = data["username"]
-            # password = data["password"]
-            study_program = data["study_program"]
-            semester = data["semester"]
-
-            student = Student(
-                # uid=uid,
-                name=username,
-                # password=password,
-                study_program=study_program,
-                semester=semester,
-            )
-            student.save()
-
-            response = {"message": "User created successfully."}
-            return JsonResponse(response, status=201, safe=False)
-
-        except Exception as e:
-            response = {
-                "message": "An error occurred while creating the user",
-                "error": e,
-            }
-            return JsonResponse(response, status=500, safe=False)
-
-    response_data = {"error": "Invalid request method."}
-    return JsonResponse(response_data, status=405)
-
-
 @api_view(["GET"])
 @permission_classes([AllowAny])
 def get_student(request):
@@ -89,6 +54,37 @@ def get_student(request):
             "username": student.username,
             "study_program": student.study_program,
             "start_semester": student.start_semester,
+        }
+    except DoesNotExist as e:
+        response = {
+            "message": "Student does not exist",
+            "error": str(e),
+        }
+        return JsonResponse(response, status=status.HTTP_404_NOT_FOUND, safe=False)
+    except Exception as e:
+        response = {
+            "message": "An unknown error occurred",
+            "error": str(e),
+        }
+        return JsonResponse(
+            response, status=status.HTTP_500_INTERNAL_SERVER_ERROR, safe=False
+        )
+    return JsonResponse(response, status=status.HTTP_200_OK, safe=False)
+
+
+@api_view(["PUT"])
+@permission_classes([AllowAny])
+def update_student(request):
+    try:
+        data = JSONParser().parse(request)
+        student = Student.nodes.get(uid=data["uid"])
+        student.name = data["name"]
+        student.username = data["username"]
+        student.study_program = data["study_program"]
+        student.start_semester = data["start_semester"]
+        student.save()
+        response = {
+            "message": "Student updated successfully",
         }
     except DoesNotExist as e:
         response = {
