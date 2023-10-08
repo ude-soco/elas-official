@@ -17,14 +17,14 @@ export default function NoteBot() {
   useEffect(() => {
     let elasUser = JSON.parse(sessionStorage.getItem("elas-user"));
     async function getUserInfoFunction(userId) {
-      let { message, user } = await getUserInfo(userId);
+      let reponse = await getUserInfo(userId);
       setUser((prevState) => ({
         ...prevState,
-        message: message,
+        message: reponse.message,
         user: {
-          uid: user.uid,
-          name: user.name,
-          username: user.username,
+          uid: reponse.user.uid,
+          name: reponse.user.name,
+          username: reponse.user.username,
         },
       }));
     }
