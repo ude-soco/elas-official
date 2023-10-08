@@ -12,7 +12,6 @@ const Signin = () => {
   const location = useLocation();
   const { enqueueSnackbar } = useSnackbar();
   const prevLocation = location.state?.from || { pathname: "/" };
-  const [error, setError] = useState("");
   const [errorMessageUsername, setErrorMessageUsername] = useState("");
   const [errorMessagePassword, setErrorMessagePassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -20,13 +19,6 @@ const Signin = () => {
     username: "",
     password: "",
   });
-
-  const showSnackbar = (message) => {
-    enqueueSnackbar(message, {
-      variant: "success",
-      autoHideDuration: 6000,
-    });
-  };
 
   const handleFormFields = (event) => {
     const { name, value } = event.target;
@@ -54,17 +46,23 @@ const Signin = () => {
     try {
       await signIn(formFields);
       setLoading(false);
-      showSnackbar("User logged in successfully!");
-      window.location.href = prevLocation;
+      enqueueSnackbar("User logged in successfully!", {
+        variant: "success",
+        autoHideDuration: 6000,
+      });
+      window.location.href = prevLocation.pathname;
     } catch (err) {
       setLoading(false);
-      setError(err.response.data.error);
+      enqueueSnackbar(err.response.data.error, {
+        variant: "error",
+        autoHideDuration: 6000,
+      });
     }
   };
 
   return (
     <>
-      <Grid container sx={{ p: 2 }} justifyContent="space-between">
+      <Grid container sx={{ py: 2, px: 3 }} justifyContent="space-between">
         <Grid
           item
           component="img"
@@ -135,12 +133,8 @@ const Signin = () => {
                     type="password"
                     autoComplete="current-password"
                     onChange={handleFormFields}
+                    sx={{ pb: 1 }}
                   />
-                  <Grid container sx={{ py: 1 }}>
-                    <Typography color="error" variant="body2">
-                      {error}
-                    </Typography>
-                  </Grid>
                   <LoadingButton
                     type="submit"
                     fullWidth

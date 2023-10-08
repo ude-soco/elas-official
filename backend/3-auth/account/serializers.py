@@ -14,8 +14,8 @@ class UserRegistrationSerializer(serializers.Serializer):
     username = serializers.CharField(max_length=100)
     email = serializers.EmailField()
     password = serializers.CharField(write_only=True)
-    # study_program = serializers.CharField(max_length=240)
-    # start_semester = serializers.CharField(max_length=30)
+    study_program = serializers.CharField(max_length=240, required=False)
+    start_semester = serializers.CharField(max_length=30, required=False)
 
     # TODO: Need to add the confirm password implementation
 
@@ -35,8 +35,8 @@ class UserRegistrationSerializer(serializers.Serializer):
                 "uid": str(user.id),
                 "name": f"{validated_data['first_name']} {validated_data['last_name']}",
                 "username": validated_data["username"],
-                "study_program": validated_data["study_program"],
-                "start_semester": validated_data["start_semester"],
+                "study_program": validated_data.get("study_program", ""),
+                "start_semester": validated_data.get("start_semester", ""),
             }
             service_url = get_service_url("ELAS-STUDYCOMPASS")
             requests.post(
@@ -69,9 +69,10 @@ class UserRegistrationSerializer(serializers.Serializer):
         try:
             payload = {
                 "uid": str(user.id),
+                "name": f"{validated_data['first_name']} {validated_data['last_name']}",
                 "username": validated_data["username"],
-                "study_program": validated_data["study_program"],
-                "start_semester": validated_data["start_semester"],
+                "study_program": validated_data.get("study_program", ""),
+                "start_semester": validated_data.get("start_semester", ""),
             }
             service_url = get_service_url("ELAS-STUDYCOMPASS")
             requests.put(

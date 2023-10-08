@@ -63,15 +63,16 @@ def user_login_view(request):
         user = User.objects.filter(username=username).first()
 
         if user and check_password(password, user.password):
+            student = {"study_program": "", "start_semester": ""}
             if not user.is_staff or not user.is_superuser:  # type: ignore
-                student = {"study_program": "", "start_semester": ""}
                 try:
                     service_url = get_service_url("ELAS-STUDYCOMPASS")
                     student_data = requests.get(
                         f"{service_url}/api/course-recommender/get-student/",
                         json={"uid": str(user.id)},
                     )
-                    student = json.loads(student_data.text)
+                    if student_data.status_code == 200:
+                        student = json.loads(student_data.text)
                 except Exception as e:
                     print(f"Error creating student node: {e}")
             user.last_login = timezone.now()
@@ -86,8 +87,8 @@ def user_login_view(request):
                             "last_name": user.last_name,
                             "username": user.username,
                             "email": user.email,
-                            "study_program": student["study_program"],  # type: ignore
-                            "start_semester": student["start_semester"],  # type: ignore
+                            "study_program": student.get("study_program", ""),
+                            "start_semester": student.get("start_semester", ""),
                         },
                         "refresh": str(refresh),
                         "access": str(refresh.access_token),
