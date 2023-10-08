@@ -20,13 +20,17 @@ def get_similar_students(student, candidate_similar_list):
                     u_embedding = np.array(user.embedding)
                     similarity = cosine_similarity(s_embedding, u_embedding)
                     similarity_list.append(
-                        {"name": user.username, "similarity": similarity})
+                        {"name": user.username, "similarity": similarity}
+                    )
         sorted_similarity_list = sorted(
-            similarity_list, key=lambda x: x["similarity"], reverse=True)
-        top_5_similar = sorted_similarity_list[:4]
+            similarity_list, key=lambda x: x["similarity"], reverse=True
+        )
+        top_5_similar = sorted_similarity_list[:5]
         return top_5_similar
     except Exception as e:
         print(e)
+
+
 # def get_similar_students(student, candidate_similar_list):
 #     similarity_list = []
 #     try:

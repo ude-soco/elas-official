@@ -14,8 +14,8 @@ class UserRegistrationSerializer(serializers.Serializer):
     username = serializers.CharField(max_length=100)
     email = serializers.EmailField()
     password = serializers.CharField(write_only=True)
-    study_program = serializers.CharField(max_length=240)
-    start_semester = serializers.CharField(max_length=30)
+    study_program = serializers.CharField(max_length=240, required=False)
+    start_semester = serializers.CharField(max_length=30, required=False)
 
     # TODO: Need to add the confirm password implementation
 
@@ -33,12 +33,15 @@ class UserRegistrationSerializer(serializers.Serializer):
         try:
             payload = {
                 "uid": str(user.id),
+                "name": f"{validated_data['first_name']} {validated_data['last_name']}",
                 "username": validated_data["username"],
-                "study_program": validated_data["study_program"],
-                "start_semester": validated_data["start_semester"],
+                "study_program": validated_data.get("study_program", ""),
+                "start_semester": validated_data.get("start_semester", ""),
             }
             service_url = get_service_url("ELAS-STUDYCOMPASS")
-            requests.post(f"{service_url}/api/course-recommender/new-student/", json=payload)
+            requests.post(
+                f"{service_url}/api/course-recommender/new-student/", json=payload
+            )
         except Exception as e:
             print(f"Error creating student node: {e}")
 
@@ -50,17 +53,20 @@ class UserRegistrationSerializer(serializers.Serializer):
         for field in user_fields:
             if field in validated_data:
                 setattr(user, field, validated_data[field])
-        user.save() # TODO: Check whether it is saving twice
-        
+        user.save()  # TODO: Check whether it is saving twice
+
         try:
             payload = {
                 "uid": str(user.id),
+                "name": f"{validated_data['first_name']} {validated_data['last_name']}",
                 "username": validated_data["username"],
-                "study_program": validated_data["study_program"],
-                "start_semester": validated_data["start_semester"],
+                "study_program": validated_data.get("study_program", ""),
+                "start_semester": validated_data.get("start_semester", ""),
             }
             service_url = get_service_url("ELAS-STUDYCOMPASS")
-            requests.put(f"{service_url}/api/course-recommender/update-student/", json=payload)
+            requests.put(
+                f"{service_url}/api/course-recommender/update-student/", json=payload
+            )
         except Exception as e:
             print(f"Error creating student node: {e}")
 

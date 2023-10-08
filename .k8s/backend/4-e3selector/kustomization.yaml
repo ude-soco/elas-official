@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namePrefix: 4-e3selector-
+
+resources:
+- redis
+- web
+- worker
+
+vars:
+- name: BACKEND_4_E3SELECTOR_REDIS_SERVICE
+  objref:
+    apiVersion: v1
+    kind: Service
+    name: redis

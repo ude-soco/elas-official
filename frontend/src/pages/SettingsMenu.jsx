@@ -8,9 +8,13 @@ import {
   Typography,
   Button,
   TextField,
+  Tooltip,
 } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
-import { Download as DownloadIcon } from "@mui/icons-material";
+import {
+  Download as DownloadIcon,
+  Info as InfoIcon,
+} from "@mui/icons-material";
 import {
   updateUser,
   getSemesterStudyProgramList,
@@ -250,12 +254,19 @@ export const ProfileSettingsSection = () => {
         email: formFields.email,
         username: formFields.username,
       };
+      if (updatedData.study_program === "") delete updatedData.study_program;
+      if (updatedData.start_semester === "") delete updatedData.start_semester;
+      console.log(updatedData)
       await updateUser(updatedData);
 
       sessionStorage.setItem("elas-user", JSON.stringify(updatedData));
       showSnackbar("Profile updated successfully!");
     } catch (err) {
-      setError(err);
+      // setError(err);
+      enqueueSnackbar("Something went wrong", {
+        variant: "error",
+        autoHideDuration: 6000,
+      });
     }
   };
 
@@ -270,16 +281,32 @@ export const ProfileSettingsSection = () => {
           <Avatar sx={{ width: 72, height: 72 }} src={previewImage} />
         </Grid>
         <Grid item>
-          <Button variant="outlined" color="primary" onClick={handleUpload}>
-            Choose photo
-            <input
-              id="fileInput"
-              hidden
-              onChange={selectFile}
-              type="file"
-              accept="image/*"
-            />
-          </Button>
+          <Tooltip
+            arrow
+            title={
+              <Typography variant="body2" sx={{ p: 1 }}>
+                This feature is not available yet.
+              </Typography>
+            }
+          >
+            <span>
+              <Button
+                variant="outlined"
+                color="primary"
+                onClick={handleUpload}
+                disabled
+              >
+                Choose photo
+                <input
+                  id="fileInput"
+                  hidden
+                  onChange={selectFile}
+                  type="file"
+                  accept="image/*"
+                />
+              </Button>
+            </span>
+          </Tooltip>
         </Grid>
       </Grid>
       <Divider sx={{ my: 3 }} />
@@ -413,7 +440,11 @@ export const StudySettingsSection = () => {
 
       showSnackbar("Study settings updated successfully!");
     } catch (err) {
-      setError(err);
+      // setError(err);
+      enqueueSnackbar("Something went wrong", {
+        variant: "error",
+        autoHideDuration: 6000,
+      });
     }
   };
 
@@ -432,7 +463,6 @@ export const StudySettingsSection = () => {
             <Autocomplete
               options={semesterList}
               getOptionLabel={(option) => option.name}
-              disableClearable
               renderInput={(params) => (
                 <TextField
                   {...params}
@@ -475,15 +505,43 @@ export const StudySettingsSection = () => {
             />
           </Grid>
         </Grid>
-
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-          sx={{ mt: 2, mb: 1 }}
+        <Tooltip
+          arrow
+          title={
+            formFields.startSemester === "" ||
+            formFields.studyProgram === "" ? (
+              <Typography variant="body2" sx={{ p: 1 }} align="center">
+                To save, you need to choose both Start Semester and Study
+                Program
+              </Typography>
+            ) : (
+              ""
+            )
+          }
         >
-          Save changes
-        </Button>
+          <span>
+            <Button
+              type="submit"
+              variant="contained"
+              disabled={
+                formFields.startSemester === "" ||
+                formFields.studyProgram === ""
+              }
+              color="primary"
+              sx={{ mt: 2, mb: 1 }}
+              endIcon={
+                formFields.startSemester === "" ||
+                formFields.studyProgram === "" ? (
+                  <InfoIcon />
+                ) : (
+                  ""
+                )
+              }
+            >
+              Save changes
+            </Button>
+          </span>
+        </Tooltip>
       </Box>
     </>
   );
@@ -515,10 +573,25 @@ export const PasswordSettingsSection = () => {
           </Grid>
         </Grid>
       </Grid>
-
-      <Button variant="contained" color="primary" sx={{ mt: 2, mb: 1 }}>
-        Save changes
-      </Button>
+      <Tooltip
+        arrow
+        title={
+          <Typography variant="body2" sx={{ p: 1 }}>
+            This feature is not available yet.
+          </Typography>
+        }
+      >
+        <span>
+          <Button
+            variant="contained"
+            color="primary"
+            sx={{ mt: 2, mb: 1 }}
+            disabled
+          >
+            Save changes
+          </Button>
+        </span>
+      </Tooltip>
     </>
   );
 };

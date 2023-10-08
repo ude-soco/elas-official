@@ -1,24 +1,24 @@
 import studyCompassImg from "../images/studyCompass.png";
 import e3SelectorImg from "../images/e3selector.png";
 import projectFinderImg from "../images/projectFinder.png";
-import courseMatchImg from "../images/courseMatch.png";
+import courseRecommenderImg from "../images/courseRecommender.png";
 import intogenImg from "../images/intogen.png";
 import noteBotImg from "../images/noteBot.png";
 
 const projectsInfo = [
+  // {
+  //   name: "Study Compass",
+  //   image: studyCompassImg,
+  //   shortName: "study-compass",
+  //   teamMembers:
+  //     "Kingson Chidubem Nwoke, Daniel Meier, Hakan Ok, Mengchen Li, Rana Nazire Karaca, Fatema Alagha, Mhd Ismail al Sayad",
+  //   description:
+  //     "The project idea is to provide a platform for students at the University of Duisburg-Essen to select the university's courses within a few easy steps. Furthermore, the platform lets students easily make a schedule by observing various details such as overlapping course schedules, ratings of the courses, and links to LSF.",
+  // },
   {
     name: "Study Compass",
     image: studyCompassImg,
     shortName: "study-compass",
-    teamMembers:
-      "Kingson Chidubem Nwoke, Daniel Meier, Hakan Ok, Mengchen Li, Rana Nazire Karaca, Fatema Alagha, Mhd Ismail al Sayad",
-    description:
-      "The project idea is to provide a platform for students at the University of Duisburg-Essen to select the university's courses within a few easy steps. Furthermore, the platform lets students easily make a schedule by observing various details such as overlapping course schedules, ratings of the courses, and links to LSF.",
-  },
-  {
-    name: "Study Compass Copy",
-    image: studyCompassImg,
-    shortName: "study-compass-copy",
     teamMembers:
       "Fan Ouyang",
     description:
@@ -43,7 +43,7 @@ const projectsInfo = [
   },
   {
     name: "Course Recommender",
-    image: courseMatchImg,
+    image: courseRecommenderImg,
     shortName: "course-recommender",
     teamMembers: "Jing Song",
     description:

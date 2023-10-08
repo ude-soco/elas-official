@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+    spec:
+      securityContext:
+        runAsNonRoot: true
+      containers:
+      - name: web
+        image: socialcomputing/elas-official-backend-5-studycompass
+        ports:
+        - containerPort: 8004
+        env:
+        - name: PORT
+          value: "8004"
+        - name: EUREKA_HOST_NAME
+          value: "$(BACKEND_1_SERVICE_REGISTRY_SERVICE)"
+        - name: EUREKA_PORT
+          value: "8761"
+        - name: REDIS_HOST
+          value: $(BACKEND_5_STUDYCOMPASS_REDIS_SERVICE)
+        - name: NEO4J_HOSTNAME
+          value: $(BACKEND_5_STUDYCOMPASS_NEO4J_SERVICE)
+        - name: NEO4J_PASSWORD
+          value: password

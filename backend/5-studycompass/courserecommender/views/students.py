@@ -2,11 +2,12 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework import status
-from rest_framework.decorators import api_view, permission_classes
 from rest_framework.parsers import JSONParser
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from courserecommender.models import *
 import json
+from neomodel.core import DoesNotExist
 from courserecommender.utils import *
 
 elas_backend_directory = os.path.abspath(
@@ -18,82 +19,86 @@ SEMESTER_DATA = os.path.abspath(
 
 
 @api_view(["POST"])
-def create_student(request):
-    try:
-        data = JSONParser().parse(request)
-
-        with open(SEMESTER_DATA) as f:
-            semester_data = json.load(f)
-
-        student_data = {
-            "uid": data["uid"],
-            "username": data["username"],
-            "study_program": data["study_program"],
-            "start_semester": data["start_semester"],
-            "current_semester": semester_data[-1]["name"],
-        }
-
-        try:
-            student = Student(**student_data)
-            student.save()
-            response = {"message": "User created successfully."}
-            return JsonResponse(response, status=201, safe=False)
-        except Exception as e:
-            print(f"Error creating student node: {e}")
-            response = {"message": "Error creating student node."}
-            return JsonResponse(response, status=400, safe=False)
-
-    except Exception as e:
-        response = {"message": "an error occurred while creating the user", "error": e}
-        return JsonResponse(response, status=500, safe=False)
-
-
-@api_view(["PUT"])
-def edit_student(request):
-    try:
-        data = JSONParser().parse(request)
-        student = Student.nodes.get(uid=data["uid"])
-        student_fields = ["username", "study_program", "start_semester"]
-
-        student_updated = False
-        for field in student_fields:
-            # TODO: Check if this is needed in frontend
-            if field == "name":
-                setattr(student, field, data["username"])
-                student_updated = True
-            if field in data:
-                setattr(student, field, data[field])
-                student_updated = True
-
-        if student_updated:
-            student.save()
-            response = {"message": "User updated successfully."}
-            return JsonResponse(response, status=201, safe=False)
-    except Exception as e:
-        print(f"Error editing student node: {e}")
-        response = {"message": "Error editing student node."}
-        return JsonResponse(response, status=400, safe=False)
+@permission_classes([AllowAny])
+def add_new_student(request):
+    data = json.loads(request.body)
+    uid = data["uid"]
+    name = data["name"]
+    username = data["username"]
+    study_program = data["study_program"]
+    start_semester = data["start_semester"]
+    student = Student(
+        uid=uid,
+        name=name,
+        username=username,
+        study_program=study_program,
+        start_semester=start_semester,
+    )
+    student.save()
+    return JsonResponse(
+        {"message": "Add new student successfully"},
+        safe=False,
+        status=status.HTTP_200_OK,
+    )
 
 
 @api_view(["GET"])
+@permission_classes([AllowAny])
 def get_student(request):
     try:
         data = JSONParser().parse(request)
         student = Student.nodes.get(uid=data["uid"])
-
         response = {
             "uid": student.uid,
-            "name": student.username,
+            "name": student.name,
+            "username": student.username,
             "study_program": student.study_program,
-            "current_semester": student.current_semester,
             "start_semester": student.start_semester,
         }
-
-        return JsonResponse(response, status=200, safe=False)
+    except DoesNotExist as e:
+        response = {
+            "message": "Student does not exist",
+            "error": str(e),
+        }
+        return JsonResponse(response, status=status.HTTP_404_NOT_FOUND, safe=False)
     except Exception as e:
-        print(f"Error finding student node: {e}")
-        response = {"message": "Error finding student node."}
-        return JsonResponse(response, status=400, safe=False)
+        response = {
+            "message": "An unknown error occurred",
+            "error": str(e),
+        }
+        return JsonResponse(
+            response, status=status.HTTP_500_INTERNAL_SERVER_ERROR, safe=False
+        )
+    return JsonResponse(response, status=status.HTTP_200_OK, safe=False)
+
+
+@api_view(["PUT"])
+@permission_classes([AllowAny])
+def update_student(request):
+    try:
+        data = JSONParser().parse(request)
+        student = Student.nodes.get(uid=data["uid"])
+        student.name = data["name"]
+        student.username = data["username"]
+        student.study_program = data["study_program"]
+        student.start_semester = data["start_semester"]
+        student.save()
+        response = {
+            "message": "Student updated successfully",
+        }
+    except DoesNotExist as e:
+        response = {
+            "message": "Student does not exist",
+            "error": str(e),
+        }
+        return JsonResponse(response, status=404, safe=False)
+    except Exception as e:
+        response = {
+            "message": "An unknown error occurred",
+            "error": str(e),
+        }
+        return JsonResponse(response, status=500, safe=False)
+    return JsonResponse(response, status=200, safe=False)
 
 
 def show_student_info(request):
@@ -169,6 +174,7 @@ def show_blacklist_courses(request):
 
 
 @api_view(["POST"])
+@permission_classes([AllowAny])
 def show_student_current_courses(request):
     data = json.loads(request.body)
     uid = data["uid"]
@@ -193,6 +199,7 @@ def show_student_current_courses(request):
 
 
 @api_view(["POST"])
+@permission_classes([AllowAny])
 def show_whole_student_schedule(request):
     data = json.loads(request.body)
     uid = data["uid"]
@@ -225,6 +232,7 @@ def show_whole_student_schedule(request):
 
 
 @api_view(["POST"])
+@permission_classes([AllowAny])
 def get_student_semester(request):
     data = json.loads(request.body)
     uid = data["uid"]
@@ -246,6 +254,7 @@ def get_student_semester(request):
 
 
 @api_view(["POST"])
+@permission_classes([AllowAny])
 def change_student_setting(request):
     data = json.loads(request.body)
     uid = data["uid"]

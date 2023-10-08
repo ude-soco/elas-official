@@ -418,7 +418,8 @@ const CourseDetail = () => {
                   Study path
                 </Typography>
                 <Typography>
-                  show course path before and after "{courseInfo.name}"
+                  The diagram illustrates the progression to and from{' '}
+                  {courseInfo.name}.
                 </Typography>
                 {lableList.length !== 0 ? (
                   <CoursePath
@@ -427,7 +428,7 @@ const CourseDetail = () => {
                     targetList={targetList}
                     valueList={valueList}
                     width={800}
-                    height={400}
+                    height={800}
                   />
                 ) : (
                   <Typography gutterBottom>No study path available</Typography>
