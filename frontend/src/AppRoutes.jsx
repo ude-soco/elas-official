@@ -143,6 +143,7 @@ export default function AppRoutes() {
 }
 
 const Footer = () => {
+  const navigate = useNavigate();
   return (
     <Grid
       container
