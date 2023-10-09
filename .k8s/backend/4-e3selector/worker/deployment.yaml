@@ -14,7 +14,7 @@ spec:
       - name: worker
         image: socialcomputing/elas-official-backend-4-e3selector
         cmd:
-        - bin/worker
+        - worker
         env:
         - name: REDIS_HOST
           value: $(BACKEND_4_E3SELECTOR_REDIS_SERVICE)
