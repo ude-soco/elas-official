@@ -1,0 +1,36 @@
+services:
+  backend-4-e3selector-web:
+    build: .
+    image: ${IMAGE_NAME_PREFIX:-socialcomputing/}elas-official-backend-4-e3selector:${IMAGE_TAG:-latest}
+    develop:
+      watch:
+      - action: rebuild
+        path: .
+    command: web
+    environment:
+      PORT: 8004
+      EUREKA_HOST_NAME: backend-1-service-registry
+      EUREKA_PORT: 8761
+      REDIS_HOST: backend-4-e3selector-redis
+    depends_on:
+    - backend-1-service-registry
+    - backend-4-e3selector-redis
+    restart: always
+
+  backend-4-e3selector-worker:
+    build: .
+    image: ${IMAGE_NAME_PREFIX:-socialcomputing/}elas-official-backend-4-e3selector:${IMAGE_TAG:-latest}
+    develop:
+      watch:
+      - action: rebuild
+        path: .
+    command: worker
+    environment:
+      REDIS_HOST: backend-4-e3selector-redis
+    depends_on:
+    - backend-4-e3selector-redis
+    restart: always
+
+  backend-4-e3selector-redis:
+    image: redis:7.2.1
+    restart: always

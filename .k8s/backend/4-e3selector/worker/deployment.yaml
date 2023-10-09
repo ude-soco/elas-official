@@ -13,8 +13,7 @@ spec:
       containers:
       - name: worker
         image: socialcomputing/elas-official-backend-4-e3selector
-        cmd:
-        - bin/worker
+        command: [ worker ]
         env:
         - name: REDIS_HOST
           value: $(BACKEND_4_E3SELECTOR_REDIS_SERVICE)
