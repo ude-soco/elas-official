@@ -1,0 +1,14 @@
+services:
+  frontend:
+    build: .
+    image: ${IMAGE_NAME_PREFIX:-socialcomputing/}elas-official-frontend:${IMAGE_TAG:-latest}
+    develop:
+      watch:
+      - action: rebuild
+        path: .
+    environment:
+      BASE_URL: ""
+    depends_on:
+    - backend-2-api-gateway
+    ports:
+    - 8080:8080

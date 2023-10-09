@@ -42,6 +42,7 @@ USER 1000
 COPY --chown=app:app . ./
 
 # Run web application
+ENV PATH="/home/app/bin:$PATH"
 ENV GUNICORN_LOG_LEVEL info
 EXPOSE 8004
-CMD ["bin/web"]
+CMD ["web"]

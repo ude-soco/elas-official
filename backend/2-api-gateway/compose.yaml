@@ -1,0 +1,16 @@
+services:
+  backend-2-api-gateway:
+    build: .
+    image: ${IMAGE_NAME_PREFIX:-socialcomputing/}elas-official-backend-2-api-gateway:${IMAGE_TAG:-latest}
+    develop:
+      watch:
+      - action: rebuild
+        path: .
+    environment:
+      PORT: 8000
+      SERVICE_REGISTRY_URL: http://backend-1-service-registry:8761/eureka/
+    depends_on:
+    - backend-1-service-registry
+    ports:
+    - 8000:8000
+    restart: always
