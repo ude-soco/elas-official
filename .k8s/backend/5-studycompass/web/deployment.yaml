@@ -14,7 +14,7 @@ spec:
       containers:
       - name: web
         image: socialcomputing/elas-official-backend-5-studycompass
-        cmd: [ web ]
+        command: [ web ]
         ports:
         - containerPort: 8004
         env:
