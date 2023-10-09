@@ -2,7 +2,8 @@
 set -euo pipefail
 
 echo "${0}: Migrating database ..."
-python manage.py migrate --noinput
+NEO4J_HOST="bolt://${NEO4J_USERNAME:-neo4j}:${NEO4J_PASSWORD:-neo4j}@${NEO4J_HOSTNAME:-127.0.0.1}:${NEO4J_PORT:-7687}" \
+  python manage.py migrate --noinput
 
 echo "${0}: Running application ..."
 DJANGO_PORT=${PORT} \
