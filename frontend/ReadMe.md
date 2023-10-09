@@ -26,6 +26,6 @@ Using your file explorer, go inside the directory `frontend`, copy the `example.
   npm start
   ```
 
-  The server will run at [http://localhost:5173](http://localhost:5173)
+  The server will run at [http://localhost:8080](http://localhost:8080)
 
 - Stop the server by pressing `Cntl + c` inside the command prompt
