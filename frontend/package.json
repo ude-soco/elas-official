@@ -18,7 +18,7 @@
     "@fontsource/roboto": "^5.0.8",
     "@mui/icons-material": "^5.14.12",
     "@mui/lab": "^5.0.0-alpha.147",
-    "@mui/material": "^5.14.12",
+    "@mui/material": "^5.14.13",
     "@mui/styled-engine-sc": "^5.14.12",
     "@mui/x-data-grid": "^6.16.0",
     "@reduxjs/toolkit": "^1.9.7",
