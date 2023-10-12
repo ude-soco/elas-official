@@ -19,17 +19,17 @@ lsf_data_directory = os.path.abspath(
 
 @shared_task()
 def scrape_lsf_task(url):
-    # scrape_lsf_data(url)
+    scrape_lsf_data(url)
     # scrape_vdb_data() # TODO: Uncomment this line when the VDB website is ready
 
-    # lsf_data_processing = ProcessLsfData()
-    # lsf_data_processing.run()
+    lsf_data_processing = ProcessLsfData()
+    lsf_data_processing.run()
 
     # vdb_data_processing = ProcessVdbData()
     # vdb_data_processing.run()
 
-    # merge_lsf_vdb = ProcessMergeData()
-    # merge_lsf_vdb.run()
+    merge_lsf_vdb = ProcessMergeData()
+    merge_lsf_vdb.run()
 
     # upload_lsf_vdb = LSFVDBUploader()
     # upload_lsf_vdb.upload_data()

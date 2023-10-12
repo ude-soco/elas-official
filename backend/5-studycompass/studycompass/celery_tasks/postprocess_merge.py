@@ -202,5 +202,5 @@ class ProcessMergeData:
             output_file.close()
             vdb_data.close()
             lsf_data.close()
-        os.unlink(POSTPROCESSED_VDB_DATA_FILE)
+        # os.unlink(POSTPROCESSED_VDB_DATA_FILE)
         os.unlink(POSTPROCESSED_LECTURES_DATA_FILE)

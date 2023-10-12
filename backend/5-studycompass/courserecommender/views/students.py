@@ -21,6 +21,10 @@ SEMESTER_DATA = os.path.abspath(
 @api_view(["POST"])
 @permission_classes([AllowAny])
 def add_new_student(request):
+    with open(SEMESTER_DATA, "r", encoding="utf8") as f:
+        semester_data = json.loads(f.read())
+    current_semester = semester_data[-1]["name"]
+
     data = json.loads(request.body)
     uid = data["uid"]
     name = data["name"]
@@ -33,6 +37,8 @@ def add_new_student(request):
         username=username,
         study_program=study_program,
         start_semester=start_semester,
+        current_semester=current_semester,
+        setting={"newUser": True, "newSemester": False},
     )
     student.save()
     return JsonResponse(
