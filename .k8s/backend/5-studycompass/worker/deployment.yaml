@@ -13,8 +13,8 @@ spec:
       containers:
       - name: worker
         image: socialcomputing/elas-official-backend-5-studycompass
-        cmd:
-        - bin/worker
+        command:
+        - worker
         env:
         - name: REDIS_HOST
           value: $(BACKEND_5_STUDYCOMPASS_REDIS_SERVICE)

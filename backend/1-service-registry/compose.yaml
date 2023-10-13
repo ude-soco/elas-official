@@ -1,0 +1,13 @@
+services:
+  backend-1-service-registry:
+    build: .
+    image: ${IMAGE_NAME_PREFIX:-socialcomputing/}elas-official-backend-1-service-registry:${IMAGE_TAG:-latest}
+    develop:
+      watch:
+      - action: rebuild
+        path: .
+    environment:
+      PORT: 8761
+      HOSTNAME: backend-1-service-registry
+    ports:
+    - 8761:8761

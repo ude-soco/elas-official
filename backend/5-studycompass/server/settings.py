@@ -45,10 +45,9 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 # Neo4j configuration
-NEOMODEL_NEO4J_BOLT_URL = os.environ.get("NEO4J_HOST")
-config.DATABASE_URL = NEOMODEL_NEO4J_BOLT_URL
-
 try:
+    NEOMODEL_NEO4J_BOLT_URL = os.environ.get("NEO4J_HOST")
+    config.DATABASE_URL = NEOMODEL_NEO4J_BOLT_URL
     db.set_connection(config.DATABASE_URL)
     db.cypher_query("MATCH (n) RETURN n LIMIT 1")
     print("==========================================")

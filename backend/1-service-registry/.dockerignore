@@ -1,6 +1,3 @@
 .gitignore
-*example*
 compose.yaml
-Dockerfile
-docs
 README.*
