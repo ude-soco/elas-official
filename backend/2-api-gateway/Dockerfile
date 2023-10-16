@@ -4,7 +4,7 @@ COPY . .
 RUN --mount=type=cache,target=/root/.m2 mvn --no-transfer-progress package
 
 
-FROM eclipse-temurin:17-jre
+FROM eclipse-temurin:21-jre
 COPY --from=build /target/*.jar .
 USER 65534
 EXPOSE 8000
