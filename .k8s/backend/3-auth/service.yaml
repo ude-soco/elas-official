@@ -2,12 +2,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: 3-auth
-  labels:
-    app.kubernetes.io/component: 3-auth
 spec:
   ports:
   - protocol: TCP
     port: 8761
     targetPort: 8761
-  selector:
-    app.kubernetes.io/component: 3-auth
