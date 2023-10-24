@@ -13,8 +13,10 @@ services:
       EUREKA_PORT: 8761
       REDIS_HOST: backend-4-e3selector-redis
     depends_on:
-    - backend-1-service-registry
-    - backend-4-e3selector-redis
+      backend-1-service-registry:
+        condition: service_healthy
+      backend-4-e3selector-redis:
+        condition: service_healthy
     restart: always
 
   backend-4-e3selector-worker:
@@ -28,9 +30,12 @@ services:
     environment:
       REDIS_HOST: backend-4-e3selector-redis
     depends_on:
-    - backend-4-e3selector-redis
+      backend-4-e3selector-redis:
+        condition: service_healthy
     restart: always
 
   backend-4-e3selector-redis:
     image: redis:7.2.1
+    healthcheck:
+      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
     restart: always
