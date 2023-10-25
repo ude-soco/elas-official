@@ -43,16 +43,14 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-EUREKA_HOST_NAME = os.environ.get("EUREKA_HOST_NAME")
-EUREKA_PORT = os.environ.get("EUREKA_PORT")
-EUREKA_HOST = f"http://{EUREKA_HOST_NAME}:{EUREKA_PORT}/eureka"
 try:
+    EUREKA_HOST_NAME = os.environ.get("EUREKA_HOST_NAME")
+    EUREKA_PORT = os.environ.get("EUREKA_PORT")
     eureka_client.init(
-        eureka_server=EUREKA_HOST,  # type: ignore
+        eureka_server=f"http://{EUREKA_HOST_NAME}:{EUREKA_PORT}/eureka",  # type: ignore
         app_name="ELAS-AUTH",
         instance_port=int(os.environ.get("DJANGO_PORT", "8002")),
-        instance_ip=socket.gethostbyname(EUREKA_HOST_NAME),  # type: ignore
-        instance_host=EUREKA_HOST_NAME,  # type: ignore
+        instance_host=os.environ.get("HOST"),  # type: ignore
     )
     print("==========================================")
     print("* Eureka client initialized successfully *")
