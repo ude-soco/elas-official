@@ -8,6 +8,7 @@ services:
         path: .
     environment:
       PORT: 8000
+      HOST: backend-2-api-gateway
       SERVICE_REGISTRY_URL: http://backend-1-service-registry:8761/eureka/
     depends_on:
       backend-1-service-registry:

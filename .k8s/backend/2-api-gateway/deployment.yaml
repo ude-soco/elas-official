@@ -19,5 +19,7 @@ spec:
         env:
         - name: PORT
           value: "8000"
+        - name: HOST
+          value: $(BACKEND_2_API_GATEWAY_SERVICE)
         - name: SERVICE_REGISTRY_URL
           value: http://$(BACKEND_1_SERVICE_REGISTRY_SERVICE):8761/eureka/

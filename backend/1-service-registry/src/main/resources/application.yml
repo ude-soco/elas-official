@@ -3,7 +3,7 @@ server:
 
 eureka:
   instance:
-    hostname: ${HOSTNAME:localhost}
+    hostname: ${HOST:backend-1-service-registry}
   client:
     register-with-eureka: false
     fetch-registry: false

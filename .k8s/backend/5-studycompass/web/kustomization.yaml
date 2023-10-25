@@ -7,3 +7,10 @@ commonLabels:
 resources:
 - deployment.yaml
 - service.yaml
+
+vars:
+- name: BACKEND_5_STUDYCOMPASS_WEB_SERVICE
+  objref:
+    apiVersion: v1
+    kind: Service
+    name: web

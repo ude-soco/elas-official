@@ -20,5 +20,5 @@ spec:
         env:
         - name: PORT
           value: "8761"
-        - name: HOSTNAME
+        - name: HOST
           value: $(BACKEND_1_SERVICE_REGISTRY_SERVICE)

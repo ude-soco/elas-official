@@ -9,8 +9,9 @@ services:
     command: web
     environment:
       PORT: 8005
-      EUREKA_HOST_NAME: backend-1-service-registry
+      HOST: backend-5-studycompass-web
       EUREKA_PORT: 8761
+      EUREKA_HOST_NAME: backend-1-service-registry
       REDIS_HOST: backend-5-studycompass-redis
       NEO4J_HOSTNAME: backend-5-studycompass-neo4j
       NEO4J_PASSWORD: password

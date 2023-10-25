@@ -9,8 +9,9 @@ services:
     command: web
     environment:
       PORT: 8004
-      EUREKA_HOST_NAME: backend-1-service-registry
+      HOST: backend-4-e3selector-web
       EUREKA_PORT: 8761
+      EUREKA_HOST_NAME: backend-1-service-registry
       REDIS_HOST: backend-4-e3selector-redis
     depends_on:
       backend-1-service-registry:

@@ -21,6 +21,8 @@ spec:
         env:
         - name: PORT
           value: "8004"
+        - name: HOST
+          value: $(BACKEND_4_E3SELECTOR_WEB_SERVICE)
         - name: EUREKA_HOST_NAME
           value: $(BACKEND_1_SERVICE_REGISTRY_SERVICE)
         - name: EUREKA_PORT
