@@ -12,8 +12,8 @@ services:
     ports:
     - 8761:8761
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8761/health"]
       start_period: 5s
+      test: ["CMD", "curl", "-i", "http://localhost:8761/actuator/health"]
       start_interval: 2s
       timeout: 10s
     restart: always
