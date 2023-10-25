@@ -22,8 +22,6 @@ services:
         condition: service_healthy
       backend-5-studycompass-neo4j:
         condition: service_healthy
-    healthcheck:
-      test: ["CMD", "curl", "-i", "http://localhost:8005/actuator/health"]
     restart: always
 
   backend-5-studycompass-worker:
