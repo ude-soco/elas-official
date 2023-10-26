@@ -13,4 +13,8 @@ eureka:
   server:
     enableSelfPreservation: true
 
-logging.level.com.netflix.discovery: ERROR
+logging:
+  level:
+    ROOT: WARN
+    com.netflix.eureka: WARN
+    com.netflix.discovery: ERROR

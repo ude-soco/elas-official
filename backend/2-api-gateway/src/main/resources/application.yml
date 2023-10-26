@@ -38,4 +38,8 @@ spring:
         predicates:
         - Path=/api/notebot/**
 
-logging.level.com.netflix.discovery: ERROR
+logging:
+  level:
+    ROOT: WARN
+    com.netflix.eureka: WARN
+    com.netflix.discovery: ERROR
