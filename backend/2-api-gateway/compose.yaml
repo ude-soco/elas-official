@@ -16,5 +16,5 @@ services:
     ports:
     - 8000:8000
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8761/health"]
+      test: ["CMD", "curl", "-f", "http://localhost:8761/actuator/health"]
     restart: always
