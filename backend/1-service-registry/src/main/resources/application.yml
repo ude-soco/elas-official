@@ -7,11 +7,10 @@ eureka:
   client:
     register-with-eureka: false
     fetch-registry: false
-    registry-fetch-interval-seconds: 15
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
   server:
-    enableSelfPreservation: true
+    enableSelfPreservation: false
 
 logging:
   level:
