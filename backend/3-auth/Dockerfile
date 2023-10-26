@@ -38,7 +38,7 @@ USER root
 RUN  apt-get purge -y --auto-remove $BUILD_DEPS
 USER 1000
 
-# Add application and run setup tasks
+# Add application
 COPY --chown=app:app . ./
 
 # Run web application
