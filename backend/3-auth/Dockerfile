@@ -43,5 +43,5 @@ COPY --chown=app:app . ./
 
 # Run web application
 ENV GUNICORN_LOG_LEVEL info
-EXPOSE 8001
+EXPOSE 8002
 CMD ["bin/web"]

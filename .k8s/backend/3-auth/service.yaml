@@ -5,5 +5,5 @@ metadata:
 spec:
   ports:
   - protocol: TCP
-    port: 8761
-    targetPort: 8761
+    port: 8002
+    targetPort: 8002
