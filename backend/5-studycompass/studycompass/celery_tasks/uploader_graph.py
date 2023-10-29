@@ -176,9 +176,24 @@ class KGBuilder(object):
         with open(SEMESTER_DATA, "r", encoding="utf8") as f:
             semester_data = json.loads(f.read())
         # check if semester is already extracted
-        if not self.current_semester in semester_data:
-            semester_data.append({"name": self.current_semester})
-            # semester_data.insert(0, {"name": self.current_semester})
+        if not {"name": self.current_semester} in semester_data:
+            # semester sorting
+            for i in range(len(semester_data)):
+                if semester_data[i]["name"][-2:] == self.current_semester[-2:]:
+                    if semester_data[i]["name"][0] < self.current_semester[0]:
+                        semester_data.insert(
+                            i, {"name": self.current_semester})
+                        break
+                    else:
+                        semester_data.insert(
+                            i+1, {"name": self.current_semester})
+                        break
+                if semester_data[i]["name"][-2:] > self.current_semester[-2:]:
+                    semester_data.insert(i, {"name": self.current_semester})
+                    break
+                else:
+                    semester_data.append({"name": self.current_semester})
+                    break
             self.semester_data = semester_data
 
     def add_studyprograms(self):
@@ -220,8 +235,8 @@ class KGBuilder(object):
         print("add course entity")
         for item in self.courses:
             try:
-                if not Course.nodes.get_or_none(name=item):
-                    course = Course(name=item)
+                if not Course.nodes.get_or_none(name=item.replace('"', "'")):
+                    course = Course(name=item.replace('"', "'"))
                     course.save()
                     # print(course)
             except Exception as e:
@@ -234,7 +249,7 @@ class KGBuilder(object):
                 if not Course_instance.nodes.get_or_none(cid=item["id"]):
                     course_instance = Course_instance(
                         cid=item["id"],
-                        name=item["name"],
+                        name=item["name"].replace('"', "'"),
                         description=item["description"],
                         subject_type=item["subject_type"],
                         semester=item["semester"],

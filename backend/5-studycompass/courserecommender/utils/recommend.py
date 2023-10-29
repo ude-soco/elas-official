@@ -22,7 +22,8 @@ def generate_recommendations(student):
             # candidate_similar_list, cols = db.cypher_query(
             #     f'MATCH (n:Student) where n.study_program="{student.study_program}" return n '
             # )
-            similar_list = get_similar_students(student, candidate_similar_list)
+            similar_list = get_similar_students(
+                student, candidate_similar_list)
             # 2. get candidate course list from similar students
             student_candidate_course_list = []
             for item in similar_list:
@@ -132,7 +133,7 @@ def get_course_ratings(node):
     try:
         total_rating_list = []
         ratings, cols = db.cypher_query(
-            f"""MATCH p=()-[r:enrolled_in]->(i)  where i.name='{node["name"]}' and r.ratings is not null RETURN r.ratings"""
+            f"""MATCH p=()-[r:enrolled_in]->(i)  where i.name="{node["name"]}" and r.ratings is not null RETURN r.ratings"""
         )
         for item in ratings:
             rating_list = item[0]
@@ -151,7 +152,7 @@ def get_course_ratings(node):
         return final_list
     except Exception as e:
         print(
-            f"""MATCH p=()-[r:enrolled_in]->(i)  where i.name='{node["name"]}' and r.ratings is not null RETURN r.ratings"""
+            f"""MATCH p=()-[r:enrolled_in]->(i)  where i.name="{node["name"]}" and r.ratings is not null RETURN r.ratings"""
         )
         print(e)
         return []
