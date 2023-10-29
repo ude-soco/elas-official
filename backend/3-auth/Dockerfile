@@ -38,10 +38,10 @@ USER root
 RUN  apt-get purge -y --auto-remove $BUILD_DEPS
 USER 1000
 
-# Add application and run setup tasks
+# Add application
 COPY --chown=app:app . ./
 
 # Run web application
 ENV GUNICORN_LOG_LEVEL info
-EXPOSE 8001
+EXPOSE 8002
 CMD ["bin/web"]

@@ -3,12 +3,13 @@ server:
 
 eureka:
   instance:
+    hostname: ${HOST:backend-2-api-gateway}
     prefer-ip-address: false
   client:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      defaultZone: ${SERVICE_REGISTRY_URL:http://localhost:8761/eureka/}
+      defaultZone: ${SERVICE_REGISTRY_URL:http://backend-1-service-registry:8761/eureka/}
 
 spring:
   application:
@@ -37,4 +38,8 @@ spring:
         predicates:
         - Path=/api/notebot/**
 
-logging.level.com.netflix.discovery: ERROR
+logging:
+  level:
+    ROOT: WARN
+    com.netflix.eureka: WARN
+    com.netflix.discovery: ERROR

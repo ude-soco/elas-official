@@ -9,15 +9,19 @@ services:
     command: web
     environment:
       PORT: 8005
-      EUREKA_HOST_NAME: backend-1-service-registry
+      HOST: backend-5-studycompass-web
       EUREKA_PORT: 8761
+      EUREKA_HOST_NAME: backend-1-service-registry
       REDIS_HOST: backend-5-studycompass-redis
       NEO4J_HOSTNAME: backend-5-studycompass-neo4j
       NEO4J_PASSWORD: password
     depends_on:
-    - backend-1-service-registry
-    - backend-5-studycompass-redis
-    - backend-5-studycompass-neo4j
+      backend-1-service-registry:
+        condition: service_healthy
+      backend-5-studycompass-redis:
+        condition: service_healthy
+      backend-5-studycompass-neo4j:
+        condition: service_healthy
     restart: always
 
   backend-5-studycompass-worker:
@@ -33,12 +37,17 @@ services:
       NEO4J_HOSTNAME: backend-5-studycompass-neo4j
       NEO4J_PASSWORD: password
     depends_on:
-    - backend-5-studycompass-redis
-    - backend-5-studycompass-neo4j
+      backend-5-studycompass-redis:
+        condition: service_started
+      backend-5-studycompass-neo4j:
+        condition: service_healthy
     restart: always
 
   backend-5-studycompass-redis:
     image: redis:7.2.1
+    command: redis-server --save "" --appendonly no
+    healthcheck:
+      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
     restart: always
 
   backend-5-studycompass-neo4j:
@@ -47,6 +56,8 @@ services:
       NEO4J_AUTH: neo4j/password
     volumes:
     - backend-5-studycompass-neo4j-data:/data
+    healthcheck:
+      test: wget http://localhost:7474 || exit 1
     restart: always
 
 volumes:
