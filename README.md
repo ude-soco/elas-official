@@ -52,7 +52,11 @@ Download and install the following software
   mvn clean package
   ```
 
-- Run the following command to start the application.
+- Run the following command to start the application (every time when you want to start the server).
+
+  ```cmd
+  set HOST=localhost
+  ```
 
   ```bash
   java -jar target/ServiceRegistry.jar
@@ -64,13 +68,21 @@ Download and install the following software
 
 - Open a command prompt/terminal in the `service-registry` directory (with **administration rights** for Windows users)
 
-- Run the following command to package the application into a jar file.
+- Run the following command to package the application into a jar file (only once).
 
   ```bash
   mvn clean package
   ```
 
-- Run the following command to start the application.
+- Run the following command to start the application (every time when you want to start the server).
+
+  ```cmd
+  set SERVICE_REGISTRY_URL=http://localhost:8761/eureka/
+  ```
+
+  ```cmd
+  set HOST=localhost
+  ```
 
   ```bash
   java -jar target/ApiGateway.jar
