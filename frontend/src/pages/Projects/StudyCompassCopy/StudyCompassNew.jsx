@@ -287,6 +287,8 @@ export default function StudyCompassNew() {
         if (tempSelectedCourses.length !== 0) {
           let schedule = isOverlapping(tempSelectedCourses)
           setCurrentSchedule(schedule.newSchedule)
+        } else {
+          setCurrentSchedule([])
         }
       })
     } else {
