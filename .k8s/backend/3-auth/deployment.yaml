@@ -1,20 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: "3-auth"
-  labels:
-    app.kubernetes.io/component: "3-auth"
+  name: 3-auth
 spec:
   replicas: 1
   strategy:
     type: Recreate
-  selector:
-    matchLabels:
-      app.kubernetes.io/component: "3-auth"
   template:
-    metadata:
-      labels:
-        app.kubernetes.io/component: "3-auth"
     spec:
       securityContext:
         runAsNonRoot: true
@@ -26,6 +18,8 @@ spec:
         env:
         - name: PORT
           value: "8002"
+        - name: HOST
+          value: $(BACKEND_3_AUTH_SERVICE)
         - name: EUREKA_HOST_NAME
           value: $(BACKEND_1_SERVICE_REGISTRY_SERVICE)
         - name: EUREKA_PORT

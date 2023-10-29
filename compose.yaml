@@ -6,3 +6,4 @@ include:
 - ./backend/4-e3selector/compose.yaml
 - ./backend/5-studycompass/compose.yaml
 - ./frontend/compose.yaml
+- ./proxy/compose.yaml

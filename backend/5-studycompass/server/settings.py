@@ -40,9 +40,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = int(os.environ.get('DEBUG', 0))
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Neo4j configuration
 try:
@@ -67,13 +67,11 @@ else:
     try:
         EUREKA_HOST_NAME = os.environ.get("EUREKA_HOST_NAME")
         EUREKA_PORT = os.environ.get("EUREKA_PORT")
-        EUREKA_HOST = f"http://{EUREKA_HOST_NAME}:{EUREKA_PORT}/eureka"
         eureka_client.init(
-            eureka_server=EUREKA_HOST,  # type: ignore
+            eureka_server=f"http://{EUREKA_HOST_NAME}:{EUREKA_PORT}/eureka",  # type: ignore
             app_name="ELAS-STUDYCOMPASS",
             instance_port=int(os.environ.get("DJANGO_PORT", "8001")),
-            instance_ip=socket.gethostbyname(EUREKA_HOST_NAME),  # type: ignore
-            instance_host=EUREKA_HOST_NAME,  # type: ignore
+            instance_host=os.environ.get("HOST"),  # type: ignore
         )
         print("==========================================")
         print("* Eureka client initialized successfully *")

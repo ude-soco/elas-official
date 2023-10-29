@@ -8,9 +8,13 @@ services:
         path: .
     environment:
       PORT: 8000
+      HOST: backend-2-api-gateway
       SERVICE_REGISTRY_URL: http://backend-1-service-registry:8761/eureka/
     depends_on:
-    - backend-1-service-registry
+      backend-1-service-registry:
+        condition: service_healthy
     ports:
     - 8000:8000
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8761/actuator/health"]
     restart: always

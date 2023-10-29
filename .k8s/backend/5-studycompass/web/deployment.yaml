@@ -21,8 +21,10 @@ spec:
         env:
         - name: PORT
           value: "8004"
+        - name: HOST
+          value: $(BACKEND_5_STUDYCOMPASS_WEB_SERVICE)
         - name: EUREKA_HOST_NAME
-          value: "$(BACKEND_1_SERVICE_REGISTRY_SERVICE)"
+          value: $(BACKEND_1_SERVICE_REGISTRY_SERVICE)
         - name: EUREKA_PORT
           value: "8761"
         - name: REDIS_HOST

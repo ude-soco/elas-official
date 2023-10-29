@@ -11,6 +11,12 @@ spec:
       containers:
       - name: leader
         image: redis
+        command:
+        - redis-server
+        - --save
+        - ""
+        - --appendonly
+        - no
         resources:
           requests:
             cpu: 10m
