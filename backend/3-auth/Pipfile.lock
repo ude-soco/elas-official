@@ -729,11 +729,12 @@
         },
         "py-eureka-client": {
             "hashes": [
-                "sha256:448f53d084d7d741cf9202d586b51043403daf35165d81d6a62dfb5d308e1b51",
-                "sha256:620a7d3f45a57b6c9996a9f13c384478f24ffb70311ac4487bf60c217b7a9ba5"
+                "sha256:0b31e896753858e64a795c09146326605739d8a1c29dbf361fcb3543eb4d1ca4",
+                "sha256:447219da862dc34b3bab11ddb52c933549424c001a3bf297ec4f84a5feaab945"
             ],
             "index": "pypi",
-            "version": "==0.11.7"
+            "markers": "python_version >= '3.7'",
+            "version": "==0.11.8"
         },
         "pyasn1": {
             "hashes": [
