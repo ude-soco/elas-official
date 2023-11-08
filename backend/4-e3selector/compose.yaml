@@ -13,10 +13,11 @@ services:
       EUREKA_PORT: 8761
       EUREKA_HOST_NAME: backend-1-service-registry
       REDIS_HOST: backend-4-e3selector-redis
-      MYSQL_HOST: backend-4-e3selector-db
-      MYSQL_DATABASE: backend-4-e3selector
-      MYSQL_USER: backend-4-e3selector
-      MYSQL_PASSWORD: password
+      MARIADB_HOST: backend-4-e3selector-db
+      MARIADB_PORT: 3306
+      MARIADB_DB: backend-4-e3selector
+      MARIADB_USER: backend-4-e3selector
+      MARIADB_PASSWORD: password
     depends_on:
       backend-1-service-registry:
         condition: service_healthy

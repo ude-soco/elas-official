@@ -17,7 +17,7 @@ class E3Course(models.Model):
     credit = models.CharField(max_length=255)
     language = models.CharField(max_length=255)
     description = models.TextField()
-    timetables = models.CharField(max_length=255)
+    timetables = models.TextField()
     location = models.CharField(max_length=255)
     exam_type = models.CharField(max_length=255)
     ausgeschlossen_ingenieurwissenschaften_bachelor = models.CharField(max_length=255)
