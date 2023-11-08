@@ -3,17 +3,14 @@ server:
 
 eureka:
   instance:
-    hostname: ${HOST:backend-1-service-registry}
+    hostname: ${HOSTNAME:localhost}
   client:
     register-with-eureka: false
     fetch-registry: false
+    registry-fetch-interval-seconds: 15
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
   server:
-    enableSelfPreservation: false
+    enableSelfPreservation: true
 
-logging:
-  level:
-    ROOT: WARN
-    com.netflix.eureka: WARN
-    com.netflix.discovery: ERROR
+logging.level.com.netflix.discovery: ERROR

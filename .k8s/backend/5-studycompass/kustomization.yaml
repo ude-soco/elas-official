@@ -8,3 +8,15 @@ resources:
 - redis
 - web
 - worker
+
+vars:
+- name: BACKEND_5_STUDYCOMPASS_REDIS_SERVICE
+  objref:
+    apiVersion: v1
+    kind: Service
+    name: redis
+- name: BACKEND_5_STUDYCOMPASS_NEO4J_SERVICE
+  objref:
+    apiVersion: v1
+    kind: Service
+    name: neo4j

@@ -39,18 +39,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = int(os.environ.get('DEBUG', 0))
+DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
+EUREKA_HOST_NAME = os.environ.get("EUREKA_HOST_NAME")
+EUREKA_PORT = os.environ.get("EUREKA_PORT")
+EUREKA_HOST = f"http://{EUREKA_HOST_NAME}:{EUREKA_PORT}/eureka"
 try:
-    EUREKA_HOST_NAME = os.environ.get("EUREKA_HOST_NAME")
-    EUREKA_PORT = os.environ.get("EUREKA_PORT")
     eureka_client.init(
-        eureka_server=f"http://{EUREKA_HOST_NAME}:{EUREKA_PORT}/eureka",  # type: ignore
+        eureka_server=EUREKA_HOST,  # type: ignore
         app_name="ELAS-AUTH",
         instance_port=int(os.environ.get("DJANGO_PORT", "8002")),
-        instance_host=os.environ.get("HOST"),  # type: ignore
+        instance_ip=socket.gethostbyname(EUREKA_HOST_NAME),  # type: ignore
+        instance_host=EUREKA_HOST_NAME,  # type: ignore
     )
     print("==========================================")
     print("* Eureka client initialized successfully *")

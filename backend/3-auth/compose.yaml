@@ -8,13 +8,11 @@ services:
         path: .
     environment:
       PORT: 8002
-      HOST: backend-3-auth
-      EUREKA_PORT: 8761
       EUREKA_HOST_NAME: backend-1-service-registry
+      EUREKA_PORT: 8761
       DJANGO_SUPERUSER_USERNAME: admin
       DJANGO_SUPERUSER_EMAIL: admin@mail.com
       DJANGO_SUPERUSER_PASSWORD: 1q2w3e4R!
     depends_on:
-      backend-1-service-registry:
-        condition: service_healthy
+    - backend-1-service-registry
     restart: always

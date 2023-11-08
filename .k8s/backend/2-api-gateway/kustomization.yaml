@@ -7,10 +7,3 @@ commonLabels:
 resources:
 - deployment.yaml
 - service.yaml
-
-vars:
-- name: BACKEND_2_API_GATEWAY_SERVICE
-  objref:
-    apiVersion: v1
-    kind: Service
-    name: 2-api-gateway

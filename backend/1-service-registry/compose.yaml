@@ -8,12 +8,6 @@ services:
         path: .
     environment:
       PORT: 8761
-      HOST: backend-1-service-registry
+      HOSTNAME: backend-1-service-registry
     ports:
     - 8761:8761
-    healthcheck:
-      start_period: 5s
-      test: ["CMD", "curl", "-i", "http://localhost:8761/actuator/health"]
-      start_interval: 2s
-      timeout: 10s
-    restart: always
