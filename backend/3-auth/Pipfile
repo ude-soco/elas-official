@@ -12,7 +12,7 @@ djangorestframework-simplejwt = "*"
 pyjwt = "*"
 django-cors-headers = "*"
 scrapy = "*"
-celery = {extras = ["redis"], version = "*"}
+celery = {extras = ["redis"] }
 django-celery-results = "*"
 twisted = "*"
 jellyfish = "*"
@@ -23,6 +23,7 @@ flower = "*"
 eventlet = "*"
 sparqlwrapper = "*"
 py-eureka-client = "*"
+mysqlclient = "*"
 
 [dev-packages]
 black = "*"

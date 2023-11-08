@@ -124,19 +124,24 @@ WSGI_APPLICATION = "server.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-if bool(os.environ.get("POSTGRES_HOST", False)):
+if bool(os.environ.get("MARIADB_HOST", False)):
+    print("==========================================")
+    print("*              Using MariaDB             *")
+    print("==========================================")
     DATABASES = {
         "default": {
-            "ENGINE": "django.db.backends.postgresql",
-            "NAME": os.environ.get("POSTGRES_DB"),
-            "USER": os.environ.get("POSTGRES_USER"),
-            "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
-            "HOST": os.environ.get("POSTGRES_HOST"),
-            "PORT": os.environ.get("POSTGRES_PORT", 5432),
-            "OPTIONS": json.loads(os.getenv("POSTGRES_OPTIONS", "{}")),
+            "ENGINE": "django.db.backends.mysql",
+            "NAME": os.environ.get("MARIADB_DB"),
+            "USER": os.environ.get("MARIADB_USER"),
+            "PASSWORD": os.environ.get("MARIADB_PASSWORD"),
+            "HOST": os.environ.get("MARIADB_HOST"),
+            "PORT": os.environ.get("MARIADB_PORT", 3306),
         }
     }
 else:
+    print("==========================================")
+    print("*               Using SQLite             *")
+    print("==========================================")
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
