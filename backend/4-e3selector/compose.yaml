@@ -13,6 +13,10 @@ services:
       EUREKA_PORT: 8761
       EUREKA_HOST_NAME: backend-1-service-registry
       REDIS_HOST: backend-4-e3selector-redis
+      MYSQL_HOST: backend-4-e3selector-db
+      MYSQL_DATABASE: backend-4-e3selector
+      MYSQL_USER: backend-4-e3selector
+      MYSQL_PASSWORD: password
     depends_on:
       backend-1-service-registry:
         condition: service_healthy
@@ -41,3 +45,16 @@ services:
     healthcheck:
       test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
     restart: always
+
+  backend-4-e3selector-db:
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: backend-4-e3selector
+      MYSQL_USER: backend-4-e3selector
+      MYSQL_PASSWORD: password
+    volumes:
+    - backend-4-e3selector-db-data:/var/lib/mysql
+
+volumes:
+  backend-4-e3selector-db-data:

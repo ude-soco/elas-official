@@ -1,5 +1,5 @@
 services:
-  backend-3-auth:
+  backend-3-auth-web:
     build: .
     image: ${IMAGE_NAME_PREFIX:-socialcomputing/}elas-official-backend-3-auth:${IMAGE_TAG:-latest}
     develop:
@@ -8,13 +8,30 @@ services:
         path: .
     environment:
       PORT: 8002
-      HOST: backend-3-auth
+      HOST: backend-3-auth-web
       EUREKA_PORT: 8761
       EUREKA_HOST_NAME: backend-1-service-registry
       DJANGO_SUPERUSER_USERNAME: admin
       DJANGO_SUPERUSER_EMAIL: admin@mail.com
       DJANGO_SUPERUSER_PASSWORD: 1q2w3e4R!
+      MYSQL_HOST: backend-3-auth-db
+      MYSQL_DATABASE: backend-3-auth
+      MYSQL_USER: backend-3-auth
+      MYSQL_PASSWORD: password
     depends_on:
       backend-1-service-registry:
         condition: service_healthy
     restart: always
+
+  backend-3-auth-db:
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: backend-3-auth
+      MYSQL_USER: backend-3-auth
+      MYSQL_PASSWORD: password
+    volumes:
+    - backend-3-auth-db-data:/var/lib/mysql
+
+volumes:
+  backend-3-auth-db-data:
