@@ -35,6 +35,11 @@ services:
     command: worker
     environment:
       REDIS_HOST: backend-4-e3selector-redis
+      MARIADB_HOST: backend-4-e3selector-db
+      MARIADB_PORT: 3306
+      MARIADB_DB: backend-4-e3selector
+      MARIADB_USER: backend-4-e3selector
+      MARIADB_PASSWORD: password
     depends_on:
       backend-4-e3selector-redis:
         condition: service_healthy
