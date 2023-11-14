@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: 3-auth
+  name: web
 spec:
   replicas: 1
   strategy:
@@ -19,7 +19,7 @@ spec:
         - name: PORT
           value: "8002"
         - name: HOST
-          value: $(BACKEND_3_AUTH_SERVICE)
+          value: $(BACKEND_3_AUTH_WEB_SERVICE)
         - name: EUREKA_HOST_NAME
           value: $(BACKEND_1_SERVICE_REGISTRY_SERVICE)
         - name: EUREKA_PORT

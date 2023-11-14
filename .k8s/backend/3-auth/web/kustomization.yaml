@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+commonLabels:
+  app.kubernetes.io/component: backend-3-auth-web
+
+resources:
+- deployment.yaml
+- service.yaml
+
+vars:
+- name: BACKEND_3_AUTH_WEB_SERVICE
+  objref:
+    apiVersion: v1
+    kind: Service
+    name: 3-auth
