@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    spec:
+      containers:
+      - name: mariadb
+        image: mariadb
+        ports:
+        - containerPort: 3306
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: password
+        - name: MYSQL_DATABASE
+          value: backend-3-auth
+        - name: MYSQL_USER
+          value: backend-3-auth
+        - name: MYSQL_PASSWORD
+          value: password
+        volumeMounts:
+        - name: data
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: data
