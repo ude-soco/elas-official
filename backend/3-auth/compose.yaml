@@ -1,5 +1,6 @@
 services:
   backend-3-auth-web:
+    platform: linux/x86_64
     build: .
     image: ${IMAGE_NAME_PREFIX:-socialcomputing/}elas-official-backend-3-auth:${IMAGE_TAG:-latest}
     develop:

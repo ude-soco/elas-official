@@ -1,5 +1,6 @@
 services:
   backend-4-e3selector-web:
+    platform: linux/x86_64
     build: .
     image: ${IMAGE_NAME_PREFIX:-socialcomputing/}elas-official-backend-4-e3selector:${IMAGE_TAG:-latest}
     develop:
@@ -26,6 +27,7 @@ services:
     restart: always
 
   backend-4-e3selector-worker:
+    platform: linux/x86_64
     build: .
     image: ${IMAGE_NAME_PREFIX:-socialcomputing/}elas-official-backend-4-e3selector:${IMAGE_TAG:-latest}
     develop:
