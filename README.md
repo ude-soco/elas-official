@@ -27,7 +27,7 @@ The goal of the project "Exploratory Learning Analytics toolkit for Students" is
 
 Download and install the following software
 
-- Java 17. Follow the [guide](https://www.codejava.net/java-se/download-and-install-openjdk-17#:~:text=How%20to%20Download%20and%20Install%20OpenJDK%2017%201,...%202%202.%20Install%20OpenJDK%2017%20on%20Windows) to install Java on Windows.
+- Java 21. Follow the [guide](https://www.codejava.net/java-se/download-and-install-openjdk-17#:~:text=How%20to%20Download%20and%20Install%20OpenJDK%2017%201,...%202%202.%20Install%20OpenJDK%2017%20on%20Windows) to install Java on Windows.
 - Maven. Follow the [guide](https://phoenixnap.com/kb/install-maven-windows) to install Maven on Windows.
 - Python (v3.10) from [the official website](https://www.python.org/downloads/release/python-31010/)
 - Node.js (v18.12.1) from [the official website](https://nodejs.org/en/blog/release/v18.12.1)
@@ -37,6 +37,7 @@ Download and install the following software
 - Github Desktop from [the official website](https://desktop.github.com/)
 - [IntelliJ Ultimate](https://www.jetbrains.com/de-de/idea/download/#section=windows) or [Visual Studio Code](https://code.visualstudio.com/download) and install one of the code editors.
 - Postman from [the official website](https://www.postman.com/downloads/)
+- Redis 7.x.x
 
 ### Installation Guide for Backend Services
 
