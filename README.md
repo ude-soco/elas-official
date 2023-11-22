@@ -27,16 +27,19 @@ The goal of the project "Exploratory Learning Analytics toolkit for Students" is
 
 Download and install the following software
 
-- Java 17. Follow the [guide](https://www.codejava.net/java-se/download-and-install-openjdk-17#:~:text=How%20to%20Download%20and%20Install%20OpenJDK%2017%201,...%202%202.%20Install%20OpenJDK%2017%20on%20Windows) to install Java on Windows.
-- Maven. Follow the [guide](https://phoenixnap.com/kb/install-maven-windows) to install Maven on Windows.
-- Python (v3.10) from [the official website](https://www.python.org/downloads/release/python-31010/)
-- Node.js (v18.12.1) from [the official website](https://nodejs.org/en/blog/release/v18.12.1)
-- MongoDB Community Server (v5.0.5) from [the official website](https://www.mongodb.com/try/download/community) and [MongoDB Compass](https://www.mongodb.com/try/download/compass)
-- Neo4j Desktop from [the official website](https://neo4j.com/download-center/#desktop), install it, start the server, create database and login to the server.
-- Git from [the official website](https://git-scm.com/downloads)
-- Github Desktop from [the official website](https://desktop.github.com/)
-- [IntelliJ Ultimate](https://www.jetbrains.com/de-de/idea/download/#section=windows) or [Visual Studio Code](https://code.visualstudio.com/download) and install one of the code editors.
-- Postman from [the official website](https://www.postman.com/downloads/)
+- OpenJDK 21 on [Ubuntu](https://www.linuxcapable.com/how-to-install-openjdk-21-on-ubuntu-linux/) or [Windows](https://www.codejava.net/java-se/download-and-install-openjdk-17#:~:text=How%20to%20Download%20and%20Install%20OpenJDK%2017%201,...%202%202.%20Install%20OpenJDK%2017%20on%20Windows)
+- Maven (latest) on [Ubuntu](https://www.golinuxcloud.com/install-maven-ubuntu/) or [Windows](https://phoenixnap.com/kb/install-maven-windows)
+- Python (v3.10.10) on [Ubuntu](https://davidvn.com/2022/09/28/installing-and-managing-multiple-python-versions-on-ubuntu-22-04/) using [source](https://www.python.org/ftp/python/3.10.10/Python-3.10.10.tgz) or on [Windows](https://www.python.org/downloads/release/python-31010/)
+- Node.js (v18.12.1) on [Ubuntu](https://tecadmin.net/how-to-install-nvm-on-ubuntu-22-04/) or [Windows](https://nodejs.org/dist/v18.12.1/node-v18.12.1-x64.msi)
+- MongoDB Community Server (latest) on [Ubuntu](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/#install-mongodb-community-edition) or [Windows](https://www.mongodb.com/try/download/community). Additionally, install MongoDB Compass on [Ubuntu](https://www.mongodb.com/try/download/shell) or [Windows](https://www.mongodb.com/try/download/compass)
+- Neo4j Desktop (Neo4j v5.12.0) on [Ubuntu](https://neo4j.com/developer/kb/convert-an-appimage-file-into-executable-on-linux-ubuntu-debian/) or on [Windows](https://neo4j.com/download-center/#desktop)
+- Git on [Ubuntu](https://www.digitalocean.com/community/tutorials/how-to-install-git-on-ubuntu-22-04#installing-git-with-default-packages) or [Windows](https://git-scm.com/downloads)
+- Github Desktop on [Ubuntu](https://www.linuxcapable.com/how-to-install-github-desktop-on-ubuntu-linux/) or [Windows](https://desktop.github.com/)
+- Code Editor
+  - IntelliJ Ultimate on [Ubuntu](https://theubuntulinux.com/faq/how-to-install-intellij-idea-on-ubuntu-22-04-linux-desktop/#:~:text=Add%20the%20PPA%20repository%20and%20update%20the%20system,type%20the%20intellij%20idea%20community%20edition%20download%20intellij-idea-community) or [Windows](https://www.jetbrains.com/de-de/idea/download/#section=windows)
+  - Visual Studio Code on [Ubuntu](https://www.golinuxcloud.com/install-visual-studio-code-ubuntu-22/) or [Windows](https://code.visualstudio.com/download)
+- Postman on [Ubuntu](https://itslinuxfoss.com/how-to-install-postman-on-ubuntu-22-04/) or [Windows](https://www.postman.com/downloads/)
+- Redis (latest) on [Ubuntu](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-ubuntu-22-04) or [Windows](https://github.com/microsoftarchive/redis/releases/download/win-3.0.504/Redis-x64-3.0.504.msi)
 
 ### Installation Guide for Backend Services
 
