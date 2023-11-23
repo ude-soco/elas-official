@@ -3,6 +3,11 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 name = "pypi"
 
+[[source]]
+url = "https://download.pytorch.org/whl/cpu/"
+verify_ssl = false
+name = "pytorch"
+
 [packages]
 python-dotenv = "*"
 django = "*"
@@ -30,6 +35,7 @@ spacy = "*"
 nltk = "*"
 wikipedia-api = "*"
 sentence-transformers = "*"
+torch = "==1.11.0"
 
 [dev-packages]
 black = "*"
