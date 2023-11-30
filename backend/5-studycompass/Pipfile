@@ -35,7 +35,7 @@ spacy = "*"
 nltk = "*"
 wikipedia-api = "*"
 sentence-transformers = "*"
-torch = "==1.11.0"
+torch = "==1.13.0+cpu"
 
 [dev-packages]
 black = "*"
