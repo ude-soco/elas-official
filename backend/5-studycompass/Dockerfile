@@ -29,7 +29,7 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 COPY --chown=app:app Pipfile* .
 RUN  --mount=type=cache,sharing=private,target=/home/app/.cache/pip,uid=1000 \
      --mount=type=cache,sharing=private,target=/home/app/.cache/pipenv,uid=1000 <<EOF
-  pip install --no-color pipenv gunicorn &&
+  pip install --no-color pip==23.3.1 pipenv==2023.10.24 gunicorn==21.2.0 &&
   pipenv install --deploy
 EOF
 

@@ -89,3 +89,5 @@ updates:
     mui:
       patterns:
       - "@mui/*"
+      exclude-patterns:
+      - "@mui/x-data-grid"

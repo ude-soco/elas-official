@@ -23,6 +23,7 @@ flower = "*"
 eventlet = "*"
 sparqlwrapper = "*"
 py-eureka-client = "*"
+mysqlclient = "*"
 
 [dev-packages]
 black = "*"
