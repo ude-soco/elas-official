@@ -44,6 +44,19 @@ class UserRegistrationSerializer(serializers.Serializer):
             )
         except Exception as e:
             print(f"Error creating student node: {e}")
+            
+        try:
+            payload = {
+                "uid": str(user.id),
+                "name": f"{validated_data['first_name']} {validated_data['last_name']}",
+                "username": validated_data["username"],
+            }
+            service_url = get_service_url("ELAS-PROJECT-FINDER")
+            requests.post(
+                f"{service_url}/api/project-finder/students/", json=payload
+            )
+        except Exception as e:
+            print(f"Error creating student node: {e}")
 
         return user
 
