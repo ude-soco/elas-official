@@ -12,7 +12,7 @@ Download the following software and install them on your machine:
 
 #### Installation Guide for ProjectFinder Service (Django)
 
-- Using your file explorer, go inside the directory `backend\6-projectfinder`, copy the `example.env` file and paste it in the same folder. Rename the copied environment file to `.env`.
+- <b>IMPORTANT:</b> Using your file explorer, go inside the directory `backend\6-projectfinder`, copy the `example.env` file and paste it in the same folder. Rename the copied environment file to `.env`. Open the `.env` file and update the value of `<change_password>` in the `NEO4J_HOST` variable.
 
 - Open a command prompt/terminal in the `backend\6-projectfinder` directory with **administration rights**
 

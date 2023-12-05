@@ -19,7 +19,9 @@ import atexit
 import socket
 from py_eureka_client import eureka_client
 from django.core.management.commands.runserver import Command as runserver
+import sys
 from dotenv import load_dotenv
+from neomodel import db, config
 
 load_dotenv()
 
@@ -38,28 +40,45 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = int(os.environ.get('DEBUG', 0))
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
-EUREKA_HOST_NAME = os.environ.get("EUREKA_HOST_NAME")
-EUREKA_PORT = os.environ.get("EUREKA_PORT")
-EUREKA_HOST = f"http://{EUREKA_HOST_NAME}:{EUREKA_PORT}/eureka"
+# Neo4j configuration
 try:
-    eureka_client.init(
-        eureka_server=EUREKA_HOST,  # type: ignore
-        app_name="ELAS-PROJECT-FINDER",
-        instance_port=int(os.environ.get("DJANGO_PORT", "8001")),
-        instance_ip=socket.gethostbyname(EUREKA_HOST_NAME),  # type: ignore
-        instance_host=EUREKA_HOST_NAME,  # type: ignore
-    )
+    NEOMODEL_NEO4J_BOLT_URL = os.environ.get("NEO4J_HOST")
+    config.DATABASE_URL = NEOMODEL_NEO4J_BOLT_URL
+    db.set_connection(config.DATABASE_URL)
+    db.cypher_query("MATCH (n) RETURN n LIMIT 1")
     print("==========================================")
-    print("* Eureka client initialized successfully *")
+    print("* Neo4j database connected successfully *")
     print("==========================================")
-except socket.herror as e:
-    print(f"Failed to initialize Eureka client: {e}")
+except Exception as e:
+    print(f"Failed to connect to Neo4j database: {e}")
+    sys.exit(1)  # Stop the server if Neo4j is not available
 
-atexit.register(eureka_client.stop)
+if os.environ.get("CELERY_WORKER"):
+    print("=========================================")
+    print("*       Running in Celery worker        *")
+    print("* Skipping Eureka client initialization *")
+    print("=========================================")
+else:
+    try:
+        EUREKA_HOST_NAME = os.environ.get("EUREKA_HOST_NAME")
+        EUREKA_PORT = os.environ.get("EUREKA_PORT")
+        eureka_client.init(
+            eureka_server=f"http://{EUREKA_HOST_NAME}:{EUREKA_PORT}/eureka",  # type: ignore
+            app_name="ELAS-PROJECT-FINDER",
+            instance_port=int(os.environ.get("DJANGO_PORT", "8001")),
+            instance_host=os.environ.get("HOST"),  # type: ignore
+        )
+        print("==========================================")
+        print("* Eureka client initialized successfully *")
+        print("==========================================")
+    except socket.herror as e:
+        print(f"Failed to initialize Eureka client: {e}")
+
+    atexit.register(eureka_client.stop)
 
 # Application definition
 
@@ -78,10 +97,8 @@ INSTALLED_APPS = [
 ]
 
 REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": (
-        "rest_framework_simplejwt.authentication.JWTAuthentication",
-    ),
-    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
+    "DEFAULT_AUTHENTICATION_CLASSES": [],
+    "DEFAULT_PERMISSION_CLASSES": [],
 }
 
 
@@ -178,8 +195,3 @@ STATIC_URL = "/static/"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(days=1),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
-}
