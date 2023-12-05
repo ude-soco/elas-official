@@ -23,6 +23,7 @@ flower = "*"
 eventlet = "*"
 sparqlwrapper = "*"
 py-eureka-client = "*"
+django-neomodel = "*"
 
 [dev-packages]
 black = "*"
