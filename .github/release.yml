@@ -21,7 +21,8 @@ changelog:
       - backend/1-service-registry
       - backend/2-api-gateway
       - backend/3-auth
-      - backend/4-api-gateway
+      - backend/4-e3selector
+      - backend/5-studycompass
 
   - title: 🔗 backend/1-service-registry Dependencies
     labels:
@@ -32,7 +33,8 @@ changelog:
       - frontend
       - backend/2-api-gateway
       - backend/3-auth
-      - backend/4-api-gateway
+      - backend/4-e3selector
+      - backend/5-studycompass
 
   - title: 🔗 backend/2-api-gateway Dependencies
     labels:
@@ -43,7 +45,8 @@ changelog:
       - frontend
       - backend/1-service-registry
       - backend/3-auth
-      - backend/4-api-gateway
+      - backend/4-e3selector
+      - backend/5-studycompass
 
   - title: 🔗 backend/3-auth Dependencies
     labels:
@@ -54,18 +57,32 @@ changelog:
       - frontend
       - backend/1-service-registry
       - backend/2-api-gateway
-      - backend/4-api-gateway
+      - backend/4-e3selector
+      - backend/5-studycompass
 
-  - title: 🔗 backend/4-api-gateway Dependencies
+  - title: 🔗 backend/4-e3selector Dependencies
     labels:
     - dependencies
-    - backend/4-api-gateway
+    - backend/4-e3selector
     exclude:
       labels:
       - frontend
       - backend/1-service-registry
       - backend/2-api-gateway
       - backend/3-auth
+      - backend/5-studycompass
+
+  - title: 🔗 backend/5-studycompass Dependencies
+    labels:
+    - dependencies
+    - backend/5-studycompass
+    exclude:
+      labels:
+      - frontend
+      - backend/1-service-registry
+      - backend/2-api-gateway
+      - backend/3-auth
+      - backend/4-e3selector
 
   - title: 🔗 Other Dependencies
     labels:
@@ -76,7 +93,7 @@ changelog:
       - backend/1-service-registry
       - backend/2-api-gateway
       - backend/3-auth
-      - backend/4-api-gateway
+      - backend/4-e3selector
 
   - title: 🎨 Other Changes
     labels:
