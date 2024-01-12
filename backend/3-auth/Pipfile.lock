@@ -281,12 +281,12 @@
         },
         "eventlet": {
             "hashes": [
-                "sha256:2115c7c6742e6893bf1347f82915572f8895c911cb5abaad4d3596a7daa847cc",
-                "sha256:eca0114398d3133f94d16590d205bbb010668a3bc7453fddadb51d63e8c1bac2"
+                "sha256:3093f2822ce2f40792bf9aa7eb8920fe3b90db785d3bea7640c50412969dcfd7",
+                "sha256:ed2d28a64414a001894b3baf5b650f2c9596b00d57f57d4d7a38f9d3d0c252e8"
             ],
             "index": "pypi",
             "markers": "python_version >= '3.7'",
-            "version": "==0.34.2"
+            "version": "==0.34.3"
         },
         "filelock": {
             "hashes": [
