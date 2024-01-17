@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Grid, Typography } from "@mui/material";
+import { Grid, Typography, Button, Stack } from "@mui/material";
 import { getUserInfo } from "./utils/api.js";
+import { useNavigate } from "react-router-dom";
 
 import noteBotLogo from "../../../assets/images/noteBot-logo.png";
 
 export default function NoteBot() {
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     message: "Server not connected",
     user: {
@@ -14,17 +16,40 @@ export default function NoteBot() {
     },
   });
 
+ // const history = useHistory(); // Initialize useHistory
+
   useEffect(() => {
     let elasUser = JSON.parse(sessionStorage.getItem("elas-user"));
     async function getUserInfoFunction(userId) {
-      let reponse = await getUserInfo(userId);
+      let response = await getUserInfo(userId);
       setUser((prevState) => ({
         ...prevState,
-        message: reponse.message,
+        message: response.message,
         user: {
-          uid: reponse.user.uid,
-          name: reponse.user.name,
-          username: reponse.user.username,
+          uid: response.user.uid,
+          name: response.user.name,
+          username: response.user.username,
+        },
+      }));
+    }
+    getUserInfoFunction(elasUser.id);
+  }, []);
+
+  const redirectToNotes = () => {
+    navigate("/projects/notebot/mynotes")
+  };
+
+  useEffect(() => {
+    let elasUser = JSON.parse(sessionStorage.getItem("elas-user"));
+    async function getUserInfoFunction(userId) {
+      let response = await getUserInfo(userId);
+      setUser((prevState) => ({
+        ...prevState,
+        message: response.message,
+        user: {
+          uid: response.user.uid,
+          name: response.user.name,
+          username: response.user.username,
         },
       }));
     }
@@ -63,10 +88,24 @@ export default function NoteBot() {
                   Message from server <i>{user.message} </i>
                 </Typography>
               )}
+
+              {/* Include the ContainedButtons component here */}
+              <ContainedButtons redirectToNotes={redirectToNotes} />
             </Grid>
           </Grid>
         </Grid>
       </Grid>
     </Grid>
+  );
+}
+
+// Move the ContainedButtons component to the end of the file
+export function ContainedButtons({redirectToNotes}) {
+  return (
+    <Stack direction="row" justifyContent="center" spacing={2} sx={{ mt: 8 }}>
+      <Button variant="contained" onClick={redirectToNotes}>
+        Get Started
+      </Button>
+    </Stack>
   );
 }
