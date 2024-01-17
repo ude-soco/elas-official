@@ -59,6 +59,11 @@ import ProjectFinder from "./pages/Projects/ProjectFinder/ProjectFinder";
 import CourseRecommender from "./pages/Projects/CourseRecommender/CourseRecommender";
 import Intogen from "./pages/Projects/Intogen/Intogen";
 import NoteBot from "./pages/Projects/NoteBot/NoteBot";
+import MyNotes from "./pages/Projects/NoteBot/components/MyNotes";
+import MyCourses from "./pages/Projects/NoteBot/components/MyCourses";
+import CreateNote from "./pages/Projects/NoteBot/components/CreateNote";
+import MyFavorites from "./pages/Projects/NoteBot/components/MyFavorites";
+import Deleted from "./pages/Projects/NoteBot/components/Deleted";
 import CourseDetail from "./pages/Projects/StudyCompassCopy/components/CoueseDetail";
 import StudyCompassNew from "./pages/Projects/StudyCompassCopy/StudyCompassNew";
 
@@ -104,6 +109,11 @@ export default function AppRoutes() {
       <Route path="projects">
         <Route path="notebot">
           <Route index element={<NoteBot />} />
+          <Route path="mynotes" element={<MyNotes />} />
+          <Route path="mycourses" element={<MyCourses />} />
+          <Route path="createnote" element={<CreateNote />} />
+          <Route path="myfavorites" element={<MyFavorites />} />
+          <Route path="deleted" element={<Deleted />} />
         </Route>
       </Route>
       <Route path="settings" element={<Settings />} />
