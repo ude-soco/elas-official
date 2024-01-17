@@ -45,6 +45,17 @@ class UserRegistrationSerializer(serializers.Serializer):
         except Exception as e:
             print(f"Error creating student node: {e}")
 
+        try:
+            payload = {
+                "uid": str(user.id),
+                "name": f"{validated_data['first_name']} {validated_data['last_name']}",
+                "username": validated_data["username"],
+            }
+            service_url = get_service_url("ELAS-NOTEBOT")
+            requests.post(f"{service_url}/api/notebot/users/", json=payload)
+        except Exception as e:
+            print(f"Error creating student node: {e}")
+
         return user
 
     def update(self, user, validated_data):
@@ -54,10 +65,10 @@ class UserRegistrationSerializer(serializers.Serializer):
             if field in validated_data:
                 setattr(user, field, validated_data[field])
         user.save()  # TODO: Check whether it is saving twice
-
+        user_id = str(user.id)
         try:
             payload = {
-                "uid": str(user.id),
+                "uid": user_id,
                 "name": f"{validated_data['first_name']} {validated_data['last_name']}",
                 "username": validated_data["username"],
                 "study_program": validated_data.get("study_program", ""),
@@ -67,6 +78,16 @@ class UserRegistrationSerializer(serializers.Serializer):
             requests.put(
                 f"{service_url}/api/course-recommender/update-student/", json=payload
             )
+        except Exception as e:
+            print(f"Error creating student node: {e}")
+
+        try:
+            payload = {
+                "name": f"{validated_data['first_name']} {validated_data['last_name']}",
+                "username": validated_data["username"],
+            }
+            service_url = get_service_url("ELAS-NOTEBOT")
+            requests.put(f"{service_url}/api/notebot/users/{user_id}", json=payload)
         except Exception as e:
             print(f"Error creating student node: {e}")
 
