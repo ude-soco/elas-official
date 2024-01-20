@@ -29,32 +29,30 @@ Download and install the following software
 
 - Java 17. Follow the [guide](https://www.codejava.net/java-se/download-and-install-openjdk-17#:~:text=How%20to%20Download%20and%20Install%20OpenJDK%2017%201,...%202%202.%20Install%20OpenJDK%2017%20on%20Windows) to install Java on Windows.
 - Maven. Follow the [guide](https://phoenixnap.com/kb/install-maven-windows) to install Maven on Windows.
-- Python (v3.10) from [the official website](https://www.python.org/downloads/release/python-31010/).
-- Node.js (v18.12.1) from [the official website](https://nodejs.org/en/blog/release/v18.12.1).
-- MongoDB Community Server (v5.0.5) from [the official website](https://www.mongodb.com/try/download/community) and [MongoDB Compass](https://www.mongodb.com/try/download/compass).
+- Python (v3.10) from [the official website](https://www.python.org/downloads/release/python-31010/)
+- Node.js (v18.12.1) from [the official website](https://nodejs.org/en/blog/release/v18.12.1)
+- MongoDB Community Server (v5.0.5) from [the official website](https://www.mongodb.com/try/download/community) and [MongoDB Compass](https://www.mongodb.com/try/download/compass)
 - Neo4j Desktop from [the official website](https://neo4j.com/download-center/#desktop), install it, start the server, create database and login to the server.
-- Git from [the official website](https://git-scm.com/downloads).
-- Github Desktop from [the official website](https://desktop.github.com/).
+- Git from [the official website](https://git-scm.com/downloads)
+- Github Desktop from [the official website](https://desktop.github.com/)
 - [IntelliJ Ultimate](https://www.jetbrains.com/de-de/idea/download/#section=windows) or [Visual Studio Code](https://code.visualstudio.com/download) and install one of the code editors.
-- Postman from [the official website](https://www.postman.com/downloads/).
+- Postman from [the official website](https://www.postman.com/downloads/)
 
 ### Installation Guide for Backend Services
 
-For each of the services, follow the steps below to set up the development environment. Follow the steps in the given order.
-
-#### Step 1: Run Service Register Service (Spring Boot)
+#### Step 1: Run Service Register (Spring Boot)
 
 - Using your file explorer, go inside the directory `backend/1-service-registry`.
 
-- Open a command prompt/terminal in the `backend/1-service-registry` directory with **administration rights**
+- Open a command prompt/terminal in the `service-registry` directory with **administration rights**
 
-- Run the following command to package the application into a jar file (only once).
+- Run the following command to package the application into a jar file.
 
   ```bash
   mvn clean package
   ```
 
-- Run the following command to start the application (every time when you want to start the server).
+- Run the following command to start the application.
 
   ```bash
   java -jar target/ServiceRegistry.jar
@@ -64,15 +62,15 @@ For each of the services, follow the steps below to set up the development envir
 
 - Navigate to the `backend/2-api-gateway` directory using your file explorer.
 
-- Open a command prompt/terminal in the `backend/2-api-gateway` directory (with **administration rights** for Windows users)
+- Open a command prompt/terminal in the `service-registry` directory (with **administration rights** for Windows users)
 
-- Run the following command to package the application into a jar file (only once).
+- Run the following command to package the application into a jar file.
 
   ```bash
   mvn clean package
   ```
 
-- Run the following command to start the application (every time when you want to start the server).
+- Run the following command to start the application.
 
   ```bash
   java -jar target/ApiGateway.jar
@@ -124,7 +122,7 @@ For each of the services, follow the steps below to set up the development envir
      python manage.py makemigrations
      ```
 
-  2. Apply migrations (only once)
+  2. Apply migrations
 
      ```bash
      python manage.py migrate
@@ -132,10 +130,10 @@ For each of the services, follow the steps below to set up the development envir
 
   Note: Delete the db.sqlite3 file if it exists; it will be recreated after successful migrations. Run migrations only when you've made changes to the relational database models.
 
-- Run the Django server (every time when you want to start the server)
+- Run the Django server
 
   ```bash
-  python manage.py runserver
+    python manage.py runserver
   ```
 
   By following these steps, your Python virtual environment will be set up, the database will be migrated, and the Django server will be running and ready for development.
@@ -186,7 +184,7 @@ For each of the services, follow the steps below to set up the development envir
      python manage.py makemigrations
      ```
 
-  2. Apply migrations (only once)
+  2. Apply migrations
 
      ```bash
      python manage.py migrate
@@ -194,30 +192,30 @@ For each of the services, follow the steps below to set up the development envir
 
   Note: Delete the db.sqlite3 file if it exists; it will be recreated after successful migrations. Run migrations only when you've made changes to the relational database models.
 
-- Run the Django server (every time when you want to start the server)
+- Run the Django server
 
   ```bash
-  python manage.py runserver
+    python manage.py runserver
   ```
 
   By following these steps, your Python virtual environment will be set up, the database will be migrated, and the Django server will be running and ready for development.
 
-- Run the `celery` worker command in a separate terminal if you are using Linux or Windows with at least more than 4 cores (every time when you want to start the server).
+- Run the `celery` worker command in a separate terminal if you are using Linux or Windows with at least more than 4 cores
 
   ```bash
   celery -A server worker --concurrency=4 -l info -P eventlet
   ```
 
-  If you are using Windows with less than 4 cores, use the following command to run the celery worker (every time when you want to start the server):
+  Use the following command to run the celery worker if you are using Windows with less than 4 cores:
 
   ```bash
   celery -A server worker -l info -P eventlet
   ```
 
-  (Optional) Run `flower` to monitor the celery worker
+- (Optional) Run `flower` to monitor the celery worker
 
   ```bash
-  flower -A server --port=5555
+    flower -A server --port=5555
   ```
 
 #### Step 5: Run StudyCompass & CourseRecommender Service (Django)
@@ -266,7 +264,7 @@ For each of the services, follow the steps below to set up the development envir
      python manage.py makemigrations
      ```
 
-  2. Apply migrations (only once)
+  2. Apply migrations
 
      ```bash
      python manage.py migrate
@@ -274,27 +272,27 @@ For each of the services, follow the steps below to set up the development envir
 
   Note: Delete the db.sqlite3 file if it exists; it will be recreated after successful migrations. Run migrations only when you've made changes to the relational database models.
 
-- Run the Django server (every time when you want to start the server)
+- Run the Django server
 
   ```bash
-  python manage.py runserver
+    python manage.py runserver
   ```
 
   By following these steps, your Python virtual environment will be set up, the database will be migrated, and the Django server will be running and ready for development.
 
-- Run the `celery` worker command in a separate command prompt/terminal if you are using Linux with at least more than 4 cores (every time when you want to start the server).
+- Run the `celery` worker command in a separate command prompt/terminal if you are using Linux with at least more than 4 cores
 
   ```bash
   celery -A server worker --concurrency=4 -l info -P eventlet
   ```
 
-  If you are using Windows, use the following command to run the celery worker (every time when you want to start the server):
+  Use the following command to run the celery worker if you are using Windows:
 
   ```bash
   celery -A server worker -l info -P eventlet
   ```
 
-  (Optional) Run `flower` to monitor the celery worker
+- (Optional) Run `flower` to monitor the celery worker
 
   ```bash
   flower -A server --port=5555
@@ -316,13 +314,13 @@ For each of the services, follow the steps below to set up the development envir
 
 - Open a command prompt/terminal in the `backend/7-notebot` directory (with **administration rights** for Windows users)
 
-- To install Node packages, enter the following command in your command prompt or terminal (only once):
+- To install Node packages, enter the following command in your command prompt or terminal:
 
   ```bash
   npm ci
   ```
 
-  In case you encounter issues with the npm ci command, you can try either of the following commands (only once):
+  In case you encounter issues with the npm ci command, you can try either of the following commands:
 
   ```bash
   npm install
@@ -336,7 +334,7 @@ For each of the services, follow the steps below to set up the development envir
 
   Please exercise caution with `npm install` and `npm install --force` as they will delete existing node packages, install new ones, and update the `package-lock.json` file. Be careful not to push changes to the `package-lock.json` file.
 
-- After successfully installing the packages, use the following command to start the server (every time when you want to start the server):
+- After successfully installing the packages, use the following command to start the server:
 
   ```bash
   npm run watch:dev
@@ -356,13 +354,13 @@ For each of the services, follow the steps below to set up the development envir
 
 - Open a command prompt/terminal in the `frontend` directory (with **administration rights** for Windows users)
 
-- To install Node packages, enter the following command in your command prompt or terminal (only once):
+- To install Node packages, enter the following command in your command prompt or terminal:
 
   ```bash
   npm ci
   ```
 
-  In case you encounter issues with the npm ci command, you can try either of the following commands (only once):
+  In case you encounter issues with the npm ci command, you can try either of the following commands:
 
   ```bash
   npm install
@@ -376,7 +374,7 @@ For each of the services, follow the steps below to set up the development envir
 
   Please exercise caution with `npm install` and `npm install --force` as they will delete existing node packages, install new ones, and update the `package-lock.json` file. Be careful not to push changes to the `package-lock.json` file.
 
-- After successfully installing the packages, use the following command to start the server (every time when you want to start the server):
+- After successfully installing the packages, use the following command to start the server:
 
   ```bash
   npm start
