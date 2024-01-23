@@ -40,11 +40,11 @@ export default function MyFavorites({ favoriteNotes }) {
 
   const [favNotes, setfavNotes] = useState([]);
 
-useEffect (() => {
-  let tempFav = JSON.parse(sessionStorage.getItem("notebot-favnotes"))
-  setfavNotes(tempFav)
-},[])
-console.log(favNotes)
+// useEffect (() => {
+//  let tempFav = JSON.parse(sessionStorage.getItem("notebot-favnotes"))
+//  setfavNotes(tempFav)
+// },[])
+// console.log(favNotes)
 
   return (
     <Grid container justifyContent="center" sx={{ py: 4, px: 2 }}>
