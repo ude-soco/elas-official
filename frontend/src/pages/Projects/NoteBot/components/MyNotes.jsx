@@ -70,6 +70,13 @@ export default function MyNotes() {
     }
   };
 
+ const [favNotes, setfavNotes] = useState([]);
+
+ useEffect(() => {
+  let tempFav = JSON.parse(sessionStorage.getItem("notebot-favnotes"))
+  setFavoriteNotes(tempFav);
+}, []); 
+
   const openDeleteDialog = (note) => {
     setNoteToDelete(note);
     setDeleteDialogOpen(true);
