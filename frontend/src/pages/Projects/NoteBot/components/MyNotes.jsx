@@ -8,9 +8,9 @@ import { useNavigate } from 'react-router-dom';
 import noteBotLogo from "../../../../assets/images/noteBot-logo.png";
 
 const sampleNotes = [
-  { id: 1, title: "Note 1", content: "Content for Note 1" },
-  { id: 2, title: "Note 2", content: "Content for Note 2" },
-  { id: 3, title: "Note 3", content: "Content for Note 3" }, 
+  { id: 1, title: "Note 1", content: "Content for Note 1", favorite: false, deleted: false },
+  { id: 2, title: "Note 2", content: "Content for Note 2", favorite: false, deleted: false },
+  { id: 3, title: "Note 3", content: "Content for Note 3", favorite: false, deleted: false }, 
 ]
 
 export default function MyNotes() {
