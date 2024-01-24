@@ -28,10 +28,10 @@ export default function MyArchive() {
     navigate("/projects/notebot/deleted");
   };
 
-  const restoreNote = (noteId) => {
+  // const restoreNote = (noteId) => {
     // Add logic to handle the restore action
-    console.log(`Restoring note with id ${noteId}`);
-  };
+    // console.log(`Restoring note with id ${noteId}`);
+  // };
 
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -42,13 +42,6 @@ export default function MyArchive() {
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
-
-  const [noteToDelete, setNoteToDelete] = useState([]);
-
-  useEffect(() => {
-    const tempDel = JSON.parse(sessionStorage.getItem("notebot-delnotes")) || [];
-    setNoteToDelete(tempDel);
-  }, []);
 
   return (
     <Grid container justifyContent="center" sx={{ py: 4, px: 2 }}>
@@ -97,19 +90,7 @@ export default function MyArchive() {
               Recently Deleted
             </Typography>
           </Grid>
-          <Grid container spacing={2} sx={{ marginTop: 4 }}>
-            {noteToDelete?.map((note) => (
-          <Grid item key={note.id} xs={12} sm={6} md={4}>
-            <Paper elevation={3} sx={{ p: 2, height: "100%", backgroundColor: "#f5f5f5", position: 'relative' }}>
-              <Typography variant="h6">{note.title}</Typography>
-              <Typography>{note.content}</Typography>
-                  <Button variant="contained" sx={{marginTop: 2}} onClick={() => restoreNote(note.id)}>
-                    Restore
-                  </Button>
-                </Paper>
-              </Grid>
-            ))}
-          </Grid>
+      
         </Grid>
       </Grid>
     </Grid>
