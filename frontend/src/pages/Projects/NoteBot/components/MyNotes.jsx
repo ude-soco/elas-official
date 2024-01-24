@@ -51,9 +51,9 @@ export default function MyNotes() {
     const isNoteInFavorites = favoriteNotes.some((favNote) => favNote.id === note.id);
   
     if (!isNoteInFavorites) {
-      // Add the note to favorites
+      // Add the note to favorites and set the 'favorite' property to true
       setFavoriteNotes((prevNotes) => {
-        let tempFav = [...prevNotes, note];
+        let tempFav = [...prevNotes, { ...note, favorite: true }];
         sessionStorage.setItem("notebot-favnotes", JSON.stringify(tempFav));
         return tempFav;
       });
@@ -82,6 +82,15 @@ export default function MyNotes() {
     setFavoriteNotes(storedFavNotes || []);
   }, []);
 
+  useEffect(() => {
+    // Retrieve deletedNotes from session storage
+    const storedDelNotes = JSON.parse(sessionStorage.getItem("notebot-delnotes"));
+    
+    // If storedDelNotes is null, use an empty array as the default
+    console.log("Stored deleted notes:", storedDelNotes);
+    setDeletedNotes(storedDelNotes || []);
+  }, []);
+
   const openDeleteDialog = (note) => {
     setNoteToDelete(note);
     setDeleteDialogOpen(true);
@@ -96,6 +105,7 @@ export default function MyNotes() {
     // Move the note to the recently deleted notes
     const updatedNotes = sampleNotes.map((note) => {
       if (note.id === noteToDelete.id) {
+        // Set the 'deleted' property to true
         return { ...note, deleted: true };
       }
       return note;
@@ -105,7 +115,31 @@ export default function MyNotes() {
     closeDeleteDialog();
 
     // Update the sampleNotes array with the deleted note
-    sessionStorage.setItem("notebot-notes", JSON.stringify(updatedNotes));
+    sessionStorage.setItem("notebot-delnotes", JSON.stringify(updatedNotes));
+
+    setSampleNotes(updatedNotes.filter((note) => !note.deleted));
+
+    // Check if the note is already in favorites
+    const isNoteInFavorites = favoriteNotes.some((favNote) => favNote.id === noteToDelete.id);
+
+    if (!isNoteInFavorites) {
+      // Add the note to favorites and set the 'favorite' property to true
+      setFavoriteNotes((prevNotes) => {
+        let tempFav = [...prevNotes, { ...noteToDelete, favorite: true }];
+        sessionStorage.setItem("notebot-favnotes", JSON.stringify(tempFav));
+        return tempFav;
+      });
+      setSnackbarFavoritesOpen(true);
+    } else {
+      // Remove the note from favorites if it already exists
+      setFavoriteNotes((prevNotes) => {
+        let tempFav = prevNotes.filter((n) => n.id !== noteToDelete.id);
+        sessionStorage.setItem("notebot-favnotes", JSON.stringify(tempFav));
+        return tempFav;
+      });
+    }
+
+setSampleNotes(updatedNotes.filter((note) => !note.deleted));
   };
 
   const closeSnackbarFavorites = () => {
@@ -180,7 +214,7 @@ export default function MyNotes() {
                 </IconButton>
               </Paper>
             </Grid>
-          ))}
+        ))}
           </Grid>
         {/* Delete Confirmation Dialog */}
         <Dialog open={deleteDialogOpen} onClose={closeDeleteDialog}>
@@ -215,7 +249,7 @@ function SearchBar() {
     <TextField
       variant="standard"
       placeholder="Search..."
-      sx={{ width: 200 }} // Adjust the width based on your design
+      sx={{ width: 200 }}
     />
   );
 }

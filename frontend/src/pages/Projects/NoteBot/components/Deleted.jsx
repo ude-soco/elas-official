@@ -5,12 +5,6 @@ import { useNavigate } from 'react-router-dom';
 
 import noteBotLogo from "../../../../assets/images/noteBot-logo.png";
 
-const sampleNotes = [
-    { id: 1, title: "Note 1", content: "Content for Note 1" },
-    { id: 2, title: "Note 2", content: "Content for Note 2" },
-    { id: 3, title: "Note 3", content: "Content for Note 3" }, 
-  ]
-
 export default function MyArchive() {
   const navigate = useNavigate();
   
@@ -48,6 +42,13 @@ export default function MyArchive() {
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
+
+  const [noteToDelete, setNoteToDelete] = useState([]);
+
+  useEffect(() => {
+    const tempDel = JSON.parse(sessionStorage.getItem("notebot-delnotes")) || [];
+    setNoteToDelete(tempDel);
+  }, []);
 
   return (
     <Grid container justifyContent="center" sx={{ py: 4, px: 2 }}>
@@ -97,11 +98,11 @@ export default function MyArchive() {
             </Typography>
           </Grid>
           <Grid container spacing={2} sx={{ marginTop: 4 }}>
-            {sampleNotes.map((note) => (
-              <Grid item key={note.id} xs={12} sm={6} md={4}>
-                <Paper elevation={3} sx={{ p: 2, height: "100%", backgroundColor: "#f5f5f5" }}>
-                  <Typography variant="h6">{note.title}</Typography>
-                  <Typography>{note.content}</Typography>
+            {noteToDelete?.map((note) => (
+          <Grid item key={note.id} xs={12} sm={6} md={4}>
+            <Paper elevation={3} sx={{ p: 2, height: "100%", backgroundColor: "#f5f5f5", position: 'relative' }}>
+              <Typography variant="h6">{note.title}</Typography>
+              <Typography>{note.content}</Typography>
                   <Button variant="contained" sx={{marginTop: 2}} onClick={() => restoreNote(note.id)}>
                     Restore
                   </Button>
@@ -120,7 +121,7 @@ function SearchBar() {
       <TextField
         variant="standard"
         placeholder="Search..."
-        sx={{ width: 200 }} // Adjust the width based on your design
+        sx={{ width: 200 }}
       />
     );
   }
