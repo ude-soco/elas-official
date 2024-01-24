@@ -7,12 +7,6 @@ import { useNavigate } from 'react-router-dom';
 
 import noteBotLogo from "../../../../assets/images/noteBot-logo.png";
 
-const sampleNotes = [
-  { id: 1, title: "Note 1", content: "Content for Note 1", favorite: false, deleted: false },
-  { id: 2, title: "Note 2", content: "Content for Note 2", favorite: false, deleted: false },
-  { id: 3, title: "Note 3", content: "Content for Note 3", favorite: false, deleted: false }, 
-]
-
 export default function MyNotes() {
   const navigate = useNavigate();
   
@@ -53,29 +47,40 @@ export default function MyNotes() {
   };
 
   const addToFavorites = (note) => {
-    if (!favoriteNotes.includes(note)) {
+    // Check if the note is already in favorites
+    const isNoteInFavorites = favoriteNotes.some((favNote) => favNote.id === note.id);
+  
+    if (!isNoteInFavorites) {
+      // Add the note to favorites
       setFavoriteNotes((prevNotes) => {
-        let tempFav = [...prevNotes, note]
+        let tempFav = [...prevNotes, note];
         sessionStorage.setItem("notebot-favnotes", JSON.stringify(tempFav));
-      return tempFav
+        return tempFav;
       });
       setSnackbarFavoritesOpen(true);
     } else {
       // Remove the note from favorites if it already exists
-      setFavoriteNotes((prevNotes) => { 
-        let tempFav = prevNotes.filter((n) => n.id !== note.id)
+      setFavoriteNotes((prevNotes) => {
+        let tempFav = prevNotes.filter((n) => n.id !== note.id);
         sessionStorage.setItem("notebot-favnotes", JSON.stringify(tempFav));
-        return tempFav
+        return tempFav;
       });
     }
   };
 
- const [favNotes, setfavNotes] = useState([]);
+  const [sampleNotes, setSampleNotes] = useState([
+    { id: 1, title: "Note 1", content: "Content for Note 1", favorite: false, deleted: false },
+    { id: 2, title: "Note 2", content: "Content for Note 2", favorite: false, deleted: false },
+    { id: 3, title: "Note 3", content: "Content for Note 3", favorite: false, deleted: false },
+  ]);
 
- useEffect(() => {
-  let tempFav = JSON.parse(sessionStorage.getItem("notebot-favnotes"))
-  setFavoriteNotes(tempFav);
-}, []); 
+  useEffect(() => {
+    // Retrieve favoriteNotes from session storage
+    const storedFavNotes = JSON.parse(sessionStorage.getItem("notebot-favnotes"));
+  
+    // If storedFavNotes is null, use an empty array as the default
+    setFavoriteNotes(storedFavNotes || []);
+  }, []);
 
   const openDeleteDialog = (note) => {
     setNoteToDelete(note);
@@ -89,9 +94,18 @@ export default function MyNotes() {
 
   const confirmDelete = () => {
     // Move the note to the recently deleted notes
+    const updatedNotes = sampleNotes.map((note) => {
+      if (note.id === noteToDelete.id) {
+        return { ...note, deleted: true };
+      }
+      return note;
+    });
+
     setDeletedNotes((prevNotes) => [...prevNotes, noteToDelete]);
     closeDeleteDialog();
-    // setSnackbarDeleteOpen(true);
+
+    // Update the sampleNotes array with the deleted note
+    sessionStorage.setItem("notebot-notes", JSON.stringify(updatedNotes));
   };
 
   const closeSnackbarFavorites = () => {
@@ -151,24 +165,22 @@ export default function MyNotes() {
             </Typography>
           </Grid>
           <Grid container spacing={2} sx={{ marginTop: 4 }}>
-            {sampleNotes.map((note) => (
-          <Grid item key={note.id} xs={12} sm={6} md={4}>
-            <Paper elevation={3} sx={{ p: 2, height: "100%", backgroundColor: "#f5f5f5", position: 'relative' }}>
-              <Typography variant="h6">{note.title}</Typography>
-              <Typography>{note.content}</Typography>
-              <IconButton
-                sx={{ position: 'absolute', top: 0, right: 0, color: favoriteNotes.includes(note) ? 'red' : 'gray' }}
-                onClick={() => addToFavorites(note)} >
-                <FavoriteIcon />
-              </IconButton>
-              <IconButton
-                sx={{ position: 'absolute', bottom: 0, right: 0, color: 'gray' }}
-                onClick={() => openDeleteDialog(note)}>
-                <DeleteIcon />
-              </IconButton>
-            </Paper>
-          </Grid>
-              ))}
+          {sampleNotes.map((note) => (
+            <Grid item key={note.id} xs={12} sm={6} md={4}>
+              <Paper elevation={3} sx={{ p: 2, height: "100%", backgroundColor: "#f5f5f5", position: 'relative' }}>
+                <Typography variant="h6">{note.title}</Typography>
+                <Typography>{note.content}</Typography>
+                <IconButton sx={{ position: 'absolute', top: 0, right: 0, color: favoriteNotes.some((favNote) => favNote.id === note.id) ? 'red' : 'gray' }}
+                  onClick={() => addToFavorites(note)}>
+                  <FavoriteIcon />
+                </IconButton>
+                <IconButton sx={{ position: 'absolute', bottom: 0, right: 0, color: 'gray' }}
+                  onClick={() => openDeleteDialog(note)}>
+                  <DeleteIcon />
+                </IconButton>
+              </Paper>
+            </Grid>
+          ))}
           </Grid>
         {/* Delete Confirmation Dialog */}
         <Dialog open={deleteDialogOpen} onClose={closeDeleteDialog}>
