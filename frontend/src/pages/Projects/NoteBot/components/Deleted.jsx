@@ -5,12 +5,6 @@ import { useNavigate } from 'react-router-dom';
 
 import noteBotLogo from "../../../../assets/images/noteBot-logo.png";
 
-const sampleNotes = [
-    { id: 1, title: "Note 1", content: "Content for Note 1" },
-    { id: 2, title: "Note 2", content: "Content for Note 2" },
-    { id: 3, title: "Note 3", content: "Content for Note 3" }, 
-  ]
-
 export default function MyArchive() {
   const navigate = useNavigate();
   
@@ -34,10 +28,10 @@ export default function MyArchive() {
     navigate("/projects/notebot/deleted");
   };
 
-  const restoreNote = (noteId) => {
+  // const restoreNote = (noteId) => {
     // Add logic to handle the restore action
-    console.log(`Restoring note with id ${noteId}`);
-  };
+    // console.log(`Restoring note with id ${noteId}`);
+  // };
 
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -96,19 +90,7 @@ export default function MyArchive() {
               Recently Deleted
             </Typography>
           </Grid>
-          <Grid container spacing={2} sx={{ marginTop: 4 }}>
-            {sampleNotes.map((note) => (
-              <Grid item key={note.id} xs={12} sm={6} md={4}>
-                <Paper elevation={3} sx={{ p: 2, height: "100%", backgroundColor: "#f5f5f5" }}>
-                  <Typography variant="h6">{note.title}</Typography>
-                  <Typography>{note.content}</Typography>
-                  <Button variant="contained" sx={{marginTop: 2}} onClick={() => restoreNote(note.id)}>
-                    Restore
-                  </Button>
-                </Paper>
-              </Grid>
-            ))}
-          </Grid>
+      
         </Grid>
       </Grid>
     </Grid>
@@ -120,7 +102,7 @@ function SearchBar() {
       <TextField
         variant="standard"
         placeholder="Search..."
-        sx={{ width: 200 }} // Adjust the width based on your design
+        sx={{ width: 200 }}
       />
     );
   }

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Grid, Typography, Button, Stack, Menu, MenuItem, Paper, TextField } from "@mui/material";
+import { Grid, Typography, Button, Stack, Menu, MenuItem, Paper, TextField, IconButton } from "@mui/material";
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import DeleteIcon from '@mui/icons-material/Delete';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { useNavigate } from 'react-router-dom';
 
@@ -40,11 +42,10 @@ export default function MyFavorites({ favoriteNotes }) {
 
   const [favNotes, setfavNotes] = useState([]);
 
-useEffect (() => {
-  let tempFav = JSON.parse(sessionStorage.getItem("notebot-favnotes"))
-  setfavNotes(tempFav)
-},[])
-console.log(favNotes)
+  useEffect(() => {
+    let tempFav = JSON.parse(sessionStorage.getItem("notebot-favnotes"));
+    setfavNotes(tempFav);
+  }, []);
 
   return (
     <Grid container justifyContent="center" sx={{ py: 4, px: 2 }}>
@@ -92,6 +93,24 @@ console.log(favNotes)
             <Typography variant="h5" gutterBottom>
               My Favorite Notes
             </Typography>
+          </Grid>
+          <Grid container spacing={2} sx={{ marginTop: 4 }}>
+            {favNotes?.map((note) => (
+          <Grid item key={note.id} xs={12} sm={6} md={4}>
+            <Paper elevation={3} sx={{ p: 2, height: "100%", backgroundColor: "#f5f5f5", position: 'relative' }}>
+              <Typography variant="h6">{note.title}</Typography>
+              <Typography>{note.content}</Typography>
+              <IconButton
+                sx={{ position: 'absolute', top: 0, right: 0, color: 'red' }} >
+                <FavoriteIcon />
+              </IconButton>
+              <IconButton
+                sx={{ position: 'absolute', bottom: 0, right: 0, color: 'gray' }}>
+                <DeleteIcon />
+              </IconButton>
+            </Paper>
+          </Grid>
+              ))}
           </Grid>
         </Grid>
       </Grid>

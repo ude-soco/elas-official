@@ -109,3 +109,14 @@ export function ContainedButtons({redirectToNotes}) {
     </Stack>
   );
 }
+
+// Move the ContainedButtons component to the end of the file
+export function ContainedButtons({redirectToNotes}) {
+  return (
+    <Stack direction="row" justifyContent="center" spacing={2} sx={{ mt: 8 }}>
+      <Button variant="contained" onClick={redirectToNotes}>
+        Get Started
+      </Button>
+    </Stack>
+  );
+}
