@@ -7,6 +7,7 @@ import noteBotLogo from "../../../../assets/images/noteBot-logo.png";
 
 export default function MyArchive() {
   const navigate = useNavigate();
+  const [recentlyDeletedNotes, setRecentlyDeletedNotes] = useState([]);
   
   const redirectToCourses = () => {
     navigate("/projects/notebot/mycourses")
@@ -28,11 +29,6 @@ export default function MyArchive() {
     navigate("/projects/notebot/deleted");
   };
 
-  // const restoreNote = (noteId) => {
-    // Add logic to handle the restore action
-    // console.log(`Restoring note with id ${noteId}`);
-  // };
-
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleMenuClick = (event) => {
@@ -42,6 +38,14 @@ export default function MyArchive() {
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
+
+  useEffect(() => {
+    // Fetch recently deleted notes from the backend
+    fetch("/recently-deleted-notes")
+      .then(response => response.json())
+      .then(data => setRecentlyDeletedNotes(data))
+      .catch(error => console.error('Error fetching recently deleted notes:', error));
+  }, []);
 
   return (
     <Grid container justifyContent="center" sx={{ py: 4, px: 2 }}>
@@ -90,7 +94,17 @@ export default function MyArchive() {
               Recently Deleted
             </Typography>
           </Grid>
-      
+          {/* Display recently deleted notes */}
+          <Grid container spacing={2} sx={{ marginTop: 4 }}>
+            {recentlyDeletedNotes.map((note) => (
+              <Grid item key={note.id} xs={12} sm={6} md={4}>
+                <Paper elevation={3} sx={{ p: 2, height: "100%", backgroundColor: "#f5f5f5" }}>
+                  <Typography variant="h6">{note.title}</Typography>
+                  <Typography>{note.content}</Typography>
+                </Paper>
+              </Grid>
+            ))}
+          </Grid>
         </Grid>
       </Grid>
     </Grid>
