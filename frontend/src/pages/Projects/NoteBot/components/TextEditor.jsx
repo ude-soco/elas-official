@@ -4,6 +4,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import ChatIcon from '@mui/icons-material/Chat';
 import Chat from "./Chat";
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 import noteBotLogo from "../../../../assets/images/noteBot-logo.png";
 
@@ -54,6 +55,18 @@ export default function TextEditor() {
     setContent(e.target.value);
   };
 
+  const handleSaveNote = () => {
+    axios.post('/api/saveNote', { title, content })
+      .then(response => {
+        console.log(response.data);
+        // Handle success (e.g., show a success message)
+      })
+      .catch(error => {
+        console.error(error);
+        // Handle error (e.g., show an error message)
+      });
+  };
+
     return (
         <Grid container justifyContent="center" sx={{ py: 4, px: 2 }}>
           <Grid container sx={{ maxWidth: 1500, width: "100%" }} spacing={2}>
@@ -95,9 +108,14 @@ export default function TextEditor() {
                   </Grid>
               </Grid>
               <Grid item sx={{marginTop: 4}}>
+              <Stack direction="row" justifyContent="space-between">
                 <Typography variant="h5" gutterBottom>
                   Create Note
                 </Typography>
+                <Button variant="contained" onClick={handleSaveNote}>
+                  Save Note
+                </Button>
+              </Stack>
               </Grid>
               <Grid item sx={{ marginTop: 4 }}>
                 <Grid item sx={{ width: "100%" }}>
