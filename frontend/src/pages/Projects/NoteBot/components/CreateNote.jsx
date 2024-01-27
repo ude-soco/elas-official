@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Grid, Typography, Button, Stack, Menu, MenuItem, Paper, TextField } from "@mui/material";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import ChatIcon from '@mui/icons-material/Chat';
@@ -10,6 +10,8 @@ import noteBotLogo from "../../../../assets/images/noteBot-logo.png";
 export default function CreateNote() {
   const navigate = useNavigate();
   const [showChat, setShowChat] = useState(false);
+  const [showColumnButtons, setShowColumnButtons] = useState(false);
+  const [showAdditionalButtons, setShowAdditionalButtons] = useState(false);
 
   const redirectToCourses = () => {
     navigate("/projects/notebot/mycourses")
@@ -31,6 +33,10 @@ export default function CreateNote() {
     navigate("/projects/notebot/deleted");
   };
 
+  const redirectToTextEditor = () => {
+    navigate ("/projects/notebot/text");
+  };
+
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleMenuClick = (event) => {
@@ -43,6 +49,19 @@ export default function CreateNote() {
 
   const toggleChat = () => {
     setShowChat(!showChat);
+  };
+
+  const handleAddButton = () => {
+    setShowColumnButtons(true);
+  };
+
+  const handleColumnButtonClick = () => {
+    setShowColumnButtons(false);
+    setShowAdditionalButtons(true);
+  };
+
+  const handleAdditionalButtonClick = () => {
+    setShowAdditionalButtons(false);
   };
 
   return (
@@ -91,6 +110,42 @@ export default function CreateNote() {
             <Typography variant="h5" gutterBottom>
               Create Note
             </Typography>
+          </Grid>
+          {/* Placeholder field with plus sign button */}
+          <Grid item xs={12} sx={{ marginTop: 2 }}>
+            <Paper variant="outlined" sx={{ p: 2, backgroundColor: "#f5f5f5", display: "flex", alignItems: "center", height: "100px", justifyContent: "center" }}>
+              {!showColumnButtons && !showAdditionalButtons && (
+                <Button variant="contained" sx={{ backgroundColor: "lightgray", borderRadius: "50%" }} onClick={handleAddButton}>
+                  +
+                </Button>
+              )}
+              {showColumnButtons && (
+                <>
+                  <Button variant="contained" sx={{ mr: 1 }} onClick={handleColumnButtonClick}>
+                    1 Column
+                  </Button>
+                  <Button variant="contained" sx={{ mr: 1 }} onClick={handleColumnButtonClick}>
+                    2 Columns
+                  </Button>
+                  <Button variant="contained" sx={{ mr: 1 }} onClick={handleColumnButtonClick}>
+                    3 Columns
+                  </Button>
+                </>
+              )}
+              {showAdditionalButtons && (
+                <>
+                  <Button variant="contained" sx={{ mr: 1 }} onClick={redirectToTextEditor}>
+                    Text
+                  </Button>
+                  <Button variant="contained" sx={{ mr: 1 }} onClick={handleAdditionalButtonClick}>
+                    PDF
+                  </Button>
+                  <Button variant="contained" sx={{ mr: 1 }} onClick={handleAdditionalButtonClick}>
+                    Video
+                  </Button>
+                </>
+              )}
+            </Paper>
           </Grid>
           {/* Chatbot Icon */}
           <ChatIcon
