@@ -4,6 +4,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import DeleteIcon from '@mui/icons-material/Delete';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { useNavigate } from 'react-router-dom';
+import axios from "axios";
 
 import noteBotLogo from "../../../../assets/images/noteBot-logo.png";
 
@@ -32,7 +33,6 @@ export default function MyNotes() {
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [favoriteNotes, setFavoriteNotes] = useState([]);
-  const [deletedNotes, setDeletedNotes] = useState([]);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [noteToDelete, setNoteToDelete] = useState(null);
   const [snackbarFavoritesOpen, setSnackbarFavoritesOpen] = useState(false);
@@ -100,12 +100,34 @@ export default function MyNotes() {
       }
       return note;
     });
+  
+    // Send a request to update the note's status in the backend
+    fetch(`/recently-deleted-notes${noteToDelete.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        // Add any necessary authentication headers
+      },
+      body: JSON.stringify({ deleted: true }), // Update note status to deleted
+    })
+    .then(response => {
+      if (response.ok) {
+        // Update the sampleNotes array with the deleted note
+        setDeletedNotes((prevNotes) => [...prevNotes, noteToDelete]);
+        closeDeleteDialog();
+        sessionStorage.setItem("notebot-notes", JSON.stringify(updatedNotes));
 
-    setDeletedNotes((prevNotes) => [...prevNotes, noteToDelete]);
-    closeDeleteDialog();
-
-    // Update the sampleNotes array with the deleted note
-    sessionStorage.setItem("notebot-notes", JSON.stringify(updatedNotes));
+        // Show Snackbar for delete confirmation
+        setSnackbarDeleteOpen(true);
+      } else {
+        // Handle error response from backend
+        // Show error message or handle accordingly
+      }
+    })
+    .catch(error => {
+      // Handle fetch error
+      console.error('Error:', error);
+    });
   };
 
   const closeSnackbarFavorites = () => {
@@ -205,6 +227,12 @@ export default function MyNotes() {
       autoHideDuration={3000}
       onClose={closeSnackbarFavorites}
       message="Note added to favorites!"/>
+      {/* Snackbar for Delete Confirmation */}
+      <Snackbar
+      open={snackbarDeleteOpen}
+      autoHideDuration={3000}
+      onClose={closeSnackbarDelete}
+      message="Note deleted successfully!"/>
         </Grid>
       </Grid>
   );

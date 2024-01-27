@@ -1,18 +1,34 @@
-import React, { useState, useEffect } from "react";
-import { Grid, Typography, Button, Stack, Menu, MenuItem, Paper, TextField } from "@mui/material";
+import React, { useState } from "react";
+import { Grid, Typography, Button, Stack, Menu, MenuItem, Paper, TextField, Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { useNavigate } from 'react-router-dom';
-
 import noteBotLogo from "../../../../assets/images/noteBot-logo.png";
-
-const sampleCourses = [
-  { id: 1, title: "Course 1", content: "Content for Course 1" },
-  { id: 2, title: "Course 2", content: "Content for Course 2" },
-  { id: 3, title: "Course 3", content: "Content for Course 3" }, 
-]
+import axios from "axios";
 
 export default function MyCourses() {
   const navigate = useNavigate();
+  const [openDialog, setOpenDialog] = useState(false);
+  const [courseTitle, setCourseTitle] = useState('');
+
+  const handleCreateCourse = () => {
+    setOpenDialog(true);
+  };
+
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+  };
+
+  const handleSaveCourse = () => {
+    axios.post('/api/courses', { title: courseTitle })
+        .then(response => {
+            console.log('Course saved successfully:', response.data);
+            handleCloseDialog();
+            setCourseTitle('');
+        })
+        .catch(error => {
+            console.error('Error saving course:', error);
+        });
+};
   
   const redirectToCourses = () => {
     navigate("/projects/notebot/mycourses")
@@ -86,23 +102,34 @@ export default function MyCourses() {
                 <SearchBar />
             </Grid>
             </Grid>
-          <Grid item sx={{marginTop: 4}}>
-            <Typography variant="h5" gutterBottom>
-              My Courses
-            </Typography>
-          </Grid>
-          <Grid container spacing={2} sx={{ marginTop: 4 }}>
-            {sampleCourses.map((course) => (
-          <Grid item key={course.id} xs={12} sm={6} md={4}>
-            <Paper elevation={3} sx={{ p: 2, height: "100%", backgroundColor: "#f5f5f5" }}>
-              <Typography variant="h6">{course.title}</Typography>
-              <Typography>{course.content}</Typography>
-            </Paper>
-          </Grid>
-              ))}
+            <Grid item sx={{marginTop: 4}}>
+            <Stack direction="row" justifyContent="space-between">
+              <Typography variant="h5" gutterBottom>
+                My Courses
+              </Typography>
+              <Button variant="contained" onClick={handleCreateCourse}>
+                Create New Course
+              </Button>
+            </Stack>
           </Grid>
         </Grid>
       </Grid>
+      {/* Create Course Dialog */}
+      <Dialog open={openDialog} onClose={handleCloseDialog}>
+        <DialogTitle>Create New Course</DialogTitle>
+        <DialogContent>
+          <TextField
+            label="Course Title"
+            value={courseTitle}
+            onChange={(e) => setCourseTitle(e.target.value)}
+            fullWidth
+          />
+        </DialogContent>
+        <DialogActions sx={{justifyContent: "space-between"}} >
+          <Button sx={{marginLeft:2}} onClick={handleCloseDialog}>Cancel</Button>
+          <Button sx={{marginRight:2}} onClick={handleSaveCourse} variant="contained">Save</Button>
+        </DialogActions>
+      </Dialog>
     </Grid>
   );
 }
