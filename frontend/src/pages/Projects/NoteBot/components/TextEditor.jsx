@@ -121,8 +121,8 @@ export default function TextEditor() {
                             </Button>
                         </Stack>
                     </Grid>
-                    <Grid item sx={{ marginTop: 4 }} justifyContent="flex-start" direction="row">
-                        <Toolbar>
+                    <Grid item sx={{ marginTop: 4 }}>
+                        <Toolbar sx={{ marginLeft: -4.5 }}>
                             <IconButton>
                                 <FormatBoldIcon />
                             </IconButton>
