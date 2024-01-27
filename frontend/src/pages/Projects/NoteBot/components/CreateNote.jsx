@@ -113,9 +113,9 @@ export default function CreateNote() {
           </Grid>
           {/* Placeholder field with plus sign button */}
           <Grid item xs={12} sx={{ marginTop: 2 }}>
-            <Paper variant="outlined" sx={{ p: 2, backgroundColor: "#f5f5f5", display: "flex", alignItems: "center", height: "100px", justifyContent: "center" }}>
+            <Paper variant="outlined" sx={{ p: 2, backgroundColor: "#f5f5f5", display: "flex", alignItems: "center", height: "150px", justifyContent: "center" }}>
               {!showColumnButtons && !showAdditionalButtons && (
-                <Button variant="contained" sx={{ backgroundColor: "lightgray", borderRadius: "50%" }} onClick={handleAddButton}>
+                <Button variant="contained" sx={{ backgroundColor: "lightgray", borderRadius: "50%", height: 60, width: 50 }} onClick={handleAddButton}>
                   +
                 </Button>
               )}
