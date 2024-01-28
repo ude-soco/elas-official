@@ -20,8 +20,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use("/", express.static(path.join(__dirname, "public")));
 
+
 // Get port from environment and store in Express
 const port = normalizePort(process.env.PORT || "8007");
+const PORT = process.env.PORT || 8007;
+
+const hostName = normalizePort(process.env.HOSTNAME || "backend-7-notebot");
 app.set("port", port);
 
 // Create connection to MongoDB
@@ -43,7 +47,7 @@ const server = http.createServer(app);
 
 // Routes
 let apiURL = "/api/notebot";
-
+// let apiURL = "";
 /***************** START: IMPORT ROUTES *****************
  * @documentation
  * Import the routes from the routes folder. The routes
@@ -54,22 +58,50 @@ let apiURL = "/api/notebot";
  */
 
 const userRoutes = require("./routes/user.routes");
+const noteRoutes = require("./routes/noteRoutes");
+const widgetsRoutes = require("./routes/widgets");
+const sectionsRoutes = require("./routes/sections");
+const coursesRoutes = require("./routes/courses");
+
 app.use(apiURL, userRoutes);
+app.use(apiURL, noteRoutes);
+app.use(apiURL, widgetsRoutes);
+app.use(apiURL, sectionsRoutes);
+app.use(apiURL, coursesRoutes);
+
 // Add more routes here
 
 /***************** END: IMPORT ROUTES *****************/
+
+const os = require('os');
+
+// Function to get the local IP address
+function getIPAddress() {
+  const ifaces = os.networkInterfaces();
+  let ipAddress = '127.0.0.1';
+
+  Object.keys(ifaces).forEach(ifname => {
+    ifaces[ifname].forEach(iface => {
+      if (iface.family === 'IPv4' && !iface.internal) {
+        ipAddress = iface.address;
+      }
+    });
+  });
+
+  return ipAddress;
+}
 
 // Configuration for Eureka client
 const client = new Eureka({
   instance: {
     app: "ELAS-NOTEBOT",
-    hostName: "localhost",
-    ipAddr: "127.0.0.1",
+    hostName: os.hostname(),
+    ipAddr: getIPAddress(),
     port: {
-      $: port,
-      "@enabled": "true",
+      '$': PORT,
+      '@enabled': 'true',
     },
-    statusPageUrl: `http://localhost:${port}`,
+    statusPageUrl: `http://${hostName}:${PORT}`,
     vipAddress: "ELAS-NOTEBOT",
     dataCenterInfo: {
       "@class": "com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo",
@@ -144,5 +176,6 @@ function onListening() {
   console.log("Starting " + env.trim() + " server on port " + port);
   debug("Listening on " + bind);
 }
+
 
 module.exports = server;

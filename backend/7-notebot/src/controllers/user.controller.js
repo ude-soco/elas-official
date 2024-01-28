@@ -28,14 +28,12 @@ export const getUserById = async (req, res) => {
     }
     return res.status(200).send({ message: `User not found!` });
   } catch (err) {
-    res
-      .status(500)
-      .send({ message: `Error saving user to your MongoDB database` });
-    return;
+    console.error("Error fetching user:", err); // Log the error for debugging
+    return res.status(500).send({ message: `Error fetching user information` });
   }
 };
-/***************** END: GET USER INFO USING A CONTROLLER ******************/
 
+/***************** END: GET USER INFO USING A CONTROLLER ******************/
 export const createNewUser = async (req, res) => {
   try {
     let user = new User({
