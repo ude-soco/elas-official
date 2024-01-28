@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Grid, Typography, Button, Stack } from "@mui/material";
 import { getUserInfo } from "./utils/api.js";
 import { useNavigate } from "react-router-dom";
-
 import noteBotLogo from "../../../assets/images/noteBot-logo.png";
 
 export default function NoteBot() {
@@ -96,17 +95,6 @@ export default function NoteBot() {
         </Grid>
       </Grid>
     </Grid>
-  );
-}
-
-// Move the ContainedButtons component to the end of the file
-export function ContainedButtons({redirectToNotes}) {
-  return (
-    <Stack direction="row" justifyContent="center" spacing={2} sx={{ mt: 8 }}>
-      <Button variant="contained" onClick={redirectToNotes}>
-        Get Started
-      </Button>
-    </Stack>
   );
 }
 

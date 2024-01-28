@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Grid, Typography, Button, Stack, Menu, MenuItem, Paper, TextField } from "@mui/material";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import ChatIcon from '@mui/icons-material/Chat';
+//import ChatIcon from '@mui/icons-material/Chat';
 import Chat from "./Chat";
 import { useNavigate } from 'react-router-dom';
 
 import noteBotLogo from "../../../../assets/images/noteBot-logo.png";
+import Chatbot from "../assets/Chatbot.png"
 
 export default function CreateNote() {
   const navigate = useNavigate();
@@ -146,19 +147,31 @@ export default function CreateNote() {
               )}
             </Paper>
           </Grid>
-          {/* Chatbot Icon */}
-          <ChatIcon
-            sx={{
+          {/* Replace ChatIcon with custom chat icon image */}
+          <img
+          src={Chatbot}
+          alt="Chat Icon"
+          onClick={toggleChat}
+          style={{
+            position: 'fixed',
+            bottom: '80px',
+            right: '70px',
+            width: '60px', // Adjust width as needed
+            height: '60px', // Adjust height as needed
+            cursor: 'pointer',
+          }}/>
+          {/* Chat window */}
+          {showChat && (
+          <div
+            style={{
               position: 'fixed',
-              bottom: '40px',
-              right: '40px',
-              fontSize: '2rem',
-              color: '#2196F3', // Customize the color as needed
-              cursor: 'pointer',
-            }}
-            onClick={toggleChat} />
-            {/* Conditionally render the Chat component based on state */}
-            {showChat && <Chat onClose={toggleChat} />}
+              bottom: '200px', // Adjust as needed to position the chat window above the icon
+              right: '700px',
+              zIndex: 9999, // Ensure the chat window appears above other elements
+            }}>
+            <Chat onClose={toggleChat} />
+          </div>
+          )}
         </Grid>
       </Grid>
     </Grid>

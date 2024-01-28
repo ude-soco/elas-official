@@ -7,9 +7,10 @@ import FormatUnderlinedIcon from '@mui/icons-material/FormatUnderlined';
 import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 import DeleteIcon from '@mui/icons-material/Delete';
-import ChatIcon from '@mui/icons-material/Chat';
+//import ChatIcon from '@mui/icons-material/Chat';
 import Chat from "./Chat";
 import noteBotLogo from "../../../../assets/images/noteBot-logo.png";
+import Chatbot from "../assets/Chatbot.png"
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -332,18 +333,31 @@ export default function TextEditor() {
                                 onChange={handleContentChange} />
                         </Grid>
                     </Grid>
-                    {/* Chatbot Icon */}
-                    <ChatIcon
-                        sx={{
-                        position: 'fixed',
-                        bottom: '40px',
-                        right: '40px',
-                        fontSize: '2rem',
-                        color: '#2196F3', // Customize the color as needed
-                        cursor: 'pointer'}}
-                        onClick={toggleChat} />
-                    {/* Conditionally render the Chat component based on state */}
-                    {showChat && <Chat onClose={toggleChat} />}
+                    {/* Replace ChatIcon with custom chat icon image */}
+                    <img
+                    src={Chatbot}
+                    alt="Chat Icon"
+                    onClick={toggleChat}
+                    style={{
+                    position: 'fixed',
+                    bottom: '80px',
+                    right: '70px',
+                    width: '60px', // Adjust width as needed
+                    height: '60px', // Adjust height as needed
+                    cursor: 'pointer',
+                    }}/>
+                    {/* Chat window */}
+                    {showChat && (
+                    <div
+                    style={{
+                    position: 'fixed',
+                    bottom: '200px', // Adjust as needed to position the chat window above the icon
+                    right: '700px',
+                    zIndex: 9999, // Ensure the chat window appears above other elements
+                    }}>
+                    <Chat onClose={toggleChat} />
+                    </div>
+                    )}
                 </Grid>
             </Grid>
         </Grid>

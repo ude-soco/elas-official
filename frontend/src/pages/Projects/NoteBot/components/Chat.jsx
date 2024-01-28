@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Paper, Typography, TextField, Button, IconButton, Snackbar } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
+//import Chatbot from "/Notebot/assets/Chatbot.png";
 import axios from "axios";
 
 const Chat = ({ onClose }) => {
