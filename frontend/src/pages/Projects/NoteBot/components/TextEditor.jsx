@@ -101,12 +101,22 @@ export default function TextEditor() {
             const response = await axios.post('your-backend-api-endpoint', { title: courseTitle });
             // Assuming the response contains the newly created course details
             const newCourse = response.data;
+            
+            // Save the note with the new course title and note title
+            const noteData = {
+                course: newCourse.title, // Use the newly created course title
+                noteTitle: title, // Use the note title
+                content: content // Use the note content
+            };
+            // Replace 'your-backend-api-endpoint' with your actual backend API endpoint for saving notes
+            await axios.post('your-backend-api-notes-endpoint', noteData);
+            
             setCourses([...courses, newCourse]); // Update the list of courses with the newly created course
             setCourseTitle(''); // Clear the course title field
         } catch (error) {
             console.error('Error creating course:', error);
         } finally {
-            setOpenNewCourseDialog(false);
+            setOpenNewCourseDialog(false); // Close the dialog after saving the course
         }
     };
 

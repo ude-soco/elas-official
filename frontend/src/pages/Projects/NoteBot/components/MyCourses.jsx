@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Grid, Typography, Button, Stack, Menu, MenuItem, Paper, TextField, Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { useNavigate } from 'react-router-dom';
@@ -9,6 +9,25 @@ export default function MyCourses() {
   const navigate = useNavigate();
   const [openDialog, setOpenDialog] = useState(false);
   const [courseTitle, setCourseTitle] = useState('');
+  const [courses, setCourses] = useState([]);
+
+  useEffect(() => {
+    // Fetch courses from the backend when component mounts
+    fetchCourses();
+  }, []);
+
+  const fetchCourses = async () => {
+    try {
+      // Fetch courses from the backend
+      const response = await axios.get('/api/courses');
+      // Sort the courses alphabetically by title
+      const sortedCourses = response.data.sort((a, b) => a.title.localeCompare(b.title));
+      // Update the courses state with sorted courses
+      setCourses(sortedCourses);
+    } catch (error) {
+      console.error('Error fetching courses:', error);
+    }
+  };
 
   const handleCreateCourse = () => {
     setOpenDialog(true);
@@ -19,17 +38,20 @@ export default function MyCourses() {
   };
 
   const handleSaveCourse = () => {
+    // Send a POST request to save the new course to the backend
     axios.post('/api/courses', { title: courseTitle })
-        .then(response => {
-            console.log('Course saved successfully:', response.data);
-            handleCloseDialog();
-            setCourseTitle('');
-        })
-        .catch(error => {
-            console.error('Error saving course:', error);
-        });
-};
-  
+      .then(response => {
+        console.log('Course saved successfully:', response.data);
+        handleCloseDialog();
+        setCourseTitle('');
+        // Refetch courses to update the list with the new course
+        fetchCourses();
+      })
+      .catch(error => {
+        console.error('Error saving course:', error);
+      });
+  };
+
   const redirectToCourses = () => {
     navigate("/projects/notebot/mycourses")
   };
@@ -112,6 +134,16 @@ export default function MyCourses() {
               </Button>
             </Stack>
           </Grid>
+          <Grid container spacing={2} sx={{ marginTop: 4 }}>
+            {courses.map(course => (
+              <Grid item key={course.id} xs={12} sm={6} md={4}>
+                <Paper elevation={3} sx={{ p: 2, height: "100%", backgroundColor: "#f5f5f5" }}>
+                  <Typography variant="h6">{course.title}</Typography>
+                  {/* Add additional course information here if needed */}
+                </Paper>
+              </Grid>
+            ))}
+          </Grid>
         </Grid>
       </Grid>
       {/* Create Course Dialog */}
@@ -122,8 +154,7 @@ export default function MyCourses() {
             label="Course Title"
             value={courseTitle}
             onChange={(e) => setCourseTitle(e.target.value)}
-            fullWidth
-          />
+            fullWidth/>
         </DialogContent>
         <DialogActions sx={{justifyContent: "space-between"}} >
           <Button sx={{marginLeft:2}} onClick={handleCloseDialog}>Cancel</Button>

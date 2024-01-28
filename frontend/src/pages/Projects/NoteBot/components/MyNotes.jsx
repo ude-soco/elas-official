@@ -37,6 +37,7 @@ export default function MyNotes() {
   const [noteToDelete, setNoteToDelete] = useState(null);
   const [snackbarFavoritesOpen, setSnackbarFavoritesOpen] = useState(false);
   const [snackbarDeleteOpen, setSnackbarDeleteOpen] = useState(false);
+  const [savedNotes, setSavedNotes] = useState([]);
 
   const handleMenuClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -68,20 +69,19 @@ export default function MyNotes() {
     }
   };
 
-  const [sampleNotes, setSampleNotes] = useState([
-    { id: 1, title: "Note 1", content: "Content for Note 1", favorite: false, deleted: false },
-    { id: 2, title: "Note 2", content: "Content for Note 2", favorite: false, deleted: false },
-    { id: 3, title: "Note 3", content: "Content for Note 3", favorite: false, deleted: false },
-  ]);
-
   useEffect(() => {
-    // Retrieve favoriteNotes from session storage
-    const storedFavNotes = JSON.parse(sessionStorage.getItem("notebot-favnotes"));
-  
-    // If storedFavNotes is null, use an empty array as the default
-    setFavoriteNotes(storedFavNotes || []);
+    // Fetch saved notes from the backend
+    axios.get("/api/saved-notes")
+      .then(response => {
+        // Sort the fetched notes alphabetically by title
+        const sortedNotes = response.data.sort((a, b) => a.title.localeCompare(b.title));
+        setSavedNotes(sortedNotes);
+      })
+      .catch(error => {
+        console.error('Error fetching saved notes:', error);
+      });
   }, []);
-
+  
   const openDeleteDialog = (note) => {
     setNoteToDelete(note);
     setDeleteDialogOpen(true);
@@ -93,41 +93,25 @@ export default function MyNotes() {
   };
 
   const confirmDelete = () => {
-    // Move the note to the recently deleted notes
-    const updatedNotes = sampleNotes.map((note) => {
-      if (note.id === noteToDelete.id) {
-        return { ...note, deleted: true };
-      }
-      return note;
-    });
-  
-    // Send a request to update the note's status in the backend
-    fetch(`/recently-deleted-notes${noteToDelete.id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        // Add any necessary authentication headers
-      },
-      body: JSON.stringify({ deleted: true }), // Update note status to deleted
-    })
-    .then(response => {
-      if (response.ok) {
-        // Update the sampleNotes array with the deleted note
-        setDeletedNotes((prevNotes) => [...prevNotes, noteToDelete]);
-        closeDeleteDialog();
-        sessionStorage.setItem("notebot-notes", JSON.stringify(updatedNotes));
-
-        // Show Snackbar for delete confirmation
-        setSnackbarDeleteOpen(true);
-      } else {
-        // Handle error response from backend
-        // Show error message or handle accordingly
-      }
-    })
-    .catch(error => {
-      // Handle fetch error
-      console.error('Error:', error);
-    });
+    // Send a request to delete the note from the backend
+    axios.delete(`/api/delete-note/${noteToDelete.id}`)
+      .then(response => {
+        if (response.status === 200) {
+          // Remove the deleted note from the savedNotes array
+          const updatedNotes = savedNotes.filter(note => note.id !== noteToDelete.id);
+          setSavedNotes(updatedNotes);
+          
+          // Show Snackbar for delete confirmation
+          setSnackbarDeleteOpen(true);
+        } else {
+          // Handle error response from backend
+          console.error('Error deleting note:', response.data);
+        }
+      })
+      .catch(error => {
+        // Handle fetch error
+        console.error('Error deleting note:', error);
+      });
   };
 
   const closeSnackbarFavorites = () => {
@@ -187,7 +171,7 @@ export default function MyNotes() {
             </Typography>
           </Grid>
           <Grid container spacing={2} sx={{ marginTop: 4 }}>
-          {sampleNotes.map((note) => (
+          {savedNotes.map((note) => (
             <Grid item key={note.id} xs={12} sm={6} md={4}>
               <Paper elevation={3} sx={{ p: 2, height: "100%", backgroundColor: "#f5f5f5", position: 'relative' }}>
                 <Typography variant="h6">{note.title}</Typography>

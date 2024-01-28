@@ -44,6 +44,10 @@ export default function MyFavorites({ favoriteNotes }) {
 
   useEffect(() => {
     let tempFav = JSON.parse(sessionStorage.getItem("notebot-favnotes"));
+    
+    // Sort the favorite notes alphabetically by title
+    tempFav.sort((a, b) => a.title.localeCompare(b.title));
+    
     setfavNotes(tempFav);
   }, []);
 

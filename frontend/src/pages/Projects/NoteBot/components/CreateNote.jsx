@@ -77,8 +77,7 @@ export default function CreateNote() {
               xs={12}
               sm={7}
               md={4}
-              sx={{ width: "100%", pb: 2 }}
-            />
+              sx={{ width: "100%", pb: 2 }}/>
           </Grid>
 
           <Grid container justifyContent="space-between" spacing={2}>
@@ -108,7 +107,7 @@ export default function CreateNote() {
           </Grid>
           <Grid item sx={{marginTop: 4}}>
             <Typography variant="h5" gutterBottom>
-              Create Note
+              Create New Note
             </Typography>
           </Grid>
           {/* Placeholder field with plus sign button */}
