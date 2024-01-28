@@ -43,13 +43,26 @@ export default function MyFavorites({ favoriteNotes }) {
   const [favNotes, setfavNotes] = useState([]);
 
   useEffect(() => {
-    let tempFav = JSON.parse(sessionStorage.getItem("notebot-favnotes"));
-    
-    // Sort the favorite notes alphabetically by title
-    tempFav.sort((a, b) => a.title.localeCompare(b.title));
-    
-    setfavNotes(tempFav);
+    // Fetch favorite notes from backend API endpoint
+    fetchFavoriteNotes();
   }, []);
+
+  const fetchFavoriteNotes = async () => {
+    try {
+      // Make a GET request to your backend API endpoint
+      const response = await fetch("/api/favorite-notes"); // Update the URL with your actual backend endpoint
+      if (!response.ok) {
+        throw new Error("Failed to fetch favorite notes");
+      }
+      const data = await response.json();
+      // Sort the favorite notes alphabetically by title
+      data.sort((a, b) => a.title.localeCompare(b.title));
+      setfavNotes(data);
+    } catch (error) {
+      console.error("Error fetching favorite notes:", error);
+      // Handle error, e.g., show a message to the user
+    }
+  };
 
   return (
     <Grid container justifyContent="center" sx={{ py: 4, px: 2 }}>
@@ -69,29 +82,29 @@ export default function MyFavorites({ favoriteNotes }) {
           </Grid>
 
           <Grid container justifyContent="space-between" spacing={2}>
-          <Grid item justifyContent="flex-start">
+            <Grid item justifyContent="flex-start">
               <Stack direction="row" justifyContent="flex-start" spacing={2}>
-              <NotesButton redirectToNotes={redirectToNotes} />
-              <CoursesButton redirectToCourses={redirectToCourses} /> 
-               <Button variant="outlined"
-               endIcon={<KeyboardArrowDownIcon />}
-               onClick={handleMenuClick}>
-                Archive
+                <NotesButton redirectToNotes={redirectToNotes} />
+                <CoursesButton redirectToCourses={redirectToCourses} /> 
+                <Button variant="outlined"
+                        endIcon={<KeyboardArrowDownIcon />}
+                        onClick={handleMenuClick}>
+                  Archive
                 </Button>
                 <Menu
-                anchorEl={anchorEl}
-                open={Boolean(anchorEl)}
-                onClose={handleMenuClose}>
-                <MenuItem onClick={redirectToMyFavorites}>Favorite Notes</MenuItem>
-                <MenuItem onClick={redirectToDeleted}>Recently Deleted</MenuItem>
-              </Menu>
-              <CreateButton redirectToCreateNote={redirectToCreateNote} />
+                  anchorEl={anchorEl}
+                  open={Boolean(anchorEl)}
+                  onClose={handleMenuClose}>
+                  <MenuItem onClick={redirectToMyFavorites}>Favorite Notes</MenuItem>
+                  <MenuItem onClick={redirectToDeleted}>Recently Deleted</MenuItem>
+                </Menu>
+                <CreateButton redirectToCreateNote={redirectToCreateNote} />
               </Stack>
             </Grid>
             <Grid item justifyContent="flex-end" spacing={2}>
-                {/* Search Bar Component */}
-                <SearchBar />
-              </Grid>
+              {/* Search Bar Component */}
+              <SearchBar />
+            </Grid>
           </Grid>
           <Grid item sx={{marginTop: 4}}>
             <Typography variant="h5" gutterBottom>
@@ -99,22 +112,22 @@ export default function MyFavorites({ favoriteNotes }) {
             </Typography>
           </Grid>
           <Grid container spacing={2} sx={{ marginTop: 4 }}>
-            {favNotes?.map((note) => (
-          <Grid item key={note.id} xs={12} sm={6} md={4}>
-            <Paper elevation={3} sx={{ p: 2, height: "100%", backgroundColor: "#f5f5f5", position: 'relative' }}>
-              <Typography variant="h6">{note.title}</Typography>
-              <Typography>{note.content}</Typography>
-              <IconButton
-                sx={{ position: 'absolute', top: 0, right: 0, color: 'red' }} >
-                <FavoriteIcon />
-              </IconButton>
-              <IconButton
-                sx={{ position: 'absolute', bottom: 0, right: 0, color: 'gray' }}>
-                <DeleteIcon />
-              </IconButton>
-            </Paper>
-          </Grid>
-              ))}
+            {favNotes.map((note) => (
+              <Grid item key={note.id} xs={12} sm={6} md={4}>
+                <Paper elevation={3} sx={{ p: 2, height: "100%", backgroundColor: "#f5f5f5", position: 'relative' }}>
+                  <Typography variant="h6">{note.title}</Typography>
+                  <Typography>{note.content}</Typography>
+                  <IconButton
+                    sx={{ position: 'absolute', top: 0, right: 0, color: 'red' }} >
+                    <FavoriteIcon />
+                  </IconButton>
+                  <IconButton
+                    sx={{ position: 'absolute', bottom: 0, right: 0, color: 'gray' }}>
+                    <DeleteIcon />
+                  </IconButton>
+                </Paper>
+              </Grid>
+            ))}
           </Grid>
         </Grid>
       </Grid>
@@ -123,14 +136,14 @@ export default function MyFavorites({ favoriteNotes }) {
 }
 
 function SearchBar() {
-    return (
-      <TextField
-        variant="standard"
-        placeholder="Search..."
-        sx={{ width: 200 }} // Adjust the width based on your design
-      />
-    );
-  }
+  return (
+    <TextField
+      variant="standard"
+      placeholder="Search..."
+      sx={{ width: 200 }} // Adjust the width based on your design
+    />
+  );
+}
 
 export function NotesButton({redirectToNotes}) {
   return (
@@ -159,5 +172,5 @@ export function CreateButton({redirectToCreateNote}) {
         Create Note
       </Button>
     </Stack>
-  )
+  );
 }
