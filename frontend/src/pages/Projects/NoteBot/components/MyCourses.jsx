@@ -19,7 +19,7 @@ export default function MyCourses() {
   const fetchCourses = async () => {
     try {
       // Fetch courses from the backend
-      const response = await axios.get('/api/courses');
+      const response = await axios.get('/note/search:keyword');
       // Sort the courses alphabetically by title
       const sortedCourses = response.data.sort((a, b) => a.title.localeCompare(b.title));
       // Update the courses state with sorted courses

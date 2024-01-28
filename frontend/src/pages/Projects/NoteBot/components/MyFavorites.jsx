@@ -50,7 +50,7 @@ export default function MyFavorites({ favoriteNotes }) {
   const fetchFavoriteNotes = async () => {
     try {
       // Make a GET request to your backend API endpoint
-      const response = await fetch("/api/favorite-notes"); // Update the URL with your actual backend endpoint
+      const response = await fetch("/note/users:user_id/favorite"); // Update the URL with your actual backend endpoint
       if (!response.ok) {
         throw new Error("Failed to fetch favorite notes");
       }

@@ -71,7 +71,7 @@ export default function MyNotes() {
 
   useEffect(() => {
     // Fetch saved notes from the backend
-    axios.get("/api/saved-notes")
+    axios.get("/note/users:user_id/savednotes")
       .then(response => {
         // Sort the fetched notes alphabetically by title
         const sortedNotes = response.data.sort((a, b) => a.title.localeCompare(b.title));
@@ -94,7 +94,7 @@ export default function MyNotes() {
 
   const confirmDelete = () => {
     // Send a request to delete the note from the backend
-    axios.delete(`/api/delete-note/${noteToDelete.id}`)
+    axios.delete(`/note:note_id${noteToDelete.id}`)
       .then(response => {
         if (response.status === 200) {
           // Remove the deleted note from the savedNotes array
