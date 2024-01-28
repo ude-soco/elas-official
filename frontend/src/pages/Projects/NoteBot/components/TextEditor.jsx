@@ -7,6 +7,8 @@ import FormatUnderlinedIcon from '@mui/icons-material/FormatUnderlined';
 import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 import DeleteIcon from '@mui/icons-material/Delete';
+import ChatIcon from '@mui/icons-material/Chat';
+import Chat from "./Chat";
 import noteBotLogo from "../../../../assets/images/noteBot-logo.png";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -25,6 +27,7 @@ export default function TextEditor() {
     const [courses, setCourses] = useState([]);
     const [loading, setLoading] = useState(false);
     const [openDeleteConfirmationDialog, setOpenDeleteConfirmationDialog] = useState(false);
+    const [showChat, setShowChat] = useState(false);
 
     useEffect(() => {
         // Fetch courses from backend when component mounts
@@ -119,6 +122,10 @@ export default function TextEditor() {
     const handleContentChange = (e) => {
         setContent(e.target.value);
     };
+
+    const toggleChat = () => {
+        setShowChat(!showChat);
+      };
 
     const redirectToCourses = () => {
         navigate("/projects/notebot/mycourses");
@@ -315,6 +322,18 @@ export default function TextEditor() {
                                 onChange={handleContentChange} />
                         </Grid>
                     </Grid>
+                    {/* Chatbot Icon */}
+                    <ChatIcon
+                        sx={{
+                        position: 'fixed',
+                        bottom: '40px',
+                        right: '40px',
+                        fontSize: '2rem',
+                        color: '#2196F3', // Customize the color as needed
+                        cursor: 'pointer'}}
+                        onClick={toggleChat} />
+                    {/* Conditionally render the Chat component based on state */}
+                    {showChat && <Chat onClose={toggleChat} />}
                 </Grid>
             </Grid>
         </Grid>
