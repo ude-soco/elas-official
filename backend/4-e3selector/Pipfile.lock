@@ -281,11 +281,11 @@
         },
         "dnspython": {
             "hashes": [
-                "sha256:57c6fbaaeaaf39c891292012060beb141791735dbb4004798328fc2c467402d8",
-                "sha256:8dcfae8c7460a2f84b4072e26f1c9f4101ca20c071649cb7c34e8b6a93d58984"
+                "sha256:6facdf76b73c742ccf2d07add296f178e629da60be23ce4b0a9c927b1e02c3a6",
+                "sha256:a0034815a59ba9ae888946be7ccca8f7c157b286f8455b379c692efb51022a15"
             ],
-            "markers": "python_version >= '3.8' and python_version < '4.0'",
-            "version": "==2.4.2"
+            "markers": "python_version >= '3.8'",
+            "version": "==2.5.0"
         },
         "eventlet": {
             "hashes": [
@@ -471,12 +471,12 @@
         },
         "py-eureka-client": {
             "hashes": [
-                "sha256:0b31e896753858e64a795c09146326605739d8a1c29dbf361fcb3543eb4d1ca4",
-                "sha256:447219da862dc34b3bab11ddb52c933549424c001a3bf297ec4f84a5feaab945"
+                "sha256:ba2ac049ff73bda8c6fb80634d73e549392115609030c1d9948357518b6cbd39",
+                "sha256:cc4571cf31c284a912bff64ef271aab0e870a9c3d197356e31228d7d9ad25e1d"
             ],
             "index": "pypi",
             "markers": "python_version >= '3.7'",
-            "version": "==0.11.8"
+            "version": "==0.11.9"
         },
         "pyasn1": {
             "hashes": [
