@@ -60,22 +60,40 @@ updates:
   - backend/3-auth
 
 - package-ecosystem: docker
-  directory: /backend/4-api-gateway
+  directory: /backend/4-e3selector
   schedule:
     interval: weekly
   labels:
   - dependencies
   - docker
-  - backend/4-api-gateway
+  - backend/4-e3selector
 
 - package-ecosystem: pip
-  directory: /backend/4-api-gateway
+  directory: /backend/4-e3selector
   schedule:
     interval: daily
   labels:
   - dependencies
   - python
-  - backend/4-api-gateway
+  - backend/4-e3selector
+
+- package-ecosystem: docker
+  directory: /backend/5-studycompass
+  schedule:
+    interval: weekly
+  labels:
+  - dependencies
+  - docker
+  - backend/5-studycompass
+
+- package-ecosystem: pip
+  directory: /backend/5-studycompass
+  schedule:
+    interval: daily
+  labels:
+  - dependencies
+  - python
+  - backend/5-studycompass
 
 - package-ecosystem: npm
   directory: /frontend
