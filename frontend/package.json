@@ -21,7 +21,7 @@
     "@mui/material": "^5.15.10",
     "@mui/styled-engine-sc": "^5.14.12",
     "@mui/x-data-grid": "^6.19.4",
-    "@reduxjs/toolkit": "^2.2.0",
+    "@reduxjs/toolkit": "^2.2.1",
     "axios": "^1.6.7",
     "d3": "^7.8.5",
     "d3-cloud": "^1.2.7",
