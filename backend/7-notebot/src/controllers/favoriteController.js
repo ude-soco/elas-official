@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const HttpError = require("../models/http-error");
 const noteModel = require("../models/note.Model");
 
+// Function to toggle favorite note status
 const toggetFavoriteNote = async (req, res, next) => {
   const session = await mongoose.startSession();
   session.startTransaction();
@@ -13,8 +14,11 @@ const toggetFavoriteNote = async (req, res, next) => {
     user_id: user_id,
   };
   try {
+    // Check if the note is already favorited by the user
     const favorite = await favoriteModel.findOne(payload);
 
+     // If the note is already favorited, remove it from favorites
+    // If not, add it to favorites
     if (favorite) {
       await favoriteModel.deleteOne(payload);
     } else {
@@ -22,6 +26,7 @@ const toggetFavoriteNote = async (req, res, next) => {
       await favorite.save({ session });
     }
 
+    // Commit the transaction and end the session
     await session.commitTransaction();
     await session.endSession();
 
@@ -38,7 +43,7 @@ const toggetFavoriteNote = async (req, res, next) => {
   }
 };
 
-// Get user notes by user_id
+// Get favorite notes by user ID
 const getFavNoteByUserId = async (req, res, next) => {
   const { user_id } = req.params;
 
@@ -47,17 +52,20 @@ const getFavNoteByUserId = async (req, res, next) => {
   try {
     const groupedNotes = [];
 
+    // Find all favorites of the user
     let favorites = await favoriteModel.find({
       user_id: user_id,
       // note_id: { $in: user.notes },
     });
 
+    // Find notes corresponding to the favorite notes
     const notes = await noteModel.find({
       _id: { $in: favorites.map((favorite) => favorite.note_id) },
     });
 
     console.log(notes)
 
+    // Respond with the notes along with the favorite status
     res.json({
       notes: notes.map((note) => ({
         ...note._doc,

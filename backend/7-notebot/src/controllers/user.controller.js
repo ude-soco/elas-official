@@ -34,6 +34,7 @@ export const getUserById = async (req, res) => {
 };
 
 /***************** END: GET USER INFO USING A CONTROLLER ******************/
+// Function to create a new user
 export const createNewUser = async (req, res) => {
   try {
     let user = new User({
@@ -41,6 +42,7 @@ export const createNewUser = async (req, res) => {
       name: req.body.name,
       username: req.body.username,
     });
+    console.log(user.uid, user.name, user.username);
     await user.save();
     res.status(200).send({
       message: `User ${user.username} created successfully!`,
@@ -51,6 +53,7 @@ export const createNewUser = async (req, res) => {
   }
 };
 
+// Function to update an existing user
 export const updateUser = async (req, res) => {
   try {
     const userId = req.params.userId;

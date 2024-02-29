@@ -4,11 +4,12 @@ const WIDGET_TYPES = require("./widgetTypes");
 // Initialize parameters
 const collectionName_widgets = "widgets";
 
-//define structure of the documents in a collection
+// Define structure of the documents in a collection
 const widgetSchema = new mongoose.Schema({
   type: {
     type: String,
     required: true,
+    enum: Object.values(WIDGET_TYPES), // Ensure the type matches one of the predefined widget types
   },
   data: {
     type: Object,
@@ -19,9 +20,9 @@ const widgetSchema = new mongoose.Schema({
     required: true,
   },
   section_id: {
-    type: mongoose.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId, // Correct the reference to Schema.Types.ObjectId
     required: true,
-    ref: "sections",
+    ref: "sections", // Assuming "sections" is the correct reference model name
   },
 });
 

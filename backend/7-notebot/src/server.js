@@ -1,79 +1,80 @@
-import express from "express";
-import http from "http";
-import dotenv from "dotenv";
-import debugLib from "debug";
-import bodyParser from "body-parser";
-import path from "path";
-import { Eureka } from "eureka-js-client";
+const express = require('express');
+const app = express();
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
+const logger = require("morgan");
+const cors = require("cors");
+const http = require("http");
+const debugLib = require("debug");
+const { Eureka } = require("eureka-js-client");
+const dotenv = require("dotenv");
+const mongoose = require('mongoose');
+const HttpError = require("./models/http-error");
+const os = require('os');
 
 dotenv.config();
 const env = process.env.NODE_ENV || "production";
-const app = express();
 const debug = debugLib("7-notebot:src/server");
 const db = require("./models");
 
 global.__basedir = __dirname;
 
-// Middlewares
+// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use("/", express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public")));
+app.use(cookieParser());
+app.use(logger("dev"));
+// app.use(cors());
+app.use(require("./middlewares/check-auth"));
 
-
-// Get port from environment and store in Express
-const port = normalizePort(process.env.PORT || "8007");
-const PORT = process.env.PORT || 8007;
-
-const hostName = normalizePort(process.env.HOSTNAME || "backend-7-notebot");
-app.set("port", port);
+const mongoURL = process.env.MONGO_DB;
 
 // Create connection to MongoDB
-db.mongoose
-  .connect(process.env.MONGO_DB, {
+mongoose.connect(mongoURL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-  })
-  .then(() => {
+})
+.then(() => {
     console.log("**** Successfully connected to MongoDB ****");
-  })
-  .catch((err) => {
+})
+.catch((err) => {
     console.error("!!!! Error connecting to MongoDB !!!!", err);
-    process.exit();
-  });
-
-// Create HTTP server
-const server = http.createServer(app);
+    process.exit(1);
+});
 
 // Routes
-let apiURL = "/api/notebot";
-// let apiURL = "";
-/***************** START: IMPORT ROUTES *****************
- * @documentation
- * Import the routes from the routes folder. The routes
- * folder contains all the routes for the application.
- * Create a new variable such as 'userRoutes' and assign
- * the imported routes. Then use the routes by passing
- * the apiURL and the routes using the app.use() method.
- */
-
+const apiURL = "/api/notebot";
 const userRoutes = require("./routes/user.routes");
-const noteRoutes = require("./routes/noteRoutes");
+const noteRoutes = require("./routes/note.Routes");
 const widgetsRoutes = require("./routes/widgets");
 const sectionsRoutes = require("./routes/sections");
 const coursesRoutes = require("./routes/courses");
 
-app.use(apiURL, userRoutes);
-app.use(apiURL, noteRoutes);
-app.use(apiURL, widgetsRoutes);
-app.use(apiURL, sectionsRoutes);
-app.use(apiURL, coursesRoutes);
+app.use(`${apiURL}`, userRoutes);
+app.use(`${apiURL}/courses`, coursesRoutes);
+app.use(`${apiURL}/nots`, noteRoutes);
+app.use(`${apiURL}/widgets`, widgetsRoutes);
+app.use(`${apiURL}/sections`, sectionsRoutes);
 
-// Add more routes here
+app.use((req, res, next) => {
+  const error = new HttpError("Could not find this route.", 404);
+  throw error;
+});
 
-/***************** END: IMPORT ROUTES *****************/
+// Server Configuration
+const port = normalizePort(process.env.PORT || "8007");
+const hostName = normalizePort(process.env.HOSTNAME || "backend-7-notebot");
+app.set("port", port);
 
-const os = require('os');
+const server = http.createServer(app);
+
+// Event listeners for HTTP server
+server.listen(port);
+server.on("error", onError);
+server.on("listening", onListening);
 
 // Function to get the local IP address
 function getIPAddress() {
@@ -98,10 +99,10 @@ const client = new Eureka({
     hostName: os.hostname(),
     ipAddr: getIPAddress(),
     port: {
-      '$': PORT,
+      '$': port,
       '@enabled': 'true',
     },
-    statusPageUrl: `http://${hostName}:${PORT}`,
+    statusPageUrl: `http://${hostName}:${port}`,
     vipAddress: "ELAS-NOTEBOT",
     dataCenterInfo: {
       "@class": "com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo",
@@ -121,28 +122,8 @@ client.start((error) => {
   console.log(error || "**** Notebot started and registered with Eureka ****");
 });
 
-// Listen on provided port, on all network interfaces
-server.listen(port);
-server.on("error", onError);
-server.on("listening", onListening);
+// Helper Functions
 
-// Exit handler
-function exitHandler(options, exitCode) {
-  if (options.exit) {
-    client.stop(function (error) {
-      process.exit();
-    });
-  }
-}
-
-// Event listener for process exit events
-process.on("exit", exitHandler.bind(null, { cleanup: true }));
-process.on("SIGINT", exitHandler.bind(null, { exit: true }));
-process.on("SIGUSR1", exitHandler.bind(null, { exit: true }));
-process.on("SIGUSR2", exitHandler.bind(null, { exit: true }));
-process.on("uncaughtException", exitHandler.bind(null, { exit: true }));
-
-// Normalize a port into a number, string, or false
 function normalizePort(val) {
   const port = parseInt(val, 10);
   if (isNaN(port)) return val;
@@ -150,11 +131,9 @@ function normalizePort(val) {
   return false;
 }
 
-// Event listener for HTTP server "error" event
 function onError(error) {
   if (error.syscall !== "listen") throw error;
   const bind = typeof port === "string" ? "Pipe " + port : "Port " + port;
-  // handle specific listen errors with friendly messages
   switch (error.code) {
     case "EACCES":
       console.error(bind + " requires elevated privileges");
@@ -169,7 +148,6 @@ function onError(error) {
   }
 }
 
-// Event listener for HTTP server "listening" event
 function onListening() {
   const addr = server.address();
   const bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
@@ -177,5 +155,18 @@ function onListening() {
   debug("Listening on " + bind);
 }
 
+// Exit handler
+function exitHandler(options, exitCode) {
+  if (options.exit) {
+    client.stop(function (error) {
+      process.exit();
+    });
+  }
+}
+
+process.on("SIGINT", exitHandler.bind(null, { exit: true }));
+process.on("SIGUSR1", exitHandler.bind(null, { exit: true }));
+process.on("SIGUSR2", exitHandler.bind(null, { exit: true }));
+process.on("uncaughtException", exitHandler.bind(null, { exit: true }));
 
 module.exports = server;

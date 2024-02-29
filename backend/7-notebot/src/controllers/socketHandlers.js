@@ -1,6 +1,7 @@
 // socketHandlers.js
 let connectedClients = new Map();
 
+// Function to handle client connection
 const handleConnection = (socket, io) => {
   console.log('New client connected: ' + socket.id);
   connectedClients.set(socket.id, '');
@@ -36,6 +37,7 @@ const handleConnection = (socket, io) => {
   });
 };
 
+// Function to emit connected clients to all clients
 const emitConnectedClients = (io) => {
   let clients = [];
   connectedClients.forEach((value, key) => {
@@ -44,6 +46,7 @@ const emitConnectedClients = (io) => {
   io.emit('connected clients', clients);
 };
 
+// Function to handle incoming messages
 const handleMessage = (socket, messageData, io) => {
   // Process the message and send a response
     console.log(`Client: ${socket.id} sent message: ${messageData.content}`);

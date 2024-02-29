@@ -1,6 +1,7 @@
 require("dotenv").config();
 const userRouter = require("express").Router();
 
+// This function sets up a route handler for POST requests to the root endpoint ("/")
 userRouter.post("/", async (req, res, next) => {
   try {
     const { message } = req.body;
@@ -13,15 +14,19 @@ userRouter.post("/", async (req, res, next) => {
     ];
 
     try {
+      // Import necessary modules from the 'openai' package
       const { Configuration, OpenAIApi } = require("openai");
 
+      // Create a new Configuration instance with the OpenAI API key from environment variables
       const configuration = new Configuration({
         apiKey: process.env.OPENAI_API_KEY,
       });
       const openai = new OpenAIApi(configuration);
 
+      // Log a message indicating that a message is being sent to ChatGPT
       console.log("Sending message to ChatGPT");
 
+      // Define a function to end the response
       const close = () => {
         res.end();
       };
@@ -33,6 +38,7 @@ userRouter.post("/", async (req, res, next) => {
         "Content-Encoding": "none",
       });
 
+      // Send a message to ChatGPT and listen for responses
       const completion = await openai.createChatCompletion(
         {
           model: "gpt-3.5-turbo",
@@ -45,6 +51,7 @@ userRouter.post("/", async (req, res, next) => {
         }
       );
 
+      // Handle incoming data from the response stream
       completion.data.on("data", (data) => {
         const lines = data
           .toString()

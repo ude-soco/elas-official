@@ -1,4 +1,4 @@
-const noteModel = require("../models/note.Model");
+const noteModel = require("../models/noteModel");
 const userModel = require("../models/userModel");
 const sectionModel = require("../models/sectionModel");
 const courseModel = require("../models/courseModel");
@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 const HttpError = require("../models/http-error");
 const favoriteModel = require("../models/favoriteModel");
 
+// Middleware to authenticate user based on token
 module.exports = (req, res, next) => {
   try {
     const token = req.headers.authorization.split(" ")[0];
@@ -32,6 +33,7 @@ const getNoteByNoteId = async (req, res, next) => {
   const { user_id, note_id } = req.params;
 
   try {
+    // Find the note by note ID
     const note = await noteModel.findById(note_id);
 
     if (!note) {
@@ -92,6 +94,7 @@ const getNoteByUserId = async (req, res, next) => {
   const { user_id } = req.params;
 
   try {
+    // Find the user by user ID and populate notes
     const user = await userModel.findById(user_id).populate("notes");
 
     if (!user.notes || user.notes.length === 0) {

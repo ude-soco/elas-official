@@ -2,6 +2,8 @@ const { Configuration, OpenAIApi } = require("openai");
 //const backoff = require('backoff');
 // const HttpError = require("../model/http-error");
 
+
+// Importing necessary modules from the 'openai' package and setting up API configuration
 const openAIConfig = new Configuration(
   (params = {
     organization: "org-65qL0uV70AbvbEVHEZcr9iD8",
@@ -11,6 +13,7 @@ const openAIConfig = new Configuration(
 
 const openapi = new OpenAIApi(openAIConfig);
 
+// Function to handle chat completions
 const chatCompletion = async (req, res) => {
   try {
     const { prompt } = req.body;
@@ -28,6 +31,7 @@ const chatCompletion = async (req, res) => {
       }
     );
 
+    // Handling incoming data from the response stream
     response.data.on("data", (data) => {
  
       const string = data
@@ -46,6 +50,7 @@ const chatCompletion = async (req, res) => {
       }
     });
 
+    // Handling the closure of the response stream
     response.data.on("close", close);
 
     res.on("close", close);

@@ -1,19 +1,21 @@
+/******
+ * @Note This is one example, you can create more model files under
+ * the models folder and export them. Make sure you import the models
+ * in the index.js file under models folder.
+ */
+
 const mongoose = require("mongoose");
 
-// Initialize parameters
-const collectionName_users = 'users';
+const Schema = mongoose.Schema;
 
-//define structure of the documents in a collection
-const userSchema = new mongoose.Schema({
-
-  email: {
-    type: String,
-    required: true,
-  },
-  user_name: {
-    type: String,
-    required: true,
-  },
+/***************** START: DEFINE A SCHEMA *****************
+ * @documentation
+ * A user schema for MongoDB.
+ */
+const UserSchema = new Schema({
+  uid: { type: String, required: true },
+  name: { type: String, required: true },
+  username: { type: String, required: true },
   study_field: {
     type: String,
     required: true,
@@ -27,7 +29,6 @@ const userSchema = new mongoose.Schema({
     ref:'courses'
   }],
 });
+/***************** END: DEFINE A SCHEMA *****************/
 
-const userModel = mongoose.model(collectionName_users, userSchema);
-
-module.exports = userModel;
+module.exports = mongoose.model("User", UserSchema);
