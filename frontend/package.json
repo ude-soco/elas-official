@@ -20,7 +20,7 @@
     "@mui/lab": "^5.0.0-alpha.166",
     "@mui/material": "^5.15.11",
     "@mui/styled-engine-sc": "^5.14.12",
-    "@mui/x-data-grid": "^6.19.5",
+    "@mui/x-data-grid": "^6.19.6",
     "@reduxjs/toolkit": "^2.2.1",
     "axios": "^1.6.7",
     "d3": "^7.8.5",
