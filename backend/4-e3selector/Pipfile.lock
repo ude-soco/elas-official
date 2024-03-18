@@ -755,12 +755,12 @@
         },
         "py-eureka-client": {
             "hashes": [
-                "sha256:ba2ac049ff73bda8c6fb80634d73e549392115609030c1d9948357518b6cbd39",
-                "sha256:cc4571cf31c284a912bff64ef271aab0e870a9c3d197356e31228d7d9ad25e1d"
+                "sha256:034fbf07000d7013317ff2e036390b17e987a90efc9e72198002c56c33a6da92",
+                "sha256:fbf3a1612c6b745d051ea0d1b58ac917298cbe903830ad6aa1c96015e2c654b1"
             ],
             "index": "pypi",
             "markers": "python_version >= '3.7'",
-            "version": "==0.11.9"
+            "version": "==0.11.10"
         },
         "pyasn1": {
             "hashes": [
