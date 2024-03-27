@@ -509,11 +509,11 @@
         },
         "filelock": {
             "hashes": [
-                "sha256:521f5f56c50f8426f5e03ad3b281b490a87ef15bc6c526f168290f0c7148d44e",
-                "sha256:57dbda9b35157b05fb3e58ee91448612eb674172fab98ee235ccb0b5bee19a1c"
+                "sha256:5ffa845303983e7a0b7ae17636509bc97997d58afeafa72fb141a17b152284cb",
+                "sha256:a79895a25bbefdf55d1a2a0a80968f7dbb28edcd6d4234a0afb3f37ecde4b546"
             ],
             "markers": "python_version >= '3.8'",
-            "version": "==3.13.1"
+            "version": "==3.13.3"
         },
         "flower": {
             "hashes": [
@@ -598,11 +598,11 @@
         },
         "huggingface-hub": {
             "hashes": [
-                "sha256:df37c2c37fc6c82163cdd8a67ede261687d80d1e262526d6c0ce73b6b3630a7b",
-                "sha256:e1f4968c93726565a80edf6dc309763c7b546d0cfe79aa221206034d50155531"
+                "sha256:5b8aaee5f3618cd432f49886da9935bbe8fab92d719011826430907b93171dd8",
+                "sha256:eac63947923d15c9a68681d7ed2d9599e058860617064e3ee6bd91a4b954faaf"
             ],
             "markers": "python_full_version >= '3.8.0'",
-            "version": "==0.21.4"
+            "version": "==0.22.1"
         },
         "humanize": {
             "hashes": [
@@ -1769,12 +1769,12 @@
         },
         "sentence-transformers": {
             "hashes": [
-                "sha256:8807db6db0cf0a92f02be799b7c8260029ff91315d18f7b4b51c30b10d6b4fdb",
-                "sha256:cf519d311ddcc8ff84d78d18fae051985bef348716354e069e3d6d670e4db604"
+                "sha256:633ad6b70e390ea335de8689652a5d6c21a323b79ed19519c2f392451088487f",
+                "sha256:a887e17696b513f99a709ce1f37fd547f53857aebe863785ede546c303b09ea0"
             ],
             "index": "pypi",
             "markers": "python_full_version >= '3.8.0'",
-            "version": "==2.6.0"
+            "version": "==2.6.1"
         },
         "sentencepiece": {
             "hashes": [
