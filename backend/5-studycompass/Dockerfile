@@ -2,7 +2,7 @@
 FROM python:3.12-slim AS python
 
 # Install dependencies
-ENV BUILD_DEPS "build-essential pkg-config rustc"
+ENV BUILD_DEPS "build-essential pkg-config"
 RUN --mount=type=cache,sharing=private,target=/var/cache/apt \
     --mount=type=cache,sharing=private,target=/var/lib/apt <<EOF
   rm -f /etc/apt/apt.conf.d/docker-clean
