@@ -22,7 +22,7 @@
     "@mui/styled-engine-sc": "^5.14.12",
     "@mui/x-data-grid": "^7.13.0",
     "@reduxjs/toolkit": "^2.2.7",
-    "axios": "^1.7.4",
+    "axios": "^1.7.5",
     "d3": "^7.9.0",
     "d3-cloud": "^1.2.7",
     "notistack": "^3.0.1",
