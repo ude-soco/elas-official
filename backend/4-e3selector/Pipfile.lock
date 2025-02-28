@@ -392,12 +392,12 @@
         },
         "eventlet": {
             "hashes": [
-                "sha256:4a2e3cbc53917c8f39074ccf689501168563d3a4df59e9cddd5e9d3b7f85c599",
-                "sha256:6a46823af1dca7d29cf04c0d680365805435473c3acbffc176765c7f8787edac"
+                "sha256:01ba0aa6ee2452690fc02b274a2409598a13b997c7b5af9dc66600fa42015a79",
+                "sha256:9522ca09ad4c1f874c238f06492a7e217ddb13bdeace4475d3b700dd0ba1f6be"
             ],
             "index": "pypi",
-            "markers": "python_version >= '3.7'",
-            "version": "==0.38.2"
+            "markers": "python_version >= '3.8'",
+            "version": "==0.39.0"
         },
         "filelock": {
             "hashes": [
