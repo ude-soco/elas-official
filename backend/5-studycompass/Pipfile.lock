@@ -2449,10 +2449,10 @@
         },
         "wikipedia-api": {
             "hashes": [
-                "sha256:c72296adc0a6d8166d353a501f907add5db140179df462fc1cc0171c1c1bca00"
+                "sha256:b31e93b3f5407c1a1ba413ed7326a05379a3c270df6cf6a211aca67a14c5658b"
             ],
             "index": "pypi",
-            "version": "==0.7.1"
+            "version": "==0.8.1"
         },
         "wrapt": {
             "hashes": [
