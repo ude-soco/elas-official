@@ -12,8 +12,8 @@ The goal of the project "Exploratory Learning Analytics toolkit for Students" is
 
 #### Live Instances
 
-- Production: [elas-official.soco.inko.cloud](https://elas-official.soco.inko.cloud/) (latest [release](https://github.com/ude-soco/elas-official/releases)) ![status](https://argocd.cluster.soco.inko.cloud/api/badge?name=elas-official-prod)
-- Preview: [edge.elas-official.soco.inko.cloud](https://edge.elas-official.soco.inko.cloud/) ([branch `main`](https://github.com/ude-soco/elas-official/tree/main)) ![status](https://argocd.cluster.soco.inko.cloud/api/badge?name=elas-official-edge)
+- Production: [elas-official.soco.ude.systems](https://elas-official.soco.ude.systems/) (latest [release](https://github.com/ude-soco/elas-official/releases)) ![status](https://argocd.cluster.soco.ude.systems/api/badge?name=elas-official-prod)
+- Preview: [edge.elas-official.soco.ude.systems](https://edge.elas-official.soco.ude.systems/) ([branch `main`](https://github.com/ude-soco/elas-official/tree/main)) ![status](https://argocd.cluster.soco.ude.systems/api/badge?name=elas-official-edge)
 
 #### Build and Run
 

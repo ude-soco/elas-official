@@ -9,7 +9,7 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   rules:
-  - host: elas-official.soco.inko.cloud
+  - host: elas-official.soco.ude.systems
     http:
       paths:
       - pathType: Prefix
@@ -28,5 +28,5 @@ spec:
               number: 8080
   tls:
   - hosts:
-    - elas-official.soco.inko.cloud
+    - elas-official.soco.ude.systems
     secretName: web-tls-crt
