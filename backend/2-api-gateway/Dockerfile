@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.6
-FROM maven:3-eclipse-temurin-24 as build
+FROM maven:3-eclipse-temurin-25 as build
 COPY . .
 RUN --mount=type=cache,target=/root/.m2 mvn --no-transfer-progress package
 
